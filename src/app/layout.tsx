@@ -22,11 +22,20 @@ export const metadata: Metadata = {
     "saas legal documents",
     "mobile app legal docs",
   ],
+  icons: { icon: "/icon.svg" },
   openGraph: {
-    title: "PrivacyPage — Legal Document Generator for Apps",
+    title: "PrivacyPage — Legal Docs Generator for Apps",
     description:
       "Generate privacy policies, terms of service, EULAs, and more in 60 seconds. GDPR & CCPA compliant.",
+    url: "https://privacy.rushiraj.me",
+    siteName: "PrivacyPage",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PrivacyPage — Legal Docs in 60 Seconds",
+    description:
+      "Privacy Policy, ToS, EULA, Cookie Policy, Disclaimer. AI-generated, legally compliant.",
   },
 };
 
