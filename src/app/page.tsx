@@ -1,15 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Wizard from "@/components/Wizard";
 import PolicyPreview from "@/components/PolicyPreview";
 import { getWizardConfig, wizardConfigs } from "@/lib/wizardConfigs";
+import { getLocalPricing, toSmallestUnit, type LocalPricing } from "@/lib/currency";
+import { useRazorpay } from "@/hooks/useRazorpay";
 
 export default function Home() {
   const [policy, setPolicy] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<Record<string, string> | null>(null);
   const [selectedDocType, setSelectedDocType] = useState<string | null>(null);
+  const [pricing, setPricing] = useState<LocalPricing | null>(null);
+  const { openPayment } = useRazorpay();
+
+  useEffect(() => {
+    setPricing(getLocalPricing());
+  }, []);
 
   const handleGenerate = async (data: Record<string, string>) => {
     setLoading(true);
@@ -236,13 +244,20 @@ export default function Home() {
       <section id="pricing" className="py-20 px-6 border-t border-zinc-800/50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Simple pricing</h2>
-          <p className="text-zinc-400 mb-12">
+          <p className="text-zinc-400 mb-4">
             Generate for free. Upgrade to unlock full documents.
           </p>
+          <div className="flex items-center justify-center gap-4 mb-12 text-xs text-zinc-500">
+            <span>💳 Cards</span>
+            <span>📱 UPI</span>
+            <span>🏦 Netbanking</span>
+            <span>👛 Wallets</span>
+            <span className="text-zinc-600">Powered by Razorpay</span>
+          </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <div className="glass-card rounded-2xl p-8 text-left">
               <h3 className="text-lg font-semibold mb-2">Free</h3>
-              <div className="text-4xl font-bold mb-4">$0</div>
+              <div className="text-4xl font-bold mb-4">{pricing?.symbol || "$"}0</div>
               <ul className="space-y-3 text-sm text-zinc-400 mb-8">
                 {["Preview any document", "Basic compliance checks", "See how it works"].map((f) => (
                   <li key={f} className="flex items-center gap-2">
@@ -264,7 +279,7 @@ export default function Home() {
             <div className="glass-card rounded-2xl p-8 text-left border-indigo-500/30">
               <h3 className="text-lg font-semibold mb-2">Pro (Per Doc)</h3>
               <div className="text-4xl font-bold mb-1">
-                $9<span className="text-lg text-zinc-400">.99</span>
+                {pricing?.singleDisplay || "$9.99"}
               </div>
               <p className="text-sm text-zinc-500 mb-4">One-time payment per document</p>
               <ul className="space-y-3 text-sm text-zinc-400 mb-8">
@@ -282,12 +297,12 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <button
+              <a
+                href="#generate"
                 className="block text-center w-full bg-indigo-500 hover:bg-indigo-400 text-white py-3 rounded-xl text-sm font-medium transition-colors"
-                onClick={() => alert("Payment integration coming soon! We'll notify you when it's ready.")}
               >
-                Get Pro — $9.99
-              </button>
+                Get Pro — {pricing?.singleDisplay || "$9.99"}
+              </a>
             </div>
 
             <div className="glass-card rounded-2xl p-8 text-left border-indigo-500/50 relative">
@@ -296,9 +311,9 @@ export default function Home() {
               </div>
               <h3 className="text-lg font-semibold mb-2">Bundle</h3>
               <div className="text-4xl font-bold mb-1">
-                $24<span className="text-lg text-zinc-400">.99</span>
+                {pricing?.bundleDisplay || "$24.99"}
               </div>
-              <p className="text-sm text-zinc-500 mb-4">All 5 documents (save $25)</p>
+              <p className="text-sm text-zinc-500 mb-4">All 5 documents (save {pricing?.currency === "INR" ? "₹2146" : pricing?.currency === "EUR" ? "€23.96" : pricing?.currency === "GBP" ? "£19.96" : "$24.96"})</p>
               <ul className="space-y-3 text-sm text-zinc-400 mb-8">
                 {[
                   "All 5 document types",
@@ -318,9 +333,22 @@ export default function Home() {
               </ul>
               <button
                 className="block text-center w-full bg-indigo-500 hover:bg-indigo-400 text-white py-3 rounded-xl text-sm font-medium transition-colors"
-                onClick={() => alert("Payment integration coming soon! We'll notify you when it's ready.")}
+                onClick={() => {
+                  if (!pricing) return;
+                  openPayment({
+                    docType: "bundle",
+                    currency: pricing.currency,
+                    amount: toSmallestUnit(pricing.bundlePrice, pricing.currency),
+                    description: "Bundle - All 5 Documents",
+                    onSuccess: () => {
+                      alert("🎉 Bundle unlocked! All 5 documents are now available.");
+                      window.location.reload();
+                    },
+                    onFailure: () => {},
+                  });
+                }}
               >
-                Get Bundle — $24.99
+                Buy Bundle — {pricing?.bundleDisplay || "$24.99"}
               </button>
             </div>
           </div>

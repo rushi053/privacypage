@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRazorpay, isDocUnlocked } from "@/hooks/useRazorpay";
+import { getLocalPricing, toSmallestUnit } from "@/lib/currency";
 
 interface PolicyPreviewProps {
   policy: string;
@@ -12,7 +14,10 @@ interface PolicyPreviewProps {
 export default function PolicyPreview({ policy, formData, onReset, docType = "privacy" }: PolicyPreviewProps) {
   const [copied, setCopied] = useState(false);
   const [showFull, setShowFull] = useState(false);
-  
+  const [paying, setPaying] = useState(false);
+  const { openPayment } = useRazorpay();
+  const pricing = getLocalPricing();
+
   const docTypeNames: Record<string, string> = {
     privacy: "Privacy Policy",
     tos: "Terms of Service",
@@ -21,14 +26,35 @@ export default function PolicyPreview({ policy, formData, onReset, docType = "pr
     disclaimer: "Disclaimer",
   };
 
+  useEffect(() => {
+    if (isDocUnlocked(docType)) setShowFull(true);
+  }, [docType]);
+
   const lines = policy.split("\n");
   const previewLines = lines.slice(0, 25);
   const remainingLines = lines.slice(25);
-  const isPaid = showFull; // Will be controlled by payment status
+  const isPaid = showFull;
+
+  const handleUnlock = () => {
+    setPaying(true);
+    openPayment({
+      docType,
+      currency: pricing.currency,
+      amount: toSmallestUnit(pricing.singlePrice, pricing.currency),
+      description: `Unlock ${docTypeNames[docType]} - Full Document`,
+      onSuccess: () => {
+        setShowFull(true);
+        setPaying(false);
+      },
+      onFailure: () => {
+        setPaying(false);
+      },
+    });
+  };
 
   const handleCopy = () => {
     if (!isPaid) {
-      alert("Upgrade to Pro to copy the full policy. Only $9.99 one-time!");
+      handleUnlock();
       return;
     }
     navigator.clipboard.writeText(policy);
@@ -38,7 +64,7 @@ export default function PolicyPreview({ policy, formData, onReset, docType = "pr
 
   const handleDownload = (format: string) => {
     if (!isPaid) {
-      alert("Upgrade to Pro to download. Only $9.99 one-time!");
+      handleUnlock();
       return;
     }
     let content = policy;
@@ -129,10 +155,11 @@ ${policy.split("\n").map((l) => {
                         Get the complete policy with GDPR, CCPA, Terms of Service & more
                       </p>
                       <button
-                        onClick={() => alert("Payment integration coming soon! We'll notify you when it's ready.")}
-                        className="bg-indigo-500 hover:bg-indigo-400 text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors"
+                        onClick={handleUnlock}
+                        disabled={paying}
+                        className="bg-indigo-500 hover:bg-indigo-400 text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
                       >
-                        Unlock for $9.99
+                        {paying ? "Processing..." : `Unlock for ${pricing.singleDisplay}`}
                       </button>
                     </div>
                   </div>
