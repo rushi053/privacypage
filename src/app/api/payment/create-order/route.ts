@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     const keySecret = process.env.RAZORPAY_KEY_SECRET;
 
     if (!keyId || !keySecret) {
-      return NextResponse.json({ error: "Payment not configured" }, { status: 500 });
+      return NextResponse.json({ error: "Payment not configured", hasKey: !!keyId, hasSecret: !!keySecret }, { status: 500 });
     }
 
     const auth = Buffer.from(`${keyId}:${keySecret}`).toString("base64");
@@ -44,13 +44,13 @@ export async function POST(req: NextRequest) {
     if (!res.ok) {
       const err = await res.text();
       console.error("Razorpay API error:", res.status, err);
-      return NextResponse.json({ error: "Failed to create order" }, { status: 500 });
+      return NextResponse.json({ error: "Razorpay API failed", status: res.status, detail: err }, { status: 500 });
     }
 
     const order = await res.json();
     return NextResponse.json({ orderId: order.id, amount: expectedAmount, currency });
   } catch (error) {
     console.error("Create order error:", error);
-    return NextResponse.json({ error: "Failed to create order" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to create order", message: error instanceof Error ? error.message : String(error) }, { status: 500 });
   }
 }
