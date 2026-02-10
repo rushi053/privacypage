@@ -1,110 +1,33 @@
 "use client";
 
 import { useState } from "react";
+import { WizardConfig } from "@/lib/wizardConfigs";
 
 interface WizardProps {
+  config: WizardConfig;
   onGenerate: (data: Record<string, string>) => void;
   loading: boolean;
 }
 
-const steps = [
-  {
-    id: "appName",
-    label: "What's your app name?",
-    placeholder: "e.g. MyApp",
-    type: "text" as const,
-  },
-  {
-    id: "platform",
-    label: "What platform is your app on?",
-    placeholder: "",
-    type: "select" as const,
-    options: ["iOS", "Android", "Both (iOS & Android)", "Web App", "All Platforms"],
-  },
-  {
-    id: "companyName",
-    label: "Company or developer name",
-    placeholder: "e.g. Acme Inc. or your full name",
-    type: "text" as const,
-  },
-  {
-    id: "websiteUrl",
-    label: "Website URL (optional)",
-    placeholder: "e.g. https://myapp.com",
-    type: "text" as const,
-  },
-  {
-    id: "contactEmail",
-    label: "Contact email for privacy inquiries",
-    placeholder: "e.g. privacy@myapp.com",
-    type: "text" as const,
-  },
-  {
-    id: "dataCollected",
-    label: "What data does your app collect?",
-    placeholder: "",
-    type: "multiselect" as const,
-    options: [
-      "Name & Email",
-      "Phone Number",
-      "Location Data",
-      "Photos / Camera",
-      "Device Info (model, OS)",
-      "Usage Analytics",
-      "Crash Reports",
-      "Payment Info",
-      "Health Data",
-      "Contacts",
-      "Browsing History",
-      "No Personal Data",
-    ],
-  },
-  {
-    id: "thirdParties",
-    label: "Third-party services used?",
-    placeholder: "",
-    type: "multiselect" as const,
-    options: [
-      "Google Analytics / Firebase",
-      "Facebook SDK",
-      "AdMob / Google Ads",
-      "Stripe / Payment Processor",
-      "RevenueCat",
-      "Sentry / Crashlytics",
-      "Mixpanel / Amplitude",
-      "OneSignal / Push Notifications",
-      "CloudKit / iCloud",
-      "None",
-    ],
-  },
-  {
-    id: "childrenData",
-    label: "Is your app directed at children under 13?",
-    placeholder: "",
-    type: "select" as const,
-    options: ["No", "Yes", "Partially (some content for children)"],
-  },
-];
-
-export default function Wizard({ onGenerate, loading }: WizardProps) {
+export default function Wizard({ config, onGenerate, loading }: WizardProps) {
   const [step, setStep] = useState(0);
   const [data, setData] = useState<Record<string, string>>({});
   const [selected, setSelected] = useState<Record<string, string[]>>({});
 
+  const steps = config.steps;
   const current = steps[step];
   const isLast = step === steps.length - 1;
   const canProceed =
     current.type === "multiselect"
       ? (selected[current.id]?.length ?? 0) > 0
-      : (data[current.id]?.trim().length ?? 0) > 0 ||
-        current.id === "websiteUrl";
+      : (data[current.id]?.trim().length ?? 0) > 0;
 
   const handleNext = () => {
     if (current.type === "multiselect") {
       setData({ ...data, [current.id]: (selected[current.id] || []).join(", ") });
     }
     if (isLast) {
-      const finalData = { ...data };
+      const finalData: Record<string, string> = { ...data, docType: config.type };
       if (current.type === "multiselect") {
         finalData[current.id] = (selected[current.id] || []).join(", ");
       }
@@ -226,7 +149,7 @@ export default function Wizard({ onGenerate, loading }: WizardProps) {
               Generating...
             </>
           ) : isLast ? (
-            "Generate Policy →"
+            `Generate ${config.displayName} →`
           ) : (
             "Next →"
           )}

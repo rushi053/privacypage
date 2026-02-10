@@ -3,17 +3,23 @@
 import { useState } from "react";
 import Wizard from "@/components/Wizard";
 import PolicyPreview from "@/components/PolicyPreview";
+import { getWizardConfig, wizardConfigs } from "@/lib/wizardConfigs";
 
 export default function Home() {
   const [policy, setPolicy] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<Record<string, string> | null>(null);
+  const [selectedDocType, setSelectedDocType] = useState<string | null>(null);
 
   const handleGenerate = async (data: Record<string, string>) => {
     setLoading(true);
     setFormData(data);
+    
+    const docType = data.docType || "privacy";
+    const apiRoute = docType === "privacy" ? "/api/generate" : `/api/generate/${docType}`;
+    
     try {
-      const res = await fetch("/api/generate", {
+      const res = await fetch(apiRoute, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -21,10 +27,15 @@ export default function Home() {
       const json = await res.json();
       setPolicy(json.policy);
     } catch {
-      setPolicy("Error generating policy. Please try again.");
+      setPolicy("Error generating document. Please try again.");
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleReset = () => {
+    setPolicy(null);
+    setSelectedDocType(null);
   };
 
   return (
@@ -60,20 +71,20 @@ export default function Home() {
             Trusted by 500+ app developers
           </div>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
-            Privacy policies
+            Legal docs for your app.
             <br />
-            <span className="gradient-text">that actually work.</span>
+            <span className="gradient-text">Done in 60 seconds.</span>
           </h1>
           <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-10">
-            Generate professional, legally-compliant privacy policies for your iOS,
-            Android, or web app in under 60 seconds. App Store & Play Store ready.
+            Generate professional privacy policies, terms of service, EULAs, and more.
+            GDPR & CCPA compliant. App Store & Play Store ready.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#generate"
               className="inline-flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-400 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all hover:scale-105 glow"
             >
-              Generate Your Policy — Free
+              Generate Your Docs — Free
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -115,14 +126,14 @@ export default function Home() {
             Why developers choose PrivacyPage
           </h2>
           <p className="text-zinc-400 text-center mb-16 max-w-xl mx-auto">
-            Stop copying generic templates. Get policies customized for your exact app.
+            Stop copying generic templates. Get legal docs customized for your exact needs.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 icon: "⚡",
                 title: "60-Second Generation",
-                desc: "Answer a few questions about your app. Our AI generates a complete, customized privacy policy instantly.",
+                desc: "Answer a few questions. Our AI generates complete, customized legal documents instantly.",
               },
               {
                 icon: "🛡️",
@@ -132,22 +143,22 @@ export default function Home() {
               {
                 icon: "📱",
                 title: "App Store Ready",
-                desc: "Formatted specifically for iOS and Android app submissions. No more rejection for missing privacy policies.",
+                desc: "Formatted for iOS and Android app submissions. No more rejections for missing legal docs.",
               },
               {
                 icon: "🎯",
-                title: "Customized, Not Generic",
-                desc: "Tailored to your app's specific data collection, third-party SDKs, analytics, and features.",
+                title: "5 Document Types",
+                desc: "Privacy Policy, Terms of Service, EULA, Cookie Policy, and Disclaimer — everything you need.",
               },
               {
                 icon: "📋",
                 title: "Multiple Formats",
-                desc: "Download as HTML, Markdown, or plain text. Host it anywhere — your website, GitHub Pages, or Notion.",
+                desc: "Download as HTML, Markdown, or plain text. Host anywhere — your site, GitHub, or Notion.",
               },
               {
                 icon: "🔄",
-                title: "Terms of Service Too",
-                desc: "Get a matching Terms of Service and EULA alongside your privacy policy. Full legal coverage.",
+                title: "Complete Package",
+                desc: "Get all legal docs you need for launch. Bundle pricing saves you money and time.",
               },
             ].map((f) => (
               <div
@@ -165,18 +176,58 @@ export default function Home() {
 
       {/* Generator */}
       <section id="generate" className="py-20 px-6 border-t border-zinc-800/50">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">
-            Generate Your Privacy Policy
+            Choose Your Document Type
           </h2>
           <p className="text-zinc-400 text-center mb-12">
-            Fill in the details below. Takes less than 60 seconds.
+            Select what you need to generate. Takes less than 60 seconds.
           </p>
 
-          {!policy ? (
-            <Wizard onGenerate={handleGenerate} loading={loading} />
+          {!policy && !selectedDocType ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Object.entries(wizardConfigs).map(([key, config]) => (
+                <button
+                  key={key}
+                  onClick={() => setSelectedDocType(key)}
+                  className="glass-card rounded-2xl p-8 text-left hover:bg-zinc-800/60 hover:border-indigo-500/50 transition-all group"
+                >
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-indigo-400 transition-colors">
+                    {config.displayName}
+                  </h3>
+                  <p className="text-zinc-400 text-sm mb-6 leading-relaxed">
+                    {config.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-indigo-400 font-medium">
+                    Generate
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </button>
+              ))}
+            </div>
+          ) : selectedDocType && !policy ? (
+            <div>
+              <button
+                onClick={() => setSelectedDocType(null)}
+                className="mb-6 text-sm text-zinc-400 hover:text-white transition-colors flex items-center gap-2"
+              >
+                ← Back to document types
+              </button>
+              <Wizard
+                config={getWizardConfig(selectedDocType)}
+                onGenerate={handleGenerate}
+                loading={loading}
+              />
+            </div>
           ) : (
-            <PolicyPreview policy={policy} formData={formData!} onReset={() => setPolicy(null)} />
+            <PolicyPreview
+              policy={policy!}
+              formData={formData!}
+              onReset={handleReset}
+              docType={formData?.docType || "privacy"}
+            />
           )}
         </div>
       </section>
@@ -186,14 +237,14 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Simple pricing</h2>
           <p className="text-zinc-400 mb-12">
-            Generate for free. Upgrade to unlock full policies.
+            Generate for free. Upgrade to unlock full documents.
           </p>
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <div className="glass-card rounded-2xl p-8 text-left">
               <h3 className="text-lg font-semibold mb-2">Free</h3>
               <div className="text-4xl font-bold mb-4">$0</div>
               <ul className="space-y-3 text-sm text-zinc-400 mb-8">
-                {["Preview privacy policy", "Basic compliance checks", "Standard template"].map((f) => (
+                {["Preview any document", "Basic compliance checks", "See how it works"].map((f) => (
                   <li key={f} className="flex items-center gap-2">
                     <svg className="w-4 h-4 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -209,24 +260,19 @@ export default function Home() {
                 Generate Free
               </a>
             </div>
-            <div className="glass-card rounded-2xl p-8 text-left border-indigo-500/50 relative">
-              <div className="absolute -top-3 left-8 bg-indigo-500 text-white text-xs font-medium px-3 py-1 rounded-full">
-                Most Popular
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Pro</h3>
+
+            <div className="glass-card rounded-2xl p-8 text-left border-indigo-500/30">
+              <h3 className="text-lg font-semibold mb-2">Pro (Per Doc)</h3>
               <div className="text-4xl font-bold mb-1">
                 $9<span className="text-lg text-zinc-400">.99</span>
               </div>
-              <p className="text-sm text-zinc-500 mb-4">One-time payment</p>
+              <p className="text-sm text-zinc-500 mb-4">One-time payment per document</p>
               <ul className="space-y-3 text-sm text-zinc-400 mb-8">
                 {[
-                  "Full privacy policy (no blur)",
-                  "Terms of Service included",
-                  "EULA included",
+                  "Full document (no blur)",
                   "GDPR & CCPA sections",
                   "HTML, Markdown & text export",
                   "Lifetime updates",
-                  "Priority support",
                 ].map((f) => (
                   <li key={f} className="flex items-center gap-2">
                     <svg className="w-4 h-4 text-indigo-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -241,6 +287,40 @@ export default function Home() {
                 onClick={() => alert("Payment integration coming soon! We'll notify you when it's ready.")}
               >
                 Get Pro — $9.99
+              </button>
+            </div>
+
+            <div className="glass-card rounded-2xl p-8 text-left border-indigo-500/50 relative">
+              <div className="absolute -top-3 left-8 bg-indigo-500 text-white text-xs font-medium px-3 py-1 rounded-full">
+                Best Value
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Bundle</h3>
+              <div className="text-4xl font-bold mb-1">
+                $24<span className="text-lg text-zinc-400">.99</span>
+              </div>
+              <p className="text-sm text-zinc-500 mb-4">All 5 documents (save $25)</p>
+              <ul className="space-y-3 text-sm text-zinc-400 mb-8">
+                {[
+                  "All 5 document types",
+                  "Privacy Policy",
+                  "Terms of Service",
+                  "EULA",
+                  "Cookie Policy + Disclaimer",
+                  "Priority support",
+                ].map((f) => (
+                  <li key={f} className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-indigo-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <button
+                className="block text-center w-full bg-indigo-500 hover:bg-indigo-400 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+                onClick={() => alert("Payment integration coming soon! We'll notify you when it's ready.")}
+              >
+                Get Bundle — $24.99
               </button>
             </div>
           </div>

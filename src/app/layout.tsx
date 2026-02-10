@@ -2,23 +2,30 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "PrivacyPage — AI Privacy Policy Generator for Apps",
+  title: "PrivacyPage — Legal Document Generator for Apps | Privacy Policy, ToS, EULA & More",
   description:
-    "Generate professional, legally-compliant privacy policies for your iOS, Android, or web app in under 60 seconds. GDPR, CCPA, and App Store ready.",
+    "Generate professional legal documents for your app in 60 seconds. Privacy Policy, Terms of Service, EULA, Cookie Policy, and Disclaimer. GDPR, CCPA, and App Store compliant.",
   keywords: [
     "privacy policy generator",
+    "terms of service generator",
+    "eula generator",
+    "cookie policy generator",
+    "disclaimer generator",
+    "legal documents for apps",
     "app privacy policy",
     "ios privacy policy",
     "android privacy policy",
-    "gdpr privacy policy",
+    "gdpr compliance",
     "ccpa compliance",
-    "terms of service generator",
-    "app store privacy policy",
+    "app store legal docs",
+    "play store legal requirements",
+    "saas legal documents",
+    "mobile app legal docs",
   ],
   openGraph: {
-    title: "PrivacyPage — AI Privacy Policy Generator for Apps",
+    title: "PrivacyPage — Legal Document Generator for Apps",
     description:
-      "Generate professional privacy policies for your app in 60 seconds. GDPR & CCPA ready.",
+      "Generate privacy policies, terms of service, EULAs, and more in 60 seconds. GDPR & CCPA compliant.",
     type: "website",
   },
 };

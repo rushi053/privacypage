@@ -6,11 +6,20 @@ interface PolicyPreviewProps {
   policy: string;
   formData: Record<string, string>;
   onReset: () => void;
+  docType?: string;
 }
 
-export default function PolicyPreview({ policy, formData, onReset }: PolicyPreviewProps) {
+export default function PolicyPreview({ policy, formData, onReset, docType = "privacy" }: PolicyPreviewProps) {
   const [copied, setCopied] = useState(false);
   const [showFull, setShowFull] = useState(false);
+  
+  const docTypeNames: Record<string, string> = {
+    privacy: "Privacy Policy",
+    tos: "Terms of Service",
+    eula: "EULA",
+    cookie: "Cookie Policy",
+    disclaimer: "Disclaimer",
+  };
 
   const lines = policy.split("\n");
   const previewLines = lines.slice(0, 25);
@@ -33,7 +42,15 @@ export default function PolicyPreview({ policy, formData, onReset }: PolicyPrevi
       return;
     }
     let content = policy;
-    let filename = `privacy-policy-${formData.appName?.toLowerCase().replace(/\s+/g, "-") || "app"}`;
+    const baseName = formData.appName || formData.serviceName || formData.websiteName || "document";
+    const docTypeSlugs: Record<string, string> = {
+      privacy: "privacy-policy",
+      tos: "terms-of-service",
+      eula: "eula",
+      cookie: "cookie-policy",
+      disclaimer: "disclaimer",
+    };
+    let filename = `${docTypeSlugs[docType]}-${baseName.toLowerCase().replace(/\s+/g, "-")}`;
     let mimeType = "text/plain";
 
     if (format === "html") {
@@ -79,7 +96,7 @@ ${policy.split("\n").map((l) => {
       <div className="glass-card rounded-2xl p-8 md:p-12 max-w-3xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-xl font-semibold">
-            Privacy Policy for {formData.appName || "Your App"}
+            {docTypeNames[docType]} {formData.appName || formData.serviceName || formData.websiteName ? `for ${formData.appName || formData.serviceName || formData.websiteName}` : ""}
           </h3>
           <button
             onClick={onReset}
