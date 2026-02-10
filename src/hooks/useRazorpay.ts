@@ -13,7 +13,7 @@ interface PaymentOptions {
   currency: string;
   amount: number;
   description?: string;
-  onSuccess: () => void;
+  onSuccess: (licenseKey?: string) => void;
   onFailure: (error: string) => void;
 }
 
@@ -54,12 +54,19 @@ export function useRazorpay() {
         name: "PrivacyPage",
         description: description || (docType === "bundle" ? "Bundle - All 5 Documents" : `Unlock ${docType} - Full Document`),
         order_id: data.orderId,
+        prefill: { email: "" },
         handler: async (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) => {
           try {
+            // Extract email from Razorpay's internal state (it's stored in the checkout)
             const verifyRes = await fetch("/api/payment/verify", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(response),
+              body: JSON.stringify({
+                ...response,
+                docType,
+                amount: data.amount,
+                currency: data.currency,
+              }),
             });
             const verifyData = await verifyRes.json();
             if (verifyData.verified) {
@@ -68,7 +75,10 @@ export function useRazorpay() {
               } else {
                 localStorage.setItem(`privacypage_unlocked_${docType}`, "true");
               }
-              onSuccess();
+              if (verifyData.licenseKey) {
+                localStorage.setItem("privacypage_license_key", verifyData.licenseKey);
+              }
+              onSuccess(verifyData.licenseKey);
             } else {
               onFailure("Payment verification failed");
             }

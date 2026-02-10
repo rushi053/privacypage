@@ -13,11 +13,50 @@ export default function Home() {
   const [formData, setFormData] = useState<Record<string, string> | null>(null);
   const [selectedDocType, setSelectedDocType] = useState<string | null>(null);
   const [pricing, setPricing] = useState<LocalPricing | null>(null);
+  const [showRestore, setShowRestore] = useState(false);
+  const [restoreInput, setRestoreInput] = useState("");
+  const [restoreStatus, setRestoreStatus] = useState<string | null>(null);
+  const [restoreLoading, setRestoreLoading] = useState(false);
+  const [licenseModal, setLicenseModal] = useState<string | null>(null);
   const { openPayment } = useRazorpay();
 
   useEffect(() => {
     setPricing(getLocalPricing());
   }, []);
+
+  const handleRestore = async () => {
+    setRestoreLoading(true);
+    setRestoreStatus(null);
+    try {
+      const isEmail = restoreInput.includes("@");
+      const res = await fetch("/api/license/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(isEmail ? { email: restoreInput } : { licenseKey: restoreInput }),
+      });
+      const data = await res.json();
+      if (data.found) {
+        for (const p of data.purchases) {
+          if (p.docType === "bundle") {
+            localStorage.setItem("privacypage_bundle_unlocked", "true");
+          } else if (p.docType === "pro-single") {
+            localStorage.setItem("privacypage_pro_single", "true");
+          } else {
+            localStorage.setItem(`privacypage_unlocked_${p.docType}`, "true");
+          }
+          localStorage.setItem("privacypage_license_key", p.licenseKey);
+        }
+        setRestoreStatus("✅ Purchase restored! Reloading...");
+        setTimeout(() => window.location.reload(), 1500);
+      } else {
+        setRestoreStatus("❌ No purchase found. Check your license key or email.");
+      }
+    } catch {
+      setRestoreStatus("❌ Something went wrong. Please try again.");
+    } finally {
+      setRestoreLoading(false);
+    }
+  };
 
   const handleGenerate = async (data: Record<string, string>) => {
     setLoading(true);
@@ -64,6 +103,9 @@ export default function Home() {
             <a href="#pricing" className="text-sm text-zinc-400 hover:text-white transition-colors">
               Pricing
             </a>
+            <button onClick={() => setShowRestore(true)} className="text-sm text-zinc-400 hover:text-white transition-colors">
+              Restore Purchase
+            </button>
             <a href="#generate" className="text-sm bg-indigo-500 hover:bg-indigo-400 text-white px-4 py-2 rounded-lg transition-colors">
               Generate Free
             </a>
@@ -306,10 +348,13 @@ export default function Home() {
                     currency: pricing.currency,
                     amount: toSmallestUnit(pricing.singlePrice, pricing.currency),
                     description: "Pro - Unlock Any Single Document",
-                    onSuccess: () => {
+                    onSuccess: (licenseKey) => {
                       localStorage.setItem("privacypage_pro_single", "true");
-                      alert("🎉 Pro unlocked! Generate any document and it will be fully available.");
-                      window.location.reload();
+                      if (licenseKey) setLicenseModal(licenseKey);
+                      else {
+                        alert("🎉 Pro unlocked!");
+                        window.location.reload();
+                      }
                     },
                     onFailure: () => {},
                   });
@@ -354,9 +399,12 @@ export default function Home() {
                     currency: pricing.currency,
                     amount: toSmallestUnit(pricing.bundlePrice, pricing.currency),
                     description: "Bundle - All 5 Documents",
-                    onSuccess: () => {
-                      alert("🎉 Bundle unlocked! All 5 documents are now available.");
-                      window.location.reload();
+                    onSuccess: (licenseKey) => {
+                      if (licenseKey) setLicenseModal(licenseKey);
+                      else {
+                        alert("🎉 Bundle unlocked!");
+                        window.location.reload();
+                      }
                     },
                     onFailure: () => {},
                   });
@@ -366,6 +414,26 @@ export default function Home() {
               </button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Contact/Support */}
+      <section className="py-16 px-6 border-t border-zinc-800/50">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-2xl font-bold mb-3">Need Help?</h2>
+          <p className="text-zinc-400 mb-6">
+            Have questions about your purchase, need a custom document, or experiencing issues?
+          </p>
+          <a
+            href="mailto:rushirajjadeja@gmail.com?subject=PrivacyPage%20Support"
+            className="inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white px-6 py-3 rounded-xl text-sm font-medium transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Contact Support
+          </a>
+          <p className="text-zinc-500 text-xs mt-3">We typically respond within 24 hours</p>
         </div>
       </section>
 
@@ -384,11 +452,76 @@ export default function Home() {
               </a>
             </span>
           </div>
-          <p className="text-zinc-500 text-sm">
-            © {new Date().getFullYear()} PrivacyPage. All rights reserved.
-          </p>
+          <div className="flex items-center gap-4">
+            <button onClick={() => setShowRestore(true)} className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors">
+              Restore Purchase
+            </button>
+            <a href="mailto:rushirajjadeja@gmail.com?subject=PrivacyPage%20Support" className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors">
+              Support
+            </a>
+            <p className="text-zinc-500 text-sm">
+              © {new Date().getFullYear()} PrivacyPage
+            </p>
+          </div>
         </div>
       </footer>
+
+      {/* Restore Purchase Modal */}
+      {showRestore && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => setShowRestore(false)}>
+          <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-8 max-w-md w-full mx-4" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-xl font-bold mb-2">Restore Purchase</h3>
+            <p className="text-zinc-400 text-sm mb-6">Enter your license key or email to restore your purchase on this device.</p>
+            <input
+              type="text"
+              value={restoreInput}
+              onChange={(e) => setRestoreInput(e.target.value)}
+              placeholder="License key (PP-XXXXXXXX) or email"
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-indigo-500 mb-4"
+            />
+            {restoreStatus && <p className="text-sm mb-4">{restoreStatus}</p>}
+            <div className="flex gap-3">
+              <button
+                onClick={handleRestore}
+                disabled={!restoreInput.trim() || restoreLoading}
+                className="flex-1 bg-indigo-500 hover:bg-indigo-400 disabled:opacity-50 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+              >
+                {restoreLoading ? "Checking..." : "Restore"}
+              </button>
+              <button onClick={() => setShowRestore(false)} className="px-6 py-3 border border-zinc-700 rounded-xl text-sm text-zinc-400 hover:text-white transition-colors">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* License Key Modal */}
+      {licenseModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-8 max-w-md w-full mx-4 text-center">
+            <div className="text-4xl mb-4">🎉</div>
+            <h3 className="text-xl font-bold mb-2">Payment Successful!</h3>
+            <p className="text-zinc-400 text-sm mb-6">Save your license key to restore your purchase on any device.</p>
+            <div className="bg-zinc-800 border border-zinc-700 rounded-xl p-4 mb-4 font-mono text-lg tracking-wider text-indigo-400">
+              {licenseModal}
+            </div>
+            <button
+              onClick={() => { navigator.clipboard.writeText(licenseModal); }}
+              className="w-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white py-3 rounded-xl text-sm font-medium transition-colors mb-3"
+            >
+              📋 Copy License Key
+            </button>
+            <button
+              onClick={() => { setLicenseModal(null); window.location.reload(); }}
+              className="w-full bg-indigo-500 hover:bg-indigo-400 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+            >
+              Continue
+            </button>
+            <p className="text-zinc-500 text-xs mt-4">⚠️ Save this key! You&apos;ll need it to restore your purchase.</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
