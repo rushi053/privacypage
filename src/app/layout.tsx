@@ -23,11 +23,13 @@ export const metadata: Metadata = {
     "mobile app legal docs",
   ],
   icons: { icon: "/icon.svg" },
+  metadataBase: new URL("https://privacypage.io"),
+  alternates: { canonical: "https://privacypage.io" },
   openGraph: {
     title: "PrivacyPage — Legal Docs Generator for Apps",
     description:
       "Generate privacy policies, terms of service, EULAs, and more in 60 seconds. GDPR & CCPA compliant.",
-    url: "https://privacy.rushiraj.me",
+    url: "https://privacypage.io",
     siteName: "PrivacyPage",
     type: "website",
   },

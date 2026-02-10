@@ -113,6 +113,39 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      {/* Schema Markup */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PrivacyPage",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": "https://privacypage.io",
+        "description": "Generate professional privacy policies, terms of service, EULAs, and more in 60 seconds. GDPR & CCPA compliant.",
+        "offers": [
+          { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free preview" },
+          { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Pro - Single Document" },
+          { "@type": "Offer", "price": "24.99", "priceCurrency": "USD", "description": "Bundle - All 5 Documents" }
+        ]
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "PrivacyPage",
+        "url": "https://privacypage.io",
+        "logo": "https://privacypage.io/icon.svg",
+        "contactPoint": { "@type": "ContactPoint", "email": "rushirajjadeja@gmail.com", "contactType": "customer support" }
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqItems.map(item => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": { "@type": "Answer", "text": item.a }
+        }))
+      }) }} />
+
       {/* Nav */}
       <nav className="fixed top-0 w-full z-50 border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -124,6 +157,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-6">
             <a href="#features" className="text-sm text-zinc-400 hover:text-white transition-colors">Features</a>
             <a href="#pricing" className="text-sm text-zinc-400 hover:text-white transition-colors">Pricing</a>
+            <a href="/blog" className="text-sm text-zinc-400 hover:text-white transition-colors">Blog</a>
             <button onClick={() => setShowRestore(true)} className="text-sm text-zinc-400 hover:text-white transition-colors">Restore Purchase</button>
             <a href="#generate" className="text-sm bg-indigo-500 hover:bg-indigo-400 text-white px-4 py-2 rounded-lg transition-colors">Generate Free</a>
           </div>
@@ -143,6 +177,7 @@ export default function Home() {
           <div className="md:hidden border-t border-zinc-800/50 bg-zinc-950/95 backdrop-blur-xl px-6 py-4 space-y-3">
             <a href="#features" onClick={() => setMobileMenuOpen(false)} className="block text-sm text-zinc-400 hover:text-white">Features</a>
             <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="block text-sm text-zinc-400 hover:text-white">Pricing</a>
+            <a href="/blog" onClick={() => setMobileMenuOpen(false)} className="block text-sm text-zinc-400 hover:text-white">Blog</a>
             <button onClick={() => { setShowRestore(true); setMobileMenuOpen(false); }} className="block text-sm text-zinc-400 hover:text-white">Restore Purchase</button>
             <a href="#generate" onClick={() => setMobileMenuOpen(false)} className="block text-sm bg-indigo-500 hover:bg-indigo-400 text-white px-4 py-2 rounded-lg transition-colors text-center">Generate Free</a>
           </div>
