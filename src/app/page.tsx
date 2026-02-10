@@ -297,12 +297,26 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#generate"
+              <button
                 className="block text-center w-full bg-indigo-500 hover:bg-indigo-400 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+                onClick={() => {
+                  if (!pricing) return;
+                  openPayment({
+                    docType: "pro-single",
+                    currency: pricing.currency,
+                    amount: toSmallestUnit(pricing.singlePrice, pricing.currency),
+                    description: "Pro - Unlock Any Single Document",
+                    onSuccess: () => {
+                      localStorage.setItem("privacypage_pro_single", "true");
+                      alert("🎉 Pro unlocked! Generate any document and it will be fully available.");
+                      window.location.reload();
+                    },
+                    onFailure: () => {},
+                  });
+                }}
               >
                 Get Pro — {pricing?.singleDisplay || "$9.99"}
-              </a>
+              </button>
             </div>
 
             <div className="glass-card rounded-2xl p-8 text-left border-indigo-500/50 relative">

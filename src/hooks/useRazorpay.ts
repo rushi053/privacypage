@@ -94,5 +94,6 @@ export function useRazorpay() {
 export function isDocUnlocked(docType: string): boolean {
   if (typeof window === "undefined") return false;
   return localStorage.getItem("privacypage_bundle_unlocked") === "true" ||
+    localStorage.getItem("privacypage_pro_single") === "true" ||
     localStorage.getItem(`privacypage_unlocked_${docType}`) === "true";
 }
