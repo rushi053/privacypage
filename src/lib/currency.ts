@@ -8,7 +8,7 @@ export interface LocalPricing {
 }
 
 const PRICING: Record<string, { symbol: string; single: number; bundle: number; decimals: boolean }> = {
-  INR: { symbol: "₹", single: 849, bundle: 2099, decimals: false },
+  INR: { symbol: "₹", single: 10, bundle: 20, decimals: false },
   USD: { symbol: "$", single: 9.99, bundle: 24.99, decimals: true },
   EUR: { symbol: "€", single: 9.49, bundle: 23.49, decimals: true },
   GBP: { symbol: "£", single: 7.99, bundle: 19.99, decimals: true },

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const VALID_PRICES: Record<string, { single: number; bundle: number }> = {
-  INR: { single: 84900, bundle: 209900 },
+  INR: { single: 1000, bundle: 2000 },
   USD: { single: 999, bundle: 2499 },
   EUR: { single: 949, bundle: 2349 },
   GBP: { single: 799, bundle: 1999 },
