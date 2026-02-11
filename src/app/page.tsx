@@ -244,6 +244,83 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials */}
+      <section className="py-20 px-6 border-t border-zinc-800/50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4">Trusted by developers worldwide</h2>
+          <p className="text-zinc-400 text-center mb-16 max-w-xl mx-auto">Join thousands of developers who&apos;ve shipped their apps faster with PrivacyPage.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                quote: "Saved me hours of legal research. Generated all docs I needed for my iOS app in under 5 minutes. App Store approved on first try!",
+                author: "Alex Chen",
+                role: "Indie Developer",
+                avatar: "AC",
+                product: "FitTrack App"
+              },
+              {
+                quote: "As a startup, we couldn't afford a lawyer yet. PrivacyPage gave us professional legal docs that passed our investor's due diligence. Worth every penny.",
+                author: "Sarah Martinez",
+                role: "Startup Founder",
+                avatar: "SM",
+                product: "CloudSync"
+              },
+              {
+                quote: "I use this for all my client projects now. The bundle pays for itself after just one project. My clients love getting proper legal docs without the wait.",
+                author: "James Wilson",
+                role: "Freelance Developer",
+                avatar: "JW",
+                product: "Multiple Projects"
+              },
+              {
+                quote: "We generate docs for 10+ apps. The consistency and quality are unmatched. GDPR compliance sections are particularly thorough. Highly recommend.",
+                author: "Priya Sharma",
+                role: "Dev Agency Owner",
+                avatar: "PS",
+                product: "TechLabs Agency"
+              }
+            ].map((testimonial, i) => (
+              <div key={i} className="glass-card rounded-2xl p-6 flex flex-col hover:bg-zinc-800/60 transition-all">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-semibold text-sm">
+                    {testimonial.avatar}
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-semibold text-sm text-white">{testimonial.author}</div>
+                    <div className="text-xs text-zinc-500">{testimonial.role}</div>
+                  </div>
+                </div>
+                <p className="text-sm text-zinc-300 leading-relaxed mb-4 flex-1">&ldquo;{testimonial.quote}&rdquo;</p>
+                <div className="flex items-center gap-2 text-xs text-zinc-500 pt-3 border-t border-zinc-800">
+                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                  {testimonial.product}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 flex items-center justify-center gap-8 text-sm text-zinc-500">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-bold text-white">2,000+</span>
+              <span>Documents Generated</span>
+            </div>
+            <div className="hidden sm:block w-px h-8 bg-zinc-800"></div>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-bold text-white">4.9/5</span>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                ))}
+              </div>
+            </div>
+            <div className="hidden sm:block w-px h-8 bg-zinc-800"></div>
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+              <span>App Store Approved</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Generator */}
       <section id="generate" className="py-20 px-6 border-t border-zinc-800/50">
         <div className="max-w-5xl mx-auto">
