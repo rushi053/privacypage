@@ -49,9 +49,41 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     publisher: { '@type': 'Organization', name: 'PrivacyPage', url: 'https://privacypage.io' },
   }
 
+  // Parse FAQ sections from post content for FAQPage schema
+  const faqSchema = (() => {
+    const faqEntries: { question: string; answer: string }[] = []
+    const h3Regex = /<h3>(.*?)<\/h3>\s*([\s\S]*?)(?=<h[23]|<h2|$)/gi
+    const content = post.content
+    // Find the FAQ section
+    const faqSectionMatch = content.match(/<h2>FAQ<\/h2>([\s\S]*?)(?=<h2|$)/i)
+    if (faqSectionMatch) {
+      const faqSection = faqSectionMatch[1]
+      let match
+      const faqH3Regex = /<h3>(.*?)<\/h3>\s*([\s\S]*?)(?=<h3|$)/gi
+      while ((match = faqH3Regex.exec(faqSection)) !== null) {
+        const question = match[1].replace(/<[^>]*>/g, '').trim()
+        const answer = match[2].replace(/<[^>]*>/g, '').trim()
+        if (question && answer) {
+          faqEntries.push({ question, answer })
+        }
+      }
+    }
+    if (faqEntries.length === 0) return null
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqEntries.map(({ question, answer }) => ({
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: { '@type': 'Answer', text: answer },
+      })),
+    }
+  })()
+
   return (
     <div className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
       {/* Nav */}
       <nav className="fixed top-0 w-full z-50 border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur-xl">

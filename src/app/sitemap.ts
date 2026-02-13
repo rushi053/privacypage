@@ -8,5 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/blog/free-privacy-policy-generator-ios-apps`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/blog/gdpr-privacy-policy-template-2026`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/blog/how-to-add-privacy-policy-app-store`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/blog/free-privacy-policy-generator`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/blog/free-terms-of-service-generator`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/blog/cookie-policy-guide`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
   ]
 }

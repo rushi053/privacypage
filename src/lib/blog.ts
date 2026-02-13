@@ -381,7 +381,536 @@ export const blogPosts: BlogPost[] = [
 
 <p><a href="https://privacypage.io/#generate">Generate your privacy policy →</a></p>
 `
-  }
+  },
+  {
+    slug: 'free-privacy-policy-generator',
+    title: 'Free Privacy Policy Generator: Create Your Policy in Minutes (2026 Guide)',
+    description: 'Need a free privacy policy generator? Learn what your privacy policy must include for GDPR & CCPA compliance, and create one in minutes — no signup needed.',
+    date: '2026-02-13',
+    readTime: '8 min read',
+    keywords: ['free privacy policy generator', 'privacy policy generator for apps', 'privacy policy template', 'GDPR privacy policy generator', 'free privacy policy for website'],
+    content: `
+<p>If you've ever launched a website or app, you've hit this moment: you need a privacy policy, you don't have a lawyer, and you definitely don't want to pay thousands for one.</p>
+
+<p>Good news — a <strong>free privacy policy generator</strong> can get you a legally sound document in minutes. But not all generators are equal, and copy-pasting a random privacy policy template off the internet can actually get you in trouble.</p>
+
+<p>This guide covers everything you need to know: why privacy policies matter, what yours must include, how generators work, and how to pick one that won't leave you exposed.</p>
+
+<h2>Why You Need a Privacy Policy (It's Not Optional)</h2>
+
+<p>Let's get this out of the way: a privacy policy isn't a nice-to-have. It's a legal requirement in most jurisdictions if you collect <em>any</em> personal data — and you almost certainly do.</p>
+
+<p>Here's what counts as collecting personal data:</p>
+
+<ul>
+<li>Using Google Analytics or any analytics tool</li>
+<li>Having a contact form</li>
+<li>Using cookies (yes, even basic ones)</li>
+<li>Collecting email addresses for a newsletter</li>
+<li>Processing payments</li>
+<li>Running ads</li>
+</ul>
+
+<p>If your website or app does any of these, laws like GDPR (Europe), CCPA (California), LGPD (Brazil), and PIPEDA (Canada) require you to disclose what data you collect and how you use it.</p>
+
+<h3>What Happens Without One?</h3>
+
+<ul>
+<li><strong>GDPR fines</strong> can reach €20 million or 4% of global revenue</li>
+<li><strong>CCPA penalties</strong> run $2,500–$7,500 per violation</li>
+<li><strong>App store rejection</strong> — both Apple and Google require a privacy policy for listed apps</li>
+<li><strong>Lost user trust</strong> — savvy users check for policies before sharing data</li>
+</ul>
+
+<p>It's not just about compliance. It's about not giving regulators, app stores, or users a reason to shut you down.</p>
+
+<h2>What to Include in Your Privacy Policy</h2>
+
+<p>A solid privacy policy covers these sections at minimum:</p>
+
+<h3>What Data You Collect</h3>
+<p>Be specific. "Personal information" is too vague. List the actual data types: names, email addresses, IP addresses, device identifiers, payment info, location data.</p>
+
+<h3>How You Collect It</h3>
+<p>Directly from users (forms, account creation)? Automatically (cookies, analytics)? From third parties (ad networks, social logins)? Spell it out.</p>
+
+<h3>Why You Collect It</h3>
+<p>Every piece of data needs a purpose. Service delivery, analytics, marketing, legal compliance — state the reason for each category.</p>
+
+<h3>How You Store and Protect It</h3>
+<p>Where is data stored? What security measures do you use? How long do you retain it? Users and regulators want to know.</p>
+
+<h3>Third-Party Sharing</h3>
+<p>If you use any third-party services — Stripe, Google Analytics, Mailchimp, ad networks — you need to disclose that data flows to them.</p>
+
+<h3>User Rights</h3>
+<p>Under GDPR, users can request access, correction, deletion, and portability of their data. Under CCPA, California residents can opt out of data sales. Your policy must explain how users exercise these rights.</p>
+
+<h3>Contact Information</h3>
+<p>Provide a real way for users to reach you about privacy concerns. An email address at minimum.</p>
+
+<h2>GDPR and CCPA: What Your Generator Must Cover</h2>
+
+<p>Not every free privacy policy generator handles compliance well. Here's what to look for:</p>
+
+<h3>For GDPR Compliance</h3>
+<ul>
+<li><strong>Legal basis for processing</strong> — consent, legitimate interest, contractual necessity, etc.</li>
+<li><strong>Data subject rights</strong> — access, rectification, erasure, restriction, portability, objection</li>
+<li><strong>International transfers</strong> — if data leaves the EU, disclose it</li>
+<li><strong>DPO contact</strong> — required for certain organizations</li>
+<li><strong>Cookie consent</strong> — separate from the privacy policy but related</li>
+</ul>
+
+<h3>For CCPA Compliance</h3>
+<ul>
+<li><strong>"Do Not Sell My Personal Information"</strong> — must be included if applicable</li>
+<li><strong>Categories of data collected</strong> in the past 12 months</li>
+<li><strong>Right to know, delete, and opt out</strong></li>
+<li><strong>Non-discrimination clause</strong> — users can't be penalized for exercising rights</li>
+</ul>
+
+<p>A good <a href="https://privacypage.io/#generate">GDPR privacy policy generator</a> will ask you the right questions to cover these requirements. A bad one will give you a generic template that misses half of them.</p>
+
+<h2>How Privacy Policy Generators Work</h2>
+
+<p>Most generators follow a simple flow:</p>
+
+<ol>
+<li><strong>You answer questions</strong> about your website or app — what data you collect, what services you use, where you operate</li>
+<li><strong>The generator builds a document</strong> based on your answers, using legally reviewed templates</li>
+<li><strong>You get a privacy policy</strong> customized to your situation</li>
+</ol>
+
+<p>The quality difference between generators comes down to:</p>
+
+<ul>
+<li><strong>How many questions they ask</strong> — more questions usually means a more accurate policy</li>
+<li><strong>Whether they cover your jurisdiction</strong> — GDPR, CCPA, and other regional laws</li>
+<li><strong>How current the templates are</strong> — privacy law changes frequently</li>
+<li><strong>Whether they support apps</strong> — a privacy policy generator for apps needs to cover mobile-specific data like device IDs, push notifications, and app permissions</li>
+</ul>
+
+<h3>The Problem with Free Templates</h3>
+
+<p>Googling "privacy policy template" and copying one from another site is risky:</p>
+
+<ul>
+<li>It won't match your actual data practices</li>
+<li>It may reference laws that don't apply to you (or miss ones that do)</li>
+<li>It could be outdated</li>
+<li>If it's from another company, it might contain their specific details</li>
+</ul>
+
+<p>A generator that asks about <em>your</em> setup will always produce a better result than a static template.</p>
+
+<h2>What Makes a Good Free Privacy Policy Generator</h2>
+
+<p>Here's what to evaluate:</p>
+
+<p><strong>Customization depth.</strong> Does it ask about your specific tech stack, third-party integrations, and target audience? Or does it produce the same document for everyone?</p>
+
+<p><strong>Legal coverage.</strong> Does it handle GDPR, CCPA, and other regulations? Does it adapt based on where your users are?</p>
+
+<p><strong>Document types.</strong> You probably need more than just a privacy policy. <a href="/blog/free-terms-of-service-generator">Terms of service</a>, <a href="/blog/cookie-policy-guide">cookie policies</a>, and disclaimers are often required too. A platform that handles multiple documents saves time.</p>
+
+<p><strong>No account wall.</strong> Some generators force you to create an account before you can even preview your document. That's ironic for a privacy-focused tool.</p>
+
+<p><strong>Transparency on pricing.</strong> Free preview with paid download is fair. Bait-and-switch — where "free" means "free until you try to download" — is not.</p>
+
+<p><a href="https://privacypage.io">PrivacyPage</a> checks these boxes. It generates privacy policies, terms of service, EULAs, cookie policies, and disclaimers — you can preview everything for free before deciding to download. No account required.</p>
+
+<h2>Free Privacy Policy for Website vs. Apps: Key Differences</h2>
+
+<p>If you're looking for a free privacy policy for website use, the standard sections above will cover you. But a privacy policy generator for apps needs to address additional concerns:</p>
+
+<h3>App-Specific Requirements</h3>
+<ul>
+<li><strong>Device permissions</strong> — camera, microphone, location, contacts</li>
+<li><strong>Push notifications</strong> — how and why you send them</li>
+<li><strong>Device identifiers</strong> — advertising IDs, hardware IDs</li>
+<li><strong>In-app purchases</strong> — payment data handling</li>
+<li><strong>Children's data</strong> — COPPA compliance if your app is used by minors</li>
+<li><strong>App store requirements</strong> — both Apple and Google have specific privacy label requirements</li>
+</ul>
+
+<p>If your generator doesn't ask about these, it's not built for apps. Check out our guide on <a href="/blog/free-privacy-policy-generator-ios-apps">privacy policies for iOS apps</a> for more details.</p>
+
+<h2>Step-by-Step: Generating Your Privacy Policy</h2>
+
+<p>Here's the typical process, using <a href="https://privacypage.io">PrivacyPage</a> as an example:</p>
+
+<ol>
+<li><strong>Select your document type</strong> — Privacy Policy</li>
+<li><strong>Enter your business details</strong> — name, website/app, contact info</li>
+<li><strong>Specify what data you collect</strong> — the generator walks you through categories</li>
+<li><strong>Indicate third-party services</strong> — analytics, payments, advertising</li>
+<li><strong>Choose applicable regulations</strong> — GDPR, CCPA, etc.</li>
+<li><strong>Preview your document</strong> — review the generated policy</li>
+<li><strong>Download or publish</strong> — get the final version</li>
+</ol>
+
+<p>The whole process takes 5–10 minutes. Compare that to days of research or thousands in legal fees.</p>
+
+<h2>FAQ</h2>
+
+<h3>Is a free privacy policy generator legally valid?</h3>
+<p>Yes, as long as the generated policy accurately reflects your data practices. The generator is a tool — the accuracy depends on the information you provide. For high-risk businesses (healthcare, finance), consider having a lawyer review the output.</p>
+
+<h3>Do I need a privacy policy if I don't collect data?</h3>
+<p>If you use <em>any</em> analytics, cookies, or third-party services, you collect data. Even a basic website with Google Fonts technically sends user IP addresses to Google. When in doubt, have a policy.</p>
+
+<h3>How often should I update my privacy policy?</h3>
+<p>Whenever your data practices change — new analytics tools, new features, new markets. At minimum, review it annually. Privacy laws evolve, and your policy should keep up.</p>
+
+<h3>Can I use the same privacy policy for my website and app?</h3>
+<p>You can, but it's better to have separate sections or documents. Apps collect different data (device IDs, permissions) than websites. A privacy policy generator for apps will help you cover both.</p>
+
+<h3>What's the difference between a privacy policy and terms of service?</h3>
+<p>A privacy policy explains how you handle user data. Terms of service define the rules for using your product — liability, acceptable use, intellectual property. You typically need both.</p>
+
+<h3>Is GDPR compliance required if I'm not in Europe?</h3>
+<p>If any of your users are in the EU, yes. GDPR applies based on where your users are, not where you're based. Most websites have some EU traffic.</p>
+
+<h2>Wrapping Up</h2>
+
+<p>A privacy policy isn't just a legal checkbox — it's a trust signal to your users and a shield against regulatory action. Using a free privacy policy generator gets you 90% of the way there in minutes instead of weeks.</p>
+
+<p>The key is choosing a generator that asks the right questions, covers the regulations that apply to you, and produces a document that actually matches your data practices.</p>
+
+<p><a href="https://privacypage.io/#generate">Generate your free privacy policy now →</a></p>
+`
+  },
+  {
+    slug: 'free-terms-of-service-generator',
+    title: 'Free Terms of Service Generator: Protect Your App or Website (2026)',
+    description: 'Create professional terms of service for your app or website in minutes. Learn what to include, common mistakes, and how to generate ToS for free.',
+    date: '2026-02-12',
+    readTime: '7 min read',
+    keywords: ['free terms of service generator', 'terms of service template', 'terms and conditions generator', 'ToS generator', 'terms of service for apps'],
+    content: `
+<p>Every website and app needs <strong>terms of service</strong> (ToS) — the legal agreement that defines the rules for using your product. Without one, you're exposed to liability, disputes, and abuse with no legal framework to fall back on.</p>
+
+<p>The good news? You don't need a lawyer to create solid terms of service. A <strong>free terms of service generator</strong> can produce a professional, comprehensive document tailored to your business in minutes. Here's everything you need to know.</p>
+
+<h2>Why You Need Terms of Service</h2>
+
+<p>Terms of service aren't legally required the way <a href="/blog/free-privacy-policy-generator">privacy policies</a> are in most jurisdictions. But operating without them is like running a business without a contract — you <em>can</em>, but you'll regret it when something goes wrong.</p>
+
+<p>Here's what terms of service protect you from:</p>
+
+<ul>
+<li><strong>Liability claims</strong> — limit your responsibility when things go wrong</li>
+<li><strong>Content abuse</strong> — set rules for what users can and can't do on your platform</li>
+<li><strong>Payment disputes</strong> — define refund policies, billing terms, and subscription rules</li>
+<li><strong>Intellectual property theft</strong> — protect your content, code, and brand</li>
+<li><strong>Frivolous lawsuits</strong> — include dispute resolution and arbitration clauses</li>
+</ul>
+
+<p>If you accept user-generated content, process payments, or offer any kind of service, terms of service are essential.</p>
+
+<h2>What to Include in Your Terms of Service</h2>
+
+<p>A comprehensive ToS covers several key areas. Here's what every terms of service document should address:</p>
+
+<h3>1. Acceptance of Terms</h3>
+<p>State that by using your service, users agree to be bound by these terms. This is the foundation of the entire agreement. Specify how agreement is indicated — by creating an account, making a purchase, or simply using the service.</p>
+
+<h3>2. User Accounts and Registration</h3>
+<p>If your app or website requires accounts, cover:</p>
+<ul>
+<li>Age requirements (typically 13+ or 18+ depending on your service)</li>
+<li>Account security responsibilities — users must keep their passwords safe</li>
+<li>Accuracy of registration information</li>
+<li>Your right to suspend or terminate accounts</li>
+</ul>
+
+<h3>3. Acceptable Use Policy</h3>
+<p>Define what users can and cannot do. This is your first line of defense against abuse. Common restrictions include:</p>
+<ul>
+<li>No illegal activity</li>
+<li>No harassment, hate speech, or harmful content</li>
+<li>No unauthorized scraping or data collection</li>
+<li>No attempts to hack or compromise the service</li>
+<li>No impersonation or misrepresentation</li>
+</ul>
+
+<h3>4. Payments and Billing</h3>
+<p>If you charge for your service, be clear about:</p>
+<ul>
+<li>Pricing and what's included</li>
+<li>Billing cycles (monthly, annual)</li>
+<li>Auto-renewal terms</li>
+<li>Refund policy — under what circumstances, if any, you issue refunds</li>
+<li>Price changes — how and when you'll notify users</li>
+<li>Failed payments and grace periods</li>
+</ul>
+
+<h3>5. Intellectual Property</h3>
+<p>Protect your assets and clarify ownership:</p>
+<ul>
+<li><strong>Your IP</strong> — your content, code, brand, and design remain yours</li>
+<li><strong>User content</strong> — if users can post content, define who owns it and what license you have to use it</li>
+<li><strong>Copyright infringement</strong> — include a DMCA takedown process if applicable</li>
+</ul>
+
+<h3>6. Limitation of Liability</h3>
+<p>This is one of the most important sections. It limits the amount you can be held liable for if something goes wrong. Common provisions include:</p>
+<ul>
+<li>Service is provided "as is" without warranties</li>
+<li>You're not liable for indirect, incidental, or consequential damages</li>
+<li>Maximum liability is limited to fees paid in a specific period</li>
+</ul>
+
+<h3>7. Termination</h3>
+<p>Explain how either party can end the relationship:</p>
+<ul>
+<li>Users can delete their account at any time</li>
+<li>You can suspend or terminate accounts for violations</li>
+<li>What happens to user data after termination</li>
+<li>Which provisions survive termination (liability limits, IP ownership)</li>
+</ul>
+
+<h3>8. Dispute Resolution</h3>
+<p>Define how disputes are handled:</p>
+<ul>
+<li><strong>Governing law</strong> — which jurisdiction's laws apply</li>
+<li><strong>Arbitration clause</strong> — require disputes to go through arbitration rather than court</li>
+<li><strong>Class action waiver</strong> — prevent users from joining class action lawsuits</li>
+<li><strong>Informal resolution</strong> — require users to contact you before taking legal action</li>
+</ul>
+
+<h3>9. Changes to Terms</h3>
+<p>Reserve the right to update your terms and explain how you'll notify users — email, in-app notification, or posting on your website with a "last updated" date.</p>
+
+<h3>10. Contact Information</h3>
+<p>Provide a way for users to reach you with questions about the terms.</p>
+
+<h2>How to Generate Terms of Service with PrivacyPage</h2>
+
+<p>Writing terms of service from scratch takes hours (or thousands in legal fees). <a href="https://privacypage.io">PrivacyPage</a> streamlines the process:</p>
+
+<ol>
+<li><strong>Select "Terms of Service"</strong> from the document types</li>
+<li><strong>Enter your details</strong> — business name, website/app, contact info</li>
+<li><strong>Answer key questions</strong> — do you accept payments? User-generated content? What age restrictions apply?</li>
+<li><strong>Preview your document</strong> — review the generated terms</li>
+<li><strong>Download</strong> — get your ToS in HTML, Markdown, or plain text</li>
+</ol>
+
+<p>The entire process takes under 10 minutes. Your terms will cover all the sections above, customized to your specific situation.</p>
+
+<h2>Common Terms of Service Mistakes</h2>
+
+<p>Even with a generator, watch out for these pitfalls:</p>
+
+<h3>Being Too Vague</h3>
+<p>Terms like "we reserve the right to do anything" don't hold up well. Be specific about what you can and will do.</p>
+
+<h3>Copying Someone Else's ToS</h3>
+<p>Copying terms from another company is tempting but dangerous. Their terms are written for their business model, jurisdiction, and risk profile — not yours. Plus, it may actually be copyright infringement.</p>
+
+<h3>Forgetting About International Users</h3>
+<p>If you have users in the EU, certain terms may not be enforceable under consumer protection laws. For example, some arbitration clauses are unenforceable in the EU. Your terms should account for this.</p>
+
+<h3>No Update Mechanism</h3>
+<p>If you don't explain how you'll notify users of changes, updated terms may not be binding. Always include a "changes to terms" section.</p>
+
+<h3>Ignoring App Store Requirements</h3>
+<p>Both Apple and Google have specific requirements about what your terms must (and must not) include. For example, Apple requires that your terms don't conflict with their EULA. Check our guide on <a href="/blog/how-to-add-privacy-policy-app-store">adding policies to app stores</a> for details.</p>
+
+<h2>Terms of Service vs. Other Legal Documents</h2>
+
+<p>Confused about what you need? Here's a quick breakdown:</p>
+
+<ul>
+<li><strong>Terms of Service</strong> — rules for using your product (this article)</li>
+<li><strong><a href="/blog/free-privacy-policy-generator">Privacy Policy</a></strong> — how you handle user data (legally required)</li>
+<li><strong>EULA</strong> — specific license agreement for software/apps</li>
+<li><strong><a href="/blog/cookie-policy-guide">Cookie Policy</a></strong> — details about cookie usage (required by GDPR)</li>
+<li><strong>Disclaimer</strong> — limits liability for specific content or advice</li>
+</ul>
+
+<p>Most apps and websites need at least terms of service and a privacy policy. <a href="https://privacypage.io/#generate">PrivacyPage generates all of these</a> from a single platform.</p>
+
+<h2>FAQ</h2>
+
+<h3>Are terms of service legally required?</h3>
+<p>Not in most jurisdictions, but they're strongly recommended. Without them, you have no legal framework to enforce rules, limit liability, or resolve disputes.</p>
+
+<h3>Can I enforce terms of service that users didn't read?</h3>
+<p>Generally yes, as long as users had reasonable notice and opportunity to review them. "Clickwrap" agreements (where users must check a box) are more enforceable than "browsewrap" (terms linked in the footer).</p>
+
+<h3>How often should I update my terms of service?</h3>
+<p>Whenever your business model changes — new features, new pricing, new markets. At minimum, review annually.</p>
+
+<h3>Do I need separate terms for my website and app?</h3>
+<p>Not necessarily. Many businesses use a single set of terms that covers both. However, if your app has significantly different functionality, separate terms may be clearer.</p>
+
+<h2>Generate Your Terms of Service Now</h2>
+
+<p>Don't leave your business unprotected. Professional terms of service establish the legal framework your app or website needs — and with <a href="https://privacypage.io/#generate">PrivacyPage</a>, you can generate them in minutes.</p>
+
+<p><a href="https://privacypage.io/#generate">Create your free terms of service →</a></p>
+`
+  },
+  {
+    slug: 'cookie-policy-guide',
+    title: 'Cookie Policy Guide: Do You Need One? (+ Free Generator)',
+    description: 'Learn what a cookie policy is, when you need one, what to include, and how to generate a free cookie policy for your website in minutes.',
+    date: '2026-02-10',
+    readTime: '6 min read',
+    keywords: ['cookie policy generator', 'do I need a cookie policy', 'cookie policy template', 'GDPR cookie policy', 'cookie consent'],
+    content: `
+<p>If your website uses cookies — and it almost certainly does — you may need a <strong>cookie policy</strong>. Under GDPR and ePrivacy regulations, websites must inform users about cookies and obtain consent before setting non-essential ones.</p>
+
+<p>This guide explains what cookies are, when you need a cookie policy, what it must include, and how to create one for free using a <strong>cookie policy generator</strong>.</p>
+
+<h2>What Are Cookies?</h2>
+
+<p>Cookies are small text files that websites store on a user's device. They serve various purposes:</p>
+
+<ul>
+<li><strong>Essential cookies</strong> — required for the website to function (login sessions, shopping carts)</li>
+<li><strong>Analytics cookies</strong> — track user behavior to help you improve your site (Google Analytics, Mixpanel)</li>
+<li><strong>Marketing cookies</strong> — used for targeted advertising and retargeting</li>
+<li><strong>Preference cookies</strong> — remember user settings like language or theme</li>
+</ul>
+
+<p>If you use any analytics tool, embed YouTube videos, have social media buttons, or run ads, your website sets cookies — even if you didn't explicitly add them.</p>
+
+<h2>Do You Need a Cookie Policy?</h2>
+
+<p>The short answer: <strong>yes</strong>, if you have any users in the EU or UK. Here's why:</p>
+
+<h3>GDPR and ePrivacy Directive</h3>
+<p>The EU's ePrivacy Directive (often called the "Cookie Law") requires that websites:</p>
+
+<ol>
+<li><strong>Inform users</strong> about what cookies are used and why</li>
+<li><strong>Obtain consent</strong> before setting non-essential cookies</li>
+<li><strong>Allow users to withdraw consent</strong> at any time</li>
+</ol>
+
+<p>GDPR reinforces this by classifying cookie data (like IP addresses and device identifiers) as personal data, which requires a legal basis for processing.</p>
+
+<h3>Other Regulations</h3>
+<ul>
+<li><strong>CCPA (California)</strong> — requires disclosure of tracking technologies, including cookies</li>
+<li><strong>LGPD (Brazil)</strong> — similar consent requirements for cookie data</li>
+<li><strong>POPIA (South Africa)</strong> — mandates transparency about data collection methods</li>
+</ul>
+
+<p>Even if you're not based in the EU, if your website is accessible to EU users (and most are), a cookie policy is effectively mandatory.</p>
+
+<h2>What Your Cookie Policy Must Include</h2>
+
+<p>A compliant cookie policy should cover the following:</p>
+
+<h3>1. What Cookies You Use</h3>
+<p>List all cookies your website sets, including third-party cookies. For each cookie, state:</p>
+<ul>
+<li>The cookie name</li>
+<li>Its purpose</li>
+<li>Whether it's first-party or third-party</li>
+<li>Its expiration period</li>
+</ul>
+
+<h3>2. Why You Use Cookies</h3>
+<p>Explain the purpose of each category: essential functionality, analytics, marketing, personalization. Users need to understand why each cookie exists.</p>
+
+<h3>3. How Users Can Control Cookies</h3>
+<p>Provide clear instructions on how users can:</p>
+<ul>
+<li>Accept or reject cookies through your consent banner</li>
+<li>Change their cookie preferences later</li>
+<li>Delete cookies through their browser settings</li>
+<li>Opt out of specific third-party cookies</li>
+</ul>
+
+<h3>4. Third-Party Cookies</h3>
+<p>If you use Google Analytics, Facebook Pixel, ad networks, or embedded content (YouTube, maps), disclose the third parties that set cookies and link to their privacy policies.</p>
+
+<h3>5. Cookie Consent</h3>
+<p>Explain how you collect consent and that users can withdraw it. Reference your cookie consent banner/mechanism.</p>
+
+<h3>6. Updates to the Policy</h3>
+<p>State how you'll notify users when the cookie policy changes.</p>
+
+<h3>7. Contact Information</h3>
+<p>Provide a way for users to ask questions about your cookie practices.</p>
+
+<h2>Cookie Consent Banners: What You Need to Know</h2>
+
+<p>A cookie policy alone isn't enough — you also need a <strong>consent mechanism</strong>. This is typically a cookie banner that appears when users first visit your site.</p>
+
+<h3>Requirements for a Valid Cookie Banner</h3>
+<ul>
+<li><strong>Pre-consent blocking</strong> — non-essential cookies must not be set before the user consents</li>
+<li><strong>Granular choices</strong> — users should be able to accept or reject different cookie categories</li>
+<li><strong>No pre-ticked boxes</strong> — consent must be actively given, not assumed</li>
+<li><strong>Equal prominence</strong> — the "reject" option should be as easy to find as "accept"</li>
+<li><strong>Record of consent</strong> — you should log when and how consent was given</li>
+</ul>
+
+<p>Simply showing a banner that says "We use cookies" with only an "OK" button is <strong>not compliant</strong> with GDPR. Users must have a genuine choice.</p>
+
+<h2>Cookie Policy vs. Privacy Policy</h2>
+
+<p>These are related but different documents:</p>
+
+<ul>
+<li><strong><a href="/blog/free-privacy-policy-generator">Privacy policy</a></strong> — covers all personal data collection and processing (broader scope)</li>
+<li><strong>Cookie policy</strong> — specifically addresses cookie usage and tracking technologies</li>
+</ul>
+
+<p>You can include cookie information within your privacy policy, but many businesses maintain a separate cookie policy for clarity. The EU's ePrivacy Directive specifically calls for cookie-related transparency, so a dedicated document is recommended.</p>
+
+<h2>How to Generate a Free Cookie Policy</h2>
+
+<p>Creating a cookie policy from scratch means auditing every cookie on your site and writing legally accurate descriptions. A cookie policy generator simplifies this:</p>
+
+<ol>
+<li><strong>Visit <a href="https://privacypage.io">PrivacyPage</a></strong> and select "Cookie Policy"</li>
+<li><strong>Enter your website details</strong> — name, URL, contact information</li>
+<li><strong>Specify your cookies</strong> — analytics, marketing, essential, preferences</li>
+<li><strong>Indicate third-party services</strong> — Google Analytics, Facebook, ad networks</li>
+<li><strong>Preview and download</strong> — your cookie policy is ready to publish</li>
+</ol>
+
+<p>The process takes just a few minutes and covers all the required sections for GDPR compliance.</p>
+
+<h2>Common Cookie Policy Mistakes</h2>
+
+<ul>
+<li><strong>Setting cookies before consent</strong> — the #1 violation. Non-essential cookies must wait for user consent.</li>
+<li><strong>Vague cookie descriptions</strong> — "We use cookies to improve your experience" isn't specific enough. Name the cookies and their purposes.</li>
+<li><strong>No way to withdraw consent</strong> — users must be able to change their preferences after the initial choice.</li>
+<li><strong>Ignoring third-party cookies</strong> — if you embed external content or use analytics, those services set cookies too.</li>
+<li><strong>Cookie banner dark patterns</strong> — making "accept all" a bright button and hiding "reject" in small text is increasingly being penalized by regulators.</li>
+</ul>
+
+<h2>FAQ</h2>
+
+<h3>Do I need a cookie policy if I only use essential cookies?</h3>
+<p>Essential cookies don't require consent under GDPR, but you should still disclose them. If you use <em>any</em> analytics or marketing cookies, a full cookie policy with consent is required.</p>
+
+<h3>Can I include my cookie policy in my privacy policy?</h3>
+<p>Yes, but a separate cookie policy is recommended for clarity and compliance. If you do combine them, make the cookie section clearly labeled and easy to find.</p>
+
+<h3>What happens if I don't have a cookie policy?</h3>
+<p>EU regulators can fine you under GDPR (up to €20 million). Several European data protection authorities have already issued significant fines for cookie consent violations.</p>
+
+<h3>How do I know what cookies my website uses?</h3>
+<p>Use your browser's developer tools (Application → Cookies) or a cookie scanning tool to audit your site. Check every page, not just the homepage.</p>
+
+<h2>Get Your Cookie Policy Today</h2>
+
+<p>Cookie compliance doesn't have to be complicated. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a professional cookie policy that covers GDPR requirements, third-party disclosures, and user consent — all in minutes.</p>
+
+<p><a href="https://privacypage.io/#generate">Generate your free cookie policy →</a></p>
+`
+  },
 ]
 
 export function getAllPosts(): BlogPost[] {
