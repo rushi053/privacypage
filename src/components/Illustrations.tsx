@@ -1,28 +1,47 @@
 export function HeroIllustration({ className = "" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Document */}
-      <rect x="80" y="40" width="180" height="220" rx="8" fill="#E0E7FF" />
-      <rect x="90" y="50" width="160" height="200" rx="4" fill="white" stroke="#4F46E5" strokeWidth="2" />
+    <svg className={className} viewBox="0 0 360 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Background circle glow */}
+      <circle cx="180" cy="160" r="130" fill="#EEF2FF" opacity="0.8" />
       
-      {/* Document lines */}
-      <line x1="110" y1="80" x2="230" y2="80" stroke="#CBD5E1" strokeWidth="3" strokeLinecap="round" />
-      <line x1="110" y1="100" x2="210" y2="100" stroke="#CBD5E1" strokeWidth="3" strokeLinecap="round" />
-      <line x1="110" y1="120" x2="220" y2="120" stroke="#CBD5E1" strokeWidth="3" strokeLinecap="round" />
-      <line x1="110" y1="140" x2="200" y2="140" stroke="#CBD5E1" strokeWidth="3" strokeLinecap="round" />
-      
-      {/* Shield with checkmark */}
-      <circle cx="300" cy="100" r="45" fill="#4F46E5" opacity="0.1" />
-      <path d="M300 70 L320 80 L320 110 C320 120 310 128 300 130 C290 128 280 120 280 110 L280 80 L300 70Z" fill="#4F46E5" />
-      <path d="M292 105 L298 111 L310 95" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      
-      {/* Person silhouette */}
-      <circle cx="170" cy="180" r="20" fill="#4F46E5" opacity="0.2" />
-      <path d="M150 220 Q150 200 170 200 Q190 200 190 220 L150 220 Z" fill="#4F46E5" opacity="0.2" />
-      
-      {/* Pen/signature */}
-      <line x1="135" y1="210" x2="155" y2="195" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="132" cy="213" r="3" fill="#4F46E5" />
+      {/* Main document */}
+      <rect x="80" y="50" width="160" height="210" rx="12" fill="white" stroke="#E0E7FF" strokeWidth="2" />
+      <rect x="80" y="50" width="160" height="210" rx="12" fill="white" />
+      <rect x="80" y="50" width="160" height="40" rx="12" fill="#4F46E5" />
+      <rect x="80" y="70" width="160" height="20" fill="#4F46E5" />
+
+      {/* Header text lines in the indigo bar */}
+      <rect x="100" y="62" width="80" height="7" rx="3.5" fill="white" opacity="0.9" />
+      <rect x="100" y="74" width="55" height="5" rx="2.5" fill="white" opacity="0.5" />
+
+      {/* Document content lines */}
+      <rect x="100" y="108" width="120" height="7" rx="3.5" fill="#CBD5E1" />
+      <rect x="100" y="122" width="100" height="7" rx="3.5" fill="#CBD5E1" />
+      <rect x="100" y="136" width="110" height="7" rx="3.5" fill="#CBD5E1" />
+      <rect x="100" y="150" width="90" height="7" rx="3.5" fill="#CBD5E1" />
+
+      {/* Section divider */}
+      <rect x="100" y="172" width="120" height="1" fill="#E5E7EB" />
+
+      {/* Second section lines */}
+      <rect x="100" y="185" width="75" height="6" rx="3" fill="#C7D2FE" />
+      <rect x="100" y="198" width="115" height="6" rx="3" fill="#CBD5E1" />
+      <rect x="100" y="211" width="95" height="6" rx="3" fill="#CBD5E1" />
+      <rect x="100" y="224" width="105" height="6" rx="3" fill="#CBD5E1" />
+
+      {/* Shield badge — top right */}
+      <circle cx="280" cy="90" r="36" fill="white" stroke="#E0E7FF" strokeWidth="2" />
+      <path d="M280 68 L296 75 L296 100 C296 110 288 118 280 120 C272 118 264 110 264 100 L264 75 L280 68Z" fill="#4F46E5" />
+      <path d="M273 97 L278 103 L288 89" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+
+      {/* Checkmark badge — bottom right */}
+      <circle cx="270" cy="240" r="28" fill="#ECFDF5" stroke="#A7F3D0" strokeWidth="1.5" />
+      <path d="M259 240 L266 247 L281 230" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+
+      {/* Small floating dot accents */}
+      <circle cx="65" cy="130" r="5" fill="#4F46E5" opacity="0.3" />
+      <circle cx="55" cy="200" r="3" fill="#4F46E5" opacity="0.2" />
+      <circle cx="305" cy="170" r="4" fill="#10B981" opacity="0.3" />
     </svg>
   );
 }

@@ -4,9 +4,7 @@
   --bg: #ffffff;
   --bg-secondary: #f8f9fa;
   --bg-card: #ffffff;
-  --bg-card-hover: #f8f9fa;
   --border: #e5e7eb;
-  --border-subtle: #f3f4f6;
   --text: #111827;
   --text-secondary: #4b5563;
   --text-muted: #6b7280;
@@ -31,6 +29,7 @@ body {
   color: var(--accent);
 }
 
+/* Card style used in Wizard + PolicyPreview */
 .glass-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -48,26 +47,12 @@ body {
   pointer-events: none;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-in {
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
 .soft-shadow {
   box-shadow: 0 2px 8px var(--shadow);
 }
 
 .soft-shadow-lg {
   box-shadow: 0 4px 20px var(--shadow-lg);
-}
-
-/* Gradient backgrounds for hero sections */
-.gradient-bg {
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #eef2ff 100%);
 }
 
 /* Focus states */
@@ -79,66 +64,17 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
-/* Pulse glow animation for best value badge */
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0);
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-pulse-glow {
-  animation: pulseGlow 2s ease-in-out infinite;
+.animate-in {
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
-/* Floating animation for hero illustration */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Slow pulse for current step indicator */
-@keyframes pulseSlow {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-.animate-pulse-slow {
-  animation: pulseSlow 3s ease-in-out infinite;
-}
-
-/* Typing animation for demo section */
+/* Typing animation keyframe — used in demo section */
 @keyframes typing {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-
-.animate-typing p {
-  animation: typing 0.5s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-typing p:nth-child(1) { animation-delay: 0.1s; }
-.animate-typing p:nth-child(2) { animation-delay: 0.2s; }
-.animate-typing p:nth-child(3) { animation-delay: 0.3s; }
-.animate-typing p:nth-child(4) { animation-delay: 0.4s; }
-.animate-typing p:nth-child(5) { animation-delay: 0.5s; }
-.animate-typing p:nth-child(n+6) { animation-delay: 0.6s; }
