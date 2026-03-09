@@ -59,16 +59,16 @@ export default function Wizard({ config, onGenerate, loading }: WizardProps) {
           <div
             key={i}
             className={`h-1 flex-1 rounded-full transition-colors ${
-              i <= step ? "bg-indigo-500" : "bg-zinc-700"
+              i <= step ? "bg-indigo-600" : "bg-gray-200"
             }`}
           />
         ))}
       </div>
 
-      <div className="mb-2 text-sm text-zinc-500">
+      <div className="mb-2 text-sm text-gray-500">
         Step {step + 1} of {steps.length}
       </div>
-      <h3 className="text-xl font-semibold mb-6">{current.label}</h3>
+      <h3 className="text-xl font-semibold mb-6 text-gray-900">{current.label}</h3>
 
       {current.type === "text" && (
         <input
@@ -76,7 +76,7 @@ export default function Wizard({ config, onGenerate, loading }: WizardProps) {
           value={data[current.id] || ""}
           onChange={(e) => setData({ ...data, [current.id]: e.target.value })}
           placeholder={current.placeholder}
-          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-indigo-500 transition-colors"
+          className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-600 transition-colors"
           onKeyDown={(e) => e.key === "Enter" && canProceed && handleNext()}
           autoFocus
         />
@@ -92,8 +92,8 @@ export default function Wizard({ config, onGenerate, loading }: WizardProps) {
               }}
               className={`text-left px-4 py-3 rounded-xl border transition-all ${
                 data[current.id] === option
-                  ? "border-indigo-500 bg-indigo-500/10 text-white"
-                  : "border-zinc-700 hover:border-zinc-500 text-zinc-300"
+                  ? "border-indigo-600 bg-indigo-50 text-gray-900"
+                  : "border-gray-300 hover:border-gray-400 text-gray-700"
               }`}
             >
               {option}
@@ -112,8 +112,8 @@ export default function Wizard({ config, onGenerate, loading }: WizardProps) {
                 onClick={() => toggleMulti(option)}
                 className={`text-left px-4 py-3 rounded-xl border text-sm transition-all ${
                   isSelected
-                    ? "border-indigo-500 bg-indigo-500/10 text-white"
-                    : "border-zinc-700 hover:border-zinc-500 text-zinc-300"
+                    ? "border-indigo-600 bg-indigo-50 text-gray-900"
+                    : "border-gray-300 hover:border-gray-400 text-gray-700"
                 }`}
               >
                 <span className="mr-2">{isSelected ? "✓" : "○"}</span>
@@ -130,7 +130,7 @@ export default function Wizard({ config, onGenerate, loading }: WizardProps) {
           className={`px-6 py-3 rounded-xl text-sm font-medium transition-colors ${
             step === 0
               ? "invisible"
-              : "border border-zinc-700 hover:border-zinc-500 text-zinc-300"
+              : "border border-gray-300 hover:border-gray-400 text-gray-700 bg-white"
           }`}
         >
           ← Back
@@ -138,7 +138,7 @@ export default function Wizard({ config, onGenerate, loading }: WizardProps) {
         <button
           onClick={handleNext}
           disabled={!canProceed || loading}
-          className="px-8 py-3 rounded-xl text-sm font-medium bg-indigo-500 hover:bg-indigo-400 text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
+          className="px-8 py-3 rounded-xl text-sm font-medium bg-indigo-600 hover:bg-indigo-700 text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
         >
           {loading ? (
             <>

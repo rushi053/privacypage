@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRazorpay, isDocUnlocked } from "@/hooks/useRazorpay";
-import { getLocalPricing, toSmallestUnit } from "@/lib/currency";
+import { getLocalPricing, toSmallestUnit, type LocalPricing } from "@/lib/currency";
 
 interface PolicyPreviewProps {
   policy: string;
@@ -15,8 +15,12 @@ export default function PolicyPreview({ policy, formData, onReset, docType = "pr
   const [copied, setCopied] = useState(false);
   const [showFull, setShowFull] = useState(false);
   const [paying, setPaying] = useState(false);
+  const [pricing, setPricing] = useState<LocalPricing | null>(null);
   const { openPayment } = useRazorpay();
-  const pricing = getLocalPricing();
+
+  useEffect(() => {
+    setPricing(getLocalPricing());
+  }, []);
 
   const docTypeNames: Record<string, string> = {
     privacy: "Privacy Policy",
@@ -36,6 +40,7 @@ export default function PolicyPreview({ policy, formData, onReset, docType = "pr
   const isPaid = showFull;
 
   const handleUnlock = () => {
+    if (!pricing) return;
     setPaying(true);
     openPayment({
       docType,
@@ -121,20 +126,20 @@ ${policy.split("\n").map((l) => {
     <div className="animate-in">
       <div className="glass-card rounded-2xl p-8 md:p-12 max-w-3xl mx-auto">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-semibold">
+          <h3 className="text-xl font-semibold text-gray-900">
             {docTypeNames[docType]} {formData.appName || formData.serviceName || formData.websiteName ? `for ${formData.appName || formData.serviceName || formData.websiteName}` : ""}
           </h3>
           <button
             onClick={onReset}
-            className="text-sm text-zinc-400 hover:text-white transition-colors"
+            className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
           >
             ← Start Over
           </button>
         </div>
 
         {/* Policy content */}
-        <div className="bg-zinc-900 rounded-xl p-6 mb-6 max-h-[500px] overflow-y-auto">
-          <div className="prose prose-invert prose-sm max-w-none">
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-6 max-h-[500px] overflow-y-auto">
+          <div className="prose prose-sm max-w-none">
             {previewLines.map((line, i) => (
               <PolicyLine key={i} line={line} />
             ))}
@@ -147,19 +152,19 @@ ${policy.split("\n").map((l) => {
                     ))}
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center bg-zinc-900/90 p-6 rounded-xl border border-indigo-500/30">
-                      <p className="text-lg font-semibold mb-2">
-                        🔒 Unlock Full Policy
+                    <div className="text-center bg-white/95 p-6 rounded-xl border border-indigo-600 soft-shadow-lg">
+                      <p className="text-lg font-semibold mb-2 text-gray-900">
+                        🔒 Unlock Full Document
                       </p>
-                      <p className="text-sm text-zinc-400 mb-4">
-                        Get the complete policy with GDPR, CCPA, Terms of Service & more
+                      <p className="text-sm text-gray-600 mb-4">
+                        Get the complete document with GDPR & CCPA sections
                       </p>
                       <button
                         onClick={handleUnlock}
-                        disabled={paying}
-                        className="bg-indigo-500 hover:bg-indigo-400 text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+                        disabled={paying || !pricing}
+                        className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
                       >
-                        {paying ? "Processing..." : `Unlock for ${pricing.singleDisplay}`}
+                        {paying ? "Processing..." : `Unlock for ${pricing?.singleDisplay ?? "..."}`}
                       </button>
                     </div>
                   </div>
@@ -177,25 +182,25 @@ ${policy.split("\n").map((l) => {
         <div className="flex flex-wrap gap-3">
           <button
             onClick={handleCopy}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-700 hover:border-zinc-500 text-sm transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 hover:border-gray-400 text-sm transition-colors text-gray-700 bg-white"
           >
             {copied ? "✓ Copied!" : "📋 Copy"}
           </button>
           <button
             onClick={() => handleDownload("md")}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-700 hover:border-zinc-500 text-sm transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 hover:border-gray-400 text-sm transition-colors text-gray-700 bg-white"
           >
             📄 Markdown
           </button>
           <button
             onClick={() => handleDownload("html")}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-700 hover:border-zinc-500 text-sm transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 hover:border-gray-400 text-sm transition-colors text-gray-700 bg-white"
           >
             🌐 HTML
           </button>
           <button
             onClick={() => handleDownload("txt")}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-700 hover:border-zinc-500 text-sm transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 hover:border-gray-400 text-sm transition-colors text-gray-700 bg-white"
           >
             📝 Plain Text
           </button>
@@ -207,18 +212,18 @@ ${policy.split("\n").map((l) => {
 
 function PolicyLine({ line }: { line: string }) {
   if (line.startsWith("# "))
-    return <h1 className="text-2xl font-bold mt-6 mb-3">{line.slice(2)}</h1>;
+    return <h1 className="text-2xl font-bold mt-6 mb-3 text-gray-900">{line.slice(2)}</h1>;
   if (line.startsWith("## "))
-    return <h2 className="text-xl font-semibold mt-5 mb-2 text-indigo-300">{line.slice(3)}</h2>;
+    return <h2 className="text-xl font-semibold mt-5 mb-2 text-indigo-600">{line.slice(3)}</h2>;
   if (line.startsWith("### "))
-    return <h3 className="text-lg font-medium mt-4 mb-1">{line.slice(4)}</h3>;
+    return <h3 className="text-lg font-medium mt-4 mb-1 text-gray-900">{line.slice(4)}</h3>;
   if (line.startsWith("- "))
     return (
-      <div className="flex gap-2 ml-4 my-1 text-zinc-300">
-        <span className="text-zinc-500">•</span>
+      <div className="flex gap-2 ml-4 my-1 text-gray-700">
+        <span className="text-gray-400">•</span>
         <span>{line.slice(2)}</span>
       </div>
     );
   if (line.trim() === "") return <div className="h-3" />;
-  return <p className="text-zinc-300 leading-relaxed my-2">{line}</p>;
+  return <p className="text-gray-700 leading-relaxed my-2">{line}</p>;
 }
