@@ -1,49 +1,41 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
+import { redeemPurchase, RedeemError } from "@/lib/redeem";
 
 export async function POST(req: NextRequest) {
   try {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, email, docType, amount, currency } = await req.json();
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, email, docType, documentId } = await req.json();
+
+    const keySecret = process.env.RAZORPAY_KEY_SECRET;
+    if (!keySecret) {
+      return NextResponse.json({ verified: false, error: "Payment not configured" }, { status: 500 });
+    }
 
     const body = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSignature = crypto
-      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET!)
+      .createHmac("sha256", keySecret)
       .update(body)
       .digest("hex");
 
-    if (expectedSignature !== razorpay_signature) {
+    const signatureBuf = Buffer.from(String(razorpay_signature ?? ""));
+    const expectedBuf = Buffer.from(expectedSignature);
+    if (signatureBuf.length !== expectedBuf.length || !crypto.timingSafeEqual(signatureBuf, expectedBuf)) {
       return NextResponse.json({ verified: false, error: "Invalid signature" }, { status: 400 });
     }
 
-    // Generate license key
-    const licenseKey = `PP-${crypto.randomBytes(4).toString("hex").toUpperCase()}`;
-
-    // Store in Supabase
-    try {
-      await fetch(`${process.env.SUPABASE_URL}/rest/v1/purchases`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "apikey": process.env.SUPABASE_ANON_KEY!,
-          "Authorization": `Bearer ${process.env.SUPABASE_ANON_KEY!}`,
-        },
-        body: JSON.stringify({
-          email: email || "unknown",
-          license_key: licenseKey,
-          payment_id: razorpay_payment_id,
-          order_id: razorpay_order_id,
-          doc_type: docType || "unknown",
-          amount: amount || 0,
-          currency: currency || "USD",
-        }),
-      });
-    } catch (e) {
-      console.error("Supabase insert error:", e);
-      // Don't fail the verification if Supabase is down
-    }
+    const { licenseKey } = await redeemPurchase({
+      orderId: razorpay_order_id,
+      paymentId: razorpay_payment_id,
+      email,
+      documentId,
+      expectedDocType: docType,
+    });
 
     return NextResponse.json({ verified: true, licenseKey });
   } catch (error) {
+    if (error instanceof RedeemError) {
+      return NextResponse.json({ verified: false, error: error.message }, { status: error.status });
+    }
     console.error("Verify error:", error);
     return NextResponse.json({ verified: false, error: "Verification failed" }, { status: 500 });
   }

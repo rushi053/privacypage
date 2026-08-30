@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
+import { trackBeginCheckout, trackPurchase } from "@/lib/analytics";
 
 declare global {
   interface Window {
@@ -13,6 +14,10 @@ interface PaymentOptions {
   currency: string;
   amount: number;
   description?: string;
+  /** Buyer email: prefills checkout, stored with the purchase, receives the license key. */
+  email?: string;
+  /** Server-side document id: links the purchase to the generated document. */
+  documentId?: string;
   onSuccess: (licenseKey?: string) => void;
   onFailure: (error: string) => void;
 }
@@ -32,12 +37,12 @@ export function useRazorpay() {
     document.body.appendChild(script);
   }, []);
 
-  const openPayment = useCallback(async ({ docType, currency, amount, description, onSuccess, onFailure }: PaymentOptions) => {
+  const openPayment = useCallback(async ({ docType, currency, amount, description, email, documentId, onSuccess, onFailure }: PaymentOptions) => {
     try {
       const res = await fetch("/api/payment/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ docType, currency, amount }),
+        body: JSON.stringify({ docType, currency, amount, email }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed to create order");
@@ -54,10 +59,9 @@ export function useRazorpay() {
         name: "PrivacyPage",
         description: description || (docType === "bundle" ? "Bundle - All 5 Documents" : `Unlock ${docType} - Full Document`),
         order_id: data.orderId,
-        prefill: { email: "" },
+        prefill: { email: email || "" },
         handler: async (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) => {
           try {
-            // Extract email from Razorpay's internal state (it's stored in the checkout)
             const verifyRes = await fetch("/api/payment/verify", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -66,21 +70,27 @@ export function useRazorpay() {
                 docType,
                 amount: data.amount,
                 currency: data.currency,
+                ...(email ? { email } : {}),
+                ...(documentId ? { documentId } : {}),
               }),
             });
             const verifyData = await verifyRes.json();
             if (verifyData.verified) {
               if (docType === "bundle") {
                 localStorage.setItem("privacypage_bundle_unlocked", "true");
-              } else {
+              } else if (docType !== "pro-single") {
                 localStorage.setItem(`privacypage_unlocked_${docType}`, "true");
               }
+              // pro-single is claim-on-first-use: its real doc type is unknown
+              // until the license first fetches a document, at which point the
+              // per-docType unlock flag is written (see PolicyPreview).
               if (verifyData.licenseKey) {
                 localStorage.setItem("privacypage_license_key", verifyData.licenseKey);
               }
+              trackPurchase(response.razorpay_order_id, data.amount / 100, data.currency, docType);
               onSuccess(verifyData.licenseKey);
             } else {
-              onFailure("Payment verification failed");
+              onFailure(verifyData.error || "Payment verification failed");
             }
           } catch {
             onFailure("Payment verification error");
@@ -91,6 +101,7 @@ export function useRazorpay() {
         method: { card: true, upi: true, netbanking: true, wallet: true },
       };
 
+      trackBeginCheckout(docType, data.amount / 100, data.currency);
       const rzp = new window.Razorpay(options);
       rzp.open();
     } catch (error) {
@@ -103,7 +114,11 @@ export function useRazorpay() {
 
 export function isDocUnlocked(docType: string): boolean {
   if (typeof window === "undefined") return false;
-  return localStorage.getItem("privacypage_bundle_unlocked") === "true" ||
-    localStorage.getItem("privacypage_pro_single") === "true" ||
-    localStorage.getItem(`privacypage_unlocked_${docType}`) === "true";
+  // Current flags: one per doc type, plus the bundle flag which covers all types.
+  if (localStorage.getItem("privacypage_bundle_unlocked") === "true") return true;
+  if (localStorage.getItem(`privacypage_unlocked_${docType}`) === "true") return true;
+  // Grandfathered (read-only): before per-docType entitlements, a single global
+  // "pro" flag unlocked everything. It is never written anymore, but customers
+  // who bought under the old model must keep their access.
+  return localStorage.getItem("privacypage_pro_single") === "true";
 }

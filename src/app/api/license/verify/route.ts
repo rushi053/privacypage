@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { sbSelect } from "@/lib/supabase-server";
 
 export async function POST(req: NextRequest) {
   try {
@@ -8,31 +9,25 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "License key or email required" }, { status: 400 });
     }
 
-    const supabaseUrl = process.env.SUPABASE_URL!;
-    const supabaseKey = process.env.SUPABASE_ANON_KEY!;
-
-    let url = `${supabaseUrl}/rest/v1/purchases?select=*`;
+    // purchases is RLS-locked with no policies, so this must go through the
+    // service-role helpers - the anon key would silently return zero rows.
+    let query = "select=doc_type,license_key,created_at";
     if (licenseKey) {
-      url += `&license_key=eq.${encodeURIComponent(licenseKey)}`;
+      query += `&license_key=eq.${encodeURIComponent(licenseKey)}`;
     } else {
-      url += `&email=eq.${encodeURIComponent(email)}&order=created_at.desc`;
+      query += `&email=eq.${encodeURIComponent(email)}&order=created_at.desc`;
     }
 
-    const res = await fetch(url, {
-      headers: {
-        "apikey": supabaseKey,
-        "Authorization": `Bearer ${supabaseKey}`,
-      },
-    });
+    const purchases = await sbSelect<{ doc_type: string; license_key: string; created_at: string }>(
+      "purchases",
+      query
+    );
 
-    const purchases = await res.json();
-
-    if (!Array.isArray(purchases) || purchases.length === 0) {
+    if (purchases.length === 0) {
       return NextResponse.json({ found: false, error: "No purchase found" }, { status: 404 });
     }
 
-    // Return all purchases for this user
-    const docTypes = purchases.map((p: { doc_type: string; license_key: string; created_at: string }) => ({
+    const docTypes = purchases.map((p) => ({
       docType: p.doc_type,
       licenseKey: p.license_key,
       createdAt: p.created_at,

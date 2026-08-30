@@ -1,94 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
+import { respondWithGeneratedDocument } from "@/lib/generate-response";
+import { generateDocumentContent } from "@/lib/generate-content";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
+  if (!(await checkRateLimit(getClientIp(req)))) {
+    return NextResponse.json(
+      { error: "rate_limited", message: "Too many documents generated. Please try again in an hour." },
+      { status: 429 }
+    );
+  }
+
   const data = await req.json();
 
-  const prompt = `Generate a professional, legally-compliant Cookie Policy. Output ONLY the Cookie Policy text in Markdown format.
-
-Website Details:
-- Website Name & URL: ${data.websiteName || "Website"}
-- Cookie Types: ${data.cookieTypes || "Essential cookies"}
-- Third-Party Services: ${data.thirdPartyServices || "None"}
-- Contact Email: ${data.contactEmail || "contact@website.com"}
-
-Requirements:
-1. Start with "# Cookie Policy for [Website Name]"
-2. Include effective date (today: ${new Date().toISOString().split("T")[0]})
-3. Include these sections:
-   - What Are Cookies
-   - How We Use Cookies
-   - Types of Cookies We Use (specific to the cookie types mentioned)
-   - Third-Party Cookies (specific to services mentioned)
-   - Managing Your Cookie Preferences
-   - Browser Controls
-   - Updates to This Policy
-   - Contact Us
-4. Be specific about the cookie types and third-party services
-5. Include EU Cookie Law (GDPR) compliance information
-6. Explain how to opt-out and manage cookies
-7. Be comprehensive but readable (at least 40 lines)`;
-
-  const openrouterKey = process.env.OPENROUTER_API_KEY;
-  const anthropicKey = process.env.ANTHROPIC_API_KEY;
-
-  let docText = "";
-
-  if (openrouterKey) {
-    try {
-      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${openrouterKey}`,
-        },
-        body: JSON.stringify({
-          model: "moonshotai/kimi-k2.5",
-          messages: [
-            {
-              role: "system",
-              content:
-                "You are a legal document generator specializing in Cookie Policies for websites and web applications.",
-            },
-            { role: "user", content: prompt },
-          ],
-          max_tokens: 4000,
-          temperature: 0.3,
-        }),
-      });
-      const json = await res.json();
-      docText = json.choices?.[0]?.message?.content || "";
-    } catch (e) {
-      console.error("OpenRouter error:", e);
-    }
-  }
-
-  if (!docText && anthropicKey) {
-    try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": anthropicKey,
-          "anthropic-version": "2023-06-01",
-        },
-        body: JSON.stringify({
-          model: "claude-haiku-4-5-20250514",
-          max_tokens: 4000,
-          messages: [{ role: "user", content: prompt }],
-        }),
-      });
-      const json = await res.json();
-      docText = json.content?.[0]?.text || "";
-    } catch (e) {
-      console.error("Anthropic error:", e);
-    }
-  }
-
+  let docText = await generateDocumentContent("cookie", data);
   if (!docText) {
     docText = generateCookieTemplate(data);
   }
 
-  return NextResponse.json({ policy: docText });
+  return respondWithGeneratedDocument("cookie", data, docText);
 }
 
 function generateCookieTemplate(data: Record<string, string>): string {

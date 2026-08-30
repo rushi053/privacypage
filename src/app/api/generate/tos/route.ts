@@ -1,100 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
+import { respondWithGeneratedDocument } from "@/lib/generate-response";
+import { generateDocumentContent } from "@/lib/generate-content";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
+  if (!(await checkRateLimit(getClientIp(req)))) {
+    return NextResponse.json(
+      { error: "rate_limited", message: "Too many documents generated. Please try again in an hour." },
+      { status: 429 }
+    );
+  }
+
   const data = await req.json();
 
-  const prompt = `Generate a professional, legally-compliant Terms of Service (ToS) agreement. Output ONLY the Terms of Service text in Markdown format.
-
-Service Details:
-- Service Name: ${data.serviceName || "Service"}
-- Company Info: ${data.companyInfo || "Company"}
-- Platform: ${data.platform || "Web App"}
-- Key Policies: ${data.keyPolicies || "Standard policies"}
-- Jurisdiction: ${data.jurisdiction || "USA"}
-
-Requirements:
-1. Start with "# Terms of Service for [Service Name]"
-2. Include effective date (today: ${new Date().toISOString().split("T")[0]})
-3. Include these sections:
-   - Acceptance of Terms
-   - Description of Service
-   - User Accounts and Registration
-   - User Responsibilities and Conduct
-   - Intellectual Property Rights
-   - Payment Terms (if applicable based on key policies)
-   - Refund Policy (based on key policies)
-   - Content and User-Generated Content (if applicable)
-   - Account Termination and Suspension
-   - Disclaimers and Limitations of Liability
-   - Indemnification
-   - Governing Law and Dispute Resolution
-   - Changes to Terms
-   - Contact Information
-4. Be specific about the policies mentioned in key policies
-5. Use clear, legally sound language
-6. Be comprehensive (at least 60 lines)`;
-
-  const openrouterKey = process.env.OPENROUTER_API_KEY;
-  const anthropicKey = process.env.ANTHROPIC_API_KEY;
-
-  let docText = "";
-
-  if (openrouterKey) {
-    try {
-      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${openrouterKey}`,
-        },
-        body: JSON.stringify({
-          model: "moonshotai/kimi-k2.5",
-          messages: [
-            {
-              role: "system",
-              content:
-                "You are a legal document generator specializing in Terms of Service agreements for digital products and services.",
-            },
-            { role: "user", content: prompt },
-          ],
-          max_tokens: 4000,
-          temperature: 0.3,
-        }),
-      });
-      const json = await res.json();
-      docText = json.choices?.[0]?.message?.content || "";
-    } catch (e) {
-      console.error("OpenRouter error:", e);
-    }
-  }
-
-  if (!docText && anthropicKey) {
-    try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": anthropicKey,
-          "anthropic-version": "2023-06-01",
-        },
-        body: JSON.stringify({
-          model: "claude-haiku-4-5-20250514",
-          max_tokens: 4000,
-          messages: [{ role: "user", content: prompt }],
-        }),
-      });
-      const json = await res.json();
-      docText = json.content?.[0]?.text || "";
-    } catch (e) {
-      console.error("Anthropic error:", e);
-    }
-  }
-
+  let docText = await generateDocumentContent("tos", data);
   if (!docText) {
     docText = generateTosTemplate(data);
   }
 
-  return NextResponse.json({ policy: docText });
+  return respondWithGeneratedDocument("tos", data, docText);
 }
 
 function generateTosTemplate(data: Record<string, string>): string {

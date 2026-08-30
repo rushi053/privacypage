@@ -3,8 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import Wizard from "@/components/Wizard";
 import PolicyPreview from "@/components/PolicyPreview";
+import EmailCaptureModal from "@/components/EmailCaptureModal";
 import { getWizardConfig, wizardConfigs } from "@/lib/wizardConfigs";
-import { getLocalPricing, toSmallestUnit, type LocalPricing } from "@/lib/currency";
+import { fetchGeoPricing, toSmallestUnit, type LocalPricing } from "@/lib/currency";
 import { useRazorpay } from "@/hooks/useRazorpay";
 import { Logo } from "@/components/Logo";
 import {
@@ -17,9 +18,10 @@ import {
   LockClosedIcon,
 } from "@/components/Icons";
 import { FadeInView } from "@/components/FadeInView";
+import { trackGenerateDocument, trackRestoreLicense } from "@/lib/analytics";
 
 function getSavingsDisplay(pricing: LocalPricing | null): string {
-  if (!pricing) return "save $24.96";
+  if (!pricing) return "save ₹2146";
   const savings = pricing.singlePrice * 5 - pricing.bundlePrice;
   const fmt = pricing.currency === "INR" ? Math.round(savings).toString() : savings.toFixed(2);
   return `save ${pricing.symbol}${fmt}`;
@@ -82,6 +84,8 @@ const docTypeIcons: Record<string, React.ReactNode> = {
 
 export default function Home() {
   const [policy, setPolicy] = useState<string | null>(null);
+  const [documentId, setDocumentId] = useState<string | null>(null);
+  const [totalLines, setTotalLines] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<Record<string, string> | null>(null);
   const [selectedDocType, setSelectedDocType] = useState<string | null>(null);
@@ -91,13 +95,16 @@ export default function Home() {
   const [restoreStatus, setRestoreStatus] = useState<string | null>(null);
   const [restoreLoading, setRestoreLoading] = useState(false);
   const [licenseModal, setLicenseModal] = useState<string | null>(null);
+  const [emailCapture, setEmailCapture] = useState<"pro-single" | "bundle" | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const wizardRef = useRef<HTMLDivElement>(null);
   const { openPayment } = useRazorpay();
 
   useEffect(() => {
-    setPricing(getLocalPricing());
+    let cancelled = false;
+    fetchGeoPricing().then((p) => { if (!cancelled) setPricing(p); });
+    return () => { cancelled = true; };
   }, []);
 
   useEffect(() => {
@@ -124,12 +131,16 @@ export default function Home() {
           if (p.docType === "bundle") {
             localStorage.setItem("privacypage_bundle_unlocked", "true");
           } else if (p.docType === "pro-single") {
+            // Legacy purchase type from before per-docType entitlements. This is
+            // the one place the legacy flag is still written: restoring such a
+            // purchase on a new device must grant the access it originally had.
             localStorage.setItem("privacypage_pro_single", "true");
           } else {
             localStorage.setItem(`privacypage_unlocked_${p.docType}`, "true");
           }
           localStorage.setItem("privacypage_license_key", p.licenseKey);
         }
+        trackRestoreLicense();
         setRestoreStatus("Purchase restored. Reloading...");
         setTimeout(() => window.location.reload(), 1500);
       } else {
@@ -154,16 +165,61 @@ export default function Home() {
         body: JSON.stringify(data),
       });
       const json = await res.json();
-      setPolicy(json.policy);
-    } catch {
-      setPolicy("Error generating document. Please try again.");
+      if (!res.ok) {
+        // 429 carries a friendly `message`; 503 (storage failure) carries `error`.
+        const friendly =
+          typeof json?.message === "string" ? json.message :
+          typeof json?.error === "string" && json.error !== "rate_limited" ? json.error : "";
+        throw new Error(friendly);
+      }
+      trackGenerateDocument(docType);
+      if (json.documentId) {
+        // New flow: full content stays server-side, client gets a preview.
+        setDocumentId(json.documentId);
+        setTotalLines(typeof json.totalLines === "number" ? json.totalLines : null);
+        setPolicy(json.preview);
+      } else {
+        // legacyFull fallback: server couldn't store the document, full text returned.
+        setDocumentId(null);
+        setTotalLines(null);
+        setPolicy(json.policy);
+      }
+    } catch (e) {
+      setDocumentId(null);
+      setTotalLines(null);
+      setPolicy(
+        e instanceof Error && e.message ? e.message : "Error generating document. Please try again."
+      );
     } finally {
       setLoading(false);
     }
   };
 
+  const startPayment = (docType: "pro-single" | "bundle", email: string) => {
+    if (!pricing) return;
+    const isBundle = docType === "bundle";
+    openPayment({
+      docType,
+      currency: pricing.currency,
+      amount: toSmallestUnit(isBundle ? pricing.bundlePrice : pricing.singlePrice, pricing.currency),
+      description: isBundle ? "Bundle – All 5 Documents" : "Pro – Unlock Any Single Document",
+      email,
+      onSuccess: (licenseKey) => {
+        // Pro-single is claimed on first use: the per-docType unlock flag is
+        // written when this license first fetches a generated document
+        // (PolicyPreview). The old global privacypage_pro_single flag stays
+        // read-only/grandfathered in isDocUnlocked.
+        if (licenseKey) setLicenseModal(licenseKey);
+        else { alert(isBundle ? "Bundle unlocked!" : "Pro unlocked!"); window.location.reload(); }
+      },
+      onFailure: () => {},
+    });
+  };
+
   const handleReset = () => {
     setPolicy(null);
+    setDocumentId(null);
+    setTotalLines(null);
     setSelectedDocType(null);
   };
 
@@ -296,7 +352,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-center text-xs text-gray-400 mt-4">
-                All documents are free to preview. Pay {pricing?.singleDisplay || "$9.99"} to unlock &amp; download.
+                All documents are free to preview. Pay {pricing?.singleDisplay || "₹849"} to unlock &amp; download.
               </p>
             </>
           ) : selectedDocType && !policy ? (
@@ -308,7 +364,14 @@ export default function Home() {
               <Wizard config={getWizardConfig(selectedDocType)} onGenerate={handleGenerate} loading={loading} />
             </div>
           ) : (
-            <PolicyPreview policy={policy!} formData={formData!} onReset={handleReset} docType={formData?.docType || "privacy"} />
+            <PolicyPreview
+              policy={policy!}
+              formData={formData!}
+              onReset={handleReset}
+              docType={formData?.docType || "privacy"}
+              documentId={documentId}
+              totalLines={totalLines ?? undefined}
+            />
           )}
         </div>
       </section>
@@ -342,7 +405,7 @@ export default function Home() {
             <div className="text-center mb-12">
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Why PrivacyPage</h2>
               <p className="text-gray-500 max-w-lg mx-auto">
-                Competitors charge monthly subscription fees. PrivacyPage is {pricing?.singleDisplay || "$9.99"} once — no subscription, no renewal, ever.
+                Competitors charge monthly subscription fees. PrivacyPage is {pricing?.singleDisplay || "₹849"} once — no subscription, no renewal, ever.
               </p>
             </div>
           </FadeInView>
@@ -408,7 +471,7 @@ export default function Home() {
             <FadeInView delay={80}>
               <div className="bg-white border border-gray-200 rounded-2xl p-6">
                 <p className="text-sm font-medium text-gray-500 mb-1">Free</p>
-                <div className="text-3xl font-bold text-gray-900 mb-1">{pricing?.symbol || "$"}0</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">{pricing?.symbol || "₹"}0</div>
                 <p className="text-sm text-gray-400 mb-5">Always free to preview</p>
                 <ul className="space-y-2.5 text-sm text-gray-600 mb-6">
                   {["Generate any document", "Full preview (first 25 lines)", "No account required"].map((f) => (
@@ -431,7 +494,7 @@ export default function Home() {
                   Most popular
                 </div>
                 <p className="text-sm font-medium text-indigo-200 mb-1">Pro</p>
-                <div className="text-3xl font-bold text-white mb-1">{pricing?.singleDisplay || "$9.99"}</div>
+                <div className="text-3xl font-bold text-white mb-1">{pricing?.singleDisplay || "₹849"}</div>
                 <p className="text-sm text-indigo-300 mb-5">One time · Any single document</p>
                 <ul className="space-y-2.5 text-sm text-indigo-100 mb-6">
                   {["Full document, no blur", "GDPR &amp; CCPA sections included", "HTML, Markdown &amp; plain text", "Lifetime regenerations"].map((f) => (
@@ -443,23 +506,9 @@ export default function Home() {
                 </ul>
                 <button
                   className="block w-full bg-white hover:bg-indigo-50 text-indigo-600 font-semibold py-2.5 rounded-xl text-sm transition-colors mb-3"
-                  onClick={() => {
-                    if (!pricing) return;
-                    openPayment({
-                      docType: "pro-single",
-                      currency: pricing.currency,
-                      amount: toSmallestUnit(pricing.singlePrice, pricing.currency),
-                      description: "Pro – Unlock Any Single Document",
-                      onSuccess: (licenseKey) => {
-                        localStorage.setItem("privacypage_pro_single", "true");
-                        if (licenseKey) setLicenseModal(licenseKey);
-                        else { alert("Pro unlocked!"); window.location.reload(); }
-                      },
-                      onFailure: () => {},
-                    });
-                  }}
+                  onClick={() => { if (pricing) setEmailCapture("pro-single"); }}
                 >
-                  Get Pro — {pricing?.singleDisplay || "$9.99"}
+                  Get Pro — {pricing?.singleDisplay || "₹849"}
                 </button>
                 <div className="flex items-center justify-center gap-1.5 text-xs text-indigo-300">
                   <LockClosedIcon className="w-3 h-3" />
@@ -472,7 +521,7 @@ export default function Home() {
             <FadeInView delay={240}>
               <div className="bg-white border border-gray-200 rounded-2xl p-6 relative">
                 <p className="text-sm font-medium text-gray-500 mb-1">Bundle</p>
-                <div className="text-3xl font-bold text-gray-900 mb-1">{pricing?.bundleDisplay || "$24.99"}</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">{pricing?.bundleDisplay || "₹2099"}</div>
                 <p className="text-sm text-gray-400 mb-5">One time · All 5 documents · {getSavingsDisplay(pricing)}</p>
                 <ul className="space-y-2.5 text-sm text-gray-600 mb-6">
                   {["Privacy Policy", "Terms of Service", "EULA", "Cookie Policy", "Disclaimer"].map((f) => (
@@ -484,22 +533,9 @@ export default function Home() {
                 </ul>
                 <button
                   className="block w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-2.5 rounded-xl text-sm transition-colors mb-3"
-                  onClick={() => {
-                    if (!pricing) return;
-                    openPayment({
-                      docType: "bundle",
-                      currency: pricing.currency,
-                      amount: toSmallestUnit(pricing.bundlePrice, pricing.currency),
-                      description: "Bundle – All 5 Documents",
-                      onSuccess: (licenseKey) => {
-                        if (licenseKey) setLicenseModal(licenseKey);
-                        else { alert("Bundle unlocked!"); window.location.reload(); }
-                      },
-                      onFailure: () => {},
-                    });
-                  }}
+                  onClick={() => { if (pricing) setEmailCapture("bundle"); }}
                 >
-                  Buy Bundle — {pricing?.bundleDisplay || "$24.99"}
+                  Buy Bundle — {pricing?.bundleDisplay || "₹2099"}
                 </button>
                 <div className="flex items-center justify-center gap-1.5 text-xs text-gray-400">
                   <LockClosedIcon className="w-3 h-3" />
@@ -511,7 +547,7 @@ export default function Home() {
 
           <FadeInView delay={300}>
             <p className="text-center text-xs text-gray-400 mt-6">
-              All prices are one-time. No auto-renewals. Competitors charge monthly — you pay {pricing?.singleDisplay || "$9.99"} once and own it forever.
+              All prices are one-time. No auto-renewals. Competitors charge monthly — you pay {pricing?.singleDisplay || "₹849"} once and own it forever.
             </p>
           </FadeInView>
         </div>
@@ -648,6 +684,19 @@ export default function Home() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Email Capture Modal (before checkout) */}
+      {emailCapture && (
+        <EmailCaptureModal
+          description={emailCapture === "bundle" ? "Bundle – All 5 Documents" : "Pro – Unlock Any Single Document"}
+          onSubmit={(email) => {
+            const docType = emailCapture;
+            setEmailCapture(null);
+            startPayment(docType, email);
+          }}
+          onClose={() => setEmailCapture(null)}
+        />
       )}
 
       {/* License Key Modal */}

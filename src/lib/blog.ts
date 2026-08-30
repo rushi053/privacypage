@@ -1516,7 +1516,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h3>Step 4: Generate & Preview</h3>
-<p>Click generate. You'll see a full preview for free. To unlock the full, downloadable policy, it's a one-time payment of $9.99 (₹830 approx.) or ₹799 if you select INR.</p>
+<p>Click generate. You'll see a full preview for free. To unlock the full, downloadable policy, it's a one-time payment of ₹849 in India or $9.99 elsewhere.</p>
 
 <h3>Step 5: Host It</h3>
 <p>Copy the policy in HTML, Markdown, or plain text and host it:</p>

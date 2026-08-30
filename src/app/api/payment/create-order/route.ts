@@ -1,15 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// Only INR and USD are supported end-to-end; anything else falls back to USD.
 const VALID_PRICES: Record<string, { single: number; bundle: number }> = {
   INR: { single: 84900, bundle: 209900 },
   USD: { single: 999, bundle: 2499 },
-  EUR: { single: 949, bundle: 2349 },
-  GBP: { single: 799, bundle: 1999 },
 };
 
 export async function POST(req: NextRequest) {
   try {
-    const { docType, currency, amount } = await req.json();
+    const { docType, currency, amount, email } = await req.json();
 
     const prices = VALID_PRICES[currency] || VALID_PRICES.USD;
     const isBundle = docType === "bundle" || docType === "pro-single";
@@ -38,6 +37,9 @@ export async function POST(req: NextRequest) {
         amount: expectedAmount,
         currency: currency || "USD",
         receipt: `${docType}_${Date.now()}`,
+        // Buyer email travels in order notes so the webhook can recover it
+        // even when the client never completes the verify call.
+        ...(typeof email === "string" && email ? { notes: { email } } : {}),
       }),
     });
 
