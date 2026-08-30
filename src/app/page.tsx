@@ -618,13 +618,23 @@ export default function Home() {
                 {" "}— made in India.
               </p>
             </div>
-            <div className="grid grid-cols-3 gap-8 text-sm">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-sm">
               <div>
                 <p className="font-medium text-gray-900 mb-2.5 text-xs uppercase tracking-wide">Product</p>
                 <ul className="space-y-1.5 text-gray-500">
                   <li><a href="#generate" className="hover:text-gray-900 transition-colors">Generate</a></li>
                   <li><a href="#pricing" className="hover:text-gray-900 transition-colors">Pricing</a></li>
                   <li><a href="/blog" className="hover:text-gray-900 transition-colors">Blog</a></li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-medium text-gray-900 mb-2.5 text-xs uppercase tracking-wide">Resources</p>
+                <ul className="space-y-1.5 text-gray-500">
+                  <li><a href="/for/lovable" className="hover:text-gray-900 transition-colors">For Lovable apps</a></li>
+                  <li><a href="/for/cursor" className="hover:text-gray-900 transition-colors">For Cursor apps</a></li>
+                  <li><a href="/vs/termly" className="hover:text-gray-900 transition-colors">vs Termly</a></li>
+                  <li><a href="/compliance/gdpr" className="hover:text-gray-900 transition-colors">GDPR guide</a></li>
+                  <li><a href="/compliance/dpdp" className="hover:text-gray-900 transition-colors">DPDP Act (India)</a></li>
                 </ul>
               </div>
               <div>
