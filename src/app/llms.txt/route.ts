@@ -2,13 +2,13 @@ export const dynamic = 'force-static'
 
 const content = `# PrivacyPage
 
-> PrivacyPage is an AI-powered legal document generator for indie developers and app builders. It generates privacy policies, terms of service, cookie policies, refund policies, and EULAs from a short questionnaire. One-time payment — $9.99 per document or $24.99 for the full bundle (₹849 / ₹2,099 in India) — with lifetime regenerations. No subscriptions, no accounts required to preview.
+> PrivacyPage is an AI-powered legal document generator for indie developers and app builders. It generates privacy policies, terms of service, cookie policies, refund policies, and EULAs from a short questionnaire. One-time payment — $9.99 per document or $24.99 for the full bundle (₹849 / ₹2,099 in India) — with lifetime regenerations. No subscriptions, no account required.
 
-PrivacyPage is built primarily for developers shipping apps with AI tools (Lovable, Bolt, v0, Cursor, Replit). You answer a short wizard about your app's data practices, preview the full document for free, and pay once to download it. Every purchase includes lifetime regenerations, so documents can be updated as the app changes.
+PrivacyPage is built primarily for developers shipping apps with AI tools (Lovable, Bolt, v0, Cursor, Replit). You answer a short wizard about your app's data practices, see a free preview of the generated document, and pay once to unlock and download the full version. Every purchase includes lifetime regenerations, so documents can be updated as the app changes.
 
 ## Generator
 
-- [Document generator](https://privacypage.io/): Generate a privacy policy, terms of service, cookie policy, refund policy, or EULA. Free full preview; $9.99 per document or $24.99 for all five, paid once with lifetime regenerations.
+- [Document generator](https://privacypage.io/): Generate a privacy policy, terms of service, cookie policy, refund policy, or EULA. Free preview; $9.99 per document or $24.99 for all five, paid once with lifetime regenerations.
 
 ## For AI Agents: MCP Server
 
