@@ -1,0 +1,23 @@
+---
+description: PrivacyPage — one-time-purchase legal docs for app builders (Stream B, primary bet). Repo facts and conventions; HQ at ~/Desktop/hq
+alwaysApply: true
+---
+
+# PrivacyPage (Stream B — the primary product bet)
+
+Business context and protocols: `/Users/rushiraj/Desktop/hq/` — read `CONTEXT.md`, `LOG.md`, `BACKLOG.md`, `PLAYBOOK.md` first.
+
+## Facts
+- Next.js 15 App Router + Supabase (Pro project; migrations `001`, `002`) + Razorpay (INR + international USD, geo-priced via `/api/geo`) + Resend (license emails) + OpenRouter/Anthropic (doc generation, static-template fallback). Vercel project `privacypage`, prod = `main`. Live: https://privacypage.io
+- Money path (rebuilt 2026-08-30, verified with a real USD purchase): order → payment → server verification → Razorpay webhook (idempotent) → entitlement in Supabase → license email. Entitlement derives from the order record, never from client claims.
+- Licenses: claim-on-first-use — a single license binds to a doc type when first used (Decision #3). Atomic claim; race condition already fixed.
+- Paywall is SERVER-SIDE: unpaid users get a 25-line preview only. Any copy saying "full free preview" is wrong and must be fixed.
+- Rate limit: 10 generations/hr/IP. GA4 purchase events live.
+- 13 programmatic SEO pages: `/for/{lovable,bolt,v0,cursor,replit}`, `/vs/{termly,iubenda,getterms,termageddon,freeprivacypolicy}`, `/compliance/{gdpr,ccpa,dpdp}`. Plus `/llms.txt` with an agent-to-agent MCP section.
+- Companion: `privacypage-mcp` (separate repo, npm + MCP Registry + Glama + Smithery). Tool/behavior changes here may need mirroring there.
+- Uptime monitored by Better Stack (`/` and `/api/geo`).
+
+## Conventions
+- Branch → preview → Rushiraj approves → `--no-ff` merge → verify live. Payment-path changes get a real test purchase before "done".
+- Adversarial review before merge, always — this product has a history of cosmetic security.
+- Never read `.env*`. Never log or echo Razorpay/Supabase secrets.
