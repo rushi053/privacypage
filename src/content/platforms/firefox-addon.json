@@ -1,0 +1,78 @@
+{
+  "slug": "firefox-addon",
+  "name": "Firefox add-on",
+  "h1": "Privacy policy for Firefox add-ons (AMO)",
+  "metaTitle": "Firefox Add-on Privacy Policy — AMO Data Collection & Consent Rules | PrivacyPage",
+  "metaDescription": "Mozilla’s add-on policies require you to declare data collection in the manifest or ask for consent, and personal data is opt-in. What to put in your add-on’s privacy policy.",
+  "answer": "Firefox add-ons on addons.mozilla.org must be honest about data collection. For Firefox 140+, Mozilla requires you to state data collection practices in the manifest using its taxonomy; older-compatible add-ons must give users a clear control right after install. Personal data is opt-in, and your privacy policy should describe the same practices.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Mozilla Add-ons (AMO)",
+    "title": "Add-on Policies — 6.2.1 Data collection (Firefox 140+)",
+    "quote": "It must accurately state the data collection practices in the extension manifest, including when it does not collect data, in line with the Firefox add-on data classification taxonomy",
+    "sourceUrl": "https://extensionworkshop.com/documentation/publish/add-on-policies/",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Older Firefox versions: control after install",
+      "text": "6.2.2: “The user must be provided with a clear way to control the add-on’s data transmission immediately after installation of the add-on.”",
+      "sourceUrl": "https://extensionworkshop.com/documentation/publish/add-on-policies/"
+    },
+    {
+      "title": "Personal data is opt-in",
+      "text": "6.2.2.1: “Before an add-on may transmit personal information, it must clearly describe, and the user must affirmatively consent”. Mozilla lists names, email addresses, search terms and browsing activity as examples.",
+      "sourceUrl": "https://extensionworkshop.com/documentation/publish/add-on-policies/"
+    },
+    {
+      "title": "Firefox built-in consent",
+      "text": "Mozilla documents a built-in data collection consent experience that reads the data_collection_permissions you declare in manifest.json.",
+      "sourceUrl": "https://extensionworkshop.com/documentation/develop/firefox-builtin-data-consent/"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "WebExtension APIs (examples)",
+      "dataCollected": [
+        "Browsing activity (tabs, history, webRequest)",
+        "Search terms",
+        "Cookies",
+        "Names and email addresses entered by the user"
+      ],
+      "sourceUrl": "https://extensionworkshop.com/documentation/publish/add-on-policies/"
+    }
+  ],
+  "whereToPaste": [
+    "AMO Developer Hub → your add-on → Edit product page → Privacy policy.",
+    "Declare data_collection_permissions in manifest.json to match the policy.",
+    "Link the policy from your add-on’s options page."
+  ],
+  "sampleClause": {
+    "heading": "Browsing data",
+    "text": "The add-on reads the address of the current tab only when you click its toolbar button, to look up the page. It does not send your browsing history to us. If you turn on Sync in Options, we store your saved items and email address on our server until you delete them."
+  },
+  "faqs": [
+    {
+      "q": "Can I use the same privacy policy for Chrome and Firefox?",
+      "a": "Yes, if both builds collect the same data. Make sure the Chrome Privacy tab and the Firefox manifest declarations match the policy."
+    },
+    {
+      "q": "Does my add-on need consent to send data?",
+      "a": "For personal data, yes: Mozilla’s policy makes it opt-in, with a clear description first."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/chrome-extension",
+      "label": "Privacy policy for Chrome extensions"
+    },
+    {
+      "href": "/compliance/gdpr",
+      "label": "GDPR privacy policy"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "slug": "shopify-app",
+  "name": "Shopify app",
+  "h1": "Privacy policy for Shopify app developers",
+  "metaTitle": "Shopify App Privacy Policy — Mandatory Compliance Webhooks | PrivacyPage",
+  "metaDescription": "For Shopify app developers, not stores: Shopify requires mandatory compliance webhooks for data requests and deletion. Your privacy policy should match how your app handles them.",
+  "answer": "Shopify apps must implement three mandatory compliance webhooks — customers/data_request, customers/redact and shop/redact — so merchants and their customers can view or delete data. Your app’s privacy policy should describe the merchant and customer data you store and explain that you respond to these requests.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Shopify App Store",
+    "title": "Privacy law compliance — Mandatory compliance webhooks",
+    "quote": "The app must implement the mandatory compliance webhooks.",
+    "sourceUrl": "https://shopify.dev/docs/apps/build/compliance/privacy-law-compliance",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Subscribe before publishing",
+      "text": "“You must subscribe to compliance webhooks before publishing your app.”",
+      "sourceUrl": "https://shopify.dev/docs/apps/build/compliance/privacy-law-compliance"
+    },
+    {
+      "title": "Why: GDPR and CPRA",
+      "text": "Shopify explains that privacy rules such as the GDPR and CPRA set requirements for how apps handle personal data, which these webhooks support.",
+      "sourceUrl": "https://shopify.dev/docs/apps/build/compliance/privacy-law-compliance"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Compliance webhook topics",
+      "dataCollected": [
+        "customers/data_request: requests to view stored customer data",
+        "customers/redact: requests to delete customer data",
+        "shop/redact: requests to delete shop data"
+      ],
+      "sourceUrl": "https://shopify.dev/docs/apps/build/compliance/privacy-law-compliance"
+    }
+  ],
+  "whereToPaste": [
+    "Shopify Partner Dashboard → your app’s listing → privacy policy URL.",
+    "Your app’s website and in-app settings page."
+  ],
+  "sampleClause": {
+    "heading": "Merchant and customer data",
+    "text": "When a store installs our app, we store the shop’s domain, the owner’s email, and order details needed to print labels. We delete customer data within 30 days of a customers/redact request and all shop data within 48 hours of uninstall via shop/redact."
+  },
+  "faqs": [
+    {
+      "q": "Do Shopify apps need their own privacy policy?",
+      "a": "Yes, your app processes merchant and buyer data separately from the store, so publish a policy for the app itself and link it in your listing."
+    },
+    {
+      "q": "What are Shopify’s mandatory compliance webhooks?",
+      "a": "customers/data_request, customers/redact and shop/redact. Apps must implement and subscribe to them before publishing."
+    }
+  ],
+  "related": [
+    {
+      "href": "/blog/privacy-policy-generator-shopify",
+      "label": "Privacy policy for Shopify stores"
+    },
+    {
+      "href": "/for/saas",
+      "label": "Privacy policy for SaaS & web apps"
+    },
+    {
+      "href": "/compliance/gdpr",
+      "label": "GDPR privacy policy"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

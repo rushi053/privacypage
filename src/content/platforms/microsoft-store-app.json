@@ -1,0 +1,72 @@
+{
+  "slug": "microsoft-store-app",
+  "name": "Microsoft Store app",
+  "h1": "Privacy policy for Microsoft Store apps",
+  "metaTitle": "Microsoft Store App Privacy Policy — Policy 10.5.1 & Partner Center | PrivacyPage",
+  "metaDescription": "Microsoft Store Policy 10.5.1: if your product accesses, collects or transmits personal information, you must keep a privacy policy and enter its URL in Partner Center.",
+  "answer": "Microsoft Store Policy 10.5.1 says that if your product accesses, collects or transmits personal information, or the law requires it, you must maintain a privacy policy and enter its URL in Partner Center. The policy must explain what personal information is collected, how it is used, stored and secured, and disclosed.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Microsoft Store",
+    "title": "Store Policies — 10.5.1 Personal Information",
+    "quote": "If your product accesses, collects or transmits Personal Information, or if otherwise required by law, you must maintain a privacy policy.",
+    "sourceUrl": "https://learn.microsoft.com/en-us/windows/apps/publish/store-policies",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "URL goes in Partner Center",
+      "text": "“You must provide users with access to your privacy policy by entering the privacy policy URL in Partner Center when you submit your product.”",
+      "sourceUrl": "https://learn.microsoft.com/en-us/windows/apps/publish/store-policies"
+    },
+    {
+      "title": "What it must cover",
+      "text": "“Your privacy policy must inform users of the Personal Information accessed, collected or transmitted by your product, how that information is used, stored and se…” (secured) and disclosed.",
+      "sourceUrl": "https://learn.microsoft.com/en-us/windows/apps/publish/store-policies"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Common Windows app data",
+      "dataCollected": [
+        "Account email and name (sign-in)",
+        "Crash and diagnostic data from your telemetry SDK",
+        "Files the user opens, if uploaded to your service"
+      ],
+      "sourceUrl": "https://learn.microsoft.com/en-us/windows/apps/publish/store-policies"
+    }
+  ],
+  "whereToPaste": [
+    "Partner Center → your app → submission → Properties → Privacy policy URL.",
+    "Optionally link it in the app’s Settings or About page."
+  ],
+  "whereToPasteSource": "https://learn.microsoft.com/en-us/windows/apps/publish/store-policies",
+  "sampleClause": {
+    "heading": "Diagnostics",
+    "text": "If the app crashes, it sends a crash report with the app version, Windows version and the error stack to our crash reporting service. Reports do not include your files or document contents. You can turn this off in Settings → Privacy."
+  },
+  "faqs": [
+    {
+      "q": "Does a Microsoft Store app need a privacy policy?",
+      "a": "Yes if it accesses, collects or transmits personal information, or if the law requires one (Policy 10.5.1)."
+    },
+    {
+      "q": "Where do I add the URL?",
+      "a": "In Partner Center when you submit the product. You may also link it inside the app."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/mac-app",
+      "label": "Privacy policy for Mac apps"
+    },
+    {
+      "href": "/for/saas",
+      "label": "Privacy policy for SaaS & web apps"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

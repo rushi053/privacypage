@@ -1,0 +1,86 @@
+{
+  "slug": "saas",
+  "name": "SaaS app",
+  "h1": "Privacy policy for SaaS and web apps",
+  "metaTitle": "SaaS Privacy Policy — GDPR Art. 13 Contents, Subprocessors, Cookies | PrivacyPage",
+  "metaDescription": "What a SaaS or web app privacy policy needs: GDPR Article 13 information, subprocessors, cookies and analytics. Pair it with Terms of Service and a Cookie Policy.",
+  "answer": "A SaaS or web app that collects account data needs a privacy policy. For EU users, GDPR Article 13 lists what to tell people when you collect their data: who you are and how to contact you, the purposes and legal basis, recipients such as subprocessors, how long you keep data, and their rights.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "GDPR (EU)",
+    "title": "Article 13 — Information to be provided",
+    "quote": "the identity and the contact details of the controller and, where applicable, of the controller’s representative",
+    "sourceUrl": "https://gdpr-info.eu/art-13-gdpr/",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Purposes and legal basis",
+      "text": "Article 13 also requires “the purposes of the processing for which the personal data are intended as well as the legal basis for the processing”.",
+      "sourceUrl": "https://gdpr-info.eu/art-13-gdpr/"
+    },
+    {
+      "title": "Retention",
+      "text": "State “the period for which the personal data will be stored, or if that is not possible, the criteria used to determine that period”.",
+      "sourceUrl": "https://gdpr-info.eu/art-13-gdpr/"
+    },
+    {
+      "title": "Analytics disclosure",
+      "text": "If you use Google Analytics, its terms say “You must disclose the use of Google Analytics, and how it collects and processes data.”",
+      "sourceUrl": "https://marketingplatform.google.com/about/analytics/terms/us/"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Google Analytics",
+      "dataCollected": [
+        "Cookies or device identifiers",
+        "Usage events"
+      ],
+      "sourceUrl": "https://marketingplatform.google.com/about/analytics/terms/us/"
+    },
+    {
+      "name": "Stripe (payments)",
+      "dataCollected": [
+        "Payment and transaction data Stripe receives as a processor for your business (Stripe calls your customers End Customers)"
+      ],
+      "sourceUrl": "https://stripe.com/privacy"
+    }
+  ],
+  "whereToPaste": [
+    "Site footer on every page, and on sign-up and checkout screens.",
+    "Link it from your Terms of Service and Cookie Policy."
+  ],
+  "sampleClause": {
+    "heading": "Subprocessors",
+    "text": "We use trusted service providers (subprocessors) to run the service: our cloud host stores your account data, Stripe processes payments, and our email provider sends account emails. They process data only on our instructions. The current list is at /subprocessors."
+  },
+  "faqs": [
+    {
+      "q": "Does a SaaS need a privacy policy and terms?",
+      "a": "A privacy policy explains data handling; Terms of Service set the rules of use. Most SaaS products publish both, and many add a Cookie Policy."
+    },
+    {
+      "q": "What is a subprocessor?",
+      "a": "A third-party service that processes personal data on your behalf, such as hosting, email or payments. GDPR Article 13 asks you to name recipients or categories of recipients."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/lovable",
+      "label": "Privacy policy for Lovable apps"
+    },
+    {
+      "href": "/for/analytics-sdks",
+      "label": "Privacy policy for apps using analytics"
+    },
+    {
+      "href": "/compliance/gdpr",
+      "label": "GDPR privacy policy"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

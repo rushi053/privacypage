@@ -1,0 +1,83 @@
+{
+  "slug": "analytics-sdks",
+  "name": "App analytics",
+  "h1": "Privacy policy for apps using analytics (GA4 and other SDKs)",
+  "metaTitle": "Analytics Privacy Policy — What Google Analytics Terms Require | PrivacyPage",
+  "metaDescription": "Google Analytics’ terms require you to post a privacy policy that discloses cookies, mobile identifiers and your use of Google Analytics. What to write for GA4 and similar SDKs.",
+  "answer": "Yes. Google Analytics’ terms say you must post a privacy policy that gives notice of cookies, mobile device identifiers or similar technology used to collect data, and you must disclose that you use Google Analytics and how it collects and processes data. Other analytics SDKs should be disclosed the same way.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Google Analytics",
+    "title": "Google Analytics Terms of Service — Privacy",
+    "quote": "You must post a Privacy Policy and that Privacy Policy must provide notice of Your use of cookies, identifiers for mobile devices (e.g., Android Advertising Identifier or Advertising Identifier for iOS) or similar technology used to collect data.",
+    "sourceUrl": "https://marketingplatform.google.com/about/analytics/terms/us/",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Name Google Analytics",
+      "text": "“You must disclose the use of Google Analytics, and how it collects and processes data.” Google suggests linking its page on how Google uses information from sites or apps that use its services.",
+      "sourceUrl": "https://marketingplatform.google.com/about/analytics/terms/us/"
+    },
+    {
+      "title": "App stores count analytics too",
+      "text": "Apple asks for your App Privacy answers to include “the practices of third-party partners whose code you integrate into your app”.",
+      "sourceUrl": "https://developer.apple.com/app-store/app-privacy-details/"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Google Analytics",
+      "dataCollected": [
+        "Cookies or mobile device identifiers",
+        "Usage and interaction events you send"
+      ],
+      "sourceUrl": "https://marketingplatform.google.com/about/analytics/terms/us/"
+    },
+    {
+      "name": "Firebase Crashlytics",
+      "dataCollected": [
+        "Crashlytics installation UUIDs",
+        "Firebase installation IDs",
+        "Crash traces"
+      ],
+      "sourceUrl": "https://firebase.google.com/support/privacy"
+    }
+  ],
+  "whereToPaste": [
+    "Your site footer or app Settings/About, plus every store listing.",
+    "Near your cookie banner if you use one."
+  ],
+  "sampleClause": {
+    "heading": "Analytics",
+    "text": "We use Google Analytics to understand how people use our app. It uses cookies or your device’s advertising identifier to collect usage events such as screens viewed. See “How Google uses information from sites or apps that use our services”. You can opt out in Settings → Privacy."
+  },
+  "faqs": [
+    {
+      "q": "Do I need a privacy policy to use Google Analytics?",
+      "a": "Yes. The Google Analytics terms require you to post one that discloses cookies or identifiers and your use of Google Analytics."
+    },
+    {
+      "q": "Do I need to name each analytics SDK?",
+      "a": "Naming each provider and what it collects is the clearest approach, and app stores ask about third-party code. This is not legal advice."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/admob",
+      "label": "Privacy policy for apps using AdMob"
+    },
+    {
+      "href": "/for/saas",
+      "label": "Privacy policy for SaaS & web apps"
+    },
+    {
+      "href": "/compliance/gdpr",
+      "label": "GDPR privacy policy"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}
