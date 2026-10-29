@@ -255,7 +255,7 @@ export default function Home() {
       </nav>
 
       {/* ─── HERO ─── */}
-      <section className="px-6 md:px-8 pt-16 md:pt-24 pb-16 md:pb-24">
+      <section className="px-6 md:px-8 pt-16 md:pt-24 pb-16 md:pb-24 overflow-x-clip">
         <div className="max-w-[1120px] mx-auto grid lg:grid-cols-[1fr_480px] gap-16 items-center">
           <div>
             <p className="font-mono text-[12px] text-seal mb-6">Privacy policy · Terms · EULA · Cookie policy · Disclaimer</p>
