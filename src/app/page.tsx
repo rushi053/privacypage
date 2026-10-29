@@ -8,16 +8,7 @@ import { getWizardConfig, wizardConfigs } from "@/lib/wizardConfigs";
 import { fetchGeoPricing, toSmallestUnit, type LocalPricing } from "@/lib/currency";
 import { useRazorpay } from "@/hooks/useRazorpay";
 import { Logo } from "@/components/Logo";
-import {
-  BoltIcon,
-  ShieldCheckIcon,
-  DevicePhoneMobileIcon,
-  BanknotesIcon,
-  DocumentDuplicateIcon,
-  ArrowPathIcon,
-  LockClosedIcon,
-} from "@/components/Icons";
-import { FadeInView } from "@/components/FadeInView";
+import { ArrowRightIcon, ArrowLeftIcon, CheckIcon, LockIcon, MenuIcon, CloseIcon, ChevronDownIcon, DocIcon, ShieldIcon, CookieIcon, AlertIcon, KeyIcon } from "@/components/ClauseIcons";
 import { trackGenerateDocument, trackRestoreLicense } from "@/lib/analytics";
 
 function getSavingsDisplay(pricing: LocalPricing | null): string {
@@ -30,7 +21,7 @@ function getSavingsDisplay(pricing: LocalPricing | null): string {
 const faqItems = [
   {
     q: "Are these documents legally valid?",
-    a: "Yes. Our templates follow current legal standards including GDPR, CCPA, CalOPPA, and COPPA. For highly regulated industries, we recommend an additional legal review.",
+    a: "They are written to cover what GDPR, CCPA, CalOPPA and COPPA ask a policy to disclose, based on your answers. They are not legal advice; for regulated industries such as health, finance or children\u2019s apps, have a lawyer review the result.",
   },
   {
     q: "Can I edit the document after generating?",
@@ -55,32 +46,18 @@ const faqItems = [
 ];
 
 const docTypeIcons: Record<string, React.ReactNode> = {
-  privacy: (
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-    </svg>
-  ),
-  tos: (
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-    </svg>
-  ),
-  eula: (
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
-    </svg>
-  ),
-  cookie: (
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-    </svg>
-  ),
-  disclaimer: (
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-    </svg>
-  ),
+  privacy: <ShieldIcon className="w-5 h-5" />,
+  tos: <DocIcon className="w-5 h-5" />,
+  eula: <KeyIcon className="w-5 h-5" />,
+  cookie: <CookieIcon className="w-5 h-5" />,
+  disclaimer: <AlertIcon className="w-5 h-5" />,
 };
+
+const SAMPLE = [
+  { n: "1", h: "Information we collect", t: "When you create an account we collect your email address. When the app crashes we receive a crash trace and an installation identifier so we can fix the bug." },
+  { n: "2", h: "How we use it", t: "We use this information to provide and secure the service. We do not sell personal information." },
+  { n: "3", h: "Your rights", t: "You can ask us to access, correct, or delete your data at any time by emailing privacy@yourapp.com." },
+];
 
 export default function Home() {
   const [policy, setPolicy] = useState<string | null>(null);
@@ -223,8 +200,15 @@ export default function Home() {
     setSelectedDocType(null);
   };
 
+  const navLinks = [
+    { href: "#how", label: "How it works" },
+    { href: "#pricing", label: "Pricing" },
+    { href: "#faq", label: "FAQ" },
+    { href: "/blog", label: "Guides" },
+  ];
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-paper text-ink font-ui">
       {/* FAQ Schema */}
       <script
         type="application/ld+json"
@@ -242,124 +226,121 @@ export default function Home() {
       />
 
       {/* Nav */}
-      <nav className="fixed top-0 w-full z-50 border-b border-gray-100 bg-white/90 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <Logo className="w-7 h-7" />
-            <span className="font-semibold text-gray-900">PrivacyPage</span>
+      <nav className="sticky top-0 w-full z-40 border-b border-ink/10 bg-paper/90 backdrop-blur">
+        <div className="max-w-[1120px] mx-auto px-6 md:px-8 h-16 flex items-center justify-between">
+          <a href="/" className="flex items-center gap-2">
+            <Logo className="w-8 h-8" />
+            <span className="font-display text-[20px] tracking-[-0.01em]">PrivacyPage</span>
+          </a>
+          <div className="hidden md:flex items-center gap-2">
+            {navLinks.map((l) => (
+              <a key={l.href} href={l.href} className="h-10 inline-flex items-center px-4 text-[14px] text-ink/70 hover:text-ink rounded-[8px] transition-colors">{l.label}</a>
+            ))}
+            <button onClick={() => setShowRestore(true)} className="h-10 px-4 text-[14px] text-ink/70 hover:text-ink rounded-[8px] transition-colors">Restore purchase</button>
+            <a href="#generate" className="ml-2 h-10 inline-flex items-center px-4 text-[14px] bg-seal hover:bg-seal-dark text-white rounded-[8px] font-medium transition-colors">Generate free</a>
           </div>
-          <div className="hidden md:flex items-center gap-1">
-            <a href="#features" className="text-sm text-gray-500 hover:text-gray-900 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-all">Features</a>
-            <a href="#pricing" className="text-sm text-gray-500 hover:text-gray-900 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-all">Pricing</a>
-            <a href="#faq" className="text-sm text-gray-500 hover:text-gray-900 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-all">FAQ</a>
-            <a href="/blog" className="text-sm text-gray-500 hover:text-gray-900 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-all">Blog</a>
-            <div className="w-px h-4 bg-gray-200 mx-2" />
-            <button onClick={() => setShowRestore(true)} className="text-sm text-gray-500 hover:text-gray-900 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-all">Restore</button>
-            <a href="#generate" className="ml-1 text-sm bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-lg transition-colors font-medium">Generate Free</a>
-          </div>
-          <button className="md:hidden p-2 text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {mobileMenuOpen
-                ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              }
-            </svg>
+          <button aria-label={mobileMenuOpen ? "Close menu" : "Open menu"} className="md:hidden w-12 h-12 -mr-2 flex items-center justify-center text-ink/70" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <CloseIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
           </button>
         </div>
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-100 bg-white px-4 py-3 space-y-1">
-            <a href="#features" onClick={() => setMobileMenuOpen(false)} className="block text-sm text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg hover:bg-gray-50">Features</a>
-            <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="block text-sm text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg hover:bg-gray-50">Pricing</a>
-            <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="block text-sm text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg hover:bg-gray-50">FAQ</a>
-            <a href="/blog" onClick={() => setMobileMenuOpen(false)} className="block text-sm text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg hover:bg-gray-50">Blog</a>
-            <button onClick={() => { setShowRestore(true); setMobileMenuOpen(false); }} className="block w-full text-left text-sm text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg hover:bg-gray-50">Restore Purchase</button>
-            <a href="#generate" onClick={() => setMobileMenuOpen(false)} className="block text-sm bg-indigo-600 text-white px-3 py-2 rounded-lg text-center font-medium mt-2">Generate Free</a>
+          <div className="md:hidden border-t border-ink/10 bg-paper px-6 py-4 grid gap-1">
+            {navLinks.map((l) => (
+              <a key={l.href} href={l.href} onClick={() => setMobileMenuOpen(false)} className="h-12 flex items-center text-[16px] text-ink/80">{l.label}</a>
+            ))}
+            <button onClick={() => { setShowRestore(true); setMobileMenuOpen(false); }} className="h-12 text-left text-[16px] text-ink/80">Restore purchase</button>
+            <a href="#generate" onClick={() => setMobileMenuOpen(false)} className="h-12 mt-2 flex items-center justify-center bg-seal text-white rounded-[8px] text-[16px] font-medium">Generate free</a>
           </div>
         )}
       </nav>
 
       {/* ─── HERO ─── */}
-      <section className="pt-28 pb-16 px-6 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 text-xs font-medium text-indigo-700 bg-indigo-50 border border-indigo-100 px-3 py-1.5 rounded-full mb-6">
-            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            Free to try · No signup · One-time payment to unlock
-          </div>
-          <h1 className="text-4xl sm:text-5xl md:text-[56px] font-bold tracking-tight text-gray-900 leading-[1.1] mb-5">
-            Legal docs for your app,<br />
-            <span className="text-indigo-600">ready in 60 seconds.</span>
-          </h1>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Answer a few questions about your app. Get a complete, customized Privacy Policy, Terms of Service, EULA, and more — GDPR &amp; CCPA compliant, App Store ready.
-          </p>
-
-          {/* Compliance badges - inline, minimal */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-            {[
-              { label: "GDPR" },
-              { label: "CCPA" },
-              { label: "App Store" },
-              { label: "Play Store" },
-              { label: "CalOPPA" },
-            ].map((b) => (
-              <span key={b.label} className="inline-flex items-center gap-1.5 text-xs text-gray-600 bg-gray-50 border border-gray-200 px-3 py-1.5 rounded-full font-medium">
-                <svg className="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-                {b.label}
-              </span>
-            ))}
+      <section className="px-6 md:px-8 pt-16 md:pt-24 pb-16 md:pb-24">
+        <div className="max-w-[1120px] mx-auto grid lg:grid-cols-[1fr_480px] gap-16 items-center">
+          <div>
+            <p className="font-mono text-[12px] text-seal mb-6">Privacy policy · Terms · EULA · Cookie policy · Disclaimer</p>
+            <h1 className="font-display text-[40px] sm:text-[48px] md:text-[64px] leading-[1.05] tracking-[-0.02em] mb-6">
+              Legal documents for your app, written from your answers.
+            </h1>
+            <p className="font-doc text-[20px] leading-[1.6] text-ink/80 max-w-[560px] mb-8">
+              Answer about ten plain questions about what your app collects. Read the draft free. Pay once only if you want to keep it.
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <a href="#generate" className="h-12 inline-flex items-center gap-2 px-6 bg-seal hover:bg-seal-dark text-white rounded-[8px] text-[16px] font-medium transition-colors">
+                Generate free <ArrowRightIcon />
+              </a>
+              <a href="#pricing" className="h-12 inline-flex items-center px-4 text-[16px] text-ink/70 hover:text-ink underline underline-offset-4 decoration-ink/20">
+                {pricing ? `${pricing.singleDisplay} once to unlock` : "See pricing"}
+              </a>
+            </div>
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[14px] text-ink/60">
+              {["No account needed", "No subscription", "GDPR & CCPA sections"].map((t) => (
+                <li key={t} className="flex items-center gap-2"><CheckIcon className="w-4 h-4 text-seal" />{t}</li>
+              ))}
+            </ul>
           </div>
 
-          {/* Scroll-to-generator arrow */}
-          <a href="#generate" className="inline-flex flex-col items-center gap-2 text-sm text-gray-400 hover:text-gray-600 transition-colors group">
-            <span className="font-medium text-gray-600 group-hover:text-indigo-600 transition-colors">Pick a document to get started ↓</span>
-          </a>
+          {/* Sample excerpt */}
+          <figure className="relative rounded-[8px] border border-ink/10 bg-white shadow-[0_24px_48px_-24px_rgba(22,24,29,0.2)]">
+            <div aria-hidden className="pointer-events-none absolute -inset-8 -z-10 bg-[radial-gradient(50%_50%_at_50%_40%,rgba(15,92,99,0.10),transparent_70%)]" />
+            <div className="flex items-center justify-between px-6 h-12 border-b border-ink/10">
+              <span className="font-mono text-[12px] text-ink/50">privacy-policy.md</span>
+              <span className="text-[12px] uppercase tracking-[0.08em] text-ink/40">Sample excerpt</span>
+            </div>
+            <div className="doc-ruled px-6 md:px-8 py-8 font-doc text-[16px] leading-[1.6] text-ink/85">
+              <p className="font-display text-[24px] leading-[1.2] mb-6 text-ink">Privacy Policy</p>
+              {SAMPLE.map((c) => (
+                <div key={c.n} className="grid grid-cols-[40px_1fr] mb-6 last:mb-0">
+                  <span className="font-mono text-[13px] leading-[1.9] text-seal">§ {c.n}</span>
+                  <div>
+                    <p className="font-display text-[17px] text-ink mb-1">{c.h}</p>
+                    <p>{c.t}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <figcaption className="px-6 py-4 border-t border-ink/10 text-[12px] text-ink/50">Illustrative. Your document is generated from your own answers.</figcaption>
+          </figure>
         </div>
       </section>
 
-      {/* ─── GENERATOR (above the fold on most screens) ─── */}
-      <section id="generate" className="pb-20 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
+      {/* ─── GENERATOR ─── */}
+      <section id="generate" className="px-6 md:px-8 py-16 md:py-24 border-t border-ink/10 bg-[#FBFBFA] scroll-mt-16">
+        <div className="max-w-[1120px] mx-auto">
           {!policy && !selectedDocType ? (
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {Object.entries(wizardConfigs).map(([key, config]) => (
-                  <button
-                    key={key}
-                    onClick={() => setSelectedDocType(key)}
-                    className="group text-left p-5 rounded-xl border border-gray-200 hover:border-indigo-500 hover:bg-indigo-50/30 bg-white transition-all duration-150"
-                  >
-                    <div className="flex items-start gap-3 mb-3">
-                      <div className="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 shrink-0 group-hover:bg-indigo-100 transition-colors">
-                        {docTypeIcons[key]}
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900 text-sm group-hover:text-indigo-700 transition-colors">{config.displayName}</h3>
-                        <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{config.description}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-                      <span className="text-xs text-gray-400">Free preview</span>
-                      <span className="text-xs font-medium text-indigo-600 flex items-center gap-1 group-hover:gap-2 transition-all">
-                        Generate
-                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                      </span>
-                    </div>
-                  </button>
-                ))}
+              <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+                <div>
+                  <p className="font-mono text-[12px] text-seal mb-2">Step 1</p>
+                  <h2 className="font-display text-[32px] md:text-[40px] leading-[1.15] tracking-[-0.01em]">Pick a document</h2>
+                </div>
+                <p className="text-[14px] text-ink/60 max-w-[360px]">All five are free to preview. Unlocking one costs {pricing?.singleDisplay ?? "…"}, once.</p>
               </div>
-              <p className="text-center text-xs text-gray-400 mt-4">
-                All documents are free to preview. Pay {pricing?.singleDisplay ?? "…"} to unlock &amp; download.
-              </p>
+              <ul className="rounded-[8px] border border-ink/10 bg-white divide-y divide-ink/10">
+                {Object.entries(wizardConfigs).map(([key, config], i) => (
+                  <li key={key}>
+                    <button
+                      onClick={() => setSelectedDocType(key)}
+                      className="group w-full text-left grid grid-cols-[32px_1fr_auto] md:grid-cols-[48px_40px_1fr_auto] items-center gap-4 px-4 md:px-6 min-h-[72px] py-4 hover:bg-seal-tint/50 transition-colors"
+                    >
+                      <span className="hidden md:block font-mono text-[13px] text-ink/40">0{i + 1}</span>
+                      <span className="text-seal">{docTypeIcons[key]}</span>
+                      <span>
+                        <span className="block font-display text-[18px] md:text-[20px] leading-[1.3]">{config.displayName}</span>
+                        <span className="block text-[14px] text-ink/60 leading-[1.5]">{config.description}</span>
+                      </span>
+                      <span className="inline-flex items-center gap-2 text-[14px] font-medium text-seal">
+                        <span className="hidden sm:inline">Start</span> <ArrowRightIcon />
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </>
           ) : selectedDocType && !policy ? (
-            <div ref={wizardRef}>
-              <button onClick={() => setSelectedDocType(null)} className="mb-5 text-sm text-gray-500 hover:text-gray-900 transition-colors flex items-center gap-1.5">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                Back
+            <div ref={wizardRef} className="scroll-mt-24">
+              <button onClick={() => setSelectedDocType(null)} className="mb-6 h-10 inline-flex items-center gap-2 text-[14px] text-ink/60 hover:text-ink transition-colors">
+                <ArrowLeftIcon /> All documents
               </button>
               <Wizard config={getWizardConfig(selectedDocType)} onGenerate={handleGenerate} loading={loading} />
             </div>
@@ -376,321 +357,181 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── THIN DIVIDER WITH SOCIAL PROOF ─── */}
-      <div className="border-y border-gray-100 bg-gray-50 py-5 px-6">
-        <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-6 text-xs text-gray-500">
-          <span className="flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-            GDPR &amp; CCPA compliant templates
-          </span>
-          <span className="flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-            Written for App Store &amp; Google Play policy requirements
-          </span>
-          <span className="flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-            One-time payment · No subscription
-          </span>
-          <span className="flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-            Built by <a href="https://rushiraj.me" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">Rushiraj</a>
-          </span>
-        </div>
-      </div>
-
-      {/* ─── FEATURES ─── */}
-      <section id="features" className="py-20 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <FadeInView>
-            <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Why PrivacyPage</h2>
-              <p className="text-gray-500 max-w-lg mx-auto">
-                Competitors charge monthly subscription fees. PrivacyPage is {pricing?.singleDisplay ?? "…"} once — no subscription, no renewal, ever.
-              </p>
-            </div>
-          </FadeInView>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                Icon: BoltIcon,
-                title: "Done in 60 seconds",
-                desc: "Answer questions about your app. Your doc is generated instantly — no account, no waiting, no back-and-forth.",
-              },
-              {
-                Icon: ShieldCheckIcon,
-                title: "Compliant by default",
-                desc: "GDPR, CCPA, CalOPPA, COPPA, App Store guidelines. Every template is built around what regulators actually require.",
-              },
-              {
-                Icon: DevicePhoneMobileIcon,
-                title: "App Store ready",
-                desc: "iOS and Android submission formats covered. Stop getting rejected for incomplete or missing legal pages.",
-              },
-              {
-                Icon: BanknotesIcon,
-                title: "Pay once, yours forever",
-                desc: "No subscriptions. No seat limits. Pay once and the document is yours — including all future regenerations.",
-              },
-              {
-                Icon: DocumentDuplicateIcon,
-                title: "Copy it anywhere",
-                desc: "HTML, Markdown, or plain text. Host on your site, a GitHub repo, Notion, Webflow — wherever you want.",
-              },
-              {
-                Icon: ArrowPathIcon,
-                title: "Free lifetime updates",
-                desc: "Laws change. Your license key lets you regenerate an updated doc anytime at no extra cost.",
-              },
-            ].map((f, idx) => (
-              <FadeInView key={f.title} delay={idx * 60}>
-                <div className="p-5 rounded-xl border border-gray-100 bg-white hover:border-gray-200 hover:shadow-sm transition-all">
-                  <div className="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center mb-3">
-                    <f.Icon className="w-5 h-5 text-indigo-600" />
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-1">{f.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{f.desc}</p>
-                </div>
-              </FadeInView>
-            ))}
+      {/* ─── HOW IT WORKS (numbered clauses) ─── */}
+      <section id="how" className="px-6 md:px-8 py-16 md:py-24 border-t border-ink/10">
+        <div className="max-w-[1120px] mx-auto grid lg:grid-cols-[320px_1fr] gap-8 lg:gap-16">
+          <div>
+            <p className="font-mono text-[12px] text-seal mb-2">How it works</p>
+            <h2 className="font-display text-[32px] md:text-[40px] leading-[1.15] tracking-[-0.01em]">Terms of this service, in plain words</h2>
           </div>
+          <ol className="divide-y divide-ink/10 border-y border-ink/10">
+            {[
+              { t: "You answer, we draft.", d: "About ten questions on what your app collects: accounts, payments, analytics, crash reports, AI calls. The draft is written from those answers, not a generic template." },
+              { t: "Read it before you pay.", d: "The first part of every document is free to read in full. Nothing is hidden behind an account." },
+              { t: "Pay once, keep it.", d: `${pricing?.singleDisplay ?? "…"} unlocks one document; ${pricing?.bundleDisplay ?? "…"} unlocks all five. No subscription, no renewal.` },
+              { t: "Export anywhere.", d: "Copy as text, or download HTML or Markdown. Host it on your site, GitHub, or Notion and paste the URL into App Store Connect or Play Console." },
+              { t: "Regenerate when things change.", d: "Your license key lets you regenerate an updated document later at no extra cost." },
+            ].map((c, i) => (
+              <li key={c.t} className="grid grid-cols-[48px_1fr] md:grid-cols-[64px_1fr] gap-4 py-6 md:py-8">
+                <span className="font-mono text-[14px] leading-[2] text-seal">§ {i + 1}</span>
+                <div>
+                  <p className="font-display text-[20px] md:text-[22px] leading-[1.35] mb-2">{c.t}</p>
+                  <p className="font-doc text-[17px] leading-[1.6] text-ink/75">{c.d}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
       {/* ─── PRICING ─── */}
-      <section id="pricing" className="py-20 px-6 bg-gray-50 border-t border-gray-100">
-        <div className="max-w-4xl mx-auto">
-          <FadeInView>
-            <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Simple, honest pricing</h2>
-              <p className="text-gray-500">Generate free. Pay once to unlock &amp; download — no subscriptions, ever.</p>
-            </div>
-          </FadeInView>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
-            {/* Free */}
-            <FadeInView delay={80}>
-              <div className="bg-white border border-gray-200 rounded-2xl p-6">
-                <p className="text-sm font-medium text-gray-500 mb-1">Free</p>
-                <div className="text-3xl font-bold text-gray-900 mb-1">{pricing?.symbol || "₹"}0</div>
-                <p className="text-sm text-gray-400 mb-5">Always free to preview</p>
-                <ul className="space-y-2.5 text-sm text-gray-600 mb-6">
-                  {["Generate any document", "Full preview (first 25 lines)", "No account required"].map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <svg className="w-4 h-4 text-green-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <a href="#generate" className="block text-center w-full border border-gray-200 hover:border-gray-300 py-2.5 rounded-xl text-sm font-medium transition-colors text-gray-700">
-                  Try it free
-                </a>
-              </div>
-            </FadeInView>
-
-            {/* Pro — highlighted */}
-            <FadeInView delay={160}>
-              <div className="bg-indigo-600 border border-indigo-600 rounded-2xl p-6 relative shadow-lg shadow-indigo-100">
-                <div className="absolute -top-3 left-5 bg-white text-indigo-600 text-xs font-semibold px-3 py-1 rounded-full border border-indigo-100 shadow-sm">
-                  Most popular
-                </div>
-                <p className="text-sm font-medium text-indigo-200 mb-1">Pro</p>
-                <div className="text-3xl font-bold text-white mb-1">{pricing?.singleDisplay ?? "…"}</div>
-                <p className="text-sm text-indigo-300 mb-5">One time · Any single document</p>
-                <ul className="space-y-2.5 text-sm text-indigo-100 mb-6">
-                  {["Full document, no blur", "GDPR &amp; CCPA sections included", "HTML, Markdown &amp; plain text", "Lifetime regenerations"].map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <svg className="w-4 h-4 text-indigo-300 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                      <span dangerouslySetInnerHTML={{ __html: f }} />
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  className="block w-full bg-white hover:bg-indigo-50 text-indigo-600 font-semibold py-2.5 rounded-xl text-sm transition-colors mb-3"
-                  onClick={() => { if (pricing) setEmailCapture("pro-single"); }}
-                >
-                  Get Pro — {pricing?.singleDisplay ?? "…"}
-                </button>
-                <div className="flex items-center justify-center gap-1.5 text-xs text-indigo-300">
-                  <LockClosedIcon className="w-3 h-3" />
-                  Secure · Razorpay
-                </div>
-              </div>
-            </FadeInView>
-
-            {/* Bundle */}
-            <FadeInView delay={240}>
-              <div className="bg-white border border-gray-200 rounded-2xl p-6 relative">
-                <p className="text-sm font-medium text-gray-500 mb-1">Bundle</p>
-                <div className="text-3xl font-bold text-gray-900 mb-1">{pricing?.bundleDisplay ?? "…"}</div>
-                <p className="text-sm text-gray-400 mb-5">One time · All 5 documents · {getSavingsDisplay(pricing)}</p>
-                <ul className="space-y-2.5 text-sm text-gray-600 mb-6">
-                  {["Privacy Policy", "Terms of Service", "EULA", "Cookie Policy", "Disclaimer"].map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <svg className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  className="block w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-2.5 rounded-xl text-sm transition-colors mb-3"
-                  onClick={() => { if (pricing) setEmailCapture("bundle"); }}
-                >
-                  Buy Bundle — {pricing?.bundleDisplay ?? "…"}
-                </button>
-                <div className="flex items-center justify-center gap-1.5 text-xs text-gray-400">
-                  <LockClosedIcon className="w-3 h-3" />
-                  Secure · Razorpay
-                </div>
-              </div>
-            </FadeInView>
+      <section id="pricing" className="px-6 md:px-8 py-16 md:py-24 border-t border-ink/10 bg-[#FBFBFA] scroll-mt-16">
+        <div className="max-w-[880px] mx-auto">
+          <div className="mb-8 md:mb-12">
+            <p className="font-mono text-[12px] text-seal mb-2">Pricing</p>
+            <h2 className="font-display text-[32px] md:text-[40px] leading-[1.15] tracking-[-0.01em] mb-4">Preview free. Pay once to unlock.</h2>
+            <p className="font-doc text-[18px] leading-[1.6] text-ink/70 max-w-[600px]">Most policy tools bill monthly for a document you write once. Here you pay one time, in your currency, and the file is yours.</p>
           </div>
 
-          <FadeInView delay={300}>
-            <p className="text-center text-xs text-gray-400 mt-6">
-              All prices are one-time. No auto-renewals. Competitors charge monthly — you pay {pricing?.singleDisplay ?? "…"} once and own it forever.
-            </p>
-          </FadeInView>
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+            {[
+              {
+                key: "pro-single" as const,
+                name: "Single document",
+                price: pricing?.singleDisplay,
+                sub: "One time · any one document",
+                items: ["The complete document", "HTML, Markdown and plain text", "Free regenerations", "License key by email"],
+                cta: "Unlock one document",
+                primary: true,
+              },
+              {
+                key: "bundle" as const,
+                name: "All five documents",
+                price: pricing?.bundleDisplay,
+                sub: `One time · ${getSavingsDisplay(pricing)} vs buying separately`,
+                items: ["Privacy Policy", "Terms of Service", "EULA", "Cookie Policy", "Disclaimer"],
+                cta: "Unlock all five",
+                primary: false,
+              },
+            ].map((plan) => (
+              <div key={plan.key} className="rounded-[8px] border border-ink/10 bg-white p-6 md:p-8 flex flex-col">
+                <p className="text-[12px] uppercase tracking-[0.08em] text-ink/60 mb-4">{plan.name}</p>
+                <p className="font-display text-[48px] leading-none tracking-[-0.02em] mb-2" data-testid={`price-${plan.key}`}>{plan.price ?? "…"}</p>
+                <p className="text-[14px] text-ink/60 mb-6">{plan.sub}</p>
+                <ul className="space-y-2 mb-8 text-[15px] text-ink/80">
+                  {plan.items.map((f) => (
+                    <li key={f} className="flex items-start gap-2"><CheckIcon className="w-4 h-4 mt-1 text-seal shrink-0" />{f}</li>
+                  ))}
+                </ul>
+                <button
+                  className={`mt-auto h-12 rounded-[8px] text-[16px] font-medium transition-colors ${plan.primary ? "bg-seal hover:bg-seal-dark text-white" : "border border-ink/20 hover:border-ink/40 text-ink bg-white"}`}
+                  onClick={() => { if (pricing) setEmailCapture(plan.key); }}
+                  disabled={!pricing}
+                >
+                  {plan.cta}{plan.price ? ` · ${plan.price}` : ""}
+                </button>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 flex flex-wrap items-center gap-2 text-[14px] text-ink/60">
+            <LockIcon className="w-4 h-4" /> Cards, UPI, netbanking and wallets via Razorpay. Previewing any document is always free.
+          </p>
         </div>
       </section>
 
       {/* ─── FAQ ─── */}
-      <section id="faq" className="py-20 px-6 bg-white border-t border-gray-100">
-        <div className="max-w-2xl mx-auto">
-          <FadeInView>
-            <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-10">Common questions</h2>
-          </FadeInView>
-          <div className="space-y-2">
+      <section id="faq" className="px-6 md:px-8 py-16 md:py-24 border-t border-ink/10 scroll-mt-16">
+        <div className="max-w-[1120px] mx-auto grid lg:grid-cols-[320px_1fr] gap-8 lg:gap-16">
+          <div>
+            <p className="font-mono text-[12px] text-seal mb-2">Questions</p>
+            <h2 className="font-display text-[32px] md:text-[40px] leading-[1.15] tracking-[-0.01em]">Before you buy</h2>
+          </div>
+          <div className="border-t border-ink/10">
             {faqItems.map((item, i) => (
-              <FadeInView key={i} delay={i * 40}>
-                <div className={`border rounded-xl overflow-hidden transition-all ${openFaq === i ? "border-indigo-200 bg-indigo-50/30" : "border-gray-100 bg-white hover:border-gray-200"}`}>
-                  <button
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    className="w-full px-5 py-4 text-left flex items-center justify-between gap-4"
-                  >
-                    <span className="font-medium text-sm text-gray-900">{item.q}</span>
-                    <svg className={`w-4 h-4 text-gray-400 shrink-0 transition-transform ${openFaq === i ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  {openFaq === i && (
-                    <div className="px-5 pb-4">
-                      <p className="text-sm text-gray-600 leading-relaxed">{item.a}</p>
-                    </div>
-                  )}
-                </div>
-              </FadeInView>
+              <div key={i} className="border-b border-ink/10">
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
+                  className="w-full min-h-16 py-4 text-left flex items-center justify-between gap-4"
+                >
+                  <span className="font-display text-[18px] md:text-[20px] leading-[1.35]">{item.q}</span>
+                  <ChevronDownIcon className={`w-5 h-5 text-ink/40 shrink-0 transition-transform ${openFaq === i ? "rotate-180" : ""}`} />
+                </button>
+                {openFaq === i && <p className="pb-6 font-doc text-[17px] leading-[1.6] text-ink/75 max-w-[640px]">{item.a}</p>}
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ─── FINAL CTA ─── */}
-      <section className="py-16 px-6 bg-gray-50 border-t border-gray-100">
-        <div className="max-w-2xl mx-auto text-center">
-          <FadeInView>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Your app is ready. Are your docs?</h2>
-            <p className="text-gray-500 mb-8 text-sm">
-              Takes 60 seconds. Free to preview. No account needed.
-            </p>
-            <a
-              href="#generate"
-              className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3.5 rounded-xl font-semibold transition-all hover:shadow-lg text-sm"
-            >
-              Generate your legal docs — free
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </a>
-          </FadeInView>
+      <section className="px-6 md:px-8 py-16 md:py-24 border-t border-ink/10 bg-[#FBFBFA]">
+        <div className="max-w-[880px] mx-auto text-center">
+          <h2 className="font-display text-[32px] md:text-[40px] leading-[1.15] tracking-[-0.01em] mb-4">Your app is ready. Are its documents?</h2>
+          <p className="font-doc text-[18px] text-ink/70 mb-8">Free to preview. No account needed.</p>
+          <a href="#generate" className="h-12 inline-flex items-center gap-2 px-6 bg-seal hover:bg-seal-dark text-white rounded-[8px] text-[16px] font-medium transition-colors">
+            Generate free <ArrowRightIcon />
+          </a>
         </div>
       </section>
 
       {/* ─── FOOTER ─── */}
-      <footer className="border-t border-gray-100 py-10 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 mb-8">
+      <footer className="border-t border-ink/10 px-6 md:px-8 py-16">
+        <div className="max-w-[1120px] mx-auto">
+          <div className="grid md:grid-cols-[1fr_auto] gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <Logo className="w-6 h-6" />
-                <span className="font-semibold text-gray-900 text-sm">PrivacyPage</span>
+                <span className="font-display text-[18px]">PrivacyPage</span>
               </div>
-              <p className="text-xs text-gray-400 max-w-xs leading-relaxed">
-                Privacy policies and legal docs for indie developers. Built by{" "}
-                <a href="https://rushiraj.me" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">Rushiraj</a>
-                {" "}— made in India.
+              <p className="text-[14px] text-ink/60 max-w-[320px] leading-[1.5]">
+                Privacy policies and legal documents for indie developers. Built by{" "}
+                <a href="https://rushiraj.me" target="_blank" rel="noopener noreferrer" className="text-seal underline underline-offset-4 decoration-seal/30">Rushiraj</a> in India. Not legal advice.
               </p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-sm">
-              <div>
-                <p className="font-medium text-gray-900 mb-2.5 text-xs uppercase tracking-wide">Product</p>
-                <ul className="space-y-1.5 text-gray-500">
-                  <li><a href="#generate" className="hover:text-gray-900 transition-colors">Generate</a></li>
-                  <li><a href="#pricing" className="hover:text-gray-900 transition-colors">Pricing</a></li>
-                  <li><a href="/blog" className="hover:text-gray-900 transition-colors">Blog</a></li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900 mb-2.5 text-xs uppercase tracking-wide">Resources</p>
-                <ul className="space-y-1.5 text-gray-500">
-                  <li><a href="/for/lovable" className="hover:text-gray-900 transition-colors">For Lovable apps</a></li>
-                  <li><a href="/for/cursor" className="hover:text-gray-900 transition-colors">For Cursor apps</a></li>
-                  <li><a href="/vs/termly" className="hover:text-gray-900 transition-colors">vs Termly</a></li>
-                  <li><a href="/compliance/gdpr" className="hover:text-gray-900 transition-colors">GDPR guide</a></li>
-                  <li><a href="/compliance/dpdp" className="hover:text-gray-900 transition-colors">DPDP Act (India)</a></li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900 mb-2.5 text-xs uppercase tracking-wide">Support</p>
-                <ul className="space-y-1.5 text-gray-500">
-                  <li><a href="mailto:rushirajjadeja@gmail.com?subject=PrivacyPage%20Support" className="hover:text-gray-900 transition-colors">Email</a></li>
-                  <li><button onClick={() => setShowRestore(true)} className="hover:text-gray-900 transition-colors text-left">Restore</button></li>
-                  <li><a href="#faq" className="hover:text-gray-900 transition-colors">FAQ</a></li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900 mb-2.5 text-xs uppercase tracking-wide">More</p>
-                <ul className="space-y-1.5 text-gray-500">
-                  <li><a href="https://rushiraj.me" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">Portfolio</a></li>
-                  <li><a href="https://apps.apple.com/us/app/cashlens-personal-finance/id6743153951" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">CashLens</a></li>
-                  <li><a href="https://x.com/cashLensApp" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">X / Twitter</a></li>
-                </ul>
-              </div>
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-8 text-[14px]">
+              {[
+                { h: "Product", l: [["#generate", "Generate"], ["#pricing", "Pricing"], ["/blog", "Guides"]] },
+                { h: "Platforms", l: [["/for/ios-app", "iOS apps"], ["/for/android-app", "Android apps"], ["/for/chrome-extension", "Chrome extensions"], ["/for/discord-bot", "Discord bots"]] },
+                { h: "Compare", l: [["/vs/termly", "vs Termly"], ["/compliance/gdpr", "GDPR guide"], ["/compliance/dpdp", "DPDP Act (India)"]] },
+                { h: "Support", l: [["mailto:rushirajjadeja@gmail.com?subject=PrivacyPage%20Support", "Email"], ["#faq", "FAQ"]] },
+                { h: "More", l: [["https://rushiraj.me", "Portfolio"], ["https://apps.apple.com/us/app/cashlens-personal-finance/id6743153951", "CashLens"], ["https://x.com/cashLensApp", "X / Twitter"]] },
+              ].map((col) => (
+                <div key={col.h}>
+                  <p className="text-[12px] uppercase tracking-[0.08em] text-ink/50 mb-4">{col.h}</p>
+                  <ul className="space-y-2 text-ink/70">
+                    {col.l.map(([href, label]) => <li key={href}><a href={href} className="hover:text-ink">{label}</a></li>)}
+                    {col.h === "Support" && <li><button onClick={() => setShowRestore(true)} className="hover:text-ink text-left">Restore purchase</button></li>}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="border-t border-gray-100 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-400">
-            <p>© {new Date().getFullYear()} PrivacyPage. All rights reserved.</p>
-            <p>Indie-made with care in India 🇮🇳</p>
-          </div>
+          <p className="border-t border-ink/10 pt-6 text-[12px] text-ink/50">© {new Date().getFullYear()} PrivacyPage</p>
         </div>
       </footer>
 
       {/* Restore Modal */}
       {showRestore && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm" onClick={() => setShowRestore(false)}>
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 max-w-sm w-full mx-4 shadow-xl" onClick={(e) => e.stopPropagation()}>
-            <h3 className="font-bold text-gray-900 mb-1">Restore Purchase</h3>
-            <p className="text-sm text-gray-500 mb-4">Enter your license key or purchase email.</p>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 px-4" onClick={() => setShowRestore(false)} role="dialog" aria-modal="true">
+          <div className="bg-white border border-ink/10 rounded-[8px] p-6 md:p-8 max-w-[400px] w-full" onClick={(e) => e.stopPropagation()}>
+            <h3 className="font-display text-[24px] mb-2">Restore a purchase</h3>
+            <p className="text-[14px] text-ink/70 mb-6">Enter your license key or the email you paid with.</p>
             <input
               type="text"
               value={restoreInput}
               onChange={(e) => setRestoreInput(e.target.value)}
               placeholder="PP-XXXXXXXX or email address"
-              className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 mb-3"
+              className="w-full h-12 border border-ink/15 rounded-[8px] px-4 text-[16px] font-mono placeholder-ink/40 focus:outline-none focus:border-seal mb-4"
             />
             {restoreStatus && (
-              <p className={`text-sm mb-3 ${restoreStatus.includes("restored") ? "text-green-600" : "text-red-600"}`}>
-                {restoreStatus}
-              </p>
+              <p className={`text-[14px] mb-4 ${restoreStatus.includes("restored") ? "text-seal" : "text-red-700"}`}>{restoreStatus}</p>
             )}
-            <div className="flex gap-2.5">
-              <button
-                onClick={handleRestore}
-                disabled={!restoreInput.trim() || restoreLoading}
-                className="flex-1 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 text-white py-2.5 rounded-xl text-sm font-medium transition-colors"
-              >
-                {restoreLoading ? "Checking..." : "Restore"}
+            <div className="flex gap-2">
+              <button onClick={handleRestore} disabled={!restoreInput.trim() || restoreLoading} className="flex-1 h-12 bg-seal hover:bg-seal-dark disabled:opacity-40 text-white rounded-[8px] text-[16px] font-medium">
+                {restoreLoading ? "Checking…" : "Restore"}
               </button>
-              <button onClick={() => setShowRestore(false)} className="px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-600 hover:text-gray-900 transition-colors">
-                Cancel
-              </button>
+              <button onClick={() => setShowRestore(false)} className="h-12 px-6 border border-ink/15 rounded-[8px] text-[16px] text-ink/70">Cancel</button>
             </div>
           </div>
         </div>
@@ -699,7 +540,7 @@ export default function Home() {
       {/* Email Capture Modal (before checkout) */}
       {emailCapture && (
         <EmailCaptureModal
-          description={emailCapture === "bundle" ? "Bundle – All 5 Documents" : "Pro – Unlock Any Single Document"}
+          description={emailCapture === "bundle" ? `All five documents, ${pricing?.bundleDisplay ?? ""} one-time.` : `Unlock any one document, ${pricing?.singleDisplay ?? ""} one-time.`}
           onSubmit={(email) => {
             const docType = emailCapture;
             setEmailCapture(null);
@@ -709,33 +550,22 @@ export default function Home() {
         />
       )}
 
-      {/* License Key Modal */}
+      {/* License Key Modal (payment success) */}
       {licenseModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 max-w-sm w-full mx-4 text-center shadow-xl">
-            <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-4">
-              <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 px-4" role="dialog" aria-modal="true" aria-labelledby="success-title">
+          <div className="bg-white border border-ink/10 rounded-[8px] p-6 md:p-8 max-w-[440px] w-full">
+            <span className="w-10 h-10 rounded-full bg-seal text-white flex items-center justify-center mb-4"><CheckIcon className="w-5 h-5" /></span>
+            <p className="font-mono text-[12px] text-seal mb-2">Checkout · complete</p>
+            <h3 id="success-title" className="font-display text-[28px] leading-[1.2] mb-2">Payment successful</h3>
+            <p className="text-[14px] leading-[1.5] text-ink/70 mb-6">Save your license key. You need it to restore your purchase on another device. We also email it to you.</p>
+            <div className="flex items-center gap-2 border border-ink/10 bg-paper rounded-[8px] px-4 h-12 mb-4">
+              <KeyIcon className="w-4 h-4 text-seal shrink-0" />
+              <span className="font-mono text-[16px] tracking-[0.06em] select-all truncate" data-testid="license-key">{licenseModal}</span>
             </div>
-            <h3 className="font-bold text-gray-900 mb-1">Payment successful</h3>
-            <p className="text-sm text-gray-500 mb-4">Save your license key — you&apos;ll need it to restore on other devices.</p>
-            <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 mb-3 font-mono text-base tracking-wider text-indigo-600 select-all">
-              {licenseModal}
+            <div className="grid grid-cols-2 gap-2">
+              <button onClick={() => navigator.clipboard.writeText(licenseModal)} className="h-12 border border-ink/15 hover:border-ink/30 rounded-[8px] text-[16px] text-ink/80">Copy key</button>
+              <button onClick={() => { setLicenseModal(null); window.location.reload(); }} className="h-12 bg-seal hover:bg-seal-dark text-white rounded-[8px] text-[16px] font-medium">Continue</button>
             </div>
-            <button
-              onClick={() => navigator.clipboard.writeText(licenseModal)}
-              className="w-full border border-gray-200 hover:border-gray-300 text-gray-700 py-2.5 rounded-xl text-sm font-medium transition-colors mb-2"
-            >
-              Copy key
-            </button>
-            <button
-              onClick={() => { setLicenseModal(null); window.location.reload(); }}
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-xl text-sm font-medium transition-colors"
-            >
-              Continue
-            </button>
-            <p className="text-xs text-gray-400 mt-3">We&apos;ll also email this to you for safekeeping.</p>
           </div>
         </div>
       )}
