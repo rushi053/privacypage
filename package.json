@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/validate-platforms.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "validate:platforms": "node scripts/validate-platforms.mjs",
+    "validate:urls": "node scripts/validate-platforms.mjs --check-urls"
   },
   "dependencies": {
     "next": "^15.3.3",

@@ -42,7 +42,7 @@ export function useRazorpay() {
       const res = await fetch("/api/payment/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ docType, currency, amount, email }),
+        body: JSON.stringify({ docType, email }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed to create order");
@@ -96,7 +96,7 @@ export function useRazorpay() {
             onFailure("Payment verification error");
           }
         },
-        theme: { color: "#6366f1" },
+        theme: { color: "#0F5C63" },
         modal: { ondismiss: () => onFailure("Payment cancelled") },
         method: { card: true, upi: true, netbanking: true, wallet: true },
       };

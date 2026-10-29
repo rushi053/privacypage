@@ -1,3 +1,4 @@
+import { PRICE, PRICING } from '@/lib/currency'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -73,7 +74,7 @@ export default async function CompetitorComparisonPage({ params }: { params: Pro
 
         <section className="mb-4">
           <h2 className="text-2xl font-bold mb-6 text-gray-900">{page.name} vs PrivacyPage at a glance</h2>
-          <div className="overflow-x-auto border border-gray-200 rounded-xl">
+          <div data-fixed-price className="overflow-x-auto border border-gray-200 rounded-xl">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-200">
@@ -93,6 +94,9 @@ export default async function CompetitorComparisonPage({ params }: { params: Pro
               </tbody>
             </table>
           </div>
+          <p data-fixed-price className="mt-3 text-sm text-gray-600">
+            Visitors in India pay ₹{PRICING.INR.single.toLocaleString('en-IN')} per document (₹{PRICING.INR.bundle.toLocaleString('en-IN')} bundle) at checkout.
+          </p>
         </section>
         <p className="text-xs text-gray-400 mb-12 leading-relaxed">{page.pricingSourceNote}</p>
 
@@ -137,7 +141,7 @@ export default async function CompetitorComparisonPage({ params }: { params: Pro
         </section>
 
         <SeoCtaCard
-          heading="Skip the subscription. Pay $9.99 once."
+          heading={`Skip the subscription. Pay ${PRICE.single} once.`}
           sub="Generate your document free right now — see the full preview before paying a cent."
         />
 

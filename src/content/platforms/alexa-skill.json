@@ -1,0 +1,67 @@
+{
+  "slug": "alexa-skill",
+  "name": "Alexa skill",
+  "h1": "Privacy policy for Alexa skills",
+  "metaTitle": "Alexa Skill Privacy Policy URL — When Amazon Requires It | PrivacyPage",
+  "metaDescription": "Amazon requires a privacy policy URL when your Alexa skill uses account linking, includes advertising, or collects user information. Where to add it and what to disclose.",
+  "answer": "Amazon’s developer console says the Privacy Policy URL is required when your Alexa skill uses account linking, includes advertising, or collects user information. Add it in the skill’s store details before certification, and describe exactly what your skill receives, such as account-linked profile data or user-provided information.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Amazon Alexa Skills Store",
+    "title": "Skill store details — Privacy Policy URL",
+    "quote": "The URL for your privacy policy. Required when your skill uses account linking, includes advertising, or collects user information.",
+    "sourceUrl": "https://developer.amazon.com/en-US/docs/alexa/devconsole/launch-your-skill.html",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Kids skills: no personal information",
+      "text": "Amazon’s policy requirements say a child-directed skill is not eligible if, among other things, “it collects any personal information from end users” or “has account linking”.",
+      "sourceUrl": "https://developer.amazon.com/en-US/docs/alexa/custom-skills/policy-requirements-for-an-alexa-skill.html"
+    },
+    {
+      "title": "Certification checks policies",
+      "text": "Amazon certifies skills against its policy requirements and security tests; the privacy policy link is set in the skill store details.",
+      "sourceUrl": "https://developer.amazon.com/en-US/docs/alexa/custom-skills/policy-requirements-for-an-alexa-skill.html"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Alexa account linking",
+      "dataCollected": [
+        "Access token for the user’s account in your service",
+        "Profile data from your service (e.g. name, email) that you request"
+      ],
+      "sourceUrl": "https://developer.amazon.com/en-US/docs/alexa/devconsole/launch-your-skill.html"
+    }
+  ],
+  "whereToPaste": [
+    "Alexa developer console → your skill → Distribution page → Privacy Policy URL.",
+    "Your skill’s website."
+  ],
+  "whereToPasteSource": "https://developer.amazon.com/en-US/docs/alexa/devconsole/launch-your-skill.html",
+  "sampleClause": {
+    "heading": "Voice requests",
+    "text": "When you use the skill, Amazon sends us the text of your request and an anonymous user ID, not your voice recording. If you link your account, we also receive an access token to your account with us. We keep your saved lists until you delete them by saying “delete my data”."
+  },
+  "faqs": [
+    {
+      "q": "Does my Alexa skill need a privacy policy?",
+      "a": "Amazon requires the URL if your skill uses account linking, includes advertising, or collects user information. Many simple skills still add one."
+    },
+    {
+      "q": "Who stores the voice recordings?",
+      "a": "Amazon handles voice recordings under its own policies; your skill receives the request data Amazon sends. Describe only what your skill receives and keeps."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/saas",
+      "label": "Privacy policy for SaaS & web apps"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

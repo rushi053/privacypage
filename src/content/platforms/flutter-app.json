@@ -1,0 +1,102 @@
+{
+  "slug": "flutter-app",
+  "name": "Flutter app",
+  "h1": "Privacy policy for Flutter apps (iOS and Android)",
+  "metaTitle": "Flutter App Privacy Policy — App Store & Google Play Rules | PrivacyPage",
+  "metaDescription": "A Flutter app ships to two stores, and both require a public privacy policy linked in the listing and inside the app. What Apple and Google ask for, which plugins collect data, and how to link it.",
+  "answer": "Yes, a Flutter app needs a privacy policy. Apple’s Guideline 5.1.1(i) requires a policy link in App Store Connect and inside the app, and Google Play requires one in the store listing and in the app. One accurate policy can cover both builds if it lists every plugin and SDK that collects data on either platform.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Apple App Store",
+    "title": "App Review Guideline 5.1.1(i) — Privacy Policies",
+    "quote": "All apps must include a link to their privacy policy in the App Store Connect metadata field and within the app in an easily accessible manner.",
+    "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/#data-collection-and-storage",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Google Play: policy in the listing and in the app",
+      "text": "Google Play’s User Data policy says your “privacy policy must clearly explain all data collection and sharing.” It must also sit on a public, non-geofenced URL (no PDFs), and be linked both in the store listing and inside the app.",
+      "sourceUrl": "https://support.google.com/googleplay/android-developer/answer/10144311"
+    },
+    {
+      "title": "App Privacy answers include third-party code",
+      "text": "Apple asks for “information about your app’s privacy practices, including the practices of third-party partners whose code you integrate into your app, in App Store Connect.” Your privacy policy and these answers should describe the same data.",
+      "sourceUrl": "https://developer.apple.com/app-store/app-privacy-details/"
+    },
+    {
+      "title": "Open the link in-app with url_launcher",
+      "text": "The official url_launcher plugin opens a URL from Flutter code with launchUrl(Uri.parse(...)). Put it behind a Settings or About entry so the policy is easy to reach, as Guideline 5.1.1(i) asks.",
+      "sourceUrl": "https://pub.dev/packages/url_launcher"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Firebase Crashlytics",
+      "dataCollected": [
+        "Crashlytics installation UUIDs",
+        "Firebase installation IDs",
+        "Crash traces"
+      ],
+      "sourceUrl": "https://firebase.google.com/support/privacy"
+    },
+    {
+      "name": "Firebase Cloud Messaging",
+      "dataCollected": [
+        "Firebase installation IDs (to route push messages to devices)"
+      ],
+      "sourceUrl": "https://firebase.google.com/support/privacy"
+    },
+    {
+      "name": "Google Mobile Ads SDK (AdMob)",
+      "dataCollected": [
+        "IP address",
+        "User product interactions",
+        "Diagnostic information",
+        "Device and account identifiers"
+      ],
+      "sourceUrl": "https://developers.google.com/admob/android/privacy/play-data-disclosure"
+    }
+  ],
+  "whereToPaste": [
+    "App Store Connect → your app → App Privacy → Privacy Policy URL.",
+    "Play Console → Policy and programs → App content → Privacy policy.",
+    "Inside the app: a Settings or About link that opens the same URL with url_launcher."
+  ],
+  "sampleClause": {
+    "heading": "Crash reports",
+    "text": "Our app uses Firebase Crashlytics to receive crash reports. When the app crashes, Crashlytics sends a crash trace and installation identifiers to Google so we can fix bugs. We do not use crash data for advertising."
+  },
+  "faqs": [
+    {
+      "q": "Can one privacy policy cover my iOS and Android Flutter app?",
+      "a": "Yes, if it accurately describes the data collected on both platforms, including every plugin and SDK. Use the same URL in App Store Connect and Play Console."
+    },
+    {
+      "q": "How do I open a privacy policy link in Flutter?",
+      "a": "Add the url_launcher package and call launchUrl with your policy URL from a Settings or About screen."
+    },
+    {
+      "q": "Is there a Flutter-specific template?",
+      "a": "No. PrivacyPage generates a general app policy; list your Flutter plugins and SDKs in the wizard."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/ios-app",
+      "label": "Privacy policy for iOS / App Store"
+    },
+    {
+      "href": "/for/android-app",
+      "label": "Privacy policy for Android / Google Play"
+    },
+    {
+      "href": "/for/admob",
+      "label": "Privacy policy for apps using AdMob"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

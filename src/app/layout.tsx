@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import { Fraunces, Newsreader, Geist, Geist_Mono } from "next/font/google";
+
+const fDisplay = Fraunces({ subsets: ["latin"], variable: "--f-display", display: "swap" });
+const fDoc = Newsreader({ subsets: ["latin"], variable: "--f-doc", display: "swap" });
+const fUi = Geist({ subsets: ["latin"], variable: "--f-ui", display: "swap" });
+const fMono = Geist_Mono({ subsets: ["latin"], variable: "--f-mono", display: "swap" });
+import { PRICING } from "@/lib/currency";
 
 export const metadata: Metadata = {
   title: "PrivacyPage — Privacy Policy Generator for Apps | Free, No Signup",
@@ -51,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${fDisplay.variable} ${fDoc.variable} ${fUi.variable} ${fMono.variable}`}>
       <head>
         {/* Organization Schema */}
         <Script id="schema-organization" type="application/ld+json">
@@ -93,20 +100,22 @@ export default function RootLayout({
                 "description": "Free preview - see how it works",
                 "availability": "https://schema.org/InStock"
               },
-              {
-                "@type": "Offer",
-                "price": "9.99",
-                "priceCurrency": "USD",
-                "description": "Pro - Single Document (one-time payment)",
-                "availability": "https://schema.org/InStock"
-              },
-              {
-                "@type": "Offer",
-                "price": "24.99",
-                "priceCurrency": "USD",
-                "description": "Bundle - All 5 Documents (one-time payment)",
-                "availability": "https://schema.org/InStock"
-              }
+              ...(["USD", "INR"] as const).flatMap((c) => [
+                {
+                  "@type": "Offer",
+                  "price": String(PRICING[c].single),
+                  "priceCurrency": c,
+                  "description": "Pro - Single Document (one-time payment)" + (c === "INR" ? " - India" : ""),
+                  "availability": "https://schema.org/InStock"
+                },
+                {
+                  "@type": "Offer",
+                  "price": String(PRICING[c].bundle),
+                  "priceCurrency": c,
+                  "description": "Bundle - All 5 Documents (one-time payment)" + (c === "INR" ? " - India" : ""),
+                  "availability": "https://schema.org/InStock"
+                }
+              ])
             ],
             "featureList": ["Privacy Policy Generator", "Terms of Service Generator", "EULA Generator", "Cookie Policy Generator", "Disclaimer Generator", "GDPR Compliant", "CCPA Compliant"]
           })}
@@ -125,7 +134,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased bg-paper text-ink">{children}</body>
     </html>
   );
 }

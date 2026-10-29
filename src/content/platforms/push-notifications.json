@@ -1,0 +1,86 @@
+{
+  "slug": "push-notifications",
+  "name": "Push notification app",
+  "h1": "Privacy policy for apps with push notifications (FCM, OneSignal)",
+  "metaTitle": "Push Notification Privacy Policy — Apple 4.5.4, FCM & OneSignal | PrivacyPage",
+  "metaDescription": "Apple Guideline 4.5.4 limits push for marketing to users who opt in. What FCM and OneSignal collect, and the push clause your privacy policy needs.",
+  "answer": "If your app sends push notifications, your privacy policy should say you store a device push token or installation ID, which provider delivers messages, and how users opt out. Apple’s Guideline 4.5.4 also says push must not be required for the app to work and must not be used for marketing unless users explicitly opt in.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Apple App Store",
+    "title": "App Review Guideline 4.5.4 — Push Notifications",
+    "quote": "Push Notifications must not be required for the app to function, and should not be used to send sensitive personal or confidential information.",
+    "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Marketing push needs opt-in",
+      "text": "Apple: push “should not be used for promotions or direct marketing purposes unless customers have explicitly opted in to receive them via consent language displayed in your app’s UI”.",
+      "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/"
+    },
+    {
+      "title": "OneSignal and IP addresses",
+      "text": "OneSignal: “OneSignal will automatically not collect IP Addresses from Users within the EU and UK.” Elsewhere IP collection is on by default unless you contact support.",
+      "sourceUrl": "https://documentation.onesignal.com/docs/handling-personal-data"
+    },
+    {
+      "title": "Google Play: disclose SDK data",
+      "text": "Google Play’s User Data policy says your “privacy policy must clearly explain all data collection and sharing”, including SDKs.",
+      "sourceUrl": "https://support.google.com/googleplay/android-developer/answer/10144311"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Firebase Cloud Messaging",
+      "dataCollected": [
+        "Firebase installation IDs (to route push messages to devices)"
+      ],
+      "sourceUrl": "https://firebase.google.com/support/privacy"
+    },
+    {
+      "name": "OneSignal",
+      "dataCollected": [
+        "Push subscription / device token",
+        "IP address outside the EU and UK by default"
+      ],
+      "sourceUrl": "https://documentation.onesignal.com/docs/handling-personal-data"
+    }
+  ],
+  "whereToPaste": [
+    "Your app’s store listings and Settings → Privacy.",
+    "Next to the in-app notification opt-in prompt."
+  ],
+  "sampleClause": {
+    "heading": "Notifications",
+    "text": "If you allow notifications, we store a push token for your device with our provider so we can send you alerts. We send marketing messages only if you opt in under Settings → Notifications. You can turn notifications off at any time in your device settings."
+  },
+  "faqs": [
+    {
+      "q": "Is a push token personal data?",
+      "a": "It is a device identifier that can be linked to a user, so many privacy laws, including the GDPR, may treat it as personal data. Disclose it. This is not legal advice."
+    },
+    {
+      "q": "Can I send promotional push notifications?",
+      "a": "On iOS, only if users explicitly opt in through consent language in your app, and you must offer a way to opt out (Guideline 4.5.4)."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/ios-app",
+      "label": "Privacy policy for iOS / App Store"
+    },
+    {
+      "href": "/for/react-native-app",
+      "label": "Privacy policy for React Native apps"
+    },
+    {
+      "href": "/for/expo-app",
+      "label": "Privacy policy for Expo apps"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

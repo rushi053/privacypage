@@ -1,0 +1,108 @@
+{
+  "slug": "expo-app",
+  "name": "Expo app",
+  "h1": "Privacy policy for Expo apps (EAS Submit)",
+  "metaTitle": "Expo App Privacy Policy — EAS Submit, ATT & Privacy Manifests | PrivacyPage",
+  "metaDescription": "EAS Metadata says a privacy policy is required for all apps. What Expo itself may collect from end-users, App Tracking Transparency, privacy manifests, and where to put the URL.",
+  "answer": "Yes. Expo’s EAS Metadata docs describe privacyPolicyUrl as the “URL that links to your privacy policy. A privacy policy is required for all apps.” Apple and Google also require it in the listing and inside the app. Disclose what Expo services such as push or EAS Update collect from your users.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Expo EAS Metadata (App Store listing)",
+    "title": "store.config.json — privacyPolicyUrl",
+    "quote": "URL that links to your privacy policy. A privacy policy is required for all apps.",
+    "sourceUrl": "https://docs.expo.dev/eas/metadata/schema/",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Apple Guideline 5.1.1(i)",
+      "text": "“All apps must include a link to their privacy policy in the App Store Connect metadata field and within the app in an easily accessible manner.”",
+      "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/"
+    },
+    {
+      "title": "What Expo collects from your end-users",
+      "text": "Expo’s privacy policy says: “When end-users use apps made with Expo, we may collect the end-users’ push tokens, if you are utilizing Expo's push notification service.” It also says EAS Update may collect device OS and randomized tokens.",
+      "sourceUrl": "https://expo.dev/privacy"
+    },
+    {
+      "title": "App Tracking Transparency",
+      "text": "If you use expo-tracking-transparency, Expo’s docs say to add NSUserTrackingUsageDescription to Info.plist “to explain how the user will be tracked. Otherwise, your app will be rejected by Apple.”",
+      "sourceUrl": "https://docs.expo.dev/versions/latest/sdk/tracking-transparency/"
+    },
+    {
+      "title": "Privacy manifests",
+      "text": "Expo: “If you're using a native iOS library that uses a \"restricted reason\" APIs, you'll need to configure an iOS privacy manifest”.",
+      "sourceUrl": "https://docs.expo.dev/guides/apple-privacy/"
+    },
+    {
+      "title": "Google Play: policy in the listing and in the app",
+      "text": "Google Play’s User Data policy says your “privacy policy must clearly explain all data collection and sharing.” It must also sit on a public, non-geofenced URL (no PDFs), and be linked both in the store listing and inside the app.",
+      "sourceUrl": "https://support.google.com/googleplay/android-developer/answer/10144311"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Expo push notification service",
+      "dataCollected": [
+        "End-users’ push tokens"
+      ],
+      "sourceUrl": "https://expo.dev/privacy"
+    },
+    {
+      "name": "EAS Update",
+      "dataCollected": [
+        "Device operating system",
+        "Randomized tokens used to check whether an update was downloaded"
+      ],
+      "sourceUrl": "https://expo.dev/privacy"
+    },
+    {
+      "name": "Google Mobile Ads SDK (AdMob)",
+      "dataCollected": [
+        "IP address",
+        "User product interactions",
+        "Diagnostic information",
+        "Device and account identifiers"
+      ],
+      "sourceUrl": "https://developers.google.com/admob/android/privacy/play-data-disclosure"
+    }
+  ],
+  "whereToPaste": [
+    "store.config.json → apple.info.<locale>.privacyPolicyUrl, then eas metadata:push.",
+    "Or App Store Connect → App Privacy → Privacy Policy URL; Play Console → App content → Privacy policy.",
+    "Inside the app: a Settings or About link (expo-linking or expo-web-browser)."
+  ],
+  "whereToPasteSource": "https://docs.expo.dev/eas/metadata/schema/",
+  "sampleClause": {
+    "heading": "App updates",
+    "text": "Our app checks for updates using Expo’s EAS Update service. To do this, Expo may receive your device’s operating system and a random token that shows whether an update was downloaded. This is not linked to your name or email."
+  },
+  "faqs": [
+    {
+      "q": "Do I need a privacy policy to submit an Expo app?",
+      "a": "Yes. EAS Metadata, the App Store and Google Play all treat the privacy policy URL as required for every app."
+    },
+    {
+      "q": "What is an iOS privacy manifest?",
+      "a": "A PrivacyInfo.xcprivacy file that declares data types and the reasons for using certain restricted APIs. Expo lets you configure it in app config."
+    },
+    {
+      "q": "Is there an Expo-specific template?",
+      "a": "No. PrivacyPage generates a general app policy; add Expo push, EAS Update and your other SDKs in the wizard."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/react-native-app",
+      "label": "Privacy policy for React Native apps"
+    },
+    {
+      "href": "/for/ios-app",
+      "label": "Privacy policy for iOS / App Store"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

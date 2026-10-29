@@ -1,0 +1,70 @@
+{
+  "slug": "chrome-extension",
+  "name": "Chrome extension",
+  "h1": "Privacy policy for Chrome extensions",
+  "metaTitle": "Chrome Extension Privacy Policy — Chrome Web Store User Data Rules | PrivacyPage",
+  "metaDescription": "If your Chrome extension handles any user data, the Chrome Web Store requires an accurate privacy policy and Privacy-tab disclosures that match it. Sources cited.",
+  "answer": "If a Chrome extension handles any user data, the Chrome Web Store requires an accurate, up-to-date privacy policy that discloses how data is collected, used and shared, and with whom. You link it in the developer dashboard, and your Privacy-tab data disclosures must be consistent with it.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Chrome Web Store",
+    "title": "Program Policies — Privacy Policies",
+    "quote": "If your Product handles any user data, then you must post an accurate and up to date privacy policy.",
+    "sourceUrl": "https://developer.chrome.com/docs/webstore/program-policies/privacy",
+    "verifiedOn": "2026-10-29"
+  },
+  "additionalRules": [
+    {
+      "title": "Privacy tab disclosures must match the policy",
+      "text": "In the dashboard’s Privacy tab you state a single purpose, justify each permission, and certify which data types you collect. Google notes the disclosures are shown to users and “should be consistent with the existing privacy policy URL that you provided”.",
+      "sourceUrl": "https://developer.chrome.com/docs/webstore/cws-dashboard-privacy"
+    },
+    {
+      "title": "Limited Use",
+      "text": "You certify that data use is limited to the extension’s disclosed purpose, under the Chrome Web Store Limited Use policy.",
+      "sourceUrl": "https://developer.chrome.com/docs/webstore/program-policies/limited-use"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "chrome.identity (getProfileUserInfo)",
+      "dataCollected": [
+        "Email address of the signed-in Chrome profile (requires identity.email permission)",
+        "Obfuscated Gaia ID"
+      ],
+      "sourceUrl": "https://developer.chrome.com/docs/extensions/reference/api/identity"
+    }
+  ],
+  "whereToPaste": [
+    "Chrome Web Store developer dashboard → your item → Privacy tab → privacy policy link.",
+    "Complete the single-purpose, permission justification and data-usage certifications on the same tab."
+  ],
+  "sampleClause": {
+    "heading": "Account email",
+    "text": "If you choose to sign in, the extension reads the email address of your signed-in Chrome profile through Chrome’s identity API. We use it only to identify your account for sync, do not sell it, and do not use it for advertising."
+  },
+  "faqs": [
+    {
+      "q": "Does my extension need a privacy policy if it collects nothing?",
+      "a": "The Chrome Web Store rule is triggered when the extension handles any user data. Many extensions do (page content, browsing activity, email), so check your permissions honestly."
+    },
+    {
+      "q": "Is there a Chrome-extension-specific template?",
+      "a": "No. PrivacyPage generates a general app policy; you describe your extension’s permissions and data in the wizard."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/discord-bot",
+      "label": "Privacy policy for Discord bots"
+    },
+    {
+      "href": "/compliance/gdpr",
+      "label": "GDPR privacy policy"
+    },
+    {
+      "href": "/guides/app-rejected-privacy-policy",
+      "label": "Fix a privacy policy rejection"
+    }
+  ]
+}

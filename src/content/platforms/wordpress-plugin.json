@@ -1,0 +1,73 @@
+{
+  "slug": "wordpress-plugin",
+  "name": "WordPress plugin",
+  "h1": "Privacy policy for WordPress plugin developers",
+  "metaTitle": "WordPress Plugin Privacy Policy — Guideline 7 & Suggested Policy Text | PrivacyPage",
+  "metaDescription": "For plugin authors, not site owners: WordPress.org Guideline 7 bans tracking without consent, and core lets you suggest privacy policy text with wp_add_privacy_policy_content.",
+  "answer": "If you publish a plugin on WordPress.org, Guideline 7 says plugins may not track users without their consent, so any usage tracking or phoning home must be opt-in. WordPress also lets your plugin suggest privacy policy text to site owners with wp_add_privacy_policy_content. If your plugin sends data to your own service, publish a privacy policy for it.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "WordPress.org Plugin Directory",
+    "title": "Detailed Plugin Guidelines — Guideline 7",
+    "quote": "Plugins may not track users without their consent.",
+    "sourceUrl": "https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Suggest text for the site’s policy",
+      "text": "WordPress’s Plugin Handbook: this “is best done with wp_add_privacy_policy_content( $plugin_name, $policy_text )” so site administrators can pull it into their own privacy policy.",
+      "sourceUrl": "https://developer.wordpress.org/plugins/privacy/suggesting-text-for-the-site-privacy-policy/"
+    },
+    {
+      "title": "Answer the default questions",
+      "text": "The handbook says the suggested text should address the questions in the default privacy policy, starting with “What personal data we collect and why we collect it”.",
+      "sourceUrl": "https://developer.wordpress.org/plugins/privacy/suggesting-text-for-the-site-privacy-policy/"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Typical plugin data flows",
+      "dataCollected": [
+        "Site URL and WordPress/PHP versions (usage tracking, opt-in only)",
+        "Form submissions sent to a third-party API",
+        "License keys and admin email for updates"
+      ],
+      "sourceUrl": "https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/"
+    }
+  ],
+  "whereToPaste": [
+    "Your plugin’s own site: a privacy policy covering any data your servers receive.",
+    "Inside the plugin: register suggested text with wp_add_privacy_policy_content on admin_init.",
+    "readme.txt: say what is sent externally and link the policy."
+  ],
+  "whereToPasteSource": "https://developer.wordpress.org/plugins/privacy/suggesting-text-for-the-site-privacy-policy/",
+  "sampleClause": {
+    "heading": "Usage data (opt-in)",
+    "text": "If you choose Allow usage tracking in the plugin settings, the plugin sends your site URL, WordPress version, PHP version and active theme to our server once a week. Nothing is sent unless you opt in, and you can turn it off at any time."
+  },
+  "faqs": [
+    {
+      "q": "Can my WordPress plugin collect usage data?",
+      "a": "Only with the user’s consent. Guideline 7 forbids tracking users without consent, so make it opt-in and disclose it."
+    },
+    {
+      "q": "Is this for site owners who want a privacy policy plugin?",
+      "a": "No. This page is for plugin authors. Site owners can still generate a website policy with PrivacyPage."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/saas",
+      "label": "Privacy policy for SaaS & web apps"
+    },
+    {
+      "href": "/compliance/gdpr",
+      "label": "GDPR privacy policy"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

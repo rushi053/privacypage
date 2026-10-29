@@ -1,0 +1,81 @@
+{
+  "slug": "slack-app",
+  "name": "Slack app",
+  "h1": "Privacy policy for Slack apps (Slack Marketplace)",
+  "metaTitle": "Slack App Privacy Policy — Slack Marketplace Requirements | PrivacyPage",
+  "metaDescription": "Slack Marketplace apps must have a clear privacy policy linked from the landing page that covers what data is collected, how it is used and how long it is kept.",
+  "answer": "Slack Marketplace apps must publish a clear privacy policy that explains how third-party data is handled, linked from the app’s public landing page. At minimum, Slack expects it to say what data is collected, how it is used and how long it is kept. If your app receives data it never uses, the policy must say so.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Slack Marketplace",
+    "title": "Marketplace guidelines — Your privacy policy page",
+    "quote": "All Slack Marketplace apps must include a clear privacy policy that details how third-party data is handled and this page should be accessible on your app’s landing page.",
+    "sourceUrl": "https://api.slack.com/slack-marketplace/guidelines",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Minimum contents",
+      "text": "Slack: “At a minimum it should include: What data is collected. How the data that is collected is used. How long data is kept.”",
+      "sourceUrl": "https://api.slack.com/slack-marketplace/guidelines"
+    },
+    {
+      "title": "Data you receive but don’t use",
+      "text": "“If your app receives data but never uses it, this must be stated in your privacy policy.”",
+      "sourceUrl": "https://api.slack.com/slack-marketplace/guidelines"
+    },
+    {
+      "title": "Landing page link",
+      "text": "Your landing page needs “A clear link to your privacy policy” and must be publicly accessible, not a PDF or code repository.",
+      "sourceUrl": "https://api.slack.com/slack-marketplace/guidelines"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Slack OAuth scopes (examples)",
+      "dataCollected": [
+        "channels:history: messages and other content in public channels the app has been added to"
+      ],
+      "sourceUrl": "https://docs.slack.dev/reference/scopes/channels.history"
+    },
+    {
+      "name": "users:read.email",
+      "dataCollected": [
+        "Email addresses of people in a workspace"
+      ],
+      "sourceUrl": "https://docs.slack.dev/reference/scopes/users.read.email"
+    }
+  ],
+  "whereToPaste": [
+    "Your app’s public landing page: a clear privacy policy link.",
+    "Slack app settings → Marketplace submission → Privacy policy URL."
+  ],
+  "sampleClause": {
+    "heading": "Slack data",
+    "text": "When you install the app, we receive your workspace ID, your user ID and messages in channels where the app is invited, to answer commands. We keep command history for 30 days, then delete it. Slash command payloads also include channel names, which we do not store."
+  },
+  "faqs": [
+    {
+      "q": "Does Slack Marketplace require a privacy policy?",
+      "a": "Yes. Slack’s guidelines require every Marketplace app to have a clear privacy policy linked from its landing page."
+    },
+    {
+      "q": "What must it include?",
+      "a": "At least what data is collected, how it is used and how long it is kept, plus any data you receive but don’t use."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/discord-bot",
+      "label": "Privacy policy for Discord bots"
+    },
+    {
+      "href": "/for/saas",
+      "label": "Privacy policy for SaaS & web apps"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

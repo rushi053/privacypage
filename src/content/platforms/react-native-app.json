@@ -1,0 +1,102 @@
+{
+  "slug": "react-native-app",
+  "name": "React Native app",
+  "h1": "Privacy policy for React Native apps",
+  "metaTitle": "React Native App Privacy Policy — Store Requirements & SDKs | PrivacyPage",
+  "metaDescription": "React Native apps need a public privacy policy for both the App Store and Google Play, linked in the listing and inside the app. Rules, native SDKs to disclose, and how to link it with Linking.",
+  "answer": "A React Native app needs a privacy policy on a public URL, linked in App Store Connect and Play Console and inside the app. The policy must cover data collected by your JavaScript code and by every native module or SDK, such as crash reporting, push or ads, on both iOS and Android.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Apple App Store",
+    "title": "App Review Guideline 5.1.1(i) — Privacy Policies",
+    "quote": "All apps must include a link to their privacy policy in the App Store Connect metadata field and within the app in an easily accessible manner.",
+    "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/#data-collection-and-storage",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Google Play: policy in the listing and in the app",
+      "text": "Google Play’s User Data policy says your “privacy policy must clearly explain all data collection and sharing.” It must also sit on a public, non-geofenced URL (no PDFs), and be linked both in the store listing and inside the app.",
+      "sourceUrl": "https://support.google.com/googleplay/android-developer/answer/10144311"
+    },
+    {
+      "title": "App Privacy answers include third-party code",
+      "text": "Apple asks for “information about your app’s privacy practices, including the practices of third-party partners whose code you integrate into your app, in App Store Connect.” Your privacy policy and these answers should describe the same data.",
+      "sourceUrl": "https://developer.apple.com/app-store/app-privacy-details/"
+    },
+    {
+      "title": "Open the policy with Linking",
+      "text": "React Native’s built-in Linking module opens URLs; Linking.openURL(url) opens your policy in the browser from a Settings or About screen.",
+      "sourceUrl": "https://reactnative.dev/docs/linking"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Firebase Crashlytics",
+      "dataCollected": [
+        "Crashlytics installation UUIDs",
+        "Firebase installation IDs",
+        "Crash traces"
+      ],
+      "sourceUrl": "https://firebase.google.com/support/privacy"
+    },
+    {
+      "name": "Firebase Cloud Messaging",
+      "dataCollected": [
+        "Firebase installation IDs (to route push messages to devices)"
+      ],
+      "sourceUrl": "https://firebase.google.com/support/privacy"
+    },
+    {
+      "name": "Google Mobile Ads SDK (AdMob)",
+      "dataCollected": [
+        "IP address",
+        "User product interactions",
+        "Diagnostic information",
+        "Device and account identifiers"
+      ],
+      "sourceUrl": "https://developers.google.com/admob/android/privacy/play-data-disclosure"
+    }
+  ],
+  "whereToPaste": [
+    "App Store Connect → App Privacy → Privacy Policy URL.",
+    "Play Console → App content → Privacy policy.",
+    "In the app: a Settings or About row that calls Linking.openURL with the same URL."
+  ],
+  "sampleClause": {
+    "heading": "Push notifications",
+    "text": "If you allow notifications, our app registers your device with Firebase Cloud Messaging, which assigns an installation ID used only to deliver messages to your device. You can turn notifications off at any time in your device settings."
+  },
+  "faqs": [
+    {
+      "q": "Do React Native apps need separate policies for iOS and Android?",
+      "a": "No. One policy works if it accurately covers both builds and every native SDK each one includes."
+    },
+    {
+      "q": "Where should the privacy policy link live inside a React Native app?",
+      "a": "Somewhere easy to find, such as Settings or About, and on sign-up screens if you collect account data. Open it with Linking.openURL."
+    },
+    {
+      "q": "Is there a React Native template?",
+      "a": "No. PrivacyPage generates a general app policy; list your native modules and SDKs in the wizard."
+    }
+  ],
+  "related": [
+    {
+      "href": "/blog/privacy-policy-for-react-native-app",
+      "label": "React Native privacy policy guide"
+    },
+    {
+      "href": "/for/expo-app",
+      "label": "Privacy policy for Expo apps"
+    },
+    {
+      "href": "/for/ios-app",
+      "label": "Privacy policy for iOS / App Store"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

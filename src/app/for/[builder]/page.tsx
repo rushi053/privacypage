@@ -1,15 +1,28 @@
+import { PRICE } from '@/lib/currency'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { builderPages, getBuilderPage, buildFaqSchema } from '@/lib/seo-pages'
+import { platformPages, getPlatformPage } from '@/lib/platforms'
+import { PlatformPageView } from '@/components/PlatformPageView'
 import { SeoPageShell, SeoCtaCard, SeoFaqSection, SeoRelatedLinks } from '@/components/SeoPageShell'
 
 export function generateStaticParams() {
-  return builderPages.map((p) => ({ builder: p.slug }))
+  return [...builderPages, ...platformPages].map((p) => ({ builder: p.slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ builder: string }> }): Promise<Metadata> {
   const { builder } = await params
+  const platform = getPlatformPage(builder)
+  if (platform) {
+    const url = `https://privacypage.io/for/${platform.slug}`
+    return {
+      title: platform.metaTitle,
+      description: platform.metaDescription,
+      alternates: { canonical: url },
+      openGraph: { title: platform.metaTitle, description: platform.metaDescription, url, siteName: 'PrivacyPage', type: 'article' },
+    }
+  }
   const page = getBuilderPage(builder)
   if (!page) return {}
   const url = `https://privacypage.io/for/${page.slug}`
@@ -35,6 +48,8 @@ export async function generateMetadata({ params }: { params: Promise<{ builder: 
 
 export default async function BuilderLandingPage({ params }: { params: Promise<{ builder: string }> }) {
   const { builder } = await params
+  const platform = getPlatformPage(builder)
+  if (platform) return <PlatformPageView page={platform} />
   const page = getBuilderPage(builder)
   if (!page) notFound()
 
@@ -94,7 +109,7 @@ export default async function BuilderLandingPage({ params }: { params: Promise<{
               'Pick a document type — privacy policy, terms of service, EULA, cookie policy, or disclaimer.',
               `Answer about ten plain-English questions: your app's name, what data it collects, and which third-party services it uses.`,
               'Preview the complete generated document — free, no account, nothing blurred that matters for judging it.',
-              'Pay $9.99 once to unlock and export as HTML, Markdown, or plain text. Regenerate free, forever, when your app changes.',
+              `Pay ${PRICE.single} once to unlock and export as HTML, Markdown, or plain text. Regenerate free, forever, when your app changes.`,
             ].map((step, i) => (
               <li key={i} className="flex items-start gap-3 text-gray-700 leading-relaxed">
                 <span className="w-6 h-6 rounded-full bg-indigo-50 text-indigo-600 text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">{i + 1}</span>

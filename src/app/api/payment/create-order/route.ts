@@ -1,22 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Only INR and USD are supported end-to-end; anything else falls back to USD.
-const VALID_PRICES: Record<string, { single: number; bundle: number }> = {
-  INR: { single: 84900, bundle: 209900 },
-  USD: { single: 999, bundle: 2499 },
-};
+import { getChargeForRequest } from "@/lib/currency";
 
 export async function POST(req: NextRequest) {
   try {
-    const { docType, currency, amount, email } = await req.json();
+    const { docType, email } = await req.json();
 
-    const prices = VALID_PRICES[currency] || VALID_PRICES.USD;
-    const isBundle = docType === "bundle" || docType === "pro-single";
-    const expectedAmount = isBundle && docType === "bundle" ? prices.bundle : prices.single;
-
-    if (amount !== expectedAmount) {
-      return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
-    }
+    // Currency + amount come ONLY from the server (geo header + PRICING) --
+    // the same source /api/geo uses for the displayed price. Client-sent
+    // currency/amount are ignored.
+    const { currency, amount: expectedAmount } = getChargeForRequest(req.headers, docType);
 
     const keyId = process.env.RAZORPAY_KEY_ID;
     const keySecret = process.env.RAZORPAY_KEY_SECRET;
@@ -35,7 +28,7 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         amount: expectedAmount,
-        currency: currency || "USD",
+        currency,
         receipt: `${docType}_${Date.now()}`,
         // Buyer email travels in order notes so the webhook can recover it
         // even when the client never completes the verify call.

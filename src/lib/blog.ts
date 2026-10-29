@@ -1,3 +1,4 @@
+import { PRICE } from '@/lib/currency'
 export interface BlogPost {
   slug: string
   title: string
@@ -1051,7 +1052,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h3>Step 4: Generate & Copy</h3>
-<p>Click generate and your policy is ready. You'll see a free preview. To unlock the full document, it's a one-time payment of $9.99 (no subscription). Copy it in HTML, Markdown, or plain text format.</p>
+<p>Click generate and your policy is ready. You'll see a free preview. To unlock the full document, it's a one-time payment of ${PRICE.single} (no subscription). Copy it in HTML, Markdown, or plain text format.</p>
 
 <h3>Step 5: Add to Your Shopify Store</h3>
 <p>In your Shopify admin:</p>
@@ -1104,7 +1105,7 @@ export const blogPosts: BlogPost[] = [
 <p>Shopify provides a basic template in Settings → Legal, but it's generic and may not cover your specific data practices or all the apps you use. It's a starting point, not a complete solution.</p>
 
 <h3>How much does a privacy policy cost?</h3>
-<p>Legal firms charge $500–$2,000. Services like Termly charge $10–$25/month. <strong>PrivacyPage charges $9.99 once</strong> — no subscription. You can regenerate updated policies anytime with your license key.</p>
+<p>Legal firms charge $500–$2,000. Services like Termly charge $10–$25/month. <strong>PrivacyPage charges ${PRICE.single} once</strong> — no subscription. You can regenerate updated policies anytime with your license key.</p>
 
 <h3>What happens if I don't have a privacy policy?</h3>
 <p>You're violating Shopify's Terms of Service, and you're exposed to legal liability under GDPR, CCPA, and other privacy laws. Regulators can fine you up to €20 million (GDPR) or $7,500 per violation (CCPA).</p>
@@ -1127,7 +1128,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '7 min read',
     keywords: ['termly alternative', 'termly alternative free', 'privacy policy generator no subscription', 'termly vs privacypage', 'termly competitor', 'freeprivacypolicy alternative'],
     content: `
-<p>Termly charges $10–$25 per month for privacy policies. That's $120–$300 per year for a document you write once and update occasionally. There's a better way: <strong>PrivacyPage</strong> — generate privacy policies, terms of service, and legal docs for a one-time payment of $9.99. No subscription, no recurring fees.</p>
+<p>Termly charges $10–$25 per month for privacy policies. That's $120–$300 per year for a document you write once and update occasionally. There's a better way: <strong>PrivacyPage</strong> — generate privacy policies, terms of service, and legal docs for a one-time payment of ${PRICE.single}. No subscription, no recurring fees.</p>
 
 <h2>Why Developers Are Switching from Termly to PrivacyPage</h2>
 
@@ -1145,22 +1146,22 @@ export const blogPosts: BlogPost[] = [
     <tr>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Privacy Policy</strong></td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;">$10/month ($120/year)</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>$9.99 once</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.single} once</strong></td>
     </tr>
     <tr style="background: #f9fafb;">
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Terms of Service</strong></td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;">$10/month ($120/year)</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>$9.99 once</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.single} once</strong></td>
     </tr>
     <tr>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>EULA</strong></td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;">$10/month ($120/year)</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>$9.99 once</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.single} once</strong></td>
     </tr>
     <tr style="background: #f9fafb;">
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Bundle (All 5 Docs)</strong></td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;">$25/month ($300/year)</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>$24.99 once</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.bundle} once</strong></td>
     </tr>
     <tr>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Signup Required</strong></td>
@@ -1229,7 +1230,7 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Choose your document type</strong> — Privacy Policy, Terms, EULA, Cookie Policy, or Disclaimer</li>
 <li><strong>Answer a few questions</strong> — Name, website, what data you collect, which services you use</li>
 <li><strong>Generate & preview for free</strong> — See the full structure and content</li>
-<li><strong>Unlock the full document</strong> — One-time payment of $9.99 (or $24.99 for all 5 documents)</li>
+<li><strong>Unlock the full document</strong> — One-time payment of ${PRICE.single} (or ${PRICE.bundle} for all 5 documents)</li>
 <li><strong>Copy in HTML, Markdown, or text</strong> — Host it anywhere</li>
 </ol>
 
@@ -1250,7 +1251,7 @@ export const blogPosts: BlogPost[] = [
 <p>Managing legal docs for 10+ clients? With Termly, that's $100–$250/month. With PrivacyPage, it's a one-time bundle purchase per client.</p>
 
 <h3>App Developers</h3>
-<p>Launching on the App Store or Play Store? You need a privacy policy and terms of service. PrivacyPage generates both for $24.99 total — Termly charges that per month.</p>
+<p>Launching on the App Store or Play Store? You need a privacy policy and terms of service. PrivacyPage generates both for ${PRICE.bundle} total — Termly charges that per month.</p>
 
 <h2>What About Termly's Cookie Scanning?</h2>
 
@@ -1321,7 +1322,7 @@ export const blogPosts: BlogPost[] = [
 <p>No. Your license key gives you lifetime access. When laws change, we update our templates, and you can regenerate your policy at no extra cost.</p>
 
 <h3>Can I use PrivacyPage for client projects?</h3>
-<p>Yes. Each purchase is per project/app/website. If you're building sites for clients, generate a policy for each client (one-time $9.99 or $24.99 per client).</p>
+<p>Yes. Each purchase is per project/app/website. If you're building sites for clients, generate a policy for each client (one-time ${PRICE.single} or ${PRICE.bundle} per client).</p>
 
 <h3>Do you offer refunds?</h3>
 <p>Yes. If you're not happy with your generated policy, email us within 30 days for a full refund.</p>
@@ -1335,7 +1336,7 @@ export const blogPosts: BlogPost[] = [
 
 <p><a href="https://privacypage.io/#generate">Generate your free preview →</a></p>
 
-<p>If you like what you see, unlock the full document for $9.99. That's it — no subscription, no recurring fees, ever.</p>
+<p>If you like what you see, unlock the full document for ${PRICE.single}. That's it — no subscription, no recurring fees, ever.</p>
 `
   },
   {
@@ -1516,7 +1517,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h3>Step 4: Generate & Preview</h3>
-<p>Click generate. You'll see a full preview for free. To unlock the full, downloadable policy, it's a one-time payment of ₹849 in India or $9.99 elsewhere.</p>
+<p>Click generate. You'll see a full preview for free. To unlock the full, downloadable policy, it's a one-time payment of <span data-fixed-price>${PRICE.singleInr}</span> in India or <span data-fixed-price>${PRICE.single}</span> elsewhere.</p>
 
 <h3>Step 5: Host It</h3>
 <p>Copy the policy in HTML, Markdown, or plain text and host it:</p>
@@ -1697,7 +1698,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h3>Step 3: Generate & Download</h3>
-<p>Click generate. You'll see a free preview. To unlock the full policy, it's a one-time $9.99 payment (no subscription). Copy the policy in HTML, Markdown, or plain text.</p>
+<p>Click generate. You'll see a free preview. To unlock the full policy, it's a one-time ${PRICE.single} payment (no subscription). Copy the policy in HTML, Markdown, or plain text.</p>
 
 <h3>Step 4: Host the Policy</h3>
 <p>You need a public URL. Options:</p>
@@ -1791,11 +1792,29 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h3>Can I host my privacy policy as a PDF?</h3>
-<p>Not recommended. Apple and Google prefer HTML pages. PDFs are harder to read on mobile and can look unprofessional.</p>
+<p>Not for Google Play: its User Data policy asks for “an active, publicly accessible and non-geofenced URL (no PDFs)” (<a href="https://support.google.com/googleplay/android-developer/answer/10144311" rel="noopener">source</a>). For Apple, a normal HTML page is the safe choice too.</p>
+
+<h2>The rules, checked against the source (29 Oct 2026)</h2>
+
+<h3>Apple: Guideline 5.1.1(i)</h3>
+<p>“All apps must include a link to their privacy policy in the App Store Connect metadata field and within the app in an easily accessible manner.” (<a href="https://developer.apple.com/app-store/review/guidelines/#data-collection-and-storage" rel="noopener">App Review Guidelines</a>)</p>
+<ul>
+<li><strong>Your policy must match your App Privacy answers.</strong> Apple requires App Privacy details for new apps and updates, including “the practices of third-party partners whose code you integrate into your app” (<a href="https://developer.apple.com/app-store/app-privacy-details/" rel="noopener">App privacy details</a>). If the label lists Analytics or Identifiers and your policy says you collect nothing, fix whichever is wrong.</li>
+<li><strong>Privacy manifest and required-reason APIs.</strong> Since May 1, 2024, App Store Connect does not accept apps that use a required-reason API without describing the reason in their privacy manifest (<a href="https://developer.apple.com/documentation/bundleresources/describing-use-of-required-reason-api" rel="noopener">Apple docs</a>). That is an upload error, not a policy-URL problem — but update your policy when an SDK manifest reveals data you had not listed.</li>
+</ul>
+
+<h3>Google Play: User Data policy and Data safety</h3>
+<ul>
+<li>“Have a valid privacy policy in both the app’s store listing and within the app itself.” The URL must be active, public, non-geofenced, and not a PDF (<a href="https://support.google.com/googleplay/android-developer/answer/10144311" rel="noopener">User Data policy</a>).</li>
+<li>The Data safety form must include data “collected and handled through any third-party libraries or SDKs used in your apps” (<a href="https://support.google.com/googleplay/android-developer/answer/10787469" rel="noopener">Data safety</a>). Keep the policy and the form in sync.</li>
+<li>The URL is set on the App content page: Monitor and improve › Policy and programs › App content (<a href="https://support.google.com/googleplay/android-developer/answer/9859455" rel="noopener">Play Console Help</a>).</li>
+</ul>
+
+<p>Platform guides with SDK data tables: <a href="/for/ios-app">iOS / App Store</a> · <a href="/for/android-app">Android / Google Play</a>. A generated policy is a starting point, not a guarantee that review will pass, and not legal advice.</p>
 
 <h2>Generate Your Compliant Privacy Policy Now</h2>
 
-<p>Don't let a privacy policy delay your launch. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates App Store and Play Store-compliant privacy policies in 60 seconds — free preview, one-time payment, no subscription.</p>
+<p>Don't let a privacy policy delay your launch. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates privacy policies written for App Store and Google Play requirements in about 60 seconds — free preview, one-time payment, no subscription.</p>
 
 <p><a href="https://privacypage.io/#generate">Fix your rejection in under an hour →</a></p>
 `
@@ -2037,7 +2056,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h3>Step 3: Generate & Download</h3>
-<p>Click generate. You'll see a free preview. To unlock the full policy, it's a one-time payment of $9.99 (no subscription).</p>
+<p>Click generate. You'll see a free preview. To unlock the full policy, it's a one-time payment of ${PRICE.single} (no subscription).</p>
 
 <h3>Step 4: Host It</h3>
 <p>Copy the policy in HTML, Markdown, or plain text and host it:</p>
@@ -2355,7 +2374,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Generate Your GDPR + CCPA Compliant Privacy Policy</h2>
 
-<p>Stop stressing about compliance. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a unified privacy policy that covers GDPR, CCPA, and other regulations — free preview, no signup, one-time payment of $9.99.</p>
+<p>Stop stressing about compliance. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a unified privacy policy that covers GDPR, CCPA, and other regulations — free preview, no signup, one-time payment of ${PRICE.single}.</p>
 
 <p><a href="https://privacypage.io/#generate">Generate your privacy policy now →</a></p>
 `

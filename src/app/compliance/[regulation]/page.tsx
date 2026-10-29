@@ -1,3 +1,4 @@
+import { PRICE } from '@/lib/currency'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -100,7 +101,7 @@ export default async function RegulationGuidePage({ params }: { params: Promise<
 
         <SeoCtaCard
           heading={`Generate a ${page.name}-ready privacy policy`}
-          sub="Answer ~10 questions about your app. Preview the full document free — pay $9.99 once only to unlock it."
+          sub={`Answer ~10 questions about your app. Preview the full document free — pay ${PRICE.single} once only to unlock it.`}
         />
 
         <SeoFaqSection faqs={page.faqs} />

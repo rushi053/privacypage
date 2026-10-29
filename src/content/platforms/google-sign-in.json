@@ -1,0 +1,80 @@
+{
+  "slug": "google-sign-in",
+  "name": "Google Sign-In app",
+  "h1": "Privacy policy for Google Sign-In and OAuth apps",
+  "metaTitle": "Google Sign-In Privacy Policy — API Services User Data Policy | PrivacyPage",
+  "metaDescription": "Google’s API Services User Data Policy requires accurate disclosure of the data you request, and restricted scopes come with Limited Use rules. What your OAuth app’s policy should say.",
+  "answer": "If your app uses Google Sign-In or other Google APIs, Google’s API Services User Data Policy requires you to clearly and accurately explain what user data you request and how you use it. For scopes covered by Limited Use, you may only use the data to provide or improve prominent user-facing features, and transfers are restricted.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Google API Services",
+    "title": "API Services User Data Policy — Transparency",
+    "quote": "You must provide clear and accurate information explaining the types of data being requested.",
+    "sourceUrl": "https://developers.google.com/terms/api-services-user-data-policy",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "New uses need a policy update",
+      "text": "Google’s policy addresses data “that was not originally disclosed in your privacy policy (or in-product disclosures)”: update your policy and ask users before such new uses.",
+      "sourceUrl": "https://developers.google.com/terms/api-services-user-data-policy"
+    },
+    {
+      "title": "Limited Use",
+      "text": "For covered scopes: “Limit your use of data to providing or improving user-facing features that are prominent in the requesting application's user interface”.",
+      "sourceUrl": "https://developers.google.com/terms/api-services-user-data-policy"
+    },
+    {
+      "title": "Accurate identity",
+      "text": "“All permission requests must accurately represent the identity of the application that seeks access to user data.” Use the same app name in the consent screen and policy.",
+      "sourceUrl": "https://developers.google.com/terms/api-services-user-data-policy"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Google Sign-In basic scopes",
+      "dataCollected": [
+        "openid: associates the user with their Google personal info",
+        "userinfo.email: primary Google Account email address",
+        "userinfo.profile: personal info, including public profile info"
+      ],
+      "sourceUrl": "https://developers.google.com/identity/protocols/oauth2/scopes"
+    }
+  ],
+  "whereToPaste": [
+    "Google Cloud Console → your project’s OAuth consent screen (branding) → Privacy policy link, on a domain you verify.",
+    "Your app’s sign-in page and Settings."
+  ],
+  "sampleClause": {
+    "heading": "Google account data",
+    "text": "If you sign in with Google, we receive your Google account ID, name, email address and profile picture. We use them only to create and secure your account. We do not use Google user data for advertising and do not sell or transfer it, except as needed to run the service or as required by law."
+  },
+  "faqs": [
+    {
+      "q": "Why was my Google OAuth verification rejected for the privacy policy?",
+      "a": "Common causes are a policy on an unverified domain, an app name that does not match the consent screen, or a policy that doesn’t describe the Google data you request. Check the User Data Policy."
+    },
+    {
+      "q": "Does basic Google Sign-In need a privacy policy?",
+      "a": "Google’s consent screen asks for a privacy policy link, and the User Data Policy requires accurate disclosure of the data you request."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/sign-in-with-apple",
+      "label": "Privacy policy for Sign in with Apple"
+    },
+    {
+      "href": "/for/chrome-extension",
+      "label": "Privacy policy for Chrome extensions"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    },
+    {
+      "href": "/guides/app-rejected-privacy-policy",
+      "label": "Fix a privacy policy rejection"
+    }
+  ]
+}
