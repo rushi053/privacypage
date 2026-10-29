@@ -73,8 +73,8 @@ body {
 }
 
 .blur-overlay {
-  filter: blur(4px);
-  opacity: 0.6;
+  filter: blur(1.6px);
+  opacity: 0.85;
   user-select: none;
   pointer-events: none;
 }

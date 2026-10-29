@@ -61,15 +61,23 @@ export default function Wizard({ config, onGenerate, loading }: WizardProps) {
         </div>
         <ol className="flex gap-1" aria-label="Progress">
           {steps.map((s, i) => (
-            <li key={s.id} className={`h-1 flex-1 rounded-full transition-colors ${i < step ? "bg-seal" : i === step ? "bg-seal/60" : "bg-ink/10"}`}>
-              <span className="sr-only">{s.label}{i < step ? " (done)" : i === step ? " (current)" : ""}</span>
+            <li key={s.id} className="flex-1 min-w-0">
+              <span className={`block h-1 rounded-full transition-colors ${i < step ? "bg-seal" : i === step ? "bg-seal/60" : "bg-ink/10"}`} />
+              <span className={`mt-2 hidden sm:flex items-center gap-1 text-[12px] truncate ${i === step ? "text-ink" : "text-ink/45"}`}>
+                {i < step && <svg aria-hidden viewBox="0 0 24 24" className="w-3 h-3 text-seal shrink-0" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>}
+                {s.name ?? `Step ${i + 1}`}
+              </span>
+              <span className="sr-only">{i < step ? " (done)" : i === step ? " (current)" : ""}</span>
             </li>
           ))}
         </ol>
+        <p className="sm:hidden mt-2 text-[12px] text-ink">{current.name}</p>
       </div>
 
       <div className="px-6 md:px-8 py-8">
-        <h3 className="font-display text-[24px] md:text-[28px] leading-[1.25] tracking-[-0.01em] mb-6">{current.label}</h3>
+        <h3 className="font-display text-[24px] md:text-[28px] leading-[1.25] tracking-[-0.01em] mb-2">{current.label}</h3>
+        {current.why && <p className="text-[14px] leading-[1.5] text-ink/60 mb-6"><span className="text-seal font-medium">Why we ask: </span>{current.why}</p>}
+        {!current.why && <div className="mb-4" />}
 
         {current.type === "text" && (
           <input

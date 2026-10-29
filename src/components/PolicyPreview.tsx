@@ -109,7 +109,16 @@ export default function PolicyPreview({ policy, formData, onReset, docType = "pr
     ? Math.max(totalLines - lines.length, 0)
     : 0;
   const hasLockedContent = remainingLines.length > 0 || hiddenLineCount > 0;
-  const blurLines = remainingLines.length > 0 ? remainingLines.slice(0, 10) : PLACEHOLDER_BLUR_LINES;
+  // Placeholder sections that already appear in the readable preview are
+  // skipped so the masked part doesn't repeat a heading the user just read.
+  const seenHeadings = new Set(lines.filter((l) => l.startsWith("## ")).map((l) => l.slice(3).trim().toLowerCase()));
+  const placeholder: string[] = [];
+  let skip = false;
+  for (const l of PLACEHOLDER_BLUR_LINES) {
+    if (l.startsWith("## ")) skip = seenHeadings.has(l.slice(3).trim().toLowerCase());
+    if (!skip) placeholder.push(l);
+  }
+  const blurLines = remainingLines.length > 0 ? remainingLines.slice(0, 10) : placeholder;
 
   const handleUnlock = () => {
     if (!pricing) return;
@@ -250,7 +259,7 @@ ${content.split("\n").map((l) => {
           {!isPaid && hasLockedContent && (
             <div className="relative mt-2" aria-hidden>
               <div className="blur-overlay">{numbered(blurLines, "b")}</div>
-              <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/70 to-white" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/0 from-40% via-white/40 to-white" />
             </div>
           )}
           {isPaid && numbered(remainingLines, "f")}

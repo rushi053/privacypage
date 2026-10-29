@@ -59,6 +59,31 @@ const SAMPLE = [
   { n: "3", h: "Your rights", t: "You can ask us to access, correct, or delete your data at any time by emailing privacy@yourapp.com." },
 ];
 
+function SampleExcerpt() {
+  return (
+          <figure className="relative rounded-[8px] border border-ink/10 bg-white shadow-[0_24px_48px_-24px_rgba(22,24,29,0.2)]">
+            <div aria-hidden className="pointer-events-none absolute -inset-8 -z-10 bg-[radial-gradient(50%_50%_at_50%_40%,rgba(15,92,99,0.10),transparent_70%)]" />
+            <div className="flex items-center justify-between px-6 h-12 border-b border-ink/10">
+              <span className="font-mono text-[12px] text-ink/50">privacy-policy.md</span>
+              <span className="text-[12px] uppercase tracking-[0.08em] text-ink/40">Sample excerpt</span>
+            </div>
+            <div className="doc-ruled px-6 md:px-8 py-8 font-doc text-[16px] leading-[1.6] text-ink/85">
+              <p className="font-display text-[24px] leading-[1.2] mb-6 text-ink">Privacy Policy</p>
+              {SAMPLE.map((c) => (
+                <div key={c.n} className="grid grid-cols-[40px_1fr] mb-6 last:mb-0">
+                  <span className="font-mono text-[13px] leading-[1.9] text-seal">§ {c.n}</span>
+                  <div>
+                    <p className="font-display text-[17px] text-ink mb-1">{c.h}</p>
+                    <p>{c.t}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <figcaption className="px-6 py-4 border-t border-ink/10 text-[12px] text-ink/50">Illustrative. Your document is generated from your own answers.</figcaption>
+          </figure>
+  );
+}
+
 export default function Home() {
   const [policy, setPolicy] = useState<string | null>(null);
   const [documentId, setDocumentId] = useState<string | null>(null);
@@ -280,27 +305,9 @@ export default function Home() {
             </ul>
           </div>
 
-          {/* Sample excerpt */}
-          <figure className="relative rounded-[8px] border border-ink/10 bg-white shadow-[0_24px_48px_-24px_rgba(22,24,29,0.2)]">
-            <div aria-hidden className="pointer-events-none absolute -inset-8 -z-10 bg-[radial-gradient(50%_50%_at_50%_40%,rgba(15,92,99,0.10),transparent_70%)]" />
-            <div className="flex items-center justify-between px-6 h-12 border-b border-ink/10">
-              <span className="font-mono text-[12px] text-ink/50">privacy-policy.md</span>
-              <span className="text-[12px] uppercase tracking-[0.08em] text-ink/40">Sample excerpt</span>
-            </div>
-            <div className="doc-ruled px-6 md:px-8 py-8 font-doc text-[16px] leading-[1.6] text-ink/85">
-              <p className="font-display text-[24px] leading-[1.2] mb-6 text-ink">Privacy Policy</p>
-              {SAMPLE.map((c) => (
-                <div key={c.n} className="grid grid-cols-[40px_1fr] mb-6 last:mb-0">
-                  <span className="font-mono text-[13px] leading-[1.9] text-seal">§ {c.n}</span>
-                  <div>
-                    <p className="font-display text-[17px] text-ink mb-1">{c.h}</p>
-                    <p>{c.t}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <figcaption className="px-6 py-4 border-t border-ink/10 text-[12px] text-ink/50">Illustrative. Your document is generated from your own answers.</figcaption>
-          </figure>
+          <div className="hidden lg:block">
+            <SampleExcerpt />
+          </div>
         </div>
       </section>
 
@@ -356,6 +363,13 @@ export default function Home() {
           )}
         </div>
       </section>
+
+      {/* Mobile/tablet: sample excerpt after the generator */}
+      {!policy && !selectedDocType && (
+        <section className="lg:hidden px-6 md:px-8 pb-16 md:pb-24 bg-[#FBFBFA] overflow-x-clip">
+          <div className="max-w-[560px] mx-auto"><SampleExcerpt /></div>
+        </section>
+      )}
 
       {/* ─── HOW IT WORKS (numbered clauses) ─── */}
       <section id="how" className="px-6 md:px-8 py-16 md:py-24 border-t border-ink/10">
