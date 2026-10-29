@@ -1,0 +1,75 @@
+{
+  "slug": "ios-app",
+  "name": "iOS",
+  "h1": "Privacy policy for iOS apps",
+  "metaTitle": "iOS App Privacy Policy Generator — App Store Guideline 5.1.1 | PrivacyPage",
+  "metaDescription": "What Apple requires: a privacy policy URL in App Store Connect and in the app, App Privacy answers that match it, and a privacy manifest for required-reason APIs. Sources cited.",
+  "answer": "Every iOS app on the App Store needs a public privacy policy URL, entered in App Store Connect and linked inside the app (App Review Guideline 5.1.1). The policy must match your App Privacy answers in App Store Connect and the data your SDKs collect, including anything declared in a PrivacyInfo.xcprivacy privacy manifest.",
+  "templateAvailability": "ios",
+  "storeRule": {
+    "store": "Apple App Store",
+    "title": "App Review Guideline 5.1.1(i) — Privacy Policies",
+    "quote": "All apps must include a link to their privacy policy in the App Store Connect metadata field and within the app in an easily accessible manner.",
+    "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/#data-collection-and-storage",
+    "verifiedOn": "2026-10-29"
+  },
+  "additionalRules": [
+    {
+      "title": "App Privacy answers (the “nutrition label”) must cover third-party code",
+      "text": "In App Store Connect you answer what data your app collects, whether it is linked to the user, and whether it is used for tracking. Apple says you must include “the practices of third-party partners whose code you integrate into your app”, and the answers are required to submit new apps and updates. Your privacy policy should describe the same data — a policy that says “we collect nothing” next to a label listing Analytics and Identifiers is a mismatch reviewers and users can see.",
+      "sourceUrl": "https://developer.apple.com/app-store/app-privacy-details/"
+    },
+    {
+      "title": "Privacy policy URL is a required field",
+      "text": "App Store Connect: “You’re required to provide a privacy policy URL for your iOS app platform.” A privacy choices URL is optional.",
+      "sourceUrl": "https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy"
+    },
+    {
+      "title": "Privacy manifest (PrivacyInfo.xcprivacy)",
+      "text": "Apps and third-party SDKs can ship a privacy manifest that records the types of data they collect and the required-reason APIs they use. Certain SDKs on Apple’s list must include a signed manifest. Treat the manifests in your dependencies as an input to both your App Privacy answers and your policy.",
+      "sourceUrl": "https://developer.apple.com/documentation/bundleresources/privacy-manifest-files"
+    },
+    {
+      "title": "Required-reason APIs",
+      "text": "Some APIs can be misused for fingerprinting, so you must declare an approved reason for each category you (or an SDK) use. Apple: “Starting May 1, 2024, apps that don’t describe their use of required reason API in their privacy manifest file aren’t accepted by App Store Connect.”",
+      "sourceUrl": "https://developer.apple.com/documentation/bundleresources/describing-use-of-required-reason-api"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Firebase Crashlytics",
+      "dataCollected": ["Crashlytics installation UUIDs", "Firebase installation IDs", "Crash traces"],
+      "sourceUrl": "https://firebase.google.com/support/privacy"
+    },
+    {
+      "name": "Firebase Cloud Messaging",
+      "dataCollected": ["Firebase installation IDs (to route push messages to devices)"],
+      "sourceUrl": "https://firebase.google.com/support/privacy"
+    },
+    {
+      "name": "Google Mobile Ads SDK (AdMob)",
+      "dataCollected": ["IP address", "User product interactions", "Diagnostic information", "Device and account identifiers"],
+      "sourceUrl": "https://developers.google.com/admob/android/privacy/play-data-disclosure",
+      "note": "Google publishes this list for its Android SDK's Play disclosure; check Google's iOS documentation and the SDK's privacy manifest for the iOS build."
+    }
+  ],
+  "whereToPaste": [
+    "App Store Connect → your app → App Privacy → Privacy Policy URL (required for iOS).",
+    "Inside the app: a Settings or About screen link that opens the same URL.",
+    "Re-check your App Privacy answers against the policy every time you add an SDK."
+  ],
+  "sampleClause": {
+    "heading": "Crash and diagnostic data",
+    "text": "When the app crashes, we use Firebase Crashlytics (Google) to receive a crash trace and an installation identifier so we can find and fix the bug. This data is not used to track you across other companies’ apps or websites. It is listed under “Diagnostics” in our App Store privacy details."
+  },
+  "faqs": [
+    { "q": "Do I need a privacy policy if my iOS app collects no data?", "a": "Yes. Guideline 5.1.1(i) says all apps must link a privacy policy, and App Store Connect marks the iOS privacy policy URL as required. A short policy that truthfully says what the app does not collect is fine." },
+    { "q": "Does the policy have to match my App Privacy answers?", "a": "It should. Both describe the same data practices, including third-party SDKs. If they disagree, one of them is wrong — fix the one that does not reflect the app." },
+    { "q": "Is the privacy manifest the same as the privacy policy?", "a": "No. PrivacyInfo.xcprivacy is a file inside your app bundle for Apple’s tooling. The privacy policy is a public web page for people. Both should describe the same data." }
+  ],
+  "related": [
+    { "href": "/for/android-app", "label": "Privacy policy for Android / Google Play" },
+    { "href": "/blog/app-store-rejection-privacy-policy", "label": "Rejected for your privacy policy? Fixes" },
+    { "href": "/blog/how-to-add-privacy-policy-app-store", "label": "How to add a privacy policy in App Store Connect" }
+  ]
+}

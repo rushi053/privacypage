@@ -1,0 +1,61 @@
+{
+  "slug": "discord-bot",
+  "name": "Discord bot",
+  "h1": "Privacy policy for Discord bots",
+  "metaTitle": "Discord Bot Privacy Policy — Developer Terms Requirements | PrivacyPage",
+  "metaDescription": "Discord’s Developer Terms require a privacy policy for your bot, linked in the Developer Portal, that explains what data you collect and how users request deletion. Sources cited.",
+  "answer": "Discord’s Developer Terms require every application, including bots, to provide a privacy policy that accurately describes what data it collects, how it is used and shared, and how users can request deletion. You must keep a public, up-to-date link to it in the Developer Portal and make it easy to reach from the bot.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Discord Developer Platform",
+    "title": "Developer Terms of Service — Implement Good Privacy Practices",
+    "quote": "You will provide and adhere to a privacy policy for your Application that is compliant with applicable privacy laws and clearly, accurately, and fully describes to users of your Application what data you collect, how you use and share such data with us and third parties, and how users can request deletion of such data.",
+    "sourceUrl": "https://support-dev.discord.com/hc/en-us/articles/8562894815383-Discord-Developer-Terms-of-Service",
+    "verifiedOn": "2026-10-29"
+  },
+  "additionalRules": [
+    {
+      "title": "Link in the Developer Portal",
+      "text": "“You will maintain publicly available, up-to-date links to your privacy policy in the Developer Portal and make it easily accessible to users from your Application.”",
+      "sourceUrl": "https://support-dev.discord.com/hc/en-us/articles/8562894815383-Discord-Developer-Terms-of-Service"
+    },
+    {
+      "title": "No selling or ad use of API Data; no AI training on messages",
+      "text": "The Developer Policy bans disclosing API Data to data brokers or ad networks, selling it, and using message content to train AI models without Discord’s express permission.",
+      "sourceUrl": "https://support-dev.discord.com/hc/en-us/articles/8563934450327-Discord-Developer-Policy"
+    },
+    {
+      "title": "Message Content is a privileged intent",
+      "text": "Privileged intents must be enabled in the Developer Portal, and for verified apps (required at 100+ servers) approved after verification. If your bot reads message content, say so in the policy.",
+      "sourceUrl": "https://discord.com/developers/docs/events/gateway"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Discord OAuth2 scopes",
+      "dataCollected": ["identify: the user object from /users/@me, without email", "email: adds the user’s email address", "guilds: the servers the user is in"],
+      "sourceUrl": "https://discord.com/developers/docs/topics/oauth2"
+    },
+    {
+      "name": "Gateway intents",
+      "dataCollected": ["MESSAGE_CONTENT (privileged): message text, embeds, attachments and components in events", "GUILD_MEMBERS (privileged): server member events"],
+      "sourceUrl": "https://discord.com/developers/docs/events/gateway"
+    }
+  ],
+  "whereToPaste": [
+    "Discord Developer Portal → your application → the privacy policy URL field.",
+    "Add the link to your bot’s help command or profile so users can find it."
+  ],
+  "sampleClause": {
+    "heading": "Messages",
+    "text": "The bot reads message content only in channels where it is used, to respond to commands. We store the server ID, channel ID and your user ID for settings. We do not store message text after responding, do not share Discord data with advertisers, and do not use it to train AI models. Run /delete-my-data to erase your records."
+  },
+  "faqs": [
+    { "q": "Does a Discord bot need a privacy policy?", "a": "Yes. Discord’s Developer Terms require every Application — bots included — to provide and follow a privacy policy and link it in the Developer Portal." },
+    { "q": "Is there a Discord-specific template?", "a": "No. PrivacyPage generates a general app policy; describe your bot’s intents, scopes and storage in the wizard." }
+  ],
+  "related": [
+    { "href": "/for/chrome-extension", "label": "Privacy policy for Chrome extensions" },
+    { "href": "/compliance/gdpr", "label": "GDPR privacy policy" }
+  ]
+}

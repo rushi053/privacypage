@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import { countryFromHeaders, getPricingForCountry } from "@/lib/currency";
 
-/** Country of the requester per Vercel's edge geo header (null on localhost
- * or non-Vercel hosts). The client uses it to pick INR vs USD pricing. */
+/** Country (Vercel edge header) + the server-computed pricing that
+ * /api/payment/create-order will charge. Never cached: it varies per visitor. */
 export async function GET(req: NextRequest) {
-  return NextResponse.json({ country: req.headers.get("x-vercel-ip-country") || null });
+  const country = countryFromHeaders(req.headers);
+  return NextResponse.json(
+    { country, pricing: getPricingForCountry(country) },
+    { headers: { "Cache-Control": "private, no-store" } },
+  );
 }

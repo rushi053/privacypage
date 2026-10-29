@@ -352,7 +352,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-center text-xs text-gray-400 mt-4">
-                All documents are free to preview. Pay {pricing?.singleDisplay || "₹849"} to unlock &amp; download.
+                All documents are free to preview. Pay {pricing?.singleDisplay ?? "…"} to unlock &amp; download.
               </p>
             </>
           ) : selectedDocType && !policy ? (
@@ -385,7 +385,7 @@ export default function Home() {
           </span>
           <span className="flex items-center gap-1.5">
             <svg className="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-            App Store &amp; Play Store approved
+            Written for App Store &amp; Google Play policy requirements
           </span>
           <span className="flex items-center gap-1.5">
             <svg className="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
@@ -405,7 +405,7 @@ export default function Home() {
             <div className="text-center mb-12">
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Why PrivacyPage</h2>
               <p className="text-gray-500 max-w-lg mx-auto">
-                Competitors charge monthly subscription fees. PrivacyPage is {pricing?.singleDisplay || "₹849"} once — no subscription, no renewal, ever.
+                Competitors charge monthly subscription fees. PrivacyPage is {pricing?.singleDisplay ?? "…"} once — no subscription, no renewal, ever.
               </p>
             </div>
           </FadeInView>
@@ -494,7 +494,7 @@ export default function Home() {
                   Most popular
                 </div>
                 <p className="text-sm font-medium text-indigo-200 mb-1">Pro</p>
-                <div className="text-3xl font-bold text-white mb-1">{pricing?.singleDisplay || "₹849"}</div>
+                <div className="text-3xl font-bold text-white mb-1">{pricing?.singleDisplay ?? "…"}</div>
                 <p className="text-sm text-indigo-300 mb-5">One time · Any single document</p>
                 <ul className="space-y-2.5 text-sm text-indigo-100 mb-6">
                   {["Full document, no blur", "GDPR &amp; CCPA sections included", "HTML, Markdown &amp; plain text", "Lifetime regenerations"].map((f) => (
@@ -508,7 +508,7 @@ export default function Home() {
                   className="block w-full bg-white hover:bg-indigo-50 text-indigo-600 font-semibold py-2.5 rounded-xl text-sm transition-colors mb-3"
                   onClick={() => { if (pricing) setEmailCapture("pro-single"); }}
                 >
-                  Get Pro — {pricing?.singleDisplay || "₹849"}
+                  Get Pro — {pricing?.singleDisplay ?? "…"}
                 </button>
                 <div className="flex items-center justify-center gap-1.5 text-xs text-indigo-300">
                   <LockClosedIcon className="w-3 h-3" />
@@ -521,7 +521,7 @@ export default function Home() {
             <FadeInView delay={240}>
               <div className="bg-white border border-gray-200 rounded-2xl p-6 relative">
                 <p className="text-sm font-medium text-gray-500 mb-1">Bundle</p>
-                <div className="text-3xl font-bold text-gray-900 mb-1">{pricing?.bundleDisplay || "₹2099"}</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">{pricing?.bundleDisplay ?? "…"}</div>
                 <p className="text-sm text-gray-400 mb-5">One time · All 5 documents · {getSavingsDisplay(pricing)}</p>
                 <ul className="space-y-2.5 text-sm text-gray-600 mb-6">
                   {["Privacy Policy", "Terms of Service", "EULA", "Cookie Policy", "Disclaimer"].map((f) => (
@@ -535,7 +535,7 @@ export default function Home() {
                   className="block w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-2.5 rounded-xl text-sm transition-colors mb-3"
                   onClick={() => { if (pricing) setEmailCapture("bundle"); }}
                 >
-                  Buy Bundle — {pricing?.bundleDisplay || "₹2099"}
+                  Buy Bundle — {pricing?.bundleDisplay ?? "…"}
                 </button>
                 <div className="flex items-center justify-center gap-1.5 text-xs text-gray-400">
                   <LockClosedIcon className="w-3 h-3" />
@@ -547,7 +547,7 @@ export default function Home() {
 
           <FadeInView delay={300}>
             <p className="text-center text-xs text-gray-400 mt-6">
-              All prices are one-time. No auto-renewals. Competitors charge monthly — you pay {pricing?.singleDisplay || "₹849"} once and own it forever.
+              All prices are one-time. No auto-renewals. Competitors charge monthly — you pay {pricing?.singleDisplay ?? "…"} once and own it forever.
             </p>
           </FadeInView>
         </div>

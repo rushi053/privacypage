@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { blogPosts } from '@/lib/blog'
+import { platformPages } from '@/lib/platforms'
 import { builderPages, competitorPages, regulationPages } from '@/lib/seo-pages'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -18,6 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
+    })),
+    ...platformPages.map((page) => ({
+      url: `${baseUrl}/for/${page.slug}`,
+      lastModified: new Date(page.storeRule.verifiedOn),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
     })),
     ...competitorPages.map((page) => ({
       url: `${baseUrl}/vs/${page.slug}`,

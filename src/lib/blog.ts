@@ -1791,11 +1791,29 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h3>Can I host my privacy policy as a PDF?</h3>
-<p>Not recommended. Apple and Google prefer HTML pages. PDFs are harder to read on mobile and can look unprofessional.</p>
+<p>Not for Google Play: its User Data policy asks for “an active, publicly accessible and non-geofenced URL (no PDFs)” (<a href="https://support.google.com/googleplay/android-developer/answer/10144311" rel="noopener">source</a>). For Apple, a normal HTML page is the safe choice too.</p>
+
+<h2>The rules, checked against the source (29 Oct 2026)</h2>
+
+<h3>Apple: Guideline 5.1.1(i)</h3>
+<p>“All apps must include a link to their privacy policy in the App Store Connect metadata field and within the app in an easily accessible manner.” (<a href="https://developer.apple.com/app-store/review/guidelines/#data-collection-and-storage" rel="noopener">App Review Guidelines</a>)</p>
+<ul>
+<li><strong>Your policy must match your App Privacy answers.</strong> Apple requires App Privacy details for new apps and updates, including “the practices of third-party partners whose code you integrate into your app” (<a href="https://developer.apple.com/app-store/app-privacy-details/" rel="noopener">App privacy details</a>). If the label lists Analytics or Identifiers and your policy says you collect nothing, fix whichever is wrong.</li>
+<li><strong>Privacy manifest and required-reason APIs.</strong> Since May 1, 2024, App Store Connect does not accept apps that use a required-reason API without describing the reason in their privacy manifest (<a href="https://developer.apple.com/documentation/bundleresources/describing-use-of-required-reason-api" rel="noopener">Apple docs</a>). That is an upload error, not a policy-URL problem — but update your policy when an SDK manifest reveals data you had not listed.</li>
+</ul>
+
+<h3>Google Play: User Data policy and Data safety</h3>
+<ul>
+<li>“Have a valid privacy policy in both the app’s store listing and within the app itself.” The URL must be active, public, non-geofenced, and not a PDF (<a href="https://support.google.com/googleplay/android-developer/answer/10144311" rel="noopener">User Data policy</a>).</li>
+<li>The Data safety form must include data “collected and handled through any third-party libraries or SDKs used in your apps” (<a href="https://support.google.com/googleplay/android-developer/answer/10787469" rel="noopener">Data safety</a>). Keep the policy and the form in sync.</li>
+<li>The URL is set on the App content page: Monitor and improve › Policy and programs › App content (<a href="https://support.google.com/googleplay/android-developer/answer/9859455" rel="noopener">Play Console Help</a>).</li>
+</ul>
+
+<p>Platform guides with SDK data tables: <a href="/for/ios-app">iOS / App Store</a> · <a href="/for/android-app">Android / Google Play</a>. A generated policy is a starting point, not a guarantee that review will pass, and not legal advice.</p>
 
 <h2>Generate Your Compliant Privacy Policy Now</h2>
 
-<p>Don't let a privacy policy delay your launch. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates App Store and Play Store-compliant privacy policies in 60 seconds — free preview, one-time payment, no subscription.</p>
+<p>Don't let a privacy policy delay your launch. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates privacy policies written for App Store and Google Play requirements in about 60 seconds — free preview, one-time payment, no subscription.</p>
 
 <p><a href="https://privacypage.io/#generate">Fix your rejection in under an hour →</a></p>
 `

@@ -1,0 +1,68 @@
+{
+  "slug": "android-app",
+  "name": "Android / Google Play",
+  "h1": "Privacy policy for Android apps on Google Play",
+  "metaTitle": "Google Play Privacy Policy Generator — User Data Policy & Data Safety | PrivacyPage",
+  "metaDescription": "Google Play requires a privacy policy on an active, public, non-geofenced URL (no PDFs), linked in Play Console and in the app, matching your Data safety form. Sources cited.",
+  "answer": "Google Play requires every app to link a privacy policy in Play Console and inside the app. The URL must be active, public, not geofenced, and not a PDF. Your policy must also be consistent with the Data safety section, which has to include data collected by third-party SDKs in your app.",
+  "templateAvailability": "android",
+  "storeRule": {
+    "store": "Google Play",
+    "title": "User Data policy — privacy policy",
+    "quote": "Please make sure your privacy policy is available on an active, publicly accessible and non-geofenced URL (no PDFs) and is non-editable.",
+    "sourceUrl": "https://support.google.com/googleplay/android-developer/answer/10144311",
+    "verifiedOn": "2026-10-29"
+  },
+  "additionalRules": [
+    {
+      "title": "Linked in the listing and inside the app",
+      "text": "Google’s key considerations: “Have a valid privacy policy in both the app’s store listing and within the app itself” and “Don’t provide misleading or inaccurate information about your data practices.”",
+      "sourceUrl": "https://support.google.com/googleplay/android-developer/answer/10144311"
+    },
+    {
+      "title": "Data safety section includes SDK data",
+      "text": "“All developers must declare how they collect and handle user data for the apps they publish on Google Play… This includes data collected and handled through any third-party libraries or SDKs used in your apps.”",
+      "sourceUrl": "https://support.google.com/googleplay/android-developer/answer/10787469"
+    },
+    {
+      "title": "Where it lives in Play Console",
+      "text": "Mandatory declarations are on the App content page (Monitor and improve › Policy and programs › App content).",
+      "sourceUrl": "https://support.google.com/googleplay/android-developer/answer/9859455"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Google Mobile Ads SDK (AdMob)",
+      "dataCollected": ["IP address", "User product interactions", "Diagnostic information", "Device and account identifiers (including Android advertising ID)"],
+      "sourceUrl": "https://developers.google.com/admob/android/privacy/play-data-disclosure"
+    },
+    {
+      "name": "Firebase Crashlytics",
+      "dataCollected": ["Crashlytics installation UUIDs", "Firebase installation IDs", "Crash traces"],
+      "sourceUrl": "https://firebase.google.com/support/privacy"
+    },
+    {
+      "name": "Firebase Cloud Messaging",
+      "dataCollected": ["Firebase installation IDs (to route push messages to devices)"],
+      "sourceUrl": "https://firebase.google.com/support/privacy"
+    }
+  ],
+  "whereToPaste": [
+    "Play Console → your app → Policy and programs → App content → Privacy policy.",
+    "Inside the app: a link from Settings or About that opens the same URL.",
+    "Fill in Data safety from the same list of data, including every SDK."
+  ],
+  "sampleClause": {
+    "heading": "Advertising",
+    "text": "This app shows ads through Google AdMob. The Google Mobile Ads SDK collects your IP address, interactions with ads, diagnostic information, and device identifiers such as the Android advertising ID, for advertising, analytics, and fraud prevention. You can reset or delete your advertising ID in your device settings."
+  },
+  "faqs": [
+    { "q": "Does Google Play accept a PDF privacy policy?", "a": "No. Google’s User Data policy asks for an active, publicly accessible, non-geofenced URL and says “no PDFs”." },
+    { "q": "Do I need a privacy policy if my Android app has no ads?", "a": "Google’s policy says that even apps that do not access personal or sensitive data must still submit a privacy policy." },
+    { "q": "How do I change my privacy policy URL?", "a": "Update it on the App content page in Play Console (Policy and programs › App content). Keep the in-app link pointing at the same page." }
+  ],
+  "related": [
+    { "href": "/for/ios-app", "label": "Privacy policy for iOS / App Store" },
+    { "href": "/blog/app-store-rejection-privacy-policy", "label": "Rejected for your privacy policy? Fixes" }
+  ]
+}

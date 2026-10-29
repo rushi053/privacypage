@@ -1,5 +1,12 @@
+/**
+ * SINGLE SOURCE OF TRUTH for prices. Both the displayed price (/api/geo ->
+ * fetchGeoPricing) and the charged amount (/api/payment/create-order) are
+ * derived from PRICING below, and the currency is always chosen SERVER-SIDE
+ * from Vercel's `x-vercel-ip-country` header. The client never decides the
+ * currency or the amount, so display and charge cannot diverge.
+ */
 export interface LocalPricing {
-  currency: string;
+  currency: "INR" | "USD";
   symbol: string;
   singlePrice: number;
   bundlePrice: number;
@@ -7,23 +14,25 @@ export interface LocalPricing {
   bundleDisplay: string;
 }
 
-const PRICING: Record<string, { symbol: string; single: number; bundle: number; decimals: boolean }> = {
+export const PRICING = {
   INR: { symbol: "₹", single: 849, bundle: 2099, decimals: false },
   USD: { symbol: "$", single: 9.99, bundle: 24.99, decimals: true },
-};
+} as const;
 
-// Amount in smallest unit (paise/cents)
-export function toSmallestUnit(amount: number, currency: string): number {
-  if (currency === "INR") return amount * 100;
+export type Currency = keyof typeof PRICING;
+
+/** Amount in smallest unit (paise/cents). */
+export function toSmallestUnit(amount: number, _currency?: string): number {
   return Math.round(amount * 100);
 }
 
-/**
- * INR for India, USD everywhere else. Unknown country (no geo header, e.g.
- * localhost) defaults to INR - the safest currency for a Razorpay account.
- */
+/** INR for India, USD everywhere else. No header (localhost) -> INR. */
+export function currencyForCountry(country?: string | null): Currency {
+  return country && country.toUpperCase() !== "IN" ? "USD" : "INR";
+}
+
 export function getPricingForCountry(country?: string | null): LocalPricing {
-  const currency = country && country !== "IN" ? "USD" : "INR";
+  const currency = currencyForCountry(country);
   const p = PRICING[currency];
   const fmt = (v: number) => (p.decimals ? v.toFixed(2) : v.toString());
   return {
@@ -36,15 +45,28 @@ export function getPricingForCountry(country?: string | null): LocalPricing {
   };
 }
 
-/** Client-side: resolve pricing from the server's geo lookup (/api/geo). */
+/** Server-side: country from Vercel's edge geo header. */
+export function countryFromHeaders(h: Headers): string | null {
+  return h.get("x-vercel-ip-country") || null;
+}
+
+/** Server-side: the exact order the server will charge. */
+export function getChargeForRequest(h: Headers, docType: string) {
+  const pricing = getPricingForCountry(countryFromHeaders(h));
+  const major = docType === "bundle" ? pricing.bundlePrice : pricing.singlePrice;
+  return { currency: pricing.currency, amount: toSmallestUnit(major), pricing };
+}
+
+/** Client-side: pricing as computed by the server (/api/geo). */
 export async function fetchGeoPricing(): Promise<LocalPricing> {
-  let country: string | null = null;
   try {
-    const res = await fetch("/api/geo");
+    const res = await fetch("/api/geo", { cache: "no-store" });
     const json = await res.json();
-    country = typeof json.country === "string" ? json.country : null;
+    if (json && json.pricing && typeof json.pricing.singleDisplay === "string") {
+      return json.pricing as LocalPricing;
+    }
   } catch {
-    // no geo -> INR default
+    // fall through
   }
-  return getPricingForCountry(country);
+  return getPricingForCountry(null);
 }
