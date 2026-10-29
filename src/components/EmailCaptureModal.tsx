@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LockIcon } from "@/components/ClauseIcons";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -27,34 +28,38 @@ export default function EmailCaptureModal({ description, onSubmit, onClose }: Em
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm" onClick={onClose}>
-      <div className="bg-white border border-gray-200 rounded-2xl p-6 max-w-sm w-full mx-4 shadow-xl" onClick={(e) => e.stopPropagation()}>
-        <h3 className="font-bold text-gray-900 mb-1">Where should we send your license?</h3>
-        <p className="text-sm text-gray-500 mb-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 px-4" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="email-capture-title">
+      <div className="bg-white border border-ink/10 rounded-[8px] p-6 md:p-8 max-w-[400px] w-full shadow-[0_24px_48px_-16px_rgba(22,24,29,0.25)]" onClick={(e) => e.stopPropagation()}>
+        <p className="font-mono text-[12px] text-seal mb-2">Checkout · step 1 of 2</p>
+        <h3 id="email-capture-title" className="font-display text-[24px] leading-[1.25] mb-2">Where should we send your license?</h3>
+        <p className="text-[14px] leading-[1.5] text-ink/70 mb-6">
           {description || "We'll email your license key so you can restore your purchase anytime."}
         </p>
+        <label htmlFor="checkout-email" className="block text-[12px] uppercase tracking-[0.08em] text-ink/60 mb-2">Email</label>
         <input
+          id="checkout-email"
           type="email"
           value={email}
           onChange={(e) => { setEmail(e.target.value); setError(null); }}
           onKeyDown={(e) => { if (e.key === "Enter") handleContinue(); }}
           placeholder="you@example.com"
           autoFocus
-          className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 mb-3"
+          className="w-full h-12 border border-ink/15 rounded-[8px] px-4 text-[16px] text-ink placeholder-ink/40 bg-white focus:outline-none focus:border-seal mb-2"
         />
-        {error && <p className="text-sm text-red-600 mb-3">{error}</p>}
-        <div className="flex gap-2.5">
+        <p className={`text-[14px] min-h-6 mb-4 ${error ? "text-red-700" : "text-ink/50"}`}>{error || "Used only for your license and receipt."}</p>
+        <div className="flex gap-2">
           <button
             onClick={handleContinue}
             disabled={!email.trim()}
-            className="flex-1 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 text-white py-2.5 rounded-xl text-sm font-medium transition-colors"
+            className="flex-1 h-12 bg-seal hover:bg-seal-dark disabled:opacity-40 text-white rounded-[8px] text-[16px] font-medium transition-colors"
           >
             Continue to payment
           </button>
-          <button onClick={onClose} className="px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-600 hover:text-gray-900 transition-colors">
+          <button onClick={onClose} className="h-12 px-6 border border-ink/15 rounded-[8px] text-[16px] text-ink/70 hover:text-ink hover:border-ink/30 transition-colors">
             Cancel
           </button>
         </div>
+        <p className="mt-4 flex items-center gap-2 text-[12px] text-ink/50"><LockIcon className="w-4 h-4" /> Payment is handled by Razorpay in the next step.</p>
       </div>
     </div>
   );

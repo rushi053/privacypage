@@ -52,106 +52,105 @@ export default function Wizard({ config, onGenerate, loading }: WizardProps) {
   };
 
   return (
-    <div className="glass-card rounded-2xl p-8 md:p-12 max-w-2xl mx-auto animate-in">
-      {/* Progress */}
-      <div className="flex gap-1 mb-8">
-        {steps.map((_, i) => (
-          <div
-            key={i}
-            className={`h-1 flex-1 rounded-full transition-colors ${
-              i <= step ? "bg-indigo-600" : "bg-gray-200"
-            }`}
-          />
-        ))}
-      </div>
-
-      <div className="mb-2 text-sm text-gray-500">
-        Step {step + 1} of {steps.length}
-      </div>
-      <h3 className="text-xl font-semibold mb-6 text-gray-900">{current.label}</h3>
-
-      {current.type === "text" && (
-        <input
-          type="text"
-          value={data[current.id] || ""}
-          onChange={(e) => setData({ ...data, [current.id]: e.target.value })}
-          placeholder={current.placeholder}
-          className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-600 transition-colors"
-          onKeyDown={(e) => e.key === "Enter" && canProceed && handleNext()}
-          autoFocus
-        />
-      )}
-
-      {current.type === "select" && (
-        <div className="grid gap-2">
-          {current.options!.map((option) => (
-            <button
-              key={option}
-              onClick={() => {
-                setData({ ...data, [current.id]: option });
-              }}
-              className={`text-left px-4 py-3 rounded-xl border transition-all ${
-                data[current.id] === option
-                  ? "border-indigo-600 bg-indigo-50 text-gray-900"
-                  : "border-gray-300 hover:border-gray-400 text-gray-700"
-              }`}
-            >
-              {option}
-            </button>
+    <div className="bg-white border border-ink/10 rounded-[8px] max-w-[720px] mx-auto animate-in">
+      {/* Progress rail */}
+      <div className="px-6 md:px-8 pt-6 md:pt-8">
+        <div className="flex items-center justify-between mb-4">
+          <p className="font-mono text-[12px] text-seal">§ {step + 1} of {steps.length}</p>
+          <p className="text-[12px] uppercase tracking-[0.08em] text-ink/50">{config.displayName}</p>
+        </div>
+        <ol className="flex gap-1" aria-label="Progress">
+          {steps.map((s, i) => (
+            <li key={s.id} className={`h-1 flex-1 rounded-full transition-colors ${i < step ? "bg-seal" : i === step ? "bg-seal/60" : "bg-ink/10"}`}>
+              <span className="sr-only">{s.label}{i < step ? " (done)" : i === step ? " (current)" : ""}</span>
+            </li>
           ))}
-        </div>
-      )}
+        </ol>
+      </div>
 
-      {current.type === "multiselect" && (
-        <div className="grid grid-cols-2 gap-2">
-          {current.options!.map((option) => {
-            const isSelected = (selected[current.id] || []).includes(option);
-            return (
-              <button
-                key={option}
-                onClick={() => toggleMulti(option)}
-                className={`text-left px-4 py-3 rounded-xl border text-sm transition-all ${
-                  isSelected
-                    ? "border-indigo-600 bg-indigo-50 text-gray-900"
-                    : "border-gray-300 hover:border-gray-400 text-gray-700"
-                }`}
-              >
-                <span className="mr-2">{isSelected ? "✓" : "○"}</span>
-                {option}
-              </button>
-            );
-          })}
-        </div>
-      )}
+      <div className="px-6 md:px-8 py-8">
+        <h3 className="font-display text-[24px] md:text-[28px] leading-[1.25] tracking-[-0.01em] mb-6">{current.label}</h3>
 
-      <div className="flex justify-between mt-8">
+        {current.type === "text" && (
+          <input
+            type="text"
+            value={data[current.id] || ""}
+            onChange={(e) => setData({ ...data, [current.id]: e.target.value })}
+            placeholder={current.placeholder}
+            className="w-full h-12 bg-white border border-ink/15 rounded-[8px] px-4 text-[16px] text-ink placeholder-ink/40 focus:outline-none focus:border-seal transition-colors"
+            onKeyDown={(e) => e.key === "Enter" && canProceed && handleNext()}
+            autoFocus
+          />
+        )}
+
+        {current.type === "select" && (
+          <div className="grid gap-2" role="radiogroup" aria-label={current.label}>
+            {current.options!.map((option) => {
+              const on = data[current.id] === option;
+              return (
+                <button
+                  key={option}
+                  role="radio"
+                  aria-checked={on}
+                  onClick={() => setData({ ...data, [current.id]: option })}
+                  className={`flex items-center gap-4 text-left min-h-12 px-4 py-2 rounded-[8px] border text-[16px] transition-colors ${
+                    on ? "border-seal bg-seal-tint text-ink" : "border-ink/15 hover:border-ink/30 text-ink/80 bg-white"
+                  }`}
+                >
+                  <span className={`w-4 h-4 rounded-full border shrink-0 ${on ? "border-seal border-[5px]" : "border-ink/30"}`} />
+                  {option}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {current.type === "multiselect" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {current.options!.map((option) => {
+              const isSelected = (selected[current.id] || []).includes(option);
+              return (
+                <button
+                  key={option}
+                  role="checkbox"
+                  aria-checked={isSelected}
+                  onClick={() => toggleMulti(option)}
+                  className={`flex items-center gap-4 text-left min-h-12 px-4 py-2 rounded-[8px] border text-[14px] transition-colors ${
+                    isSelected ? "border-seal bg-seal-tint text-ink" : "border-ink/15 hover:border-ink/30 text-ink/80 bg-white"
+                  }`}
+                >
+                  <span className={`w-4 h-4 rounded-[4px] border shrink-0 flex items-center justify-center ${isSelected ? "bg-seal border-seal text-white" : "border-ink/30"}`}>
+                    {isSelected && <svg aria-hidden viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>}
+                  </span>
+                  {option}
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      <div className="flex justify-between items-center gap-4 px-6 md:px-8 py-6 border-t border-ink/10">
         <button
           onClick={() => setStep(Math.max(0, step - 1))}
-          className={`px-6 py-3 rounded-xl text-sm font-medium transition-colors ${
-            step === 0
-              ? "invisible"
-              : "border border-gray-300 hover:border-gray-400 text-gray-700 bg-white"
-          }`}
+          className={`h-12 px-6 rounded-[8px] text-[16px] border border-ink/15 hover:border-ink/30 text-ink/80 bg-white transition-colors ${step === 0 ? "invisible" : ""}`}
         >
-          ← Back
+          Back
         </button>
         <button
           onClick={handleNext}
           disabled={!canProceed || loading}
-          className="px-8 py-3 rounded-xl text-sm font-medium bg-indigo-600 hover:bg-indigo-700 text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
+          className="h-12 px-6 rounded-[8px] text-[16px] font-medium bg-seal hover:bg-seal-dark text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
         >
           {loading ? (
             <>
-              <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-              </svg>
-              Generating...
+              <svg aria-hidden className="w-4 h-4 animate-spin motion-reduce:animate-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}><path d="M12 3a9 9 0 1 0 9 9" strokeLinecap="round" /></svg>
+              Drafting your document…
             </>
           ) : isLast ? (
-            `Generate ${config.displayName} →`
+            `Generate ${config.displayName}`
           ) : (
-            "Next →"
+            "Next"
           )}
         </button>
       </div>

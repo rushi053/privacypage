@@ -96,7 +96,7 @@ export function useRazorpay() {
             onFailure("Payment verification error");
           }
         },
-        theme: { color: "#6366f1" },
+        theme: { color: "#0F5C63" },
         modal: { ondismiss: () => onFailure("Payment cancelled") },
         method: { card: true, upi: true, netbanking: true, wallet: true },
       };

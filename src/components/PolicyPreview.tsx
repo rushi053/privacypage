@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useRazorpay, isDocUnlocked } from "@/hooks/useRazorpay";
 import { fetchGeoPricing, toSmallestUnit, type LocalPricing } from "@/lib/currency";
 import EmailCaptureModal from "@/components/EmailCaptureModal";
+import { CheckIcon, CopyIcon, DownloadIcon, LockIcon, RefreshIcon, KeyIcon } from "@/components/ClauseIcons";
 
 interface PolicyPreviewProps {
   /** Preview text (new flow) or the full document (legacyFull fallback). */
@@ -39,6 +40,7 @@ export default function PolicyPreview({ policy, formData, onReset, docType = "pr
   const [showEmailCapture, setShowEmailCapture] = useState(false);
   const [pricing, setPricing] = useState<LocalPricing | null>(null);
   const [fullContent, setFullContent] = useState<string | null>(null);
+  const [licenseKey, setLicenseKey] = useState<string | null>(null);
   const { openPayment } = useRazorpay();
 
   useEffect(() => {
@@ -81,6 +83,7 @@ export default function PolicyPreview({ policy, formData, onReset, docType = "pr
 
   useEffect(() => {
     const storedKey = localStorage.getItem("privacypage_license_key");
+    setLicenseKey(storedKey);
     if (isDocUnlocked(docType)) {
       setShowFull(true);
       // Already entitled (e.g. bundle bought earlier): pull the full content
@@ -124,7 +127,7 @@ export default function PolicyPreview({ policy, formData, onReset, docType = "pr
       email,
       documentId: documentId ?? undefined,
       onSuccess: (licenseKey) => {
-        if (licenseKey) fetchFullDocument(licenseKey);
+        if (licenseKey) { setLicenseKey(licenseKey); fetchFullDocument(licenseKey); }
         setShowFull(true);
         setPaying(false);
       },
@@ -199,94 +202,97 @@ ${content.split("\n").map((l) => {
     URL.revokeObjectURL(url);
   };
 
+  const subject = formData.appName || formData.serviceName || formData.websiteName;
+  let clauseNo = 0;
+  const numbered = (arr: string[], keyPrefix: string) =>
+    arr.map((line, i) => {
+      const n = line.startsWith("## ") ? ++clauseNo : null;
+      return <PolicyLine key={`${keyPrefix}-${i}`} line={line} n={n} />;
+    });
+
   return (
-    <div className="animate-in">
-      <div className="glass-card rounded-2xl p-8 md:p-12 max-w-3xl mx-auto">
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-semibold text-gray-900">
-            {docTypeNames[docType]} {formData.appName || formData.serviceName || formData.websiteName ? `for ${formData.appName || formData.serviceName || formData.websiteName}` : ""}
+    <div className="animate-in max-w-[880px] mx-auto">
+      <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
+        <div>
+          <p className="font-mono text-[12px] text-seal mb-2">{isPaid ? "Unlocked · yours to keep" : "Free preview"}</p>
+          <h3 className="font-display text-[28px] md:text-[32px] leading-[1.2] tracking-[-0.01em]">
+            {docTypeNames[docType]}{subject ? <span className="text-ink/60"> for {subject}</span> : null}
           </h3>
-          <button
-            onClick={onReset}
-            className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
-          >
-            ← Start Over
-          </button>
         </div>
+        <button onClick={onReset} className="h-10 px-4 rounded-[8px] border border-ink/15 hover:border-ink/30 text-[14px] text-ink/70 hover:text-ink inline-flex items-center gap-2 transition-colors">
+          <RefreshIcon /> {isPaid ? "Regenerate" : "Start over"}
+        </button>
+      </div>
 
-        {/* Policy content */}
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-6 max-h-[500px] overflow-y-auto">
-          <div className="prose prose-sm max-w-none">
-            {previewLines.map((line, i) => (
-              <PolicyLine key={i} line={line} />
-            ))}
-            {!isPaid && hasLockedContent && (
-              <>
-                <div className="relative">
-                  <div className="blur-overlay">
-                    {blurLines.map((line, i) => (
-                      <PolicyLine key={`blur-${i}`} line={line} />
-                    ))}
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center bg-white/95 p-6 rounded-xl border border-indigo-600 soft-shadow-lg">
-                      <p className="text-lg font-semibold mb-2 text-gray-900">
-                        🔒 Unlock Full Document
-                      </p>
-                      <p className="text-sm text-gray-600 mb-4">
-                        Get the complete document with GDPR & CCPA sections
-                      </p>
-                      <button
-                        onClick={handleUnlock}
-                        disabled={paying || !pricing}
-                        className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
-                      >
-                        {paying ? "Processing..." : `Unlock for ${pricing?.singleDisplay ?? "..."}`}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-            {isPaid &&
-              remainingLines.map((line, i) => (
-                <PolicyLine key={`full-${i}`} line={line} />
-              ))}
+      {isPaid && (
+        <div className="mb-6 rounded-[8px] border border-seal/30 bg-seal-tint p-4 md:p-6 flex flex-wrap items-center justify-between gap-4" role="status">
+          <div className="flex items-start gap-4">
+            <span className="w-8 h-8 rounded-full bg-seal text-white flex items-center justify-center shrink-0"><CheckIcon /></span>
+            <div>
+              <p className="font-medium text-[16px]">Payment complete. The full document is unlocked.</p>
+              <p className="text-[14px] text-ink/70">Copy it or download it below. Regenerate free whenever your app changes.</p>
+            </div>
           </div>
+          {licenseKey && (
+            <div className="flex items-center gap-2 text-[14px]">
+              <KeyIcon className="w-4 h-4 text-seal" />
+              <span className="font-mono tracking-[0.04em] select-all bg-white border border-ink/10 rounded-[8px] px-2 py-1">{licenseKey}</span>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Document */}
+      <div className="relative rounded-[8px] border border-ink/10 bg-white overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_40%_at_50%_0%,rgba(15,92,99,0.06),transparent_70%)]" />
+        <div className={`relative doc-ruled px-6 md:px-16 py-8 md:py-12 font-doc text-[17px] leading-[1.6] text-ink/90 ${isPaid ? "max-h-[640px] overflow-y-auto" : ""}`}>
+          {numbered(previewLines, "p")}
+          {!isPaid && hasLockedContent && (
+            <div className="relative mt-2" aria-hidden>
+              <div className="blur-overlay">{numbered(blurLines, "b")}</div>
+              <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/70 to-white" />
+            </div>
+          )}
+          {isPaid && numbered(remainingLines, "f")}
         </div>
 
-        {/* Actions */}
-        <div className="flex flex-wrap gap-3">
-          <button
-            onClick={handleCopy}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 hover:border-gray-400 text-sm transition-colors text-gray-700 bg-white"
-          >
-            {copied ? "✓ Copied!" : "📋 Copy"}
+        {/* Sticky unlock bar */}
+        {!isPaid && hasLockedContent && (
+          <div className="sticky bottom-0 border-t border-ink/10 bg-white/95 backdrop-blur px-6 md:px-8 py-4 md:py-6 flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="flex items-center gap-2 font-medium text-[16px]"><LockIcon className="w-4 h-4 text-seal" /> The rest of this document is yours after unlock</p>
+              <p className="text-[14px] text-ink/60">
+                {hiddenLineCount > 0 ? `${hiddenLineCount} more lines · ` : ""}One-time payment · HTML, Markdown and plain text · free regenerations
+              </p>
+            </div>
+            <button
+              onClick={handleUnlock}
+              disabled={paying || !pricing}
+              className="h-12 px-6 rounded-[8px] bg-seal hover:bg-seal-dark text-white text-[16px] font-medium transition-colors disabled:opacity-50 whitespace-nowrap"
+            >
+              {paying ? "Processing…" : `Unlock for ${pricing?.singleDisplay ?? "…"}`}
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Actions */}
+      <div className="flex flex-wrap gap-2 mt-6">
+        {[
+          { label: copied ? "Copied" : "Copy text", icon: copied ? <CheckIcon /> : <CopyIcon />, on: handleCopy },
+          { label: "Markdown", icon: <DownloadIcon />, on: () => handleDownload("md") },
+          { label: "HTML", icon: <DownloadIcon />, on: () => handleDownload("html") },
+          { label: "Plain text", icon: <DownloadIcon />, on: () => handleDownload("txt") },
+        ].map((b) => (
+          <button key={b.label} onClick={b.on} className="h-12 px-4 inline-flex items-center gap-2 rounded-[8px] border border-ink/15 hover:border-ink/30 bg-white text-[14px] text-ink/80 transition-colors">
+            {b.icon}{b.label}{!isPaid && <LockIcon className="w-4 h-4 text-ink/40" />}
           </button>
-          <button
-            onClick={() => handleDownload("md")}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 hover:border-gray-400 text-sm transition-colors text-gray-700 bg-white"
-          >
-            📄 Markdown
-          </button>
-          <button
-            onClick={() => handleDownload("html")}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 hover:border-gray-400 text-sm transition-colors text-gray-700 bg-white"
-          >
-            🌐 HTML
-          </button>
-          <button
-            onClick={() => handleDownload("txt")}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 hover:border-gray-400 text-sm transition-colors text-gray-700 bg-white"
-          >
-            📝 Plain Text
-          </button>
-        </div>
+        ))}
       </div>
 
       {showEmailCapture && (
         <EmailCaptureModal
-          description={`Unlock ${docTypeNames[docType]} — full document, ${pricing?.singleDisplay ?? ""}`}
+          description={`Unlock ${docTypeNames[docType]}: full document, ${pricing?.singleDisplay ?? ""} one-time.`}
           onSubmit={(email) => {
             setShowEmailCapture(false);
             startUnlockPayment(email);
@@ -298,20 +304,25 @@ ${content.split("\n").map((l) => {
   );
 }
 
-function PolicyLine({ line }: { line: string }) {
+function PolicyLine({ line, n }: { line: string; n?: number | null }) {
   if (line.startsWith("# "))
-    return <h1 className="text-2xl font-bold mt-6 mb-3 text-gray-900">{line.slice(2)}</h1>;
+    return <h1 className="font-display text-[28px] md:text-[32px] leading-[1.2] tracking-[-0.01em] mt-0 mb-6 text-ink">{line.slice(2)}</h1>;
   if (line.startsWith("## "))
-    return <h2 className="text-xl font-semibold mt-5 mb-2 text-indigo-600">{line.slice(3)}</h2>;
+    return (
+      <h2 className="font-display text-[20px] md:text-[22px] leading-[1.3] mt-8 mb-2 text-ink grid grid-cols-[48px_1fr]">
+        <span className="font-mono text-[14px] leading-[2] text-seal">§ {n ?? ""}</span>
+        <span>{line.slice(3)}</span>
+      </h2>
+    );
   if (line.startsWith("### "))
-    return <h3 className="text-lg font-medium mt-4 mb-1 text-gray-900">{line.slice(4)}</h3>;
+    return <h3 className="font-display text-[18px] mt-6 mb-2 text-ink md:pl-12">{line.slice(4)}</h3>;
   if (line.startsWith("- "))
     return (
-      <div className="flex gap-2 ml-4 my-1 text-gray-700">
-        <span className="text-gray-400">•</span>
+      <div className="grid grid-cols-[16px_1fr] gap-2 md:pl-12 my-1">
+        <span className="text-seal">–</span>
         <span>{line.slice(2)}</span>
       </div>
     );
-  if (line.trim() === "") return <div className="h-3" />;
-  return <p className="text-gray-700 leading-relaxed my-2">{line}</p>;
+  if (line.trim() === "") return <div className="h-4" />;
+  return <p className="my-2 md:pl-12">{line}</p>;
 }

@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import { Fraunces, Newsreader, Geist, Geist_Mono } from "next/font/google";
+
+const fDisplay = Fraunces({ subsets: ["latin"], variable: "--f-display", display: "swap" });
+const fDoc = Newsreader({ subsets: ["latin"], variable: "--f-doc", display: "swap" });
+const fUi = Geist({ subsets: ["latin"], variable: "--f-ui", display: "swap" });
+const fMono = Geist_Mono({ subsets: ["latin"], variable: "--f-mono", display: "swap" });
 import { PRICING } from "@/lib/currency";
 
 export const metadata: Metadata = {
@@ -52,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${fDisplay.variable} ${fDoc.variable} ${fUi.variable} ${fMono.variable}`}>
       <head>
         {/* Organization Schema */}
         <Script id="schema-organization" type="application/ld+json">
@@ -128,7 +134,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased bg-paper text-ink">{children}</body>
     </html>
   );
 }
