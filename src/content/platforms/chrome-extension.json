@@ -28,7 +28,10 @@
   "sdks": [
     {
       "name": "chrome.identity (getProfileUserInfo)",
-      "dataCollected": ["Email address of the signed-in Chrome profile (requires identity.email permission)", "Obfuscated Gaia ID"],
+      "dataCollected": [
+        "Email address of the signed-in Chrome profile (requires identity.email permission)",
+        "Obfuscated Gaia ID"
+      ],
       "sourceUrl": "https://developer.chrome.com/docs/extensions/reference/api/identity"
     }
   ],
@@ -41,11 +44,27 @@
     "text": "If you choose to sign in, the extension reads the email address of your signed-in Chrome profile through Chrome’s identity API. We use it only to identify your account for sync, do not sell it, and do not use it for advertising."
   },
   "faqs": [
-    { "q": "Does my extension need a privacy policy if it collects nothing?", "a": "The Chrome Web Store rule is triggered when the extension handles any user data. Many extensions do (page content, browsing activity, email), so check your permissions honestly." },
-    { "q": "Is there a Chrome-extension-specific template?", "a": "No. PrivacyPage generates a general app policy; you describe your extension’s permissions and data in the wizard." }
+    {
+      "q": "Does my extension need a privacy policy if it collects nothing?",
+      "a": "The Chrome Web Store rule is triggered when the extension handles any user data. Many extensions do (page content, browsing activity, email), so check your permissions honestly."
+    },
+    {
+      "q": "Is there a Chrome-extension-specific template?",
+      "a": "No. PrivacyPage generates a general app policy; you describe your extension’s permissions and data in the wizard."
+    }
   ],
   "related": [
-    { "href": "/for/discord-bot", "label": "Privacy policy for Discord bots" },
-    { "href": "/compliance/gdpr", "label": "GDPR privacy policy" }
+    {
+      "href": "/for/discord-bot",
+      "label": "Privacy policy for Discord bots"
+    },
+    {
+      "href": "/compliance/gdpr",
+      "label": "GDPR privacy policy"
+    },
+    {
+      "href": "/guides/app-rejected-privacy-policy",
+      "label": "Fix a privacy policy rejection"
+    }
   ]
 }

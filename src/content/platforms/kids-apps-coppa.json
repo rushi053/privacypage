@@ -1,0 +1,86 @@
+{
+  "slug": "kids-apps-coppa",
+  "name": "Kids’ app",
+  "h1": "Privacy policy for kids’ apps (COPPA)",
+  "metaTitle": "COPPA Privacy Policy for Kids’ Apps — 16 CFR 312 Notice Rules | PrivacyPage",
+  "metaDescription": "COPPA (16 CFR Part 312) requires a clearly labeled online notice, verifiable parental consent, and limited retention for apps directed to children. Plus Apple Kids Category and Google Play Families rules.",
+  "answer": "If your app is directed to children under 13 or knowingly collects their data, the FTC’s COPPA Rule (16 CFR Part 312) requires a prominent, clearly labeled link to an online notice of your practices, verifiable parental consent before collecting personal information, and keeping children’s data only as long as reasonably necessary. Not legal advice.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "FTC COPPA Rule (16 CFR Part 312)",
+    "title": "§ 312.4(d) Notice on the website or online service",
+    "quote": "an operator must post a prominent and clearly labeled link to an online notice of its information practices with regard to children on the home or landing page or screen of its website or online service",
+    "sourceUrl": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Verifiable parental consent (§ 312.5)",
+      "text": "Operators must “obtain verifiable parental consent before any collection, use, or disclosure of personal information from children”.",
+      "sourceUrl": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312"
+    },
+    {
+      "title": "Retention (§ 312.10)",
+      "text": "Keep children’s data “for only as long as is reasonably necessary to fulfill the specific purpose(s) for which the information was collected.” It “may not be retained indefinitely.”",
+      "sourceUrl": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312"
+    },
+    {
+      "title": "Google Play Families",
+      "text": "Google Play’s Families policy requires apps in the program to protect children’s privacy, use only self-certified ad SDKs, and have a privacy policy that accurately reflects their data practices.",
+      "sourceUrl": "https://support.google.com/googleplay/android-developer/answer/9893335"
+    },
+    {
+      "title": "Apple Kids Category (Guideline 1.3)",
+      "text": "Kids Category apps “must not include links out of the app, purchasing opportunities, or other distractions to kids unless reserved for a designated area behind a parental gate.”",
+      "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Ad SDKs in Families apps",
+      "dataCollected": [
+        "Must be Google Play Families self-certified ad SDKs",
+        "No personalized advertising to children"
+      ],
+      "sourceUrl": "https://support.google.com/googleplay/android-developer/answer/9893335"
+    }
+  ],
+  "whereToPaste": [
+    "Home or landing screen of the app: a prominent, clearly labeled link to the notice.",
+    "Every screen where you collect personal information from children, close to the request.",
+    "Store listings (App Store Connect, Play Console)."
+  ],
+  "whereToPasteSource": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312",
+  "sampleClause": {
+    "heading": "Children’s information",
+    "text": "Our app is designed for children. We do not collect personal information from children without first getting a parent’s verifiable consent. We collect only a nickname and game progress, keep it only while the account is active, and delete it on a parent’s request. We do not show personalized ads."
+  },
+  "faqs": [
+    {
+      "q": "What must a COPPA privacy policy include?",
+      "a": "The Rule (§ 312.4) lists the contents, including who collects the data, what you collect and how you use and disclose it, and parents’ rights to review and delete. Read 16 CFR 312.4 and get legal advice."
+    },
+    {
+      "q": "Does COPPA apply to apps outside the US?",
+      "a": "The FTC applies COPPA to foreign operators whose services are directed to, or knowingly collect from, children in the US. This is not legal advice."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/android-app",
+      "label": "Privacy policy for Android / Google Play"
+    },
+    {
+      "href": "/for/ios-app",
+      "label": "Privacy policy for iOS / App Store"
+    },
+    {
+      "href": "/compliance/gdpr",
+      "label": "GDPR privacy policy"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

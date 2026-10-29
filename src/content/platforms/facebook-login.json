@@ -1,0 +1,86 @@
+{
+  "slug": "facebook-login",
+  "name": "Facebook Login app",
+  "h1": "Privacy policy for Facebook Login and Meta apps",
+  "metaTitle": "Facebook Login Privacy Policy — Meta Platform Terms Section 4 | PrivacyPage",
+  "metaDescription": "Meta’s Platform Terms require a public, crawlable, non-geoblocked privacy policy URL in your App Dashboard that explains processing and how users request deletion.",
+  "answer": "Meta’s Platform Terms require any app using Facebook Login or other Meta APIs to keep a privacy policy at an active, public, crawlable, non-geoblocked URL entered in the App Dashboard. It must explain what data you process, how and why, and how users can request deletion — available to every user.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Meta for Developers",
+    "title": "Meta Platform Terms — 4. Privacy Policy",
+    "quote": "You will provide, maintain, and comply with a privacy policy that is available through an active, publicly available, easily accessible (including by our crawlers), and non-geoblocked URL.",
+    "sourceUrl": "https://developers.facebook.com/terms/dfc_platform_terms/",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Put the URL in the App Dashboard",
+      "text": "“This URL must also be disclosed in the privacy policy field in the settings of your App Dashboard.”",
+      "sourceUrl": "https://developers.facebook.com/terms/dfc_platform_terms/"
+    },
+    {
+      "title": "Required contents and deletion",
+      "text": "“Your privacy policy must clearly explain what data you are Processing, how you are Processing it, the purposes for which you are Processing it, and how Users may request deletion of that data.”",
+      "sourceUrl": "https://developers.facebook.com/terms/dfc_platform_terms/"
+    },
+    {
+      "title": "A clear way to delete",
+      "text": "Give users “an easily accessible and clearly marked way to ask for their Platform Data to be modified or deleted.”",
+      "sourceUrl": "https://developers.facebook.com/terms/dfc_platform_terms/"
+    },
+    {
+      "title": "No selling Platform Data",
+      "text": "Meta lists “Selling, licensing, or purchasing Platform Data.” as a prohibited practice.",
+      "sourceUrl": "https://developers.facebook.com/terms/dfc_platform_terms/"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Facebook Login (Platform Data)",
+      "dataCollected": [
+        "Meta user IDs and access tokens",
+        "Email addresses",
+        "Profile pictures and usernames"
+      ],
+      "sourceUrl": "https://developers.facebook.com/terms/dfc_platform_terms/"
+    }
+  ],
+  "whereToPaste": [
+    "Meta App Dashboard → App settings → Basic → Privacy Policy URL.",
+    "Also provide a data deletion instructions URL or callback in the same settings.",
+    "Your app’s login screen and Settings."
+  ],
+  "sampleClause": {
+    "heading": "Facebook Login",
+    "text": "If you log in with Facebook, we receive your Facebook user ID, name, email address and profile picture. We use them only to create your account. To delete this data, use Settings → Delete account or email privacy@example.com; we delete it within 30 days."
+  },
+  "faqs": [
+    {
+      "q": "Why does Meta say my privacy policy URL is invalid?",
+      "a": "Usually the page is not public, needs a login, is geoblocked, redirects, or can’t be fetched by Meta’s crawler. The Platform Terms require an active, public, crawlable, non-geoblocked URL."
+    },
+    {
+      "q": "What is a Facebook data deletion URL?",
+      "a": "A page or callback that tells users how to delete the data your app received from Meta. Meta requires a clearly marked way to request deletion."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/google-sign-in",
+      "label": "Privacy policy for Google Sign-In"
+    },
+    {
+      "href": "/for/sign-in-with-apple",
+      "label": "Privacy policy for Sign in with Apple"
+    },
+    {
+      "href": "/guides/app-rejected-privacy-policy",
+      "label": "Fix a privacy policy rejection"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

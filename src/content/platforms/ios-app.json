@@ -94,12 +94,12 @@
       "label": "Privacy policy for Android / Google Play"
     },
     {
-      "href": "/blog/app-store-rejection-privacy-policy",
-      "label": "Rejected for your privacy policy? Fixes"
-    },
-    {
       "href": "/blog/how-to-add-privacy-policy-app-store",
       "label": "How to add a privacy policy in App Store Connect"
+    },
+    {
+      "href": "/guides/app-rejected-privacy-policy",
+      "label": "Fix a privacy policy rejection"
     }
   ],
   "whereToPasteSource": "https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy"

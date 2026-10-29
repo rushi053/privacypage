@@ -19,7 +19,7 @@ export const FOOTER_PLATFORM_LINKS: [string, string][] = [
 
 export function ClauseFooter() {
   const cols: { h: string; l: [string, string][] }[] = [
-    { h: 'Product', l: [['/#generate', 'Generate'], ['/pricing', 'Pricing'], ['/blog', 'Guides']] },
+    { h: 'Product', l: [['/#generate', 'Generate'], ['/pricing', 'Pricing'], ['/blog', 'Guides'], ['/guides/app-rejected-privacy-policy', 'Fix a rejection']] },
     { h: 'Platforms', l: FOOTER_PLATFORM_LINKS },
     { h: 'Compliance', l: [['/compliance/gdpr', 'GDPR'], ['/compliance/ccpa', 'CCPA'], ['/compliance/dpdp', 'DPDP Act (India)']] },
   ]

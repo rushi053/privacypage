@@ -71,6 +71,10 @@
     {
       "href": "/for",
       "label": "Privacy policy by platform"
+    },
+    {
+      "href": "/guides/app-rejected-privacy-policy",
+      "label": "Fix a privacy policy rejection"
     }
   ]
 }

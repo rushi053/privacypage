@@ -33,17 +33,28 @@
   "sdks": [
     {
       "name": "Google Mobile Ads SDK (AdMob)",
-      "dataCollected": ["IP address", "User product interactions", "Diagnostic information", "Device and account identifiers (including Android advertising ID)"],
+      "dataCollected": [
+        "IP address",
+        "User product interactions",
+        "Diagnostic information",
+        "Device and account identifiers (including Android advertising ID)"
+      ],
       "sourceUrl": "https://developers.google.com/admob/android/privacy/play-data-disclosure"
     },
     {
       "name": "Firebase Crashlytics",
-      "dataCollected": ["Crashlytics installation UUIDs", "Firebase installation IDs", "Crash traces"],
+      "dataCollected": [
+        "Crashlytics installation UUIDs",
+        "Firebase installation IDs",
+        "Crash traces"
+      ],
       "sourceUrl": "https://firebase.google.com/support/privacy"
     },
     {
       "name": "Firebase Cloud Messaging",
-      "dataCollected": ["Firebase installation IDs (to route push messages to devices)"],
+      "dataCollected": [
+        "Firebase installation IDs (to route push messages to devices)"
+      ],
       "sourceUrl": "https://firebase.google.com/support/privacy"
     }
   ],
@@ -57,12 +68,27 @@
     "text": "This app shows ads through Google AdMob. The Google Mobile Ads SDK collects your IP address, interactions with ads, diagnostic information, and device identifiers such as the Android advertising ID, for advertising, analytics, and fraud prevention. You can reset or delete your advertising ID in your device settings."
   },
   "faqs": [
-    { "q": "Does Google Play accept a PDF privacy policy?", "a": "No. Google’s User Data policy asks for an active, publicly accessible, non-geofenced URL and says “no PDFs”." },
-    { "q": "Do I need a privacy policy if my Android app has no ads?", "a": "Google’s policy says that even apps that do not access personal or sensitive data must still submit a privacy policy." },
-    { "q": "How do I change my privacy policy URL?", "a": "Update it on the App content page in Play Console (Policy and programs › App content). Keep the in-app link pointing at the same page." }
+    {
+      "q": "Does Google Play accept a PDF privacy policy?",
+      "a": "No. Google’s User Data policy asks for an active, publicly accessible, non-geofenced URL and says “no PDFs”."
+    },
+    {
+      "q": "Do I need a privacy policy if my Android app has no ads?",
+      "a": "Google’s policy says that even apps that do not access personal or sensitive data must still submit a privacy policy."
+    },
+    {
+      "q": "How do I change my privacy policy URL?",
+      "a": "Update it on the App content page in Play Console (Policy and programs › App content). Keep the in-app link pointing at the same page."
+    }
   ],
   "related": [
-    { "href": "/for/ios-app", "label": "Privacy policy for iOS / App Store" },
-    { "href": "/blog/app-store-rejection-privacy-policy", "label": "Rejected for your privacy policy? Fixes" }
+    {
+      "href": "/for/ios-app",
+      "label": "Privacy policy for iOS / App Store"
+    },
+    {
+      "href": "/guides/app-rejected-privacy-policy",
+      "label": "Fix a privacy policy rejection"
+    }
   ]
 }

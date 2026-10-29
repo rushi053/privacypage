@@ -1,0 +1,70 @@
+{
+  "slug": "apps-with-payments",
+  "name": "App that takes payments",
+  "h1": "Privacy policy for apps that take payments (Stripe, Razorpay)",
+  "metaTitle": "Privacy Policy for Apps With Payments — Stripe & Processor Clauses | PrivacyPage",
+  "metaDescription": "When you charge through Stripe or Razorpay, the processor receives your customers’ payment data. What your privacy policy should say about payment processors.",
+  "answer": "If your app takes payments through a processor such as Stripe or Razorpay, your privacy policy should say that payment details are collected and processed by that provider, what transaction data you keep yourself, and link the provider’s privacy policy. Stripe’s own policy calls your customers “End Customers” when it processes their data for your business.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Stripe",
+    "title": "Stripe Privacy Policy — End Customers",
+    "quote": "When you are not directly transacting with Stripe, but we receive your Personal Data to provide Services to a Business User, including when you make a purchase from a Business User on a Stripe Checkout page or receive payments or other services from a Business User, we refer to you as an “End Customer.”",
+    "sourceUrl": "https://stripe.com/privacy",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Apple: disclose third-party sharing",
+      "text": "Guideline 5.1.2(i): “You must clearly disclose where personal data will be shared with third parties”.",
+      "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/"
+    },
+    {
+      "title": "Google Play: payment data is sensitive",
+      "text": "Google Play lists “financial and payment information” as personal and sensitive user data that your policy and Data safety form must cover.",
+      "sourceUrl": "https://support.google.com/googleplay/android-developer/answer/10144311"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Stripe Checkout / Payments",
+      "dataCollected": [
+        "Payment card details (handled by Stripe)",
+        "Transaction details and billing contact information"
+      ],
+      "sourceUrl": "https://stripe.com/privacy"
+    }
+  ],
+  "whereToPaste": [
+    "Checkout page and site footer.",
+    "Store listings, if the app is on the App Store or Google Play."
+  ],
+  "sampleClause": {
+    "heading": "Payments",
+    "text": "Payments are processed by Stripe. When you pay, you enter your card details directly with Stripe; we never see or store your full card number. We receive and keep the payment amount, date, your email and the last four digits of your card for receipts and refunds. See Stripe’s privacy policy at stripe.com/privacy."
+  },
+  "faqs": [
+    {
+      "q": "Do I need to mention Stripe in my privacy policy?",
+      "a": "Naming your payment processor and linking its policy is the clearest way to disclose that third party, as both app stores ask you to disclose third-party sharing."
+    },
+    {
+      "q": "Does PrivacyPage use a payment processor?",
+      "a": "Yes. PrivacyPage takes payments through Razorpay."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/saas",
+      "label": "Privacy policy for SaaS & web apps"
+    },
+    {
+      "href": "/compliance/gdpr",
+      "label": "GDPR privacy policy"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}
