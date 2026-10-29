@@ -30,7 +30,7 @@ function Clause({ n, title, children }: { n: string; title: string; children: Re
   return (
     <section className="grid md:grid-cols-[72px_1fr] gap-x-8 gap-y-2 md:gap-y-8 py-16 border-t border-[#16181D]/10" aria-labelledby={`c-${n}`}>
       <div className="font-[family-name:var(--f-mono)] text-[14px] leading-8 text-[#0F5C63]">§ {n}</div>
-      <div>
+      <div className="min-w-0">
         <h2 id={`c-${n}`} className="font-[family-name:var(--f-display)] text-[24px] md:text-[32px] leading-[1.25] tracking-[-0.01em] mb-8">{title}</h2>
         <div className="font-[family-name:var(--f-doc)] text-[18px] leading-[1.6] text-[#16181D]/90 space-y-6">{children}</div>
       </div>
