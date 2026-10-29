@@ -1,3 +1,4 @@
+import { PRICE } from '@/lib/currency'
 // Data for the programmatic SEO landing pages:
 //   /for/[builder]      — AI app builders (Lovable, Bolt, v0, Cursor, Replit)
 //   /vs/[competitor]    — competitor comparisons (Termly, iubenda, GetTerms, Termageddon, FreePrivacyPolicy)
@@ -79,13 +80,13 @@ export const builderPages: BuilderPage[] = [
     h1: 'Privacy Policy Generator for Lovable Apps',
     metaTitle: 'Privacy Policy Generator for Lovable Apps | PrivacyPage',
     metaDescription:
-      'Generate a privacy policy for your Lovable app in 60 seconds. Covers Supabase auth, Stripe, AI APIs. GDPR & App Store ready. Free preview, $9.99 once.',
+      `Generate a privacy policy for your Lovable app in 60 seconds. Covers Supabase auth, Stripe, AI APIs. GDPR & App Store ready. Free preview, ${PRICE.single} once.`,
     keyword: 'privacy policy generator for lovable apps',
     tagline:
       'You shipped an app with Lovable. Now get the legal doc it needs — in 60 seconds, free to preview.',
     intro: [
       `You prompted your way to a working product in Lovable — auth, database, payments, maybe an AI feature. But the moment real users can sign up, your app is collecting personal data, and that comes with legal obligations whether you have 3 users or 3,000. A privacy policy is not a nice-to-have: Google OAuth verification asks for one, the App Store requires one, and privacy laws like GDPR assume you already have one.`,
-      `The good news: for a typical Lovable app the policy is very predictable, because the Lovable stack is predictable. PrivacyPage asks you a handful of plain-English questions about what your app actually does and generates a complete, customized privacy policy you can paste straight into your project. The full document is free to preview — you pay <strong>$9.99 once</strong> only if you want to unlock and download it. No subscription.`,
+      `The good news: for a typical Lovable app the policy is very predictable, because the Lovable stack is predictable. PrivacyPage asks you a handful of plain-English questions about what your app actually does and generates a complete, customized privacy policy you can paste straight into your project. The full document is free to preview — you pay <strong>${PRICE.single} once</strong> only if you want to unlock and download it. No subscription.`,
     ],
     dataHeading: 'What your Lovable app is probably collecting',
     dataPoints: [
@@ -133,7 +134,7 @@ export const builderPages: BuilderPage[] = [
       },
       {
         q: 'Is PrivacyPage really free?',
-        a: 'Generating and previewing the full document is free with no account. Unlocking the download (HTML, Markdown, plain text) is a one-time $9.99 payment — or $24.99 for all five document types. There is no subscription.',
+        a: `Generating and previewing the full document is free with no account. Unlocking the download (HTML, Markdown, plain text) is a one-time ${PRICE.single} payment — or ${PRICE.bundle} for all five document types. There is no subscription.`,
       },
     ],
     relatedBlog: [
@@ -147,13 +148,13 @@ export const builderPages: BuilderPage[] = [
     h1: 'Privacy Policy Generator for Bolt.new Apps',
     metaTitle: 'Privacy Policy Generator for Bolt.new Apps | PrivacyPage',
     metaDescription:
-      'Built an app with Bolt.new? Generate its privacy policy in 60 seconds — covers Supabase, Netlify, Expo mobile builds. Free preview, $9.99 one-time.',
+      `Built an app with Bolt.new? Generate its privacy policy in 60 seconds — covers Supabase, Netlify, Expo mobile builds. Free preview, ${PRICE.single} one-time.`,
     keyword: 'privacy policy generator for bolt.new apps',
     tagline:
       'From prompt to production on Bolt.new — don\'t let a missing legal page be the thing that blocks your launch.',
     intro: [
       `Bolt.new gets you from idea to deployed full-stack app astonishingly fast — and with Expo support, even to a native iOS or Android app. That speed cuts both ways: it is now completely normal to reach "submit to the App Store" within a week of starting, long before anyone has thought about legal documents. Both Apple and Google will stop you right there, because a privacy policy URL is a hard requirement for submission.`,
-      `PrivacyPage exists for exactly this moment. Answer a short wizard about what your Bolt app collects — accounts, payments, analytics, AI calls — and get a complete privacy policy in about 60 seconds. Preview the whole document for free; pay <strong>$9.99 once</strong> to unlock it. No subscription, no account.`,
+      `PrivacyPage exists for exactly this moment. Answer a short wizard about what your Bolt app collects — accounts, payments, analytics, AI calls — and get a complete privacy policy in about 60 seconds. Preview the whole document for free; pay <strong>${PRICE.single} once</strong> to unlock it. No subscription, no account.`,
     ],
     dataHeading: 'What a typical Bolt.new app collects',
     dataPoints: [
@@ -197,7 +198,7 @@ export const builderPages: BuilderPage[] = [
       },
       {
         q: 'What about terms of service?',
-        a: 'Stores do not always require ToS, but you want one before taking payments — it is where refund terms and liability limits live. PrivacyPage generates Terms of Service too, and the $24.99 bundle covers all five document types.',
+        a: `Stores do not always require ToS, but you want one before taking payments — it is where refund terms and liability limits live. PrivacyPage generates Terms of Service too, and the ${PRICE.bundle} bundle covers all five document types.`,
       },
       {
         q: 'How long does this actually take?',
@@ -215,13 +216,13 @@ export const builderPages: BuilderPage[] = [
     h1: 'Privacy Policy Generator for v0 Apps',
     metaTitle: 'Privacy Policy Generator for v0 Apps | PrivacyPage',
     metaDescription:
-      'Ship your v0-built Next.js app with a real privacy policy. Covers Vercel Analytics, Clerk/NextAuth, Postgres. 60 seconds, free preview, $9.99 once.',
+      `Ship your v0-built Next.js app with a real privacy policy. Covers Vercel Analytics, Clerk/NextAuth, Postgres. 60 seconds, free preview, ${PRICE.single} once.`,
     keyword: 'privacy policy generator for v0 apps',
     tagline:
       'v0 writes the Next.js code. This writes the legal page — customized to your stack in 60 seconds.',
     intro: [
       `v0 by Vercel turns prompts into production-grade Next.js apps, and one-click deploys put them live on a vercel.app URL minutes later. What v0 will not generate for you is the privacy policy — and the moment your app has a sign-up form, a waitlist, analytics, or a contact form, you are collecting personal data and legally need one.`,
-      `PrivacyPage is built for developers shipping fast: a ~10-question wizard, a complete customized privacy policy in about 60 seconds, and the whole document free to preview. Unlocking the export costs <strong>$9.99 one time</strong> — deliberately the opposite of the subscription pricing most policy tools charge for what is, for you, a one-time need.`,
+      `PrivacyPage is built for developers shipping fast: a ~10-question wizard, a complete customized privacy policy in about 60 seconds, and the whole document free to preview. Unlocking the export costs <strong>${PRICE.single} one time</strong> — deliberately the opposite of the subscription pricing most policy tools charge for what is, for you, a one-time need.`,
     ],
     dataHeading: 'What a typical v0 app collects',
     dataPoints: [
@@ -283,13 +284,13 @@ export const builderPages: BuilderPage[] = [
     h1: 'Privacy Policy Generator for Cursor-Built Apps',
     metaTitle: 'Privacy Policy Generator for Cursor Apps | PrivacyPage',
     metaDescription:
-      'Shipped an app with Cursor? Generate its privacy policy in 60 seconds — covers analytics, crash reporting, Firebase, Stripe. Free preview, $9.99 one-time.',
+      `Shipped an app with Cursor? Generate its privacy policy in 60 seconds — covers analytics, crash reporting, Firebase, Stripe. Free preview, ${PRICE.single} one-time.`,
     keyword: 'privacy policy generator for cursor apps',
     tagline:
       'Cursor helped you write the code. The one file it can\'t write from scratch is your privacy policy — this can.',
     intro: [
       `Cursor has collapsed the time between idea and shipped product. Solo developers are now taking full apps — Next.js SaaS, React Native apps, Swift apps — from empty repo to store submission in days. The legal paperwork hasn't gotten faster to match: a privacy policy is still a hard requirement for the App Store, Google Play, Google OAuth verification, and privacy laws like GDPR and CCPA, and an AI editor can't reliably know your legal obligations or your actual data flows.`,
-      `That's the gap PrivacyPage fills. Instead of asking an LLM to hallucinate a policy (risky — it will happily invent practices you don't have), you answer ~10 concrete questions about what your app really collects, and get a complete, accurate policy in about 60 seconds. Free to preview in full; <strong>$9.99 once</strong> to unlock. No subscription.`,
+      `That's the gap PrivacyPage fills. Instead of asking an LLM to hallucinate a policy (risky — it will happily invent practices you don't have), you answer ~10 concrete questions about what your app really collects, and get a complete, accurate policy in about 60 seconds. Free to preview in full; <strong>${PRICE.single} once</strong> to unlock. No subscription.`,
     ],
     dataHeading: 'What Cursor-built apps typically collect',
     dataPoints: [
@@ -333,7 +334,7 @@ export const builderPages: BuilderPage[] = [
       },
       {
         q: 'I ship multiple apps. Does one purchase cover all of them?',
-        a: 'Each purchase covers one document set for one app, since the content is customized per app. The $24.99 bundle covers all five document types for a single app.',
+        a: `Each purchase covers one document set for one app, since the content is customized per app. The ${PRICE.bundle} bundle covers all five document types for a single app.`,
       },
       {
         q: 'What formats do I get?',
@@ -351,13 +352,13 @@ export const builderPages: BuilderPage[] = [
     h1: 'Privacy Policy Generator for Replit Apps',
     metaTitle: 'Privacy Policy Generator for Replit Apps | PrivacyPage',
     metaDescription:
-      'Built with Replit Agent? Generate a privacy policy for your Replit app in 60 seconds. Covers Replit Auth, DB, deployments. Free preview, $9.99 one-time.',
+      `Built with Replit Agent? Generate a privacy policy for your Replit app in 60 seconds. Covers Replit Auth, DB, deployments. Free preview, ${PRICE.single} one-time.`,
     keyword: 'privacy policy generator for replit apps',
     tagline:
       'Replit Agent built and deployed your app. Give it the privacy policy it needs before you share the link.',
     intro: [
       `Replit Agent takes you from a prompt to a deployed app on a live replit.app URL — often with Replit Auth logins and a database wired in automatically. That "it just works" magic has a quiet consequence: the moment someone logs in, your app is collecting personal data, and you are the one legally responsible for it. Not Replit — you.`,
-      `A privacy policy is the baseline requirement, and it is genuinely easy to get right for a Replit app because the stack is so standard. PrivacyPage generates a policy customized to your app in about 60 seconds: answer a short wizard, preview the entire document free, and pay <strong>$9.99 once</strong> only when you want to unlock the export. No subscription — which matters, because your app might be a weekend experiment, not a business with a software budget.`,
+      `A privacy policy is the baseline requirement, and it is genuinely easy to get right for a Replit app because the stack is so standard. PrivacyPage generates a policy customized to your app in about 60 seconds: answer a short wizard, preview the entire document free, and pay <strong>${PRICE.single} once</strong> only when you want to unlock the export. No subscription — which matters, because your app might be a weekend experiment, not a business with a software budget.`,
     ],
     dataHeading: 'What your Replit app is probably collecting',
     dataPoints: [
@@ -405,7 +406,7 @@ export const builderPages: BuilderPage[] = [
       },
       {
         q: 'What does the free preview include?',
-        a: 'The complete generated document, viewable in full before you pay. The one-time $9.99 payment unlocks download and export in HTML, Markdown, and plain text.',
+        a: `The complete generated document, viewable in full before you pay. The one-time ${PRICE.single} payment unlocks download and export in HTML, Markdown, and plain text.`,
       },
     ],
     relatedBlog: [
@@ -421,22 +422,22 @@ export const competitorPages: CompetitorPage[] = [
   {
     slug: 'termly',
     name: 'Termly',
-    h1: 'PrivacyPage vs Termly: One-Time $9.99 vs a Subscription',
+    h1: `PrivacyPage vs Termly: One-Time ${PRICE.single} vs a Subscription`,
     metaTitle: 'PrivacyPage vs Termly (2026): Pricing & Comparison',
     metaDescription:
-      'Termly Pro+ runs $180/year billed annually. PrivacyPage is $9.99 once. Honest 2026 comparison: pricing, features, and when each tool is the right choice.',
+      `Termly Pro+ runs $180/year billed annually. PrivacyPage is ${PRICE.single} once. Honest 2026 comparison: pricing, features, and when each tool is the right choice.`,
     keyword: 'termly alternative',
     tagline:
       'Both generate compliant privacy policies. One bills you every month for it.',
     intro: [
       `Termly is one of the most popular compliance platforms on the web, and deservedly so — it pairs policy generators with a full consent management platform. The catch is the pricing model: meaningful use requires a per-website subscription. As of August 2026, Termly's Pro+ plan is <strong>$15/month billed annually ($180/year), or $20/month billed monthly</strong>, per website (<a href="https://termly.io/pricing/" target="_blank" rel="noopener noreferrer nofollow">termly.io/pricing</a>). The Starter tier is $10/month billed annually, and the free plan covers a single basic policy with Termly branding.`,
-      `PrivacyPage takes the opposite approach: you generate the document free, preview all of it, and pay <strong>$9.99 once</strong> to unlock it (or $24.99 for all five document types). You own the file, host it anywhere, and regenerate updates free for life. Over three years that's $9.99 versus $540 for Termly Pro+ — for a developer who needs a policy, not a compliance department.`,
+      `PrivacyPage takes the opposite approach: you generate the document free, preview all of it, and pay <strong>${PRICE.single} once</strong> to unlock it (or ${PRICE.bundle} for all five document types). You own the file, host it anywhere, and regenerate updates free for life. Over three years that's ${PRICE.single} versus $540 for Termly Pro+ — for a developer who needs a policy, not a compliance department.`,
     ],
     pricingSourceNote:
       'Competitor pricing checked August 2026 from termly.io/pricing. Verify current prices before purchasing — plans and promotions change.',
     comparisonRows: [
-      { label: 'Price', them: '$10–$15/mo billed annually ($120–$180/yr) per website; $14–$20 billed monthly', us: '$9.99 once per document, or $24.99 once for all 5' },
-      { label: '3-year cost', them: '$360–$540 per website (annual billing)', us: '$9.99–$24.99, total' },
+      { label: 'Price', them: '$10–$15/mo billed annually ($120–$180/yr) per website; $14–$20 billed monthly', us: `${PRICE.single} once per document, or ${PRICE.bundle} once for all 5` },
+      { label: '3-year cost', them: '$360–$540 per website (annual billing)', us: `${PRICE.single}–${PRICE.bundle}, total` },
       { label: 'Free tier', them: '1 basic policy, Termly branding, 10k banner views', us: 'Full free preview of every document, no account' },
       { label: 'Document ownership', them: 'Termly-hosted; policies live on their infrastructure', us: 'You export HTML/Markdown/text and host anywhere' },
       { label: 'Cookie consent banner', them: 'Yes — full CMP with consent logs, Google Consent Mode v2, IAB TCF', us: 'No — documents only' },
@@ -461,7 +462,7 @@ export const competitorPages: CompetitorPage[] = [
     prosUs: [
       {
         title: 'One-time payment',
-        desc: '$9.99 once versus a subscription that costs more every single year you stay live. For a document you need once and touch rarely, renting makes little sense.',
+        desc: `${PRICE.single} once versus a subscription that costs more every single year you stay live. For a document you need once and touch rarely, renting makes little sense.`,
       },
       {
         title: 'You own the document',
@@ -478,7 +479,7 @@ export const competitorPages: CompetitorPage[] = [
     ],
     verdict: [
       `Choose <strong>Termly</strong> if you need an ongoing compliance platform: cookie consent banner with logged proof, auto-updating hosted policies, and advertising-grade consent (TCF, Consent Mode v2). That is what the subscription pays for.`,
-      `Choose <strong>PrivacyPage</strong> if you need the documents: a privacy policy, terms of service, or full doc set for an app you're shipping. You'll pay $9.99–$24.99 once instead of $120–$180 per year, own the files outright, and regenerate them free when your app changes.`,
+      `Choose <strong>PrivacyPage</strong> if you need the documents: a privacy policy, terms of service, or full doc set for an app you're shipping. You'll pay ${PRICE.single}–${PRICE.bundle} once instead of $120–$180 per year, own the files outright, and regenerate them free when your app changes.`,
     ],
     callout: {
       text: 'Want the deeper dive? We wrote a full guide on switching from Termly, including a step-by-step migration.',
@@ -511,22 +512,22 @@ export const competitorPages: CompetitorPage[] = [
   {
     slug: 'iubenda',
     name: 'iubenda',
-    h1: 'PrivacyPage vs iubenda: $9.99 Once vs Per-Site Subscriptions',
+    h1: `PrivacyPage vs iubenda: ${PRICE.single} Once vs Per-Site Subscriptions`,
     metaTitle: 'PrivacyPage vs iubenda (2026): Pricing & Comparison',
     metaDescription:
-      'iubenda Advanced costs ~$300/year per site; Terms need the $24.99/mo tier. PrivacyPage: $9.99 once. Honest 2026 comparison for app developers.',
+      `iubenda Advanced costs ~$300/year per site; Terms need the ${PRICE.bundle}/mo tier. PrivacyPage: ${PRICE.single} once. Honest 2026 comparison for app developers.`,
     keyword: 'iubenda alternative',
     tagline:
       'A 15-year-old compliance suite versus a 60-second generator. Different tools — very different bills.',
     intro: [
-      `iubenda is one of the longest-running players in the compliance space, with a lawyer-crafted clause library and genuinely deep multi-language support. Its pricing is per site and subscription-based. As of August 2026 (<a href="https://www.iubenda.com/en/pricing/" target="_blank" rel="noopener noreferrer nofollow">iubenda.com/en/pricing</a>): <strong>Essentials at $5.99/month billed annually (~$72/year)</strong> covers a privacy and cookie policy in one language; <strong>Advanced at $24.99/month billed annually (~$300/year)</strong> is the first tier that includes Terms &amp; Conditions; <strong>Ultimate runs $99.99/month (~$1,200/year)</strong>. Plans include monthly pageview quotas with overage fees beyond them.`,
-      `PrivacyPage charges <strong>$9.99 once</strong> per document or <strong>$24.99 once</strong> for all five — privacy policy, terms of service, EULA, cookie policy, and disclaimer. That bundle costs less, once, than a single month of the iubenda tier you'd need to get Terms &amp; Conditions at all.`,
+      `iubenda is one of the longest-running players in the compliance space, with a lawyer-crafted clause library and genuinely deep multi-language support. Its pricing is per site and subscription-based. As of August 2026 (<a href="https://www.iubenda.com/en/pricing/" target="_blank" rel="noopener noreferrer nofollow">iubenda.com/en/pricing</a>): <strong>Essentials at $5.99/month billed annually (~$72/year)</strong> covers a privacy and cookie policy in one language; <strong>Advanced at ${PRICE.bundle}/month billed annually (~$300/year)</strong> is the first tier that includes Terms &amp; Conditions; <strong>Ultimate runs $99.99/month (~$1,200/year)</strong>. Plans include monthly pageview quotas with overage fees beyond them.`,
+      `PrivacyPage charges <strong>${PRICE.single} once</strong> per document or <strong>${PRICE.bundle} once</strong> for all five — privacy policy, terms of service, EULA, cookie policy, and disclaimer. That bundle costs less, once, than a single month of the iubenda tier you'd need to get Terms &amp; Conditions at all.`,
     ],
     pricingSourceNote:
       'Competitor pricing checked August 2026 from iubenda.com/en/pricing (USD, annual billing). Pageview overages billed separately. Verify current prices before purchasing.',
     comparisonRows: [
-      { label: 'Price', them: '$5.99–$99.99/mo billed annually, per site (~$72–$1,200/yr)', us: '$9.99 once per document, or $24.99 once for all 5' },
-      { label: 'Terms of Service included', them: 'Only from Advanced (~$300/yr)', us: 'Included in the $24.99 bundle' },
+      { label: 'Price', them: '$5.99–$99.99/mo billed annually, per site (~$72–$1,200/yr)', us: `${PRICE.single} once per document, or ${PRICE.bundle} once for all 5` },
+      { label: 'Terms of Service included', them: 'Only from Advanced (~$300/yr)', us: `Included in the ${PRICE.bundle} bundle` },
       { label: 'Pageview limits', them: 'Yes — 25k–150k/mo per tier, ~$0.06 per extra 1,000', us: 'None — it\'s your file' },
       { label: 'Multi-language documents', them: 'Yes (Advanced+), excellent', us: 'English only' },
       { label: 'Document ownership', them: 'Embedded/hosted via iubenda; tied to subscription', us: 'Full export — HTML, Markdown, plain text' },
@@ -551,7 +552,7 @@ export const competitorPages: CompetitorPage[] = [
     prosUs: [
       {
         title: 'A fraction of the cost',
-        desc: 'The $24.99 all-documents bundle is a one-time payment smaller than one month of iubenda Advanced — the tier you need before Terms & Conditions are even included.',
+        desc: `The ${PRICE.bundle} all-documents bundle is a one-time payment smaller than one month of iubenda Advanced — the tier you need before Terms & Conditions are even included.`,
       },
       {
         title: 'No pageview meter',
@@ -568,12 +569,12 @@ export const competitorPages: CompetitorPage[] = [
     ],
     verdict: [
       `Choose <strong>iubenda</strong> if you run a multi-language, EU-facing business that wants a maintained compliance suite — clause updates, consent records, cookie banner — and the ~$300/year for the tier that includes all documents is a rounding error for you.`,
-      `Choose <strong>PrivacyPage</strong> if you are a developer or indie founder who needs correct, complete legal documents for an app — once, in English, for $9.99–$24.99 total, with no meter running.`,
+      `Choose <strong>PrivacyPage</strong> if you are a developer or indie founder who needs correct, complete legal documents for an app — once, in English, for ${PRICE.single}–${PRICE.bundle} total, with no meter running.`,
     ],
     faqs: [
       {
         q: 'Why is iubenda so much more expensive for Terms & Conditions?',
-        a: 'iubenda gates Terms & Conditions behind its Advanced tier (~$24.99/month billed annually) because that tier targets businesses. PrivacyPage includes Terms of Service in the $24.99 one-time bundle alongside the privacy policy, EULA, cookie policy, and disclaimer.',
+        a: `iubenda gates Terms & Conditions behind its Advanced tier (~${PRICE.bundle}/month billed annually) because that tier targets businesses. PrivacyPage includes Terms of Service in the ${PRICE.bundle} one-time bundle alongside the privacy policy, EULA, cookie policy, and disclaimer.`,
       },
       {
         q: 'Does PrivacyPage have the same legal clause depth?',
@@ -596,23 +597,23 @@ export const competitorPages: CompetitorPage[] = [
   {
     slug: 'getterms',
     name: 'GetTerms',
-    h1: 'PrivacyPage vs GetTerms: $9.99 Once vs $60/Year or $199 Lifetime',
+    h1: `PrivacyPage vs GetTerms: ${PRICE.single} Once vs $60/Year or $199 Lifetime`,
     metaTitle: 'PrivacyPage vs GetTerms (2026): Pricing Comparison',
     metaDescription:
-      'GetTerms runs $60–$96/year per site, or $199–$249 lifetime. PrivacyPage is $9.99 once, $24.99 for all 5 docs. Honest 2026 comparison for developers.',
+      `GetTerms runs $60–$96/year per site, or $199–$249 lifetime. PrivacyPage is ${PRICE.single} once, ${PRICE.bundle} for all 5 docs. Honest 2026 comparison for developers.`,
     keyword: 'getterms alternative',
     tagline:
       'GetTerms is one of the cheaper compliance platforms. PrivacyPage is still an order of magnitude cheaper for documents.',
     intro: [
       `GetTerms deserves credit as one of the more affordable compliance tools — and one of the few that even offers a lifetime option. As of August 2026 (<a href="https://getterms.io/pricing" target="_blank" rel="noopener noreferrer nofollow">getterms.io/pricing</a>): the <strong>Starter plan is $5/month billed annually ($60/year)</strong> per site and covers a privacy policy and cookie banner, but notably <em>not</em> Terms &amp; Conditions. The <strong>Business plan at $8/month billed annually ($96/year)</strong> adds all policies and removes branding. Lifetime licenses cost <strong>$199 (Starter) or $249 (Business)</strong> per site.`,
-      `PrivacyPage's whole model is what GetTerms's lifetime tier gestures at, priced for indie developers: <strong>$9.99 once</strong> for a document, <strong>$24.99 once</strong> for all five document types, full free preview first, no account. If what you need is the legal documents — not a hosted consent platform — the math is not close.`,
+      `PrivacyPage's whole model is what GetTerms's lifetime tier gestures at, priced for indie developers: <strong>${PRICE.single} once</strong> for a document, <strong>${PRICE.bundle} once</strong> for all five document types, full free preview first, no account. If what you need is the legal documents — not a hosted consent platform — the math is not close.`,
     ],
     pricingSourceNote:
       'Competitor pricing checked August 2026 from getterms.io/pricing and independent reviews. Promotional lifetime deals (e.g. AppSumo tiers) appear periodically. Verify current prices before purchasing.',
     comparisonRows: [
-      { label: 'Price', them: '$5–$8/mo billed annually ($60–$96/yr) per site; $9–$12 monthly', us: '$9.99 once per document, or $24.99 once for all 5' },
-      { label: 'Lifetime option', them: '$199 (Starter) / $249 (Business) per site', us: 'Every purchase is effectively lifetime — $9.99–$24.99' },
-      { label: 'Terms & Conditions', them: 'Business plan only', us: 'Included in the $24.99 bundle' },
+      { label: 'Price', them: '$5–$8/mo billed annually ($60–$96/yr) per site; $9–$12 monthly', us: `${PRICE.single} once per document, or ${PRICE.bundle} once for all 5` },
+      { label: 'Lifetime option', them: '$199 (Starter) / $249 (Business) per site', us: `Every purchase is effectively lifetime — ${PRICE.single}–${PRICE.bundle}` },
+      { label: 'Terms & Conditions', them: 'Business plan only', us: `Included in the ${PRICE.bundle} bundle` },
       { label: 'Cookie consent banner', them: 'Yes, with unlimited views and Consent Mode v2', us: 'No — documents only' },
       { label: 'Branding on documents', them: 'GetTerms branding on Starter', us: 'None — the document is yours' },
       { label: 'Regulation monitoring alerts', them: 'Yes, on Business', us: 'No — free manual regeneration anytime' },
@@ -636,7 +637,7 @@ export const competitorPages: CompetitorPage[] = [
     prosUs: [
       {
         title: '8–25x cheaper for documents',
-        desc: 'GetTerms\'s cheapest lifetime tier is $199 per site. PrivacyPage\'s all-documents bundle is $24.99 once — and a single privacy policy is $9.99.',
+        desc: `GetTerms's cheapest lifetime tier is $199 per site. PrivacyPage's all-documents bundle is ${PRICE.bundle} once — and a single privacy policy is ${PRICE.single}.`,
       },
       {
         title: 'Terms included without upgrading',
@@ -653,12 +654,12 @@ export const competitorPages: CompetitorPage[] = [
     ],
     verdict: [
       `Choose <strong>GetTerms</strong> if you want a hosted compliance platform with a cookie consent banner and update alerts at one of the lower subscription prices in the category — or its lifetime tier if you run one site long-term and want the CMP included.`,
-      `Choose <strong>PrivacyPage</strong> if you need the documents themselves for an app you're launching: $9.99–$24.99 once, all document types, no branding, no account, and free regenerations for life.`,
+      `Choose <strong>PrivacyPage</strong> if you need the documents themselves for an app you're launching: ${PRICE.single}–${PRICE.bundle} once, all document types, no branding, no account, and free regenerations for life.`,
     ],
     faqs: [
       {
         q: 'GetTerms has a lifetime plan too — how is PrivacyPage different?',
-        a: 'Scope and price. GetTerms lifetime ($199–$249 per site) buys their hosted platform: policies plus cookie banner and updates. PrivacyPage sells the documents: $9.99 for one or $24.99 for all five, exported as files you own, with free manual regenerations. If you don\'t need a hosted CMP, you\'re paying roughly 8x more at GetTerms for the same core documents.',
+        a: `Scope and price. GetTerms lifetime ($199–$249 per site) buys their hosted platform: policies plus cookie banner and updates. PrivacyPage sells the documents: ${PRICE.single} for one or ${PRICE.bundle} for all five, exported as files you own, with free manual regenerations. If you don't need a hosted CMP, you're paying roughly 8x more at GetTerms for the same core documents.`,
       },
       {
         q: 'Is the GetTerms free policy enough for an app store submission?',
@@ -670,7 +671,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         q: 'Which is better for a mobile app?',
-        a: 'Mobile apps rarely need a web cookie banner — they need accurate policy documents for App Store and Play Store submission. That is PrivacyPage\'s home turf: store-ready documents in 60 seconds for $9.99.',
+        a: `Mobile apps rarely need a web cookie banner — they need accurate policy documents for App Store and Play Store submission. That is PrivacyPage's home turf: store-ready documents in 60 seconds for ${PRICE.single}.`,
       },
     ],
     relatedBlog: [
@@ -681,22 +682,22 @@ export const competitorPages: CompetitorPage[] = [
   {
     slug: 'termageddon',
     name: 'Termageddon',
-    h1: 'PrivacyPage vs Termageddon: $9.99 Once vs $119 Every Year',
+    h1: `PrivacyPage vs Termageddon: ${PRICE.single} Once vs $119 Every Year`,
     metaTitle: 'PrivacyPage vs Termageddon (2026): Comparison',
     metaDescription:
-      'Termageddon costs $119/year per website, subscription only. PrivacyPage is $9.99 once. Honest 2026 comparison — including where Termageddon is stronger.',
+      `Termageddon costs $119/year per website, subscription only. PrivacyPage is ${PRICE.single} once. Honest 2026 comparison — including where Termageddon is stronger.`,
     keyword: 'termageddon alternative',
     tagline:
       'Termageddon sells auto-updating policies as a service. PrivacyPage sells you the policy.',
     intro: [
       `Termageddon has a clear, single-tier offer: <strong>$12/month or $119/year per website</strong> (as of August 2026 — <a href="https://termageddon.com/pricing/" target="_blank" rel="noopener noreferrer nofollow">termageddon.com/pricing</a>), which includes its full policy suite — privacy policy, terms &amp; conditions, disclaimer, EULA, cookie policy — plus a cookie consent tool. Its headline feature is genuinely distinctive: policies are embedded via their API and <strong>update automatically when privacy laws change</strong>, with an attorney-led team monitoring 120+ laws. There is no lifetime or one-time option.`,
-      `PrivacyPage covers the same document set for <strong>$24.99 once</strong> (or $9.99 for a single document). You export and own the files, and when laws or your app change you regenerate free — manually rather than automatically. Over five years that's $24.99 versus $595. Whether Termageddon's automation is worth the recurring difference is the honest question, and the answer depends on who you are.`,
+      `PrivacyPage covers the same document set for <strong>${PRICE.bundle} once</strong> (or ${PRICE.single} for a single document). You export and own the files, and when laws or your app change you regenerate free — manually rather than automatically. Over five years that's ${PRICE.bundle} versus $595. Whether Termageddon's automation is worth the recurring difference is the honest question, and the answer depends on who you are.`,
     ],
     pricingSourceNote:
       'Competitor pricing checked August 2026 from termageddon.com/pricing. Verify current prices before purchasing.',
     comparisonRows: [
-      { label: 'Price', them: '$12/mo or $119/yr per website, subscription only', us: '$9.99 once per document, or $24.99 once for all 5' },
-      { label: '5-year cost', them: '$595 per website', us: '$24.99, total' },
+      { label: 'Price', them: '$12/mo or $119/yr per website, subscription only', us: `${PRICE.single} once per document, or ${PRICE.bundle} once for all 5` },
+      { label: '5-year cost', them: '$595 per website', us: `${PRICE.bundle}, total` },
       { label: 'Documents included', them: 'Privacy policy, T&C, disclaimer, EULA, cookie policy', us: 'Privacy policy, ToS, disclaimer, EULA, cookie policy' },
       { label: 'Auto-updates on law changes', them: 'Yes — embedded policies update automatically', us: 'No — free manual regeneration anytime' },
       { label: 'Cookie consent tool', them: 'Included', us: 'No — documents only' },
@@ -720,7 +721,7 @@ export const competitorPages: CompetitorPage[] = [
     ],
     prosUs: [
       {
-        title: '$24.99 once vs $119 forever',
+        title: `${PRICE.bundle} once vs $119 forever`,
         desc: 'Termageddon has no way to stop paying. If your app lives five years, the same documents cost 24x more. PrivacyPage\'s regenerations are manual, but they are free and take a minute.',
       },
       {
@@ -733,12 +734,12 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         title: 'Priced for indie developers',
-        desc: 'Geo-priced INR checkout with UPI support. $119/year is a business expense; $24.99 once is an indie-hacker expense.',
+        desc: `Geo-priced INR checkout with UPI support. $119/year is a business expense; ${PRICE.bundle} once is an indie-hacker expense.`,
       },
     ],
     verdict: [
       `Choose <strong>Termageddon</strong> if you run a business website you intend to never think about again — its attorney-monitored auto-updates genuinely deliver set-and-forget compliance, and $119/year is fair for that service. Agencies managing client sites should look at it seriously.`,
-      `Choose <strong>PrivacyPage</strong> if you're a developer shipping an app and you want correct documents now, owned outright, for a one-time $9.99–$24.99 — accepting that when laws change meaningfully, you regenerate the document yourself (free).`,
+      `Choose <strong>PrivacyPage</strong> if you're a developer shipping an app and you want correct documents now, owned outright, for a one-time ${PRICE.single}–${PRICE.bundle} — accepting that when laws change meaningfully, you regenerate the document yourself (free).`,
     ],
     faqs: [
       {
@@ -769,23 +770,23 @@ export const competitorPages: CompetitorPage[] = [
     h1: 'PrivacyPage vs FreePrivacyPolicy.com: What "Free" Actually Costs',
     metaTitle: 'PrivacyPage vs FreePrivacyPolicy.com (2026)',
     metaDescription:
-      'FreePrivacyPolicy\'s free tier is basic; premium clauses are à-la-carte one-time fees that add up. PrivacyPage: full doc, $9.99 flat. 2026 comparison.',
+      `FreePrivacyPolicy's free tier is basic; premium clauses are à-la-carte one-time fees that add up. PrivacyPage: full doc, ${PRICE.single} flat. 2026 comparison.`,
     keyword: 'freeprivacypolicy alternative',
     tagline:
       'Both offer free policies and one-time payments. The difference is what the free version leaves out — and how the paid version is priced.',
     intro: [
       `FreePrivacyPolicy.com is one of the oldest and best-known policy generators, and to its credit it shares PrivacyPage's core belief: legal documents should be a one-time purchase, not a subscription. Its free tier produces a genuinely free but basic policy. The paid model is <strong>à-la-carte</strong>: premium clauses are individual one-time fees — for example, clauses for payment processors, analytics tools like Google Analytics or Firebase, remarketing, and GDPR/CCPA coverage are each priced separately (per their <a href="https://www.freeprivacypolicy.com/" target="_blank" rel="noopener noreferrer nofollow">site</a>). Independent 2026 reviews put a comprehensive premium policy at roughly <strong>$47–$197 one-time</strong> depending on the clauses selected.`,
-      `PrivacyPage flattens all of that: <strong>$9.99 once</strong> buys the complete document — GDPR and CCPA sections, all your third-party services, everything — with the entire document previewable free before you pay. No clause menu, no surprise line items at checkout.`,
+      `PrivacyPage flattens all of that: <strong>${PRICE.single} once</strong> buys the complete document — GDPR and CCPA sections, all your third-party services, everything — with the entire document previewable free before you pay. No clause menu, no surprise line items at checkout.`,
     ],
     pricingSourceNote:
       'FreePrivacyPolicy.com prices premium clauses individually (one-time fees per clause/module); totals vary by selection. Range cited from independent reviews, August 2026. Verify current prices on their site.',
     comparisonRows: [
-      { label: 'Pricing model', them: 'Free basic policy; premium clauses priced individually (one-time)', us: 'Flat $9.99 once per document, $24.99 for all 5' },
-      { label: 'Typical paid total', them: '~$47–$197 depending on clauses (per 2026 reviews)', us: '$9.99, fixed and known upfront' },
+      { label: 'Pricing model', them: 'Free basic policy; premium clauses priced individually (one-time)', us: `Flat ${PRICE.single} once per document, ${PRICE.bundle} for all 5` },
+      { label: 'Typical paid total', them: '~$47–$197 depending on clauses (per 2026 reviews)', us: `${PRICE.single}, fixed and known upfront` },
       { label: 'GDPR / CCPA sections', them: 'Paid add-on clauses', us: 'Included' },
       { label: 'Third-party service clauses', them: 'Priced per clause (e.g. analytics, payments, ads)', us: 'Included — the wizard asks what you use' },
       { label: 'Free tier', them: 'Yes — basic policy, limited compliance coverage', us: 'Full document preview, free, no account' },
-      { label: 'Other document types', them: 'Separate generators, separately priced', us: 'All 5 in the $24.99 bundle' },
+      { label: 'Other document types', them: 'Separate generators, separately priced', us: `All 5 in the ${PRICE.bundle} bundle` },
       { label: 'Subscription', them: 'None — one-time fees', us: 'None — one-time' },
       { label: 'Auto-updates', them: 'Hosted policy revisions applied to hosted version', us: 'Free manual regeneration, lifetime' },
     ],
@@ -806,7 +807,7 @@ export const competitorPages: CompetitorPage[] = [
     prosUs: [
       {
         title: 'One flat price, no clause menu',
-        desc: 'FreePrivacyPolicy prices GDPR clauses, analytics clauses, payment processor clauses, and remarketing clauses individually — a comprehensive policy commonly lands between $47 and $197. PrivacyPage is $9.99, period, and you knew that before you started.',
+        desc: `FreePrivacyPolicy prices GDPR clauses, analytics clauses, payment processor clauses, and remarketing clauses individually — a comprehensive policy commonly lands between $47 and $197. PrivacyPage is ${PRICE.single}, period, and you knew that before you started.`,
       },
       {
         title: 'Free means the full document',
@@ -823,7 +824,7 @@ export const competitorPages: CompetitorPage[] = [
     ],
     verdict: [
       `Choose <strong>FreePrivacyPolicy.com</strong> if you have a simple website with minimal data collection and the basic free policy honestly covers your practices — it is a legitimate free option with a long history.`,
-      `Choose <strong>PrivacyPage</strong> if you're shipping an app that uses real services — auth, analytics, payments, AI — and want every required clause in one document for a flat $9.99, instead of assembling it from à-la-carte add-ons that can total 5–20x more.`,
+      `Choose <strong>PrivacyPage</strong> if you're shipping an app that uses real services — auth, analytics, payments, AI — and want every required clause in one document for a flat ${PRICE.single}, instead of assembling it from à-la-carte add-ons that can total 5–20x more.`,
     ],
     faqs: [
       {
@@ -832,7 +833,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         q: 'Both are one-time payments — why is PrivacyPage cheaper?',
-        a: 'Pricing structure. FreePrivacyPolicy monetizes per clause: each analytics tool, payment processor, or compliance framework adds a fee, so realistic totals reach $47–$197. PrivacyPage charges one flat $9.99 for the complete customized document regardless of how many services you use.',
+        a: `Pricing structure. FreePrivacyPolicy monetizes per clause: each analytics tool, payment processor, or compliance framework adds a fee, so realistic totals reach $47–$197. PrivacyPage charges one flat ${PRICE.single} for the complete customized document regardless of how many services you use.`,
       },
       {
         q: 'Can I see exactly what I\'m getting before paying?',
@@ -840,7 +841,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         q: 'What if I need terms of service and a cookie policy too?',
-        a: 'FreePrivacyPolicy offers those as separate generators with their own fees. PrivacyPage\'s $24.99 bundle covers all five document types — privacy policy, ToS, EULA, cookie policy, and disclaimer — in one payment.',
+        a: `FreePrivacyPolicy offers those as separate generators with their own fees. PrivacyPage's ${PRICE.bundle} bundle covers all five document types — privacy policy, ToS, EULA, cookie policy, and disclaimer — in one payment.`,
       },
     ],
     relatedBlog: [

@@ -43,6 +43,7 @@ export function validate(file, d) {
 
   if (!str(d.sampleClause?.heading) || !str(d.sampleClause?.text)) err(file, 'sampleClause.heading + sampleClause.text required')
   if (!Array.isArray(d.whereToPaste) || !d.whereToPaste.length) err(file, 'whereToPaste[] required')
+  if (d.whereToPasteSource !== undefined) { if (!isUrl(d.whereToPasteSource)) err(file, 'whereToPasteSource must be an https URL'); else urls.add(d.whereToPasteSource) }
   if (!Array.isArray(d.faqs) || !d.faqs.length || !d.faqs.every((f) => str(f.q) && str(f.a))) err(file, 'faqs[] with q+a required')
 
   // Copy rules: no approval/guarantee claims; general pages never promise a platform template.

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import { PRICING } from "@/lib/currency";
 
 export const metadata: Metadata = {
   title: "PrivacyPage — Privacy Policy Generator for Apps | Free, No Signup",
@@ -93,20 +94,22 @@ export default function RootLayout({
                 "description": "Free preview - see how it works",
                 "availability": "https://schema.org/InStock"
               },
-              {
-                "@type": "Offer",
-                "price": "9.99",
-                "priceCurrency": "USD",
-                "description": "Pro - Single Document (one-time payment)",
-                "availability": "https://schema.org/InStock"
-              },
-              {
-                "@type": "Offer",
-                "price": "24.99",
-                "priceCurrency": "USD",
-                "description": "Bundle - All 5 Documents (one-time payment)",
-                "availability": "https://schema.org/InStock"
-              }
+              ...(["USD", "INR"] as const).flatMap((c) => [
+                {
+                  "@type": "Offer",
+                  "price": String(PRICING[c].single),
+                  "priceCurrency": c,
+                  "description": "Pro - Single Document (one-time payment)" + (c === "INR" ? " - India" : ""),
+                  "availability": "https://schema.org/InStock"
+                },
+                {
+                  "@type": "Offer",
+                  "price": String(PRICING[c].bundle),
+                  "priceCurrency": c,
+                  "description": "Bundle - All 5 Documents (one-time payment)" + (c === "INR" ? " - India" : ""),
+                  "availability": "https://schema.org/InStock"
+                }
+              ])
             ],
             "featureList": ["Privacy Policy Generator", "Terms of Service Generator", "EULA Generator", "Cookie Policy Generator", "Disclaimer Generator", "GDPR Compliant", "CCPA Compliant"]
           })}

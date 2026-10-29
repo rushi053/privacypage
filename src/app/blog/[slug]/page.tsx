@@ -1,4 +1,5 @@
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
+import { PriceLocalizer } from '@/components/PriceLocalizer'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -112,7 +113,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
       </nav>
 
-      <article className="pt-40 pb-20 px-6">
+      <article className="pt-40 pb-20 px-6"><PriceLocalizer />
         <div className="max-w-[720px] mx-auto">
           <Link href="/blog" className="text-sm text-gray-600 hover:text-gray-900 transition-colors mb-8 inline-flex items-center gap-2">
             ← Back to Blog

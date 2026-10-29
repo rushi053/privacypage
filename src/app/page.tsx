@@ -21,7 +21,7 @@ import { FadeInView } from "@/components/FadeInView";
 import { trackGenerateDocument, trackRestoreLicense } from "@/lib/analytics";
 
 function getSavingsDisplay(pricing: LocalPricing | null): string {
-  if (!pricing) return "save ₹2146";
+  if (!pricing) return "save …";
   const savings = pricing.singlePrice * 5 - pricing.bundlePrice;
   const fmt = pricing.currency === "INR" ? Math.round(savings).toString() : savings.toFixed(2);
   return `save ${pricing.symbol}${fmt}`;

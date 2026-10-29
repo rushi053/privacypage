@@ -1,14 +1,15 @@
+import { PRICE } from '@/lib/currency'
 export const dynamic = 'force-static'
 
 const content = `# PrivacyPage
 
-> PrivacyPage is an AI-powered legal document generator for indie developers and app builders. It generates privacy policies, terms of service, cookie policies, refund policies, and EULAs from a short questionnaire. One-time payment — $9.99 per document or $24.99 for the full bundle (₹849 / ₹2,099 in India) — with lifetime regenerations. No subscriptions, no account required.
+> PrivacyPage is an AI-powered legal document generator for indie developers and app builders. It generates privacy policies, terms of service, cookie policies, refund policies, and EULAs from a short questionnaire. One-time payment — ${PRICE.single} per document or ${PRICE.bundle} for the full bundle (${PRICE.singleInr} / ${PRICE.bundleInr} in India) — with lifetime regenerations. No subscriptions, no account required.
 
 PrivacyPage is built primarily for developers shipping apps with AI tools (Lovable, Bolt, v0, Cursor, Replit). You answer a short wizard about your app's data practices, see a free preview of the generated document, and pay once to unlock and download the full version. Every purchase includes lifetime regenerations, so documents can be updated as the app changes.
 
 ## Generator
 
-- [Document generator](https://privacypage.io/): Generate a privacy policy, terms of service, cookie policy, refund policy, or EULA. Free preview; $9.99 per document or $24.99 for all five, paid once with lifetime regenerations.
+- [Document generator](https://privacypage.io/): Generate a privacy policy, terms of service, cookie policy, refund policy, or EULA. Free preview; ${PRICE.single} per document or ${PRICE.bundle} for all five, paid once with lifetime regenerations.
 
 ## For AI Agents: MCP Server
 
@@ -31,10 +32,10 @@ Guides covering what data apps built with each platform typically collect, and h
 
 How PrivacyPage's one-time pricing compares to subscription-based policy generators.
 
-- [PrivacyPage vs Termly](https://privacypage.io/vs/termly): One-time $9.99–$24.99 versus Termly's recurring subscription; you own the document outright.
+- [PrivacyPage vs Termly](https://privacypage.io/vs/termly): One-time ${PRICE.single}–${PRICE.bundle} versus Termly's recurring subscription; you own the document outright.
 - [PrivacyPage vs iubenda](https://privacypage.io/vs/iubenda): A fraction of iubenda's cost, with no pageview meter and no ongoing license.
 - [PrivacyPage vs GetTerms](https://privacypage.io/vs/getterms): A true lifetime option — 8–25x cheaper per document, terms of service included without upgrading.
-- [PrivacyPage vs Termageddon](https://privacypage.io/vs/termageddon): $24.99 once versus $119/year forever; you hold the files.
+- [PrivacyPage vs Termageddon](https://privacypage.io/vs/termageddon): ${PRICE.bundle} once versus $119/year forever; you hold the files.
 - [PrivacyPage vs FreePrivacyPolicy](https://privacypage.io/vs/freeprivacypolicy): What the "free" generators charge for once you need real coverage, and how PrivacyPage differs.
 
 ## Compliance Guides

@@ -112,6 +112,7 @@ export function PlatformPageView({ page }: { page: PlatformPage }) {
               <li key={i} className="grid grid-cols-[40px_1fr]"><span className="font-[family-name:var(--f-mono)] text-[14px] leading-[1.9] text-[#0F5C63]">3.{i + 1}</span><span>{s}</span></li>
             ))}
           </ol>
+          {page.whereToPasteSource && <p><Source href={page.whereToPasteSource} /></p>}
         </Clause>
 
         <Clause n="4" title="Sample clause">

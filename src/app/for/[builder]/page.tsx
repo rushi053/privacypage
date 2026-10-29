@@ -1,3 +1,4 @@
+import { PRICE } from '@/lib/currency'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -108,7 +109,7 @@ export default async function BuilderLandingPage({ params }: { params: Promise<{
               'Pick a document type — privacy policy, terms of service, EULA, cookie policy, or disclaimer.',
               `Answer about ten plain-English questions: your app's name, what data it collects, and which third-party services it uses.`,
               'Preview the complete generated document — free, no account, nothing blurred that matters for judging it.',
-              'Pay $9.99 once to unlock and export as HTML, Markdown, or plain text. Regenerate free, forever, when your app changes.',
+              `Pay ${PRICE.single} once to unlock and export as HTML, Markdown, or plain text. Regenerate free, forever, when your app changes.`,
             ].map((step, i) => (
               <li key={i} className="flex items-start gap-3 text-gray-700 leading-relaxed">
                 <span className="w-6 h-6 rounded-full bg-indigo-50 text-indigo-600 text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">{i + 1}</span>

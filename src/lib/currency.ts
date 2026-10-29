@@ -70,3 +70,17 @@ export async function fetchGeoPricing(): Promise<LocalPricing> {
   }
   return getPricingForCountry(null);
 }
+
+/**
+ * Canonical display strings for static/SEO copy, derived from PRICING (USD is
+ * the default for crawlers and non-India visitors). <PriceLocalizer/> swaps
+ * these to the visitor's server-computed currency on the client.
+ */
+const usd = getPricingForCountry("US");
+const inr = getPricingForCountry("IN");
+export const PRICE = {
+  single: usd.singleDisplay,
+  bundle: usd.bundleDisplay,
+  singleInr: inr.singleDisplay,
+  bundleInr: inr.bundleDisplay,
+} as const;

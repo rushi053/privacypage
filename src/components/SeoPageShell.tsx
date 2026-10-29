@@ -1,3 +1,5 @@
+import { PRICE } from '@/lib/currency'
+import { PriceLocalizer } from '@/components/PriceLocalizer'
 import Link from 'next/link'
 import { Logo } from '@/components/Logo'
 
@@ -32,7 +34,7 @@ export function SeoPageShell({ children }: { children: React.ReactNode }) {
         </div>
       </nav>
 
-      <main className="pt-40 pb-20 px-6">{children}</main>
+      <main className="pt-40 pb-20 px-6"><PriceLocalizer />{children}</main>
 
       <footer className="border-t border-gray-200 py-8 px-6 text-center text-gray-500 text-sm bg-gray-50">
         © {new Date().getFullYear()} PrivacyPage. All rights reserved.
@@ -43,7 +45,7 @@ export function SeoPageShell({ children }: { children: React.ReactNode }) {
 
 export function SeoCtaCard({
   heading = 'Generate your privacy policy in 60 seconds',
-  sub = 'Professional, legally compliant documents for your app — free to preview, $9.99 one-time to unlock.',
+  sub = `Professional, legally compliant documents for your app — free to preview, ${PRICE.single} one-time to unlock.`,
 }: {
   heading?: string
   sub?: string

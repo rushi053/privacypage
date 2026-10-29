@@ -20,6 +20,7 @@ export interface PlatformPage {
   additionalRules: SourcedRule[]
   sdks: PlatformSdk[]
   whereToPaste: string[]
+  whereToPasteSource?: string
   sampleClause: { heading: string; text: string }
   faqs: { q: string; a: string }[]
   related: { href: string; label: string }[]

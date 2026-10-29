@@ -1,3 +1,4 @@
+import { PRICE } from '@/lib/currency'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -137,7 +138,7 @@ export default async function CompetitorComparisonPage({ params }: { params: Pro
         </section>
 
         <SeoCtaCard
-          heading="Skip the subscription. Pay $9.99 once."
+          heading={`Skip the subscription. Pay ${PRICE.single} once.`}
           sub="Generate your document free right now — see the full preview before paying a cent."
         />
 
