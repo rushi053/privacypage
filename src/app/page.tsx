@@ -505,8 +505,8 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-8 text-[14px]">
               {[
-                { h: "Product", l: [["#generate", "Generate"], ["#pricing", "Pricing"], ["/blog", "Guides"]] },
-                { h: "Platforms", l: [["/for/ios-app", "iOS apps"], ["/for/android-app", "Android apps"], ["/for/chrome-extension", "Chrome extensions"], ["/for/discord-bot", "Discord bots"]] },
+                { h: "Product", l: [["#generate", "Generate"], ["/pricing", "Pricing"], ["/blog", "Guides"]] },
+                { h: "Platforms", l: [["/for", "All platforms"], ["/for/ios-app", "iOS apps"], ["/for/android-app", "Android apps"], ["/for/flutter-app", "Flutter apps"], ["/for/react-native-app", "React Native apps"], ["/for/chrome-extension", "Chrome extensions"], ["/for/discord-bot", "Discord bots"]] },
                 { h: "Compare", l: [["/vs/termly", "vs Termly"], ["/compliance/gdpr", "GDPR guide"], ["/compliance/dpdp", "DPDP Act (India)"]] },
                 { h: "Support", l: [["mailto:rushirajjadeja@gmail.com?subject=PrivacyPage%20Support", "Email"], ["#faq", "FAQ"]] },
                 { h: "More", l: [["https://rushiraj.me", "Portfolio"], ["https://apps.apple.com/us/app/cashlens-personal-finance/id6743153951", "CashLens"], ["https://x.com/cashLensApp", "X / Twitter"]] },

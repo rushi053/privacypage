@@ -37,6 +37,7 @@ export function SeoPageShell({ children }: { children: React.ReactNode }) {
       <main className="pt-40 pb-20 px-6"><PriceLocalizer />{children}</main>
 
       <footer className="border-t border-gray-200 py-8 px-6 text-center text-gray-500 text-sm bg-gray-50">
+        <p className="mb-3 space-x-4"><Link href="/for" className="hover:text-gray-900">All platforms</Link><Link href="/for/ios-app" className="hover:text-gray-900">iOS</Link><Link href="/for/android-app" className="hover:text-gray-900">Android</Link><Link href="/for/chrome-extension" className="hover:text-gray-900">Chrome</Link><Link href="/pricing" className="hover:text-gray-900">Pricing</Link></p>
         © {new Date().getFullYear()} PrivacyPage. All rights reserved.
       </footer>
     </div>

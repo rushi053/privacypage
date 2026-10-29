@@ -1,0 +1,91 @@
+{
+  "slug": "mac-app",
+  "name": "Mac app",
+  "h1": "Privacy policy for Mac apps (Mac App Store and direct download)",
+  "metaTitle": "Mac App Privacy Policy — Mac App Store Guideline 5.1.1 | PrivacyPage",
+  "metaDescription": "Mac App Store apps follow the same App Review Guidelines as iOS, so a privacy policy link is required in App Store Connect and in the app. What to disclose and what changes for direct-download apps.",
+  "answer": "Mac App Store apps follow Apple’s App Review Guidelines, so Guideline 5.1.1(i) applies: a privacy policy link in App Store Connect and inside the app. Apps distributed outside the store are not reviewed under these guidelines, but if they collect personal data, privacy laws such as the GDPR still expect a clear notice.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Apple App Store",
+    "title": "App Review Guideline 5.1.1(i) — Privacy Policies",
+    "quote": "All apps must include a link to their privacy policy in the App Store Connect metadata field and within the app in an easily accessible manner.",
+    "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/#data-collection-and-storage",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "App Privacy answers include third-party code",
+      "text": "Apple asks for “information about your app’s privacy practices, including the practices of third-party partners whose code you integrate into your app, in App Store Connect.” Your privacy policy and these answers should describe the same data.",
+      "sourceUrl": "https://developer.apple.com/app-store/app-privacy-details/"
+    },
+    {
+      "title": "Mac App Store extras (Guideline 2.4.5)",
+      "text": "Apple: “Apps distributed via the Mac App Store have some additional requirements to keep in mind”, including sandboxing. Data your app reads from other apps should be described in your policy.",
+      "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/"
+    },
+    {
+      "title": "Required in App Store Connect",
+      "text": "App Store Connect: “A privacy policy URL is required for all apps, while a user privacy choices URL is optional.”",
+      "sourceUrl": "https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy"
+    },
+    {
+      "title": "Direct download: GDPR transparency",
+      "text": "If you sell or distribute outside the store to people in the EU, GDPR Article 13 lists the information you must give when you collect personal data, such as your identity, purposes and retention period.",
+      "sourceUrl": "https://gdpr-info.eu/art-13-gdpr/"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Firebase Crashlytics",
+      "dataCollected": [
+        "Crashlytics installation UUIDs",
+        "Firebase installation IDs",
+        "Crash traces"
+      ],
+      "sourceUrl": "https://firebase.google.com/support/privacy"
+    },
+    {
+      "name": "Sparkle (update framework)",
+      "dataCollected": [
+        "Optional anonymous system profile: macOS version, CPU type, Mac model",
+        "Sent only if you add SUEnableSystemProfiling to Info.plist"
+      ],
+      "sourceUrl": "https://sparkle-project.org/documentation/system-profiling/"
+    }
+  ],
+  "whereToPaste": [
+    "App Store Connect → your macOS app → App Privacy → Privacy Policy URL.",
+    "Inside the app: Help or About menu item that opens the policy.",
+    "Direct download: link it on your download page and in the app’s Help menu."
+  ],
+  "whereToPasteSource": "https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy",
+  "sampleClause": {
+    "heading": "Update checks",
+    "text": "Our app checks for updates on launch. The check sends the app version to our update server. We do not send a system profile unless you opt in under Preferences → Updates."
+  },
+  "faqs": [
+    {
+      "q": "Do Mac apps outside the App Store need a privacy policy?",
+      "a": "Apple does not review them, but if your app collects personal data, privacy laws such as the GDPR or CalOPPA may still require a notice. This is not legal advice."
+    },
+    {
+      "q": "Is the Mac App Store rule the same as iOS?",
+      "a": "Yes, Guideline 5.1.1 applies to all apps on the App Store, including macOS apps."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/ios-app",
+      "label": "Privacy policy for iOS / App Store"
+    },
+    {
+      "href": "/compliance/gdpr",
+      "label": "GDPR privacy policy"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

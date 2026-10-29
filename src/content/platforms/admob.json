@@ -1,0 +1,86 @@
+{
+  "slug": "admob",
+  "name": "AdMob app",
+  "h1": "Privacy policy for apps using AdMob",
+  "metaTitle": "AdMob Privacy Policy — What Google Requires You to Disclose | PrivacyPage",
+  "metaDescription": "The Google Mobile Ads SDK collects IP address, interactions, diagnostics and device identifiers. What to disclose, EU consent with the UMP SDK, and store rules for ad-supported apps.",
+  "answer": "If your app shows AdMob ads, your privacy policy should say the Google Mobile Ads SDK collects IP address, user product interactions, diagnostic information and device identifiers for advertising, analytics and fraud prevention. In the EEA and UK, Google’s EU User Consent Policy also requires disclosures and consent, usually via the UMP SDK.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Google AdMob",
+    "title": "Google Play data disclosure for the Google Mobile Ads SDK",
+    "quote": "automatically collects and shares IP address, user product interactions, diagnostic information, and device/account identifiers for advertising, analytics, and fraud prevention",
+    "sourceUrl": "https://developers.google.com/admob/android/privacy/play-data-disclosure",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "EU consent (UMP SDK)",
+      "text": "“Under the Google EU User Consent Policy, you must disclose certain information and obtain consent from users in the European Economic Area and the UK to use cookies, other local storage, and personal data for ad serving”.",
+      "sourceUrl": "https://developers.google.com/admob/android/privacy/gdpr"
+    },
+    {
+      "title": "Google’s EU user consent policy",
+      "text": "“You must obtain end users’ legally valid consent” for cookies or local storage and for personalized ads where required.",
+      "sourceUrl": "https://www.google.com/about/company/user-consent-policy/"
+    },
+    {
+      "title": "Apple: data shared with ad partners",
+      "text": "Guideline 5.1.2(i): “You must clearly disclose where personal data will be shared with third parties”.",
+      "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/"
+    },
+    {
+      "title": "Google Play: policy in the listing and in the app",
+      "text": "Google Play’s User Data policy says your “privacy policy must clearly explain all data collection and sharing.” It must also sit on a public, non-geofenced URL (no PDFs), and be linked both in the store listing and inside the app.",
+      "sourceUrl": "https://support.google.com/googleplay/android-developer/answer/10144311"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Google Mobile Ads SDK (AdMob)",
+      "dataCollected": [
+        "IP address",
+        "User product interactions",
+        "Diagnostic information",
+        "Device and account identifiers"
+      ],
+      "sourceUrl": "https://developers.google.com/admob/android/privacy/play-data-disclosure"
+    }
+  ],
+  "whereToPaste": [
+    "Your app’s store listings (App Store Connect and Play Console) and an in-app link.",
+    "Show the UMP consent message to EEA and UK users before ads load."
+  ],
+  "sampleClause": {
+    "heading": "Advertising",
+    "text": "Our app shows ads from Google AdMob. The Google Mobile Ads SDK collects your IP address, how you interact with ads, diagnostic data and device identifiers such as the advertising ID, for advertising, analytics and fraud prevention. In the EEA and UK we ask for your consent first, and you can change your choice in Settings → Privacy."
+  },
+  "faqs": [
+    {
+      "q": "Do I need a privacy policy to use AdMob?",
+      "a": "Yes in practice: both app stores require one for every app, and AdMob’s SDK collects device identifiers you must disclose."
+    },
+    {
+      "q": "What must an AdMob privacy policy say?",
+      "a": "Name Google as an ad partner, list the data the SDK collects, explain cookies or advertising IDs, and say how users can change consent or reset their ad ID. This is not legal advice."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/android-app",
+      "label": "Privacy policy for Android / Google Play"
+    },
+    {
+      "href": "/for/ios-app",
+      "label": "Privacy policy for iOS / App Store"
+    },
+    {
+      "href": "/compliance/gdpr",
+      "label": "GDPR privacy policy"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}

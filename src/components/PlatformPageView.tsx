@@ -1,12 +1,7 @@
 import Link from 'next/link'
-import { Fraunces, Newsreader, Geist, Geist_Mono } from 'next/font/google'
+import { ClauseShell } from '@/components/ClauseShell'
 import type { PlatformPage } from '@/lib/platforms'
 
-// "Clause" type system: Fraunces display, Newsreader document text, Geist UI, Geist Mono § numbers.
-const fraunces = Fraunces({ subsets: ['latin'], variable: '--f-display', display: 'swap' })
-const newsreader = Newsreader({ subsets: ['latin'], variable: '--f-doc', display: 'swap' })
-const geist = Geist({ subsets: ['latin'], variable: '--f-ui', display: 'swap' })
-const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--f-mono', display: 'swap' })
 
 // Palette (Clause): paper #F7F7F5, ink #16181D, seal teal #0F5C63. 8pt grid only.
 function ExternalIcon() {
@@ -46,14 +41,8 @@ export function PlatformPageView({ page }: { page: PlatformPage }) {
     mainEntity: page.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
   }
   return (
-    <div className={`${fraunces.variable} ${newsreader.variable} ${geist.variable} ${geistMono.variable} min-h-screen bg-[#F7F7F5] text-[#16181D] font-[family-name:var(--f-ui)]`}>
+    <ClauseShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <header className="border-b border-[#16181D]/10">
-        <div className="mx-auto max-w-[1040px] px-6 md:px-8 h-16 flex items-center justify-between">
-          <Link href="/" className="font-[family-name:var(--f-display)] text-[20px] tracking-[-0.01em]">PrivacyPage</Link>
-          <Link href="/#generate" className="inline-flex items-center h-10 px-4 rounded-[8px] bg-[#0F5C63] text-white text-[14px] font-medium hover:bg-[#0B4A50]">Generate free</Link>
-        </div>
-      </header>
 
       <main className="mx-auto max-w-[1040px] px-6 md:px-8">
         <div className="pt-16 md:pt-24 pb-16 grid md:grid-cols-[1fr_320px] gap-16 items-start">
@@ -142,7 +131,6 @@ export function PlatformPageView({ page }: { page: PlatformPage }) {
           </nav>
         )}
       </main>
-      <footer className="border-t border-[#16181D]/10 py-8 text-center text-[12px] text-[#16181D]/60">PrivacyPage · Not legal advice</footer>
-    </div>
+    </ClauseShell>
   )
 }

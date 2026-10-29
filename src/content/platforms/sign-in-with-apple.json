@@ -1,0 +1,71 @@
+{
+  "slug": "sign-in-with-apple",
+  "name": "Sign in with Apple",
+  "h1": "Privacy policy for apps using Sign in with Apple",
+  "metaTitle": "Sign in with Apple Privacy Policy — Guideline 4.8 & Account Deletion | PrivacyPage",
+  "metaDescription": "What Guideline 4.8 Login Services and 5.1.1(v) account deletion mean for your privacy policy when you offer Sign in with Apple, including the private relay email.",
+  "answer": "If your app uses Sign in with Apple, your privacy policy should say you receive a name and an email that may be an Apple private relay address, and explain how users delete their account. Apple’s Guideline 5.1.1(v) says apps that support account creation must also offer account deletion within the app.",
+  "templateAvailability": "general",
+  "storeRule": {
+    "store": "Apple App Store",
+    "title": "App Review Guideline 5.1.1(v) — Account Sign-In",
+    "quote": "If your app supports account creation, you must also offer account deletion within the app",
+    "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/",
+    "verifiedOn": "2026-10-30"
+  },
+  "additionalRules": [
+    {
+      "title": "Guideline 4.8 Login Services",
+      "text": "Apps that use a third-party login for the primary account must also offer an equivalent option where “the login service limits data collection to the user’s name and email address” and “allows users to keep their email address private”.",
+      "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/"
+    },
+    {
+      "title": "The policy link itself",
+      "text": "“All apps must include a link to their privacy policy in the App Store Connect metadata field and within the app in an easily accessible manner.”",
+      "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/"
+    },
+    {
+      "title": "Offering account deletion",
+      "text": "Apple’s account-deletion FAQ: “Apps that support Sign in with Apple should use the Sign in with Apple REST API to revoke user tokens”. Describe the same deletion steps in your policy.",
+      "sourceUrl": "https://developer.apple.com/support/offering-account-deletion-in-your-app/"
+    }
+  ],
+  "sdks": [
+    {
+      "name": "Sign in with Apple",
+      "dataCollected": [
+        "Name and email address (Guideline 4.8 describes a login that limits collection to these)",
+        "Email can be kept private by the user"
+      ],
+      "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/"
+    }
+  ],
+  "whereToPaste": [
+    "App Store Connect → App Privacy → Privacy Policy URL.",
+    "On the sign-in screen and in Settings, next to Delete account."
+  ],
+  "sampleClause": {
+    "heading": "Sign in with Apple",
+    "text": "If you sign in with Apple, we receive your name if you choose to share it, a unique user ID, and an email address. If you choose Hide My Email, the address is a private relay address that forwards to you. You can delete your account at any time in Settings → Delete account."
+  },
+  "faqs": [
+    {
+      "q": "Do I need account deletion if I use Sign in with Apple?",
+      "a": "If your app supports account creation, Guideline 5.1.1(v) says you must also offer account deletion within the app, whichever login you use."
+    },
+    {
+      "q": "What is Hide My Email?",
+      "a": "An option that gives your app a unique relay address that forwards to the user’s real inbox. Your policy should mention you may receive such an address."
+    }
+  ],
+  "related": [
+    {
+      "href": "/for/ios-app",
+      "label": "Privacy policy for iOS / App Store"
+    },
+    {
+      "href": "/for",
+      "label": "Privacy policy by platform"
+    }
+  ]
+}
