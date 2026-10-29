@@ -47,7 +47,7 @@ export default function EmailCaptureModal({ description, onSubmit, onClose }: Em
           className="w-full h-12 border border-ink/15 rounded-[8px] px-4 text-[16px] text-ink placeholder-ink/40 bg-white focus:outline-none focus:border-seal mb-2"
         />
         <p className={`text-[14px] min-h-6 mb-4 ${error ? "text-red-700" : "text-ink/50"}`}>{error || "Used only for your license and receipt."}</p>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <button
             onClick={handleContinue}
             disabled={!email.trim()}
