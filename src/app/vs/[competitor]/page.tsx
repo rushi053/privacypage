@@ -46,80 +46,97 @@ export default async function CompetitorComparisonPage({ params }: { params: Pro
     <SeoPageShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <article className="max-w-[820px] mx-auto">
-        <header className="mb-10">
-          <p className="text-sm font-medium text-indigo-600 mb-3">Comparison · 2026</p>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-gray-900">{page.h1}</h1>
-          <p className="text-lg text-gray-500 leading-relaxed">{page.tagline}</p>
+      <article className="max-w-[820px] mx-auto break-words">
+        <header className="mb-16">
+          <p className="font-mono text-[14px] text-seal mb-6">Comparison · 2026</p>
+          <h1 className="font-display text-[40px] md:text-[48px] leading-[1.1] tracking-[-0.02em] mb-6 break-words">{page.h1}</h1>
+          <p className="font-doc text-[20px] leading-[1.6] text-ink/80">{page.tagline}</p>
         </header>
 
-        <div className="space-y-4 mb-10">
+        <div className="space-y-6 mb-10">
           {page.intro.map((para, i) => (
             <p
               key={i}
-              className="text-gray-700 leading-relaxed [&_a]:text-indigo-600 [&_a]:underline [&_a:hover]:text-indigo-700 [&_strong]:text-gray-900 [&_em]:text-gray-600"
+              className="font-doc text-[18px] leading-[1.6] text-ink/90 [&_a]:text-seal [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-seal/40 [&_strong]:font-medium [&_strong]:text-ink [&_em]:text-ink/70"
               dangerouslySetInnerHTML={{ __html: para }}
             />
           ))}
         </div>
 
         {page.callout && (
-          <div className="bg-indigo-50/50 border border-indigo-100 rounded-xl p-5 mb-10">
-            <p className="text-sm text-gray-700 leading-relaxed mb-2">{page.callout.text}</p>
-            <Link href={page.callout.href} className="text-sm font-medium text-indigo-600 hover:text-indigo-700">
+          <div className="rounded-[8px] border border-ink/10 bg-white p-6 mb-16">
+            <p className="font-doc text-[16px] leading-[1.6] text-ink/85 mb-4">{page.callout.text}</p>
+            <Link href={page.callout.href} className="inline-flex items-center min-h-11 text-[14px] font-medium text-seal underline underline-offset-4 decoration-seal/40 hover:decoration-seal">
               {page.callout.linkLabel} →
             </Link>
           </div>
         )}
 
         <section className="mb-4">
-          <h2 className="text-2xl font-bold mb-6 text-gray-900">{page.name} vs PrivacyPage at a glance</h2>
-          <div data-fixed-price className="overflow-x-auto border border-gray-200 rounded-xl">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-gray-50 border-b border-gray-200">
-                  <th className="text-left font-semibold text-gray-900 px-4 py-3 w-1/4"></th>
-                  <th className="text-left font-semibold text-gray-900 px-4 py-3">{page.name}</th>
-                  <th className="text-left font-semibold text-indigo-700 px-4 py-3 bg-indigo-50/50">PrivacyPage</th>
-                </tr>
-              </thead>
-              <tbody>
-                {page.comparisonRows.map((row, i) => (
-                  <tr key={row.label} className={i % 2 === 1 ? 'bg-gray-50/50' : ''}>
-                    <td className="px-4 py-3 font-medium text-gray-900 align-top">{row.label}</td>
-                    <td className="px-4 py-3 text-gray-600 align-top leading-relaxed">{row.them}</td>
-                    <td className="px-4 py-3 text-gray-700 align-top leading-relaxed bg-indigo-50/30">{row.us}</td>
+          <h2 className="font-display text-[24px] md:text-[32px] leading-[1.25] tracking-[-0.01em] mb-8">{page.name} vs PrivacyPage at a glance</h2>
+          <div data-fixed-price>
+            <div className="md:hidden space-y-4">
+              {page.comparisonRows.map((row) => (
+                <div key={row.label} className="rounded-[8px] border border-ink/10 bg-white overflow-hidden">
+                  <p className="px-4 pt-4 font-medium text-ink">{row.label}</p>
+                  <p className="px-4 py-3 text-[14px] leading-[1.5] text-ink/70">
+                    <span className="block text-[12px] uppercase tracking-[0.08em] text-ink/50 mb-1">{page.name}</span>
+                    {row.them}
+                  </p>
+                  <p className="px-4 py-3 text-[14px] leading-[1.5] text-ink bg-seal-tint/60">
+                    <span className="block text-[12px] uppercase tracking-[0.08em] text-seal mb-1">PrivacyPage</span>
+                    {row.us}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="hidden md:block overflow-x-auto rounded-[8px] border border-ink/10 bg-white">
+              <table className="w-full text-left font-ui text-[14px] leading-[1.5]">
+                <thead>
+                  <tr className="border-b border-ink/10">
+                    <th className="p-4 font-medium text-ink/60 w-[28%]"></th>
+                    <th className="p-4 font-medium text-ink/60">{page.name}</th>
+                    <th className="p-4 font-medium text-seal bg-seal-tint">PrivacyPage</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {page.comparisonRows.map((row) => (
+                    <tr key={row.label} className="border-t border-ink/10 align-top">
+                      <td className="p-4 font-medium text-ink">{row.label}</td>
+                      <td className="p-4 text-ink/70">{row.them}</td>
+                      <td className="p-4 text-ink bg-seal-tint/50">{row.us}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-          <p data-fixed-price className="mt-3 text-sm text-gray-600">
+          <p data-fixed-price className="mt-4 text-[14px] leading-[1.5] text-ink/70">
             Visitors in India pay ₹{PRICING.INR.single.toLocaleString('en-IN')} per document (₹{PRICING.INR.bundle.toLocaleString('en-IN')} bundle) at checkout.
           </p>
         </section>
-        <p className="text-xs text-gray-400 mb-12 leading-relaxed">{page.pricingSourceNote}</p>
+        <p className="mt-4 mb-16 text-[12px] leading-[1.5] text-ink/50">{page.pricingSourceNote}</p>
 
-        <section className="mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <section className="mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h2 className="text-xl font-bold mb-4 text-gray-900">Where {page.name} is stronger</h2>
-              <div className="space-y-3">
+              <h2 className="font-display text-[24px] leading-[1.3] mb-6">Where {page.name} is stronger</h2>
+              <div className="space-y-4">
                 {page.prosThem.map((p) => (
-                  <div key={p.title} className="border border-gray-100 rounded-xl p-4 bg-white">
-                    <h3 className="font-semibold text-sm text-gray-900 mb-1">{p.title}</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{p.desc}</p>
+                  <div key={p.title} className="rounded-[8px] border border-ink/10 bg-white p-4 md:p-6">
+                    <h3 className="font-display text-[18px] leading-[1.3] mb-2">{p.title}</h3>
+                    <p className="text-[14px] leading-[1.5] text-ink/70">{p.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <h2 className="text-xl font-bold mb-4 text-gray-900">Where PrivacyPage wins</h2>
-              <div className="space-y-3">
+              <h2 className="font-display text-[24px] leading-[1.3] mb-6">Where PrivacyPage wins</h2>
+              <div className="space-y-4">
                 {page.prosUs.map((p) => (
-                  <div key={p.title} className="border border-indigo-100 rounded-xl p-4 bg-indigo-50/30">
-                    <h3 className="font-semibold text-sm text-gray-900 mb-1">{p.title}</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{p.desc}</p>
+                  <div key={p.title} className="rounded-[8px] border border-ink/10 bg-seal-tint/60 p-4 md:p-6">
+                    <h3 className="font-display text-[18px] leading-[1.3] mb-2">{p.title}</h3>
+                    <p className="text-[14px] leading-[1.5] text-ink/70">{p.desc}</p>
                   </div>
                 ))}
               </div>
@@ -127,13 +144,13 @@ export default async function CompetitorComparisonPage({ params }: { params: Pro
           </div>
         </section>
 
-        <section className="mb-4">
-          <h2 className="text-2xl font-bold mb-5 text-gray-900">The honest verdict</h2>
-          <div className="space-y-4">
+        <section>
+          <h2 className="font-display text-[24px] md:text-[32px] leading-[1.25] tracking-[-0.01em] mb-6">The honest verdict</h2>
+          <div className="space-y-6">
             {page.verdict.map((para, i) => (
               <p
                 key={i}
-                className="text-gray-700 leading-relaxed [&_strong]:text-gray-900"
+                className="font-doc text-[18px] leading-[1.6] text-ink/90 [&_strong]:font-medium [&_strong]:text-ink"
                 dangerouslySetInnerHTML={{ __html: para }}
               />
             ))}
@@ -149,14 +166,14 @@ export default async function CompetitorComparisonPage({ params }: { params: Pro
 
         <SeoRelatedLinks heading="Related reading" links={page.relatedBlog} />
 
-        <div className="mt-12">
-          <h2 className="text-xl font-bold mb-4 text-gray-900">More comparisons</h2>
+        <div className="mt-16 border-t border-ink/10 pt-16">
+          <h2 className="font-display text-[24px] leading-[1.3] mb-6">More comparisons</h2>
           <div className="flex flex-wrap gap-2">
             {otherCompetitors.map((c) => (
               <Link
                 key={c.slug}
                 href={`/vs/${c.slug}`}
-                className="text-sm border border-gray-200 hover:border-indigo-500 hover:text-indigo-600 text-gray-600 px-4 py-2 rounded-full transition-colors"
+                className="inline-flex items-center min-h-11 max-w-full px-4 rounded-full border border-ink/10 bg-white text-[14px] text-ink/70 hover:border-seal/40 hover:text-ink"
               >
                 vs {c.name} →
               </Link>
