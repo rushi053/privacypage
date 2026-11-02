@@ -12,7 +12,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   
   if (!post) {
     return new ImageResponse(
-      <div style={{ width: '100%', height: '100%', background: 'white', display: 'flex' }}>
+      <div style={{ width: '100%', height: '100%', background: '#F7F7F5', color: '#16181D', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32 }}>
         <div>Post not found</div>
       </div>
     )
@@ -26,30 +26,23 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #eef2ff 100%)',
+          background: '#F7F7F5',
           padding: '80px',
         }}
       >
-        {/* Logo and Site Name */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '40px' }}>
-          <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
-            <rect x="4" y="4" width="16" height="16" rx="2" fill="#4F46E5" opacity="0.1" />
-            <path d="M8 6h8v12H8z" fill="#4F46E5" />
-            <circle cx="12" cy="12" r="2" fill="white" />
-          </svg>
-          <div style={{ fontSize: '32px', fontWeight: '600', color: '#111827' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '40px' }}>
+          <div style={{ width: '8px', height: '40px', background: '#0F5C63' }} />
+          <div style={{ fontSize: '28px', color: '#16181D' }}>
             PrivacyPage Blog
           </div>
         </div>
 
-        {/* Post Title */}
         <div
           style={{
             fontSize: '56px',
-            fontWeight: 'bold',
-            color: '#111827',
+            color: '#16181D',
             lineHeight: 1.15,
-            marginBottom: '30px',
+            marginBottom: '32px',
             display: 'flex',
             flexWrap: 'wrap',
           }}
@@ -57,12 +50,11 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           {post.title}
         </div>
 
-        {/* Description */}
         <div
           style={{
             fontSize: '24px',
-            color: '#6b7280',
-            lineHeight: 1.4,
+            color: '#4A4E57',
+            lineHeight: 1.5,
             marginBottom: '40px',
             display: 'flex',
           }}
@@ -70,10 +62,9 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           {post.description.slice(0, 120)}...
         </div>
 
-        {/* Meta */}
-        <div style={{ display: 'flex', gap: '30px', alignItems: 'center', fontSize: '20px', color: '#9ca3af' }}>
+        <div style={{ display: 'flex', gap: '24px', alignItems: 'center', fontSize: '20px', color: '#0F5C63' }}>
           <div>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</div>
-          <div>•</div>
+          <div>·</div>
           <div>{post.readTime}</div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { getAllPosts } from '@/lib/blog'
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { Logo } from '@/components/Logo'
+import { ArrowRightIcon } from '@/components/ClauseIcons'
 
 export const metadata: Metadata = {
   title: 'Blog — PrivacyPage | Privacy Policy Tips & Guides',
@@ -16,89 +16,77 @@ export const metadata: Metadata = {
   },
 }
 
+function keywordTag(keyword: string): string | null {
+  const value = keyword.toLowerCase()
+  if (value.includes('ios')) return 'iOS'
+  if (value.includes('android')) return 'Android'
+  if (value.includes('gdpr')) return 'GDPR'
+  if (value.includes('ccpa')) return 'CCPA'
+  if (value.includes('shopify')) return 'Shopify'
+  if (value.includes('wordpress')) return 'WordPress'
+  if (value.includes('app store')) return 'App Store'
+  if (value.includes('play store')) return 'Play Store'
+  return null
+}
+
 export default function BlogPage() {
   const posts = getAllPosts()
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Nav */}
-      <nav className="fixed top-0 w-full z-50 border-b border-gray-200 bg-white/80 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Logo className="w-8 h-8" />
-            <span className="font-semibold text-lg text-gray-900">PrivacyPage</span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/blog" className="text-sm text-gray-900 font-medium">Blog</Link>
-            <Link href="/#generate" className="text-sm bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition-colors">Generate Free</Link>
-          </div>
-        </div>
-      </nav>
+    <main className="mx-auto max-w-[1040px] px-6 md:px-8 pt-16 md:pt-24 pb-16">
+      <p className="font-[family-name:var(--f-mono)] text-[14px] text-[#0F5C63] mb-6">Blog</p>
+      <h1 className="font-[family-name:var(--f-display)] text-[40px] md:text-[56px] leading-[1.1] tracking-[-0.02em] mb-8">Blog</h1>
+      <p className="font-[family-name:var(--f-doc)] text-[20px] leading-[1.6] text-[#16181D]/85 max-w-[640px] mb-8">
+        Guides and tips on privacy policies, GDPR compliance, and app store requirements.
+      </p>
 
-      {/* CTA Banner */}
-      <div className="fixed top-16 left-0 right-0 z-40 bg-indigo-50 border-b border-indigo-100 py-3 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-sm text-gray-700">
-            <span className="font-medium">Need a privacy policy?</span> Generate one for free in 60 seconds →
-          </p>
-          <Link href="/#generate" className="text-sm bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
-            Generate Free
-          </Link>
-        </div>
+      <div className="mb-16 flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-[8px] border border-[#16181D]/10 bg-white p-6">
+        <p className="text-[16px] leading-[1.5]">
+          <span className="font-medium">Need a privacy policy?</span> Generate one for free in 60 seconds.
+        </p>
+        <Link href="/#generate" className="inline-flex items-center justify-center h-12 px-6 rounded-[8px] bg-[#0F5C63] text-white text-[16px] font-medium hover:bg-[#0B4A50] shrink-0">
+          Generate Free
+        </Link>
       </div>
 
-      <section className="pt-40 pb-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 text-center text-gray-900">Blog</h1>
-          <p className="text-gray-600 text-center mb-16 max-w-xl mx-auto">Guides and tips on privacy policies, GDPR compliance, and app store requirements.</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {posts.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="glass-card rounded-2xl p-6 hover:border-indigo-600 transition-all group">
-                <div className="flex items-center gap-3 text-sm text-gray-500 mb-4">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {posts.map((post) => {
+          const tags: { keyword: string; tag: string }[] = []
+          const seen = new Set<string>()
+          for (const keyword of post.keywords.slice(0, 3)) {
+            const tag = keywordTag(keyword)
+            if (!tag || seen.has(tag)) continue
+            seen.add(tag)
+            tags.push({ keyword, tag })
+          }
+          return (
+            <li key={post.slug}>
+              <Link href={`/blog/${post.slug}`} className="group flex h-full flex-col rounded-[8px] border border-[#16181D]/10 bg-white p-6 hover:border-[#0F5C63]/40">
+                <p className="font-[family-name:var(--f-mono)] text-[12px] text-[#16181D]/55 mb-4">
                   <time>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time>
-                  <span>·</span>
+                  <span> · </span>
                   <span>{post.readTime}</span>
-                </div>
-                <h2 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-indigo-600 transition-colors">{post.title}</h2>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">{post.description}</p>
-                
-                {/* Category tags from keywords */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {post.keywords.slice(0, 3).map((keyword) => {
-                    // Extract simple tags from keywords
-                    let tag = keyword;
-                    if (keyword.toLowerCase().includes('ios')) tag = 'iOS';
-                    else if (keyword.toLowerCase().includes('android')) tag = 'Android';
-                    else if (keyword.toLowerCase().includes('gdpr')) tag = 'GDPR';
-                    else if (keyword.toLowerCase().includes('ccpa')) tag = 'CCPA';
-                    else if (keyword.toLowerCase().includes('shopify')) tag = 'Shopify';
-                    else if (keyword.toLowerCase().includes('wordpress')) tag = 'WordPress';
-                    else if (keyword.toLowerCase().includes('app store')) tag = 'App Store';
-                    else if (keyword.toLowerCase().includes('play store')) tag = 'Play Store';
-                    else return null;
-                    
-                    return (
-                      <span key={keyword} className="text-xs px-2 py-1 rounded-md bg-gray-100 text-gray-600">
+                </p>
+                <h2 className="font-[family-name:var(--f-display)] text-[22px] leading-[1.3] mb-3 group-hover:text-[#0F5C63]">{post.title}</h2>
+                <p className="font-[family-name:var(--f-doc)] text-[16px] leading-[1.6] text-[#16181D]/75 mb-6">{post.description}</p>
+                {tags.length > 0 && (
+                  <ul className="flex flex-wrap gap-2 mb-6">
+                    {tags.map(({ keyword, tag }) => (
+                      <li key={keyword} className="font-[family-name:var(--f-mono)] text-[12px] uppercase tracking-[0.06em] text-[#16181D]/60 border border-[#16181D]/10 rounded-[8px] px-2 py-2">
                         {tag}
-                      </span>
-                    );
-                  })}
-                </div>
-
-                <span className="text-sm text-indigo-600 font-medium flex items-center gap-2">
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <span className="mt-auto inline-flex items-center gap-2 min-h-11 text-[14px] text-[#0F5C63]">
                   Read more
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  <ArrowRightIcon />
                 </span>
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <footer className="border-t border-gray-200 py-8 px-6 text-center text-gray-500 text-sm bg-gray-50">
-        © {new Date().getFullYear()} PrivacyPage. All rights reserved.
-      </footer>
-    </div>
+            </li>
+          )
+        })}
+      </ul>
+    </main>
   )
 }
