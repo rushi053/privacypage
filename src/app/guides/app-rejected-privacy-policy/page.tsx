@@ -9,6 +9,18 @@ export const metadata: Metadata = {
   title: 'App Rejected for Privacy Policy? Fixes for App Store, Google Play, Chrome & Meta | PrivacyPage',
   description: 'Why apps and extensions get rejected over the privacy policy — Apple 5.1.1(i), Google Play User Data, Chrome Web Store, Meta Platform Terms — and how to fix each one, with links to the official rules.',
   alternates: { canonical: URL },
+  openGraph: {
+    title: 'App Rejected for Privacy Policy? Fixes for App Store, Google Play, Chrome & Meta | PrivacyPage',
+    description: 'Why apps and extensions get rejected over the privacy policy — Apple 5.1.1(i), Google Play User Data, Chrome Web Store, Meta Platform Terms — and how to fix each one, with links to the official rules.',
+    url: URL,
+    siteName: 'PrivacyPage',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'App Rejected for Privacy Policy? Fixes for App Store, Google Play, Chrome & Meta | PrivacyPage',
+    description: 'Why apps and extensions get rejected over the privacy policy — Apple 5.1.1(i), Google Play User Data, Chrome Web Store, Meta Platform Terms — and how to fix each one, with links to the official rules.',
+  },
 }
 
 const stores = [
