@@ -122,7 +122,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Generate Your Privacy Policy Now</h2>
 
-<p>Don't let a missing privacy policy delay your app launch. PrivacyPage generates professional, legally compliant privacy policies tailored to your iOS app — completely free to preview.</p>
+<p>Don't let a missing privacy policy delay your app launch. PrivacyPage generates professional, legally compliant privacy policies tailored to your iOS app — preview the opening sections free.</p>
 `
   },
   {
@@ -519,7 +519,7 @@ export const blogPosts: BlogPost[] = [
 
 <p><strong>Transparency on pricing.</strong> Free preview with paid download is fair. Bait-and-switch — where "free" means "free until you try to download" — is not.</p>
 
-<p><a href="https://privacypage.io">PrivacyPage</a> checks these boxes. It generates privacy policies, terms of service, EULAs, cookie policies, and disclaimers — you can preview everything for free before deciding to download. No account required.</p>
+<p><a href="https://privacypage.io">PrivacyPage</a> checks these boxes. It generates privacy policies, terms of service, EULAs, cookie policies, and disclaimers — you can preview the opening sections free before deciding to pay. No account required.</p>
 
 <h2>Free Privacy Policy for Website vs. Apps: Key Differences</h2>
 
@@ -1208,8 +1208,8 @@ export const blogPosts: BlogPost[] = [
 <h3>Free Preview Before You Buy</h3>
 <p>Unlike Termly (which requires signup and payment upfront), PrivacyPage lets you:</p>
 <ul>
-<li>Generate a full preview for free</li>
-<li>See exactly what you're getting</li>
+<li>Preview the opening sections for free</li>
+<li>See the first part of your document before you pay</li>
 <li>Only pay if you want the unblurred, downloadable version</li>
 </ul>
 
@@ -1229,7 +1229,7 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Visit <a href="https://privacypage.io">privacypage.io</a></strong> — No signup, no account creation</li>
 <li><strong>Choose your document type</strong> — Privacy Policy, Terms, EULA, Cookie Policy, or Disclaimer</li>
 <li><strong>Answer a few questions</strong> — Name, website, what data you collect, which services you use</li>
-<li><strong>Generate & preview for free</strong> — See the full structure and content</li>
+<li><strong>Generate & preview for free</strong> — See the first part of your document</li>
 <li><strong>Unlock the full document</strong> — One-time payment of ${PRICE.single} (or ${PRICE.bundle} for all 5 documents)</li>
 <li><strong>Copy in HTML, Markdown, or text</strong> — Host it anywhere</li>
 </ol>
@@ -1251,7 +1251,7 @@ export const blogPosts: BlogPost[] = [
 <p>Managing legal docs for 10+ clients? With Termly, that's $100–$250/month. With PrivacyPage, it's a one-time bundle purchase per client.</p>
 
 <h3>App Developers</h3>
-<p>Launching on the App Store or Play Store? You need a privacy policy and terms of service. PrivacyPage generates both for ${PRICE.bundle} total — Termly charges that per month.</p>
+<p>Launching on the App Store or Play Store? You need a privacy policy and terms of service. PrivacyPage generates both for ${PRICE.bundle} total — Termly charges $24.99 per month.</p>
 
 <h2>What About Termly's Cookie Scanning?</h2>
 
@@ -1332,7 +1332,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Try PrivacyPage for Free</h2>
 
-<p>No signup, no credit card, no commitment. Generate a full preview of your privacy policy in 60 seconds and see if it works for you.</p>
+<p>No signup, no credit card, no commitment. Preview the opening sections of your privacy policy in 60 seconds and see if it works for you.</p>
 
 <p><a href="https://privacypage.io/#generate">Generate your free preview →</a></p>
 
@@ -1517,7 +1517,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h3>Step 4: Generate & Preview</h3>
-<p>Click generate. You'll see a full preview for free. To unlock the full, downloadable policy, it's a one-time payment of <span data-fixed-price>${PRICE.singleInr}</span> in India or <span data-fixed-price>${PRICE.single}</span> elsewhere.</p>
+<p>Click generate. You'll see a free preview of the opening sections. To unlock the full, downloadable policy, it's a one-time payment of <span data-fixed-price>${PRICE.singleInr}</span> in India or <span data-fixed-price>${PRICE.single}</span> elsewhere.</p>
 
 <h3>Step 5: Host It</h3>
 <p>Copy the policy in HTML, Markdown, or plain text and host it:</p>
