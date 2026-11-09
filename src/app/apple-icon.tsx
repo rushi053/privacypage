@@ -12,10 +12,12 @@ export default function AppleIcon() {
           width: 180,
           height: 180,
           display: 'flex',
+          // Solid, unrounded square: iOS applies its own corner mask.
+          background: '#0F5C63',
         }}
       >
         <svg width="180" height="180" viewBox="0 0 32 32" fill="none">
-          <rect width="32" height="32" rx="6" fill="#0F5C63" />
+          <rect width="32" height="32" fill="#0F5C63" />
           <path
             d="M16 8L10 11V15C10 19.5 12.5 23.5 16 24.5C19.5 23.5 22 19.5 22 15V11L16 8Z"
             fill="white"
