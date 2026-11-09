@@ -1,5 +1,7 @@
 "use client";
 
+import { ErrorActions } from "./error-actions";
+
 export default function Error({
   error,
   reset,
@@ -20,27 +22,7 @@ export default function Error({
         <p className="text-[16px] leading-[1.6] text-ink/80 mb-8">
           This page hit an unexpected error.
         </p>
-        <div className="flex flex-wrap items-center gap-4">
-          <button
-            type="button"
-            onClick={() => reset()}
-            className="h-12 inline-flex items-center px-6 bg-seal hover:bg-seal-dark text-white rounded-[8px] text-[16px] font-medium transition-colors"
-          >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="h-12 inline-flex items-center px-2 text-[16px] text-ink/70 hover:text-ink underline underline-offset-4 decoration-ink/20"
-          >
-            Home
-          </a>
-          <a
-            href="/#generate"
-            className="h-12 inline-flex items-center px-2 text-[16px] text-ink/70 hover:text-ink underline underline-offset-4 decoration-ink/20"
-          >
-            Generate free
-          </a>
-        </div>
+        <ErrorActions reset={reset} />
       </div>
     </main>
   );

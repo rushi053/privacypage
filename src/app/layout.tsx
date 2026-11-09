@@ -8,6 +8,7 @@ const fDoc = Newsreader({ subsets: ["latin"], variable: "--f-doc", display: "swa
 const fUi = Geist({ subsets: ["latin"], variable: "--f-ui", display: "swap" });
 const fMono = Geist_Mono({ subsets: ["latin"], variable: "--f-mono", display: "swap" });
 import { PRICING } from "@/lib/currency";
+import { PreviewGlobalThrow } from "./preview-global-throw";
 
 export const metadata: Metadata = {
   title: "PrivacyPage — Privacy Policy Generator for Apps | Free, No Signup",
@@ -134,7 +135,11 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="antialiased bg-paper text-ink">{children}</body>
+      <body className="antialiased bg-paper text-ink">
+        {children}
+        {/* Preview-only test hook for global-error.tsx; inert in production. */}
+        {process.env.VERCEL_ENV !== "production" ? <PreviewGlobalThrow /> : null}
+      </body>
     </html>
   );
 }
