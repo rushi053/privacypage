@@ -11,6 +11,12 @@ const ink = '#16181D'
 const inkMuted = 'rgba(22, 24, 29, 0.6)'
 
 export default async function Image() {
+  // Brand fonts: Fraunces (display serif) and Geist (UI grotesk), as in layout.tsx.
+  const [fraunces, geist] = await Promise.all([
+    fetch(new URL('../assets/og-fonts/Fraunces-Regular.ttf', import.meta.url)).then((r) => r.arrayBuffer()),
+    fetch(new URL('../assets/og-fonts/Geist-Regular.ttf', import.meta.url)).then((r) => r.arrayBuffer()),
+  ])
+
   return new ImageResponse(
     (
       <div
@@ -23,6 +29,7 @@ export default async function Image() {
           justifyContent: 'center',
           background: paper,
           padding: '80px',
+          fontFamily: 'Geist',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '40px' }}>
@@ -43,7 +50,7 @@ export default async function Image() {
               strokeLinejoin="round"
             />
           </svg>
-          <div style={{ fontSize: '64px', fontWeight: 700, color: ink }}>
+          <div style={{ fontSize: '64px', fontFamily: 'Fraunces', fontWeight: 400, letterSpacing: '-0.01em', color: ink }}>
             PrivacyPage
           </div>
         </div>
@@ -54,7 +61,9 @@ export default async function Image() {
             flexDirection: 'column',
             alignItems: 'center',
             fontSize: '56px',
-            fontWeight: 700,
+            fontFamily: 'Fraunces',
+            fontWeight: 400,
+            letterSpacing: '-0.01em',
             color: ink,
             textAlign: 'center',
             marginBottom: '30px',
@@ -62,7 +71,7 @@ export default async function Image() {
           }}
         >
           <div style={{ display: 'flex' }}>Privacy policies for your app.</div>
-          <div style={{ display: 'flex', color: seal }}>Done in 60 seconds.</div>
+          <div style={{ display: 'flex', color: seal }}>Drafted from your answers.</div>
         </div>
 
         <div
@@ -72,13 +81,17 @@ export default async function Image() {
             textAlign: 'center',
           }}
         >
-          Free • No Signup • GDPR &amp; CCPA templates
+          Free draft • No signup • GDPR &amp; CCPA templates
         </div>
 
       </div>
     ),
     {
       ...size,
+      fonts: [
+        { name: 'Fraunces', data: fraunces, weight: 400, style: 'normal' },
+        { name: 'Geist', data: geist, weight: 400, style: 'normal' },
+      ],
     }
   )
 }
