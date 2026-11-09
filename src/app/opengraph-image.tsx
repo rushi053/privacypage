@@ -70,35 +70,11 @@ export default async function Image() {
             fontSize: '28px',
             color: inkMuted,
             textAlign: 'center',
-            marginBottom: '50px',
           }}
         >
-          Free • No Signup • GDPR &amp; CCPA Compliant
+          Free • No Signup • GDPR &amp; CCPA templates
         </div>
 
-        <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
-          {['GDPR', 'CCPA', 'App Store', 'Play Store'].map((badge) => (
-            <div
-              key={badge}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                fontSize: '20px',
-                color: inkMuted,
-              }}
-            >
-              <svg width="24" height="24" viewBox="0 0 20 20" fill={seal}>
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              {badge}
-            </div>
-          ))}
-        </div>
       </div>
     ),
     {
