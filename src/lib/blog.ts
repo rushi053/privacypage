@@ -83,7 +83,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>How to Generate a Free Privacy Policy with PrivacyPage</h2>
 
-<p>Writing a privacy policy from scratch is time-consuming and error-prone. That's where PrivacyPage comes in. Here's how to generate a professional, legally compliant privacy policy in under 60 seconds:</p>
+<p>Writing a privacy policy from scratch is time-consuming and error-prone. That's where PrivacyPage comes in. Here's how to generate a privacy policy covering the key GDPR, CCPA and app-store disclosures in under 60 seconds:</p>
 
 <h3>Step 1: Visit PrivacyPage</h3>
 <p>Go to <a href="https://privacypage.io">privacypage.io</a> and click "Generate Your Docs — Free".</p>
@@ -122,7 +122,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Generate Your Privacy Policy Now</h2>
 
-<p>Don't let a missing privacy policy delay your app launch. PrivacyPage generates professional, legally compliant privacy policies tailored to your iOS app — completely free to preview.</p>
+<p>Don't let a missing privacy policy delay your app launch. PrivacyPage generates privacy policies tailored to your iOS app, built around App Store, GDPR and CCPA disclosure requirements — completely free to preview.</p>
 `
   },
   {
@@ -1115,7 +1115,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Generate Your Shopify Privacy Policy in 60 Seconds</h2>
 
-<p>Stop procrastinating on legal docs. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a professional, legally compliant privacy policy for your Shopify store — free preview, no signup, one-time payment.</p>
+<p>Stop procrastinating on legal docs. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a privacy policy for your Shopify store built around GDPR and CCPA disclosure requirements — free preview, no signup, one-time payment.</p>
 
 <p><a href="https://privacypage.io/#generate">Generate your Shopify privacy policy →</a></p>
 `
@@ -1123,7 +1123,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'termly-alternative-free',
     title: 'Termly Alternative — Free Privacy Policy Generator (No Subscription)',
-    description: 'Looking for a Termly alternative? Generate privacy policies for free with PrivacyPage. One-time payment, no subscription. GDPR & CCPA compliant.',
+    description: 'Looking for a Termly alternative? Preview privacy policies free with PrivacyPage. One-time payment, no subscription. Covers GDPR & CCPA disclosures.',
     date: '2026-02-22',
     readTime: '7 min read',
     keywords: ['termly alternative', 'termly alternative free', 'privacy policy generator no subscription', 'termly vs privacypage', 'termly competitor', 'freeprivacypolicy alternative'],
@@ -1159,7 +1159,7 @@ export const blogPosts: BlogPost[] = [
       <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>No</strong></td>
     </tr>
     <tr>
-      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Free Preview</strong></td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Free option</strong></td>
       <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Free plan (1 basic policy), account required</td>
       <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Yes</strong></td>
     </tr>
@@ -1276,7 +1276,7 @@ export const blogPosts: BlogPost[] = [
 <h3>FreePrivacyPolicy.com</h3>
 <ul>
 <li><strong>Pros:</strong> Completely free, no payment required</li>
-<li><strong>Cons:</strong> Free version is basic; more provisions sit in its paid premium policy; separate generator for each document type.</li>
+<li><strong>Cons:</strong> Free version is basic; GDPR, CCPA/CPRA and service clauses are optional add-ons; separate generator for each document type.</li>
 <li><strong>Best for:</strong> Personal blogs with no monetization</li>
 </ul>
 
@@ -2160,7 +2160,7 @@ export const blogPosts: BlogPost[] = [
     <tr style="background: #f9fafb;">
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Penalties</strong></td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;">Up to €20M or 4% of global revenue</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">$2,663 per unintentional violation, $7,988 per intentional violation</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;">$2,663 per violation; $7,988 per intentional violation or one involving consumers known to be under 16</td>
     </tr>
     <tr>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Enforcement</strong></td>
@@ -2282,10 +2282,9 @@ export const blogPosts: BlogPost[] = [
 
 <p><strong>CCPA:</strong></p>
 <ul>
-<li><strong>$2,663 per unintentional violation</strong></li>
-<li><strong>$7,988 per intentional violation</strong></li>
+<li><strong>$2,663 per violation; $7,988 per intentional violation or one involving consumers known to be under 16</strong></li>
 <li>Enforced by California Attorney General and California Privacy Protection Agency</li>
-<li>Penalties can add up quickly (e.g., if you fail to honor 10,000 deletion requests, that's $26,630,000 in fines)</li>
+<li>In theory, exposure adds up fast: if each of 10,000 ignored deletion requests counted as a separate violation, the statutory maximum would be about $26.6 million (10,000 × $2,663). Actual penalties are set case by case and have been far lower.</li>
 </ul>
 
 <p><strong>Reality check:</strong> Most small developers won't face fines unless they egregiously ignore user requests or suffer a data breach. But non-compliance is risky if you grow.</p>

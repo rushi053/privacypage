@@ -726,7 +726,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         title: 'You hold the files',
-        desc: 'Termageddon policies are embedded from their servers — stop paying and your legal pages go blank. A PrivacyPage export is a static file in your repo that can never be turned off.',
+        desc: 'Termageddon policies are embedded from its servers, and Termageddon says they stop displaying once a cancelled subscription reaches its renewal date. A PrivacyPage export is a static file in your repo.',
       },
       {
         title: 'Try before paying anything',
@@ -748,7 +748,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         q: 'What happens to my Termageddon policy if I cancel?',
-        a: 'Termageddon policies are embedded from its servers; check its terms for what happens if a licence lapses. PrivacyPage exports are static files you own — there is nothing to cancel.',
+        a: 'Termageddon policies are embedded from its servers, and Termageddon says they stop displaying once a cancelled subscription reaches its renewal date. A PrivacyPage export is a static file in your repo.',
       },
       {
         q: 'Does PrivacyPage cover the same document types as Termageddon?',
@@ -756,7 +756,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         q: 'Is Termageddon\'s attorney involvement a legal advantage?',
-        a: 'Termageddon was founded by a privacy attorney and its update decisions have legal oversight, which is a fair strength. PrivacyPage templates follow the same regulatory requirements (GDPR, CCPA, CalOPPA, COPPA), and for high-stakes or regulated businesses we recommend a lawyer review whichever tool you use.',
+        a: 'Termageddon was founded by a privacy attorney and its updates have legal oversight, which is a fair strength. PrivacyPage documents are AI-generated to cover the disclosures GDPR, CCPA, CalOPPA and COPPA require, without lawyer review. For high-stakes or regulated businesses, have a lawyer review whichever tool you use.',
       },
     ],
     relatedBlog: [
@@ -775,17 +775,17 @@ export const competitorPages: CompetitorPage[] = [
     tagline:
       'Both offer free policies and one-time payments. The difference is what the free version leaves out — and how the paid version is priced.',
     intro: [
-      `FreePrivacyPolicy.com is one of the oldest and best-known policy generators, and to its credit it shares PrivacyPage's core belief: legal documents should be a one-time purchase, not a subscription. Its free tier produces a genuinely free but basic policy. The paid model is <strong>à-la-carte</strong>: premium clauses are individual one-time fees — for example, clauses for payment processors, analytics tools like Google Analytics or Firebase, remarketing, and GDPR/CCPA coverage are each priced separately (per their <a href="https://www.freeprivacypolicy.com/" target="_blank" rel="noopener noreferrer nofollow">site</a>). A comprehensive premium policy is a sum of those clause fees, which varies with the clauses selected.`,
+      `FreePrivacyPolicy.com is one of the oldest and best-known policy generators, and to its credit it shares PrivacyPage's core belief: legal documents should be a one-time purchase, not a subscription. Its free tier produces a genuinely free but basic policy. The paid model is <strong>à-la-carte</strong>: premium clauses are individual one-time fees — for example, clauses for payment processors, analytics tools like Google Analytics or Firebase, remarketing, and GDPR/CCPA coverage are each added during its wizard (per third-party reviews). A comprehensive premium policy is a sum of those clause fees, which varies with the clauses selected.`,
       `PrivacyPage flattens all of that: <strong>${PRICE.single} once</strong> buys the complete document — GDPR and CCPA sections, all your third-party services, everything — with the entire document previewable free before you pay. No clause menu, no surprise line items at checkout.`,
     ],
     pricingSourceNote:
-      'FreePrivacyPolicy.com prices premium clauses individually (one-time fees per clause/module); totals vary by selection. See their site for current clause prices.',
+      'FreePrivacyPolicy.com doesn\'t publish a price list; premium clauses are added for one-time fees during its wizard, per third-party reviews. Totals vary by selection.',
     comparisonRows: [
       { label: 'Pricing model', them: 'Free basic policy; premium clauses priced individually (one-time)', us: `Flat ${PRICE.single} once per document, ${PRICE.bundle} for all 5` },
       { label: 'Typical paid total', them: 'Varies with the clauses you add', us: `${PRICE.single}, fixed and known upfront` },
-      { label: 'GDPR / CCPA sections', them: 'Free policy covers CCPA/CPRA, CalOPPA and GDPR per its site; more provisions in its paid premium policy', us: 'Included' },
+      { label: 'GDPR / CCPA sections', them: 'Optional add-on wording (paid premium clauses, per third-party reviews)', us: 'Included' },
       { label: 'Third-party service clauses', them: 'Paid premium clauses (e.g. analytics, payments, ads)', us: 'Included — the wizard asks what you use' },
-      { label: 'Free tier', them: 'Yes — basic policy, limited compliance coverage', us: 'Full document preview, free, no account' },
+      { label: 'Free tier', them: 'Yes — basic policy; GDPR, CCPA/CPRA and service clauses are optional add-ons', us: 'Full document preview, free, no account' },
       { label: 'Other document types', them: 'Separate generators, separately priced', us: `All 5 in the ${PRICE.bundle} bundle` },
       { label: 'Subscription', them: 'None — one-time fees', us: 'None — one-time' },
       { label: 'Auto-updates', them: 'Hosted policy revisions applied to hosted version', us: 'Free manual regeneration, lifetime' },
@@ -807,7 +807,7 @@ export const competitorPages: CompetitorPage[] = [
     prosUs: [
       {
         title: 'One flat price, no clause menu',
-        desc: `FreePrivacyPolicy prices GDPR clauses, analytics clauses, payment processor clauses, and remarketing clauses individually, so the total depends on what you add. PrivacyPage is ${PRICE.single}, period, and you knew that before you started.`,
+        desc: `FreePrivacyPolicy adds premium clauses — such as analytics, payment processor, remarketing and GDPR/CCPA wording — for one-time fees, so the total depends on what you add. PrivacyPage is ${PRICE.single}, period, and you knew that before you started.`,
       },
       {
         title: 'Free means the full document',
@@ -833,7 +833,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         q: 'Both are one-time payments — how is the pricing structured?',
-        a: `Pricing structure. FreePrivacyPolicy monetizes per clause: each analytics tool, payment processor, or compliance framework adds a fee, so the total depends on what you select. PrivacyPage charges one flat ${PRICE.single} for the complete customized document regardless of how many services you use.`,
+        a: `Pricing structure. FreePrivacyPolicy charges one-time fees for premium clauses (for example analytics tools, payment processors, or GDPR/CCPA wording), so the total depends on what you select. PrivacyPage charges one flat ${PRICE.single} for the complete customized document regardless of how many services you use.`,
       },
       {
         q: 'Can I see exactly what I\'m getting before paying?',
