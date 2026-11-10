@@ -418,7 +418,7 @@ export const blogPosts: BlogPost[] = [
 
 <ul>
 <li><strong>GDPR fines</strong> can reach €20 million or 4% of global revenue</li>
-<li><strong>CCPA penalties</strong> run $2,500–$7,500 per violation</li>
+<li><strong>CCPA penalties</strong> run $2,663–$7,988 per violation</li>
 <li><strong>App store rejection</strong> — both Apple and Google require a privacy policy for listed apps</li>
 <li><strong>Lost user trust</strong> — savvy users check for policies before sharing data</li>
 </ul>
@@ -1105,10 +1105,10 @@ export const blogPosts: BlogPost[] = [
 <p>Shopify provides a basic template in Settings → Legal, but it's generic and may not cover your specific data practices or all the apps you use. It's a starting point, not a complete solution.</p>
 
 <h3>How much does a privacy policy cost?</h3>
-<p>Legal firms charge $500–$2,000. Subscription generators bill monthly or annually. <strong>PrivacyPage charges ${PRICE.single} once</strong> — no subscription. You can regenerate updated policies anytime with your license key.</p>
+<p>A lawyer-drafted policy usually costs far more. Subscription generators bill monthly or yearly. <strong>PrivacyPage charges ${PRICE.single} once</strong> — no subscription. You can regenerate updated policies anytime with your license key.</p>
 
 <h3>What happens if I don't have a privacy policy?</h3>
-<p>You're violating Shopify's Terms of Service, and you're exposed to legal liability under GDPR, CCPA, and other privacy laws. Regulators can fine you up to €20 million (GDPR) or $7,500 per violation (CCPA).</p>
+<p>You're violating Shopify's Terms of Service, and you're exposed to legal liability under GDPR, CCPA, and other privacy laws. Regulators can fine you up to €20 million (GDPR) or $7,988 per violation (CCPA).</p>
 
 <h3>Do I need a separate cookie policy?</h3>
 <p>It's not required, but recommended. You can include cookie information in your privacy policy (which is what most Shopify stores do) or create a separate cookie policy linked in your footer.</p>
@@ -1160,7 +1160,7 @@ export const blogPosts: BlogPost[] = [
     </tr>
     <tr>
       <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Free Preview</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;">Free basic policy (Termly branding)</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;">Free plan (1 basic policy), account required</td>
       <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Yes</strong></td>
     </tr>
     <tr style="background: #f9fafb;">
@@ -1176,10 +1176,10 @@ export const blogPosts: BlogPost[] = [
 <h2>What You Get with PrivacyPage</h2>
 
 <h3>The documents you need</h3>
-<p>PrivacyPage generates the same professional legal documents as Termly, with all the compliance sections you need:</p>
+<p>PrivacyPage generates the core documents most apps need:</p>
 
 <ul>
-<li><strong>Privacy Policy</strong> — GDPR, CCPA, CalOPPA, COPPA compliant</li>
+<li><strong>Privacy Policy</strong> — covers the disclosures GDPR, CCPA, CalOPPA and COPPA require</li>
 <li><strong>Terms of Service</strong> — User agreements, liability disclaimers, dispute resolution</li>
 <li><strong>EULA</strong> — End User License Agreements for software and apps</li>
 <li><strong>Cookie Policy</strong> — Cookie disclosures and consent requirements</li>
@@ -1187,7 +1187,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h3>No Subscription Lock-In</h3>
-<p>With Termly, you pay every month forever. With PrivacyPage:</p>
+<p>With Termly, on a paid plan you pay for as long as you subscribe. With PrivacyPage:</p>
 <ul>
 <li>Pay once, own forever</li>
 <li>Your license key lets you regenerate updated policies anytime</li>
@@ -1196,7 +1196,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h3>Free Preview Before You Buy</h3>
-<p>Unlike Termly (which requires signup and payment upfront), PrivacyPage lets you:</p>
+<p>Unlike Termly (which requires an account even on its free plan), PrivacyPage lets you:</p>
 <ul>
 <li>Generate a full preview for free</li>
 <li>See exactly what you're getting</li>
@@ -1276,7 +1276,7 @@ export const blogPosts: BlogPost[] = [
 <h3>FreePrivacyPolicy.com</h3>
 <ul>
 <li><strong>Pros:</strong> Completely free, no payment required</li>
-<li><strong>Cons:</strong> Generic templates, no customization, often outdated, no CCPA/GDPR detail</li>
+<li><strong>Cons:</strong> Free version is basic; more provisions sit in its paid premium policy; separate generator for each document type.</li>
 <li><strong>Best for:</strong> Personal blogs with no monetization</li>
 </ul>
 
@@ -1284,7 +1284,7 @@ export const blogPosts: BlogPost[] = [
 <ul>
 <li><strong>Pros:</strong> One-time payment model</li>
 <li><strong>Cons:</strong> Different interface; plan and coverage details vary</li>
-<li><strong>Best for:</strong> Businesses that want human lawyer review</li>
+<li><strong>Best for:</strong> Businesses that want lawyer-reviewed templates, a cookie banner and a lifetime-licence option.</li>
 </ul>
 
 <h3>Iubenda</h3>
@@ -1301,12 +1301,12 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Best for:</strong> Lawyers who enjoy writing legal docs in their spare time</li>
 </ul>
 
-<p><strong>Our take:</strong> For 95% of developers and small businesses, PrivacyPage is the best balance of quality, compliance, and cost.</p>
+<p><strong>Our take:</strong> For most indie developers and small apps, PrivacyPage is the best balance of quality, compliance, and cost.</p>
 
 <h2>FAQ</h2>
 
-<h3>Is PrivacyPage as legally compliant as Termly?</h3>
-<p>Yes. Both generate documents following the same legal standards (GDPR, CCPA, CalOPPA, COPPA). PrivacyPage's documents are written by legal professionals and reviewed regularly.</p>
+<h3>Does PrivacyPage cover the same laws as Termly?</h3>
+<p>It covers the disclosures GDPR, CCPA, CalOPPA and COPPA require, based on your answers. Termly covers more laws and adds a cookie-consent platform. PrivacyPage documents are AI-generated from your answers, are not written or reviewed by a lawyer, and are not legal advice. For health, finance or children's apps, have a lawyer review the result.</p>
 
 <h3>What if laws change? Do I need to repurchase?</h3>
 <p>No. Your license key gives you lifetime access. When laws change, we update our templates, and you can regenerate your policy at no extra cost.</p>
@@ -1543,7 +1543,7 @@ export const blogPosts: BlogPost[] = [
 <p>It depends:</p>
 
 <ul>
-<li><strong>For personal projects or small apps:</strong> A generated policy from PrivacyPage is sufficient. It's written by legal professionals and covers DPDP Act, GDPR, and CCPA.</li>
+<li><strong>For personal projects or small apps:</strong> A generated policy from PrivacyPage is usually enough. It's AI-generated from your answers and covers the DPDP Act, GDPR and CCPA.</li>
 <li><strong>For apps handling sensitive data (health, finance, children):</strong> Consider having a lawyer review it.</li>
 <li><strong>For apps with millions of users or significant revenue:</strong> Legal review is recommended, but start with a generated policy and customize it.</li>
 </ul>
@@ -2125,7 +2125,7 @@ export const blogPosts: BlogPost[] = [
     <tr>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Who it applies to</strong></td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;">Any company processing EU residents' data</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">California businesses meeting thresholds ($25M revenue, 100K+ users, or 50%+ revenue from data sales)</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;">California businesses meeting thresholds ($26,625,000 revenue, 100K+ users, or 50%+ revenue from data sales)</td>
     </tr>
     <tr style="background: #f9fafb;">
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Scope</strong></td>
@@ -2160,7 +2160,7 @@ export const blogPosts: BlogPost[] = [
     <tr style="background: #f9fafb;">
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Penalties</strong></td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;">Up to €20M or 4% of global revenue</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">$2,500 per unintentional violation, $7,500 per intentional violation</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;">$2,663 per unintentional violation, $7,988 per intentional violation</td>
     </tr>
     <tr>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Enforcement</strong></td>
@@ -2198,7 +2198,7 @@ export const blogPosts: BlogPost[] = [
 <p>The <strong>California Consumer Privacy Act (CCPA)</strong>, effective January 1, 2020, is California's data privacy law. It applies to <strong>for-profit businesses</strong> that:</p>
 
 <ul>
-<li>Have <strong>annual gross revenue of $25M+</strong>, OR</li>
+<li>Have <strong>annual gross revenue of $26,625,000+</strong>, OR</li>
 <li>Buy, sell, or share personal information of <strong>100,000+ California consumers or households</strong> per year, OR</li>
 <li>Derive <strong>50%+ of annual revenue from selling consumers' personal information</strong></li>
 </ul>
@@ -2220,7 +2220,7 @@ export const blogPosts: BlogPost[] = [
 <h3>1. Who Is Covered?</h3>
 <p><strong>GDPR:</strong> Applies to <em>everyone</em> processing EU residents' data. No revenue or size threshold. Even a one-person blog needs to comply if it uses cookies and has EU visitors.</p>
 
-<p><strong>CCPA:</strong> Only applies to businesses meeting the $25M revenue / 100K+ users / 50%+ data-sales-revenue thresholds. Small apps and side projects usually don't qualify.</p>
+<p><strong>CCPA:</strong> Only applies to businesses meeting the $26,625,000 revenue / 100K+ users / 50%+ data-sales-revenue thresholds. Small apps and side projects usually don't qualify.</p>
 
 <h3>2. Consent: Opt-In vs Opt-Out</h3>
 <p><strong>GDPR:</strong> Opt-in model. You need <strong>affirmative consent</strong> before processing personal data (especially for cookies, marketing, profiling). Pre-ticked boxes and "by continuing, you agree" are <em>not</em> valid consent.</p>
@@ -2282,10 +2282,10 @@ export const blogPosts: BlogPost[] = [
 
 <p><strong>CCPA:</strong></p>
 <ul>
-<li><strong>$2,500 per unintentional violation</strong></li>
-<li><strong>$7,500 per intentional violation</strong></li>
+<li><strong>$2,663 per unintentional violation</strong></li>
+<li><strong>$7,988 per intentional violation</strong></li>
 <li>Enforced by California Attorney General and California Privacy Protection Agency</li>
-<li>Penalties can add up quickly (e.g., if you fail to honor 10,000 deletion requests, that's $25M in fines)</li>
+<li>Penalties can add up quickly (e.g., if you fail to honor 10,000 deletion requests, that's $26,630,000 in fines)</li>
 </ul>
 
 <p><strong>Reality check:</strong> Most small developers won't face fines unless they egregiously ignore user requests or suffer a data breach. But non-compliance is risky if you grow.</p>
@@ -2357,7 +2357,7 @@ export const blogPosts: BlogPost[] = [
 <p>Technically, yes — if you geofence your app/website and explicitly block EU IP addresses. But this is impractical for most apps (you're cutting off 450M+ potential users). It's easier to comply.</p>
 
 <h3>What if I'm not sure if I meet CCPA thresholds?</h3>
-<p>If you're under $25M revenue, under 100K California users/households per year, and don't derive 50%+ revenue from data sales, CCPA likely doesn't apply. But you should still have a privacy policy (required by app stores and good practice). If you grow, you'll need to comply.</p>
+<p>If you're under $26,625,000 revenue, under 100K California users/households per year, and don't derive 50%+ revenue from data sales, CCPA likely doesn't apply. But you should still have a privacy policy (required by app stores and good practice). If you grow, you'll need to comply.</p>
 
 <h3>Do I need a lawyer to write my privacy policy?</h3>
 <p>Not necessarily. Most small developers use generated policies (like <a href="https://privacypage.io">PrivacyPage</a>) that cover GDPR and CCPA. If you handle sensitive data (health, finance, children), or if you're raising funding / facing legal issues, get a lawyer to review it.</p>

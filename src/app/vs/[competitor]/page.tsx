@@ -76,7 +76,7 @@ export default async function CompetitorComparisonPage({ params }: { params: Pro
           <h2 className="text-2xl font-bold mb-6 text-gray-900">{page.name} vs PrivacyPage at a glance</h2>
           <SeoComparisonTable competitorName={page.name} rows={page.comparisonRows} />
           <p data-fixed-price className="mt-3 text-sm text-gray-600">
-            Visitors in India pay ₹{PRICING.INR.single.toLocaleString('en-IN')} per document (₹{PRICING.INR.bundle.toLocaleString('en-IN')} bundle) at checkout.
+            Prices are shown in your local currency: ₹{PRICING.INR.single.toLocaleString('en-IN')} / ₹{PRICING.INR.bundle.toLocaleString('en-IN')} in India, {PRICE.single} / {PRICE.bundle} elsewhere, charged in that currency at checkout.
           </p>
         </section>
         <p className="text-xs text-gray-400 mb-12 leading-relaxed">{page.pricingSourceNote}</p>

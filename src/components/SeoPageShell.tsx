@@ -38,6 +38,7 @@ export function SeoPageShell({ children }: { children: React.ReactNode }) {
 
       <footer className="border-t border-gray-200 py-8 px-6 text-center text-gray-500 text-sm bg-gray-50">
         <p className="mb-3 space-x-4"><Link href="/for" className="hover:text-gray-900">All platforms</Link><Link href="/for/ios-app" className="hover:text-gray-900">iOS</Link><Link href="/for/android-app" className="hover:text-gray-900">Android</Link><Link href="/for/chrome-extension" className="hover:text-gray-900">Chrome</Link><Link href="/pricing" className="hover:text-gray-900">Pricing</Link></p>
+        <p className="mb-3 max-w-2xl mx-auto leading-relaxed">PrivacyPage is not a law firm and does not provide legal advice. Documents are AI-generated from your answers.</p>
         © {new Date().getFullYear()} PrivacyPage. All rights reserved.
       </footer>
     </div>
@@ -102,7 +103,7 @@ export function SeoComparisonTable({
 
 export function SeoCtaCard({
   heading = 'Generate your privacy policy in 60 seconds',
-  sub = `Professional, legally compliant documents for your app — free to preview, ${PRICE.single} one-time to unlock.`,
+  sub = `Privacy policies and legal docs built around GDPR, CCPA, CalOPPA and COPPA disclosure rules — free to preview, ${PRICE.single} one-time to unlock.`,
 }: {
   heading?: string
   sub?: string

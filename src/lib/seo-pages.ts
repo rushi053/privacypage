@@ -428,7 +428,7 @@ export const competitorPages: CompetitorPage[] = [
       `Termly uses a per-website subscription. PrivacyPage is ${PRICE.single} once. Honest 2026 comparison: pricing models, features, and when each tool is the right choice.`,
     keyword: 'termly alternative',
     tagline:
-      'Both generate compliant privacy policies. One bills you every month for it.',
+      'Both generate privacy policies. One bills you every month for it.',
     intro: [
       `Termly is one of the most popular compliance platforms on the web, and deservedly so — it pairs policy generators with a full consent management platform. The catch is the pricing model: meaningful use requires a per-website subscription, billed monthly or annually (<a href="https://termly.io/pricing/" target="_blank" rel="noopener noreferrer nofollow">termly.io/pricing</a>). Paid plans are tiered (Starter, Pro+), and the free plan covers a single basic policy with Termly branding.`,
       `PrivacyPage takes the opposite approach: you generate the document free, preview all of it, and pay <strong>${PRICE.single} once</strong> to unlock it (or ${PRICE.bundle} for all five document types). You own the file, host it anywhere, and regenerate updates free for life. One payment, not a recurring subscription — for a developer who needs a policy, not a compliance department.`,
@@ -439,7 +439,7 @@ export const competitorPages: CompetitorPage[] = [
       { label: 'Price', them: 'Subscription pricing, billed monthly or annually, per website', us: `${PRICE.single} once per document, or ${PRICE.bundle} once for all 5` },
       { label: 'Payment over time', them: 'Recurring subscription for as long as the site stays live', us: `${PRICE.single}–${PRICE.bundle}, one time, total` },
       { label: 'Free tier', them: '1 basic policy, Termly branding, 10k banner views', us: 'Full free preview of every document, no account' },
-      { label: 'Document ownership', them: 'Termly-hosted; policies live on their infrastructure', us: 'You export HTML/Markdown/text and host anywhere' },
+      { label: 'Document ownership', them: 'Hosted policies or HTML embed, managed in your Termly account', us: 'You export HTML/Markdown/text and host anywhere' },
       { label: 'Cookie consent banner', them: 'Yes — full CMP with consent logs, Google Consent Mode v2, IAB TCF', us: 'No — documents only' },
       { label: 'Auto-updating policies', them: 'Yes, on Pro+', us: 'No — free manual regeneration anytime, forever' },
       { label: 'Account required', them: 'Yes', us: 'No' },
@@ -456,7 +456,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         title: 'Cookie scanning',
-        desc: 'Weekly automated scans keep your cookie disclosures in sync with what your site actually sets.',
+        desc: 'Scheduled cookie scans (monthly on Starter, weekly on Pro+) keep your cookie disclosures in sync with what your site actually sets.',
       },
     ],
     prosUs: [
@@ -526,7 +526,7 @@ export const competitorPages: CompetitorPage[] = [
     pricingSourceNote:
       'For current iubenda plans and pricing, see iubenda.com/en/pricing. Pageview overages are billed separately. Plans and promotions change.',
     comparisonRows: [
-      { label: 'Price', them: 'Subscription pricing, billed annually, per site', us: `${PRICE.single} once per document, or ${PRICE.bundle} once for all 5` },
+      { label: 'Price', them: 'Subscription pricing, billed monthly or yearly, per site', us: `${PRICE.single} once per document, or ${PRICE.bundle} once for all 5` },
       { label: 'Terms of Service included', them: 'Only from the Advanced tier', us: `Included in the ${PRICE.bundle} bundle` },
       { label: 'Pageview limits', them: 'Yes — 25k–150k/mo per tier, with overage fees', us: 'None — it\'s your file' },
       { label: 'Multi-language documents', them: 'Yes (Advanced+), excellent', us: 'English only' },
@@ -564,7 +564,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         title: 'Own it forever',
-        desc: 'Cancel iubenda and your embedded policy goes away. A PrivacyPage export lives in your repo permanently, with free regenerations when things change.',
+        desc: 'iubenda documents are embedded from your iubenda account. A PrivacyPage export lives in your repo permanently, with free regenerations when things change.',
       },
     ],
     verdict: [
@@ -582,7 +582,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         q: 'What about iubenda\'s free plan?',
-        a: 'iubenda\'s free tier is limited to very low-traffic sites (under ~1,000 pageviews/month) with capped clauses. PrivacyPage\'s free preview is the full document for any app; you pay only to export it.',
+        a: 'iubenda\'s free plan is limited; see iubenda.com/en/pricing. PrivacyPage\'s free preview is the full document for any app; you pay only to export it.',
       },
       {
         q: 'Can I use PrivacyPage for a client project?',
@@ -605,7 +605,7 @@ export const competitorPages: CompetitorPage[] = [
     tagline:
       'GetTerms offers subscription and lifetime plans for a hosted platform. PrivacyPage is a one-time payment for the documents.',
     intro: [
-      `GetTerms deserves credit as one of the few compliance tools that offers a lifetime option alongside a subscription. As of August 2026 (<a href="https://getterms.io/pricing" target="_blank" rel="noopener noreferrer nofollow">getterms.io/pricing</a>): the <strong>Starter plan</strong> is a per-site subscription that covers a privacy policy and cookie banner, but notably <em>not</em> Terms &amp; Conditions. The <strong>Business plan</strong> adds all policies and removes branding. Lifetime licenses are also available on both tiers, per site.`,
+      `GetTerms deserves credit as one of the few compliance tools that offers a lifetime option alongside a subscription. As of November 2026 (<a href="https://getterms.io/pricing" target="_blank" rel="noopener noreferrer nofollow">getterms.io/pricing</a>): the <strong>Starter plan</strong> is a per-site subscription that covers a privacy policy and cookie banner, but notably <em>not</em> Terms &amp; Conditions. The <strong>Business plan</strong> adds all policies and removes branding. Lifetime licenses are also available on both tiers, per site.`,
       `PrivacyPage's whole model is a one-time payment, priced for indie developers: <strong>${PRICE.single} once</strong> for a document, <strong>${PRICE.bundle} once</strong> for all five document types, full free preview first, no account. If what you need is the legal documents — not a hosted consent platform — the two products are built for different jobs.`,
     ],
     pricingSourceNote:
@@ -613,9 +613,9 @@ export const competitorPages: CompetitorPage[] = [
     comparisonRows: [
       { label: 'Price', them: 'Subscription pricing, billed monthly or annually, per site', us: `${PRICE.single} once per document, or ${PRICE.bundle} once for all 5` },
       { label: 'Lifetime option', them: 'Lifetime licenses available on Starter and Business, per site', us: `Every purchase is effectively lifetime — ${PRICE.single}–${PRICE.bundle}` },
-      { label: 'Terms & Conditions', them: 'Business plan only', us: `Included in the ${PRICE.bundle} bundle` },
-      { label: 'Cookie consent banner', them: 'Yes, with unlimited views and Consent Mode v2', us: 'No — documents only' },
-      { label: 'Branding on documents', them: 'GetTerms branding on Starter', us: 'None — the document is yours' },
+      { label: 'Terms & Conditions', them: 'Full T&C generator on Business; see getterms.io/pricing', us: `Included in the ${PRICE.bundle} bundle` },
+      { label: 'Cookie consent banner', them: 'Yes — 50,000 views/mo on Starter, unlimited on Business; Consent Mode v2', us: 'No — documents only' },
+      { label: 'Branding on documents', them: 'GetTerms branding on the free version only', us: 'None — the document is yours' },
       { label: 'Regulation monitoring alerts', them: 'Yes, on Business', us: 'No — free manual regeneration anytime' },
       { label: 'Account required', them: 'Yes', us: 'No' },
       { label: 'INR pricing & UPI', them: 'No', us: 'Yes — geo-priced for India via Razorpay' },
@@ -623,7 +623,7 @@ export const competitorPages: CompetitorPage[] = [
     prosThem: [
       {
         title: 'Bundled cookie consent banner',
-        desc: 'GetTerms includes a CMP with unlimited banner views and Google Consent Mode v2 on all plans — genuinely good value if you need consent management, since most rivals meter views.',
+        desc: 'GetTerms includes a CMP with 50,000 views/mo on Starter, unlimited on Business, and Google Consent Mode v2 — genuinely good value if you need consent management, since most rivals meter views.',
       },
       {
         title: 'Regulation monitoring',
@@ -748,7 +748,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         q: 'What happens to my Termageddon policy if I cancel?',
-        a: 'Termageddon policies are served via embed from their platform, so an inactive license means the policy stops displaying. PrivacyPage exports are static files you own — there is nothing to cancel.',
+        a: 'Termageddon policies are embedded from its servers; check its terms for what happens if a licence lapses. PrivacyPage exports are static files you own — there is nothing to cancel.',
       },
       {
         q: 'Does PrivacyPage cover the same document types as Termageddon?',
@@ -783,8 +783,8 @@ export const competitorPages: CompetitorPage[] = [
     comparisonRows: [
       { label: 'Pricing model', them: 'Free basic policy; premium clauses priced individually (one-time)', us: `Flat ${PRICE.single} once per document, ${PRICE.bundle} for all 5` },
       { label: 'Typical paid total', them: 'Varies with the clauses you add', us: `${PRICE.single}, fixed and known upfront` },
-      { label: 'GDPR / CCPA sections', them: 'Paid add-on clauses', us: 'Included' },
-      { label: 'Third-party service clauses', them: 'Priced per clause (e.g. analytics, payments, ads)', us: 'Included — the wizard asks what you use' },
+      { label: 'GDPR / CCPA sections', them: 'Free policy covers CCPA/CPRA, CalOPPA and GDPR per its site; more provisions in its paid premium policy', us: 'Included' },
+      { label: 'Third-party service clauses', them: 'Paid premium clauses (e.g. analytics, payments, ads)', us: 'Included — the wizard asks what you use' },
       { label: 'Free tier', them: 'Yes — basic policy, limited compliance coverage', us: 'Full document preview, free, no account' },
       { label: 'Other document types', them: 'Separate generators, separately priced', us: `All 5 in the ${PRICE.bundle} bundle` },
       { label: 'Subscription', them: 'None — one-time fees', us: 'None — one-time' },
@@ -811,7 +811,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         title: 'Free means the full document',
-        desc: 'Their free tier omits the compliance sections most apps need. Our free preview is the complete document including GDPR/CCPA sections — you pay only to export it.',
+        desc: 'Our free preview is the complete document including GDPR/CCPA sections — you pay only to export it.',
       },
       {
         title: 'Built for apps, not just websites',
@@ -819,7 +819,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         title: 'Modern, 60-second flow',
-        desc: 'No account, about ten questions, done. Reviewers consistently describe FreePrivacyPolicy\'s interface as dated with a longer path to a finished policy.',
+        desc: 'No account, about ten questions, full preview before you pay.',
       },
     ],
     verdict: [
@@ -829,7 +829,7 @@ export const competitorPages: CompetitorPage[] = [
     faqs: [
       {
         q: 'Is the FreePrivacyPolicy free policy legally sufficient?',
-        a: 'For a static site collecting nearly nothing, possibly. Its free tier is widely noted to lack the GDPR and CCPA depth most modern apps need — those are paid clause add-ons. If your app has accounts or analytics, budget for the premium clauses or use a flat-price generator.',
+        a: 'For a static site collecting nearly nothing, possibly. If your app has accounts or analytics, budget for the premium clauses or use a flat-price generator.',
       },
       {
         q: 'Both are one-time payments — how is the pricing structured?',
@@ -940,7 +940,7 @@ export const regulationPages: RegulationPage[] = [
     tagline:
       'California\'s privacy law, decoded for developers — who it covers, what your policy must say, and what to skip.',
     intro: [
-      `The CCPA (California Consumer Privacy Act), significantly expanded by the CPRA in 2023, is the United States' most consequential privacy law. Unlike GDPR, it doesn't apply to everyone: it covers <strong>for-profit businesses</strong> that do business in California and meet at least one threshold — roughly <strong>$25 million+ in annual revenue</strong> (inflation-adjusted), buying/selling/sharing personal information of <strong>100,000+ California consumers or households</strong> per year, or earning <strong>50%+ of revenue from selling or sharing</strong> personal information.`,
+      `The CCPA (California Consumer Privacy Act), significantly expanded by the CPRA in 2023, is the United States' most consequential privacy law. Unlike GDPR, it doesn't apply to everyone: it covers <strong>for-profit businesses</strong> that do business in California and meet at least one threshold — roughly <strong>$26,625,000+ in annual revenue</strong> (inflation-adjusted), buying/selling/sharing personal information of <strong>100,000+ California consumers or households</strong> per year, or earning <strong>50%+ of revenue from selling or sharing</strong> personal information.`,
       `Most indie apps are below those thresholds. So why care? Three reasons. First, growth: 100,000 California users arrives faster than you think, and retrofitting compliance is painful. Second, ecosystem pressure: app stores, ad networks, and enterprise customers increasingly expect CCPA-style disclosures regardless of your size. Third, California is rarely alone — a dozen-plus US states now have similar laws with lower or different thresholds, and a CCPA-grade policy substantially covers them.`,
       `If CCPA applies, your privacy policy must disclose, for the past 12 months: the <strong>categories of personal information</strong> you collected (using the law's categories — identifiers, commercial information, internet activity, geolocation, inferences, and so on); the <strong>sources</strong> of that information; the <strong>business purposes</strong> for collecting it; and the categories of third parties you <strong>disclosed, sold, or shared</strong> it with. "Sharing" notably includes giving data to ad networks for cross-context behavioral advertising — many apps "share" under CCPA without ever selling anything.`,
       `The policy must also explain California consumers' rights: to <strong>know</strong> what you've collected, to <strong>delete</strong> it, to <strong>correct</strong> it, to <strong>opt out of sale or sharing</strong>, to <strong>limit use of sensitive personal information</strong>, and to be free from discrimination for exercising any of these. If you sell or share data, you need a "Do Not Sell or Share My Personal Information" link, and you must honor Global Privacy Control (GPC) browser signals. The policy must state how to submit requests (at least two methods) and be updated at least every 12 months.`,
@@ -980,7 +980,7 @@ export const regulationPages: RegulationPage[] = [
     faqs: [
       {
         q: 'My app is small — do I need CCPA disclosures at all?',
-        a: 'Legally, only if you meet a threshold (~$25M revenue, 100k+ CA consumers, or 50%+ revenue from data sales). Practically, including CCPA-style disclosures costs nothing, future-proofs your growth, and satisfies partners and stores that expect them. PrivacyPage includes them by default.',
+        a: 'Legally, only if you meet a threshold (~$26,625,000 revenue, 100k+ CA consumers, or 50%+ revenue from data sales). Practically, including CCPA-style disclosures costs nothing, future-proofs your growth, and satisfies partners and stores that expect them. PrivacyPage includes them by default.',
       },
       {
         q: 'What counts as "selling" data under CCPA?',
