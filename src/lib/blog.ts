@@ -1142,31 +1142,31 @@ export const blogPosts: BlogPost[] = [
   </colgroup>
   <thead>
     <tr style="background: #f3f4f6;">
-      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb; word-break: break-word;">Feature</th>
-      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb; word-break: break-word;">Termly</th>
-      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb; word-break: break-word;">PrivacyPage</th>
+      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Feature</th>
+      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Termly</th>
+      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">PrivacyPage</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Price</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;">Recurring subscription</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>${PRICE.single} per doc, or ${PRICE.bundle} for all 5, once</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Price</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Recurring subscription</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>${PRICE.single} per doc, or ${PRICE.bundle} for all 5, once</strong></td>
     </tr>
     <tr style="background: #f9fafb;">
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Signup Required</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;">Yes</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>No</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Signup Required</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Yes</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>No</strong></td>
     </tr>
     <tr>
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Free Preview</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;">Free plan (1 basic policy), account required</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Yes</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Free Preview</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Free plan (1 basic policy), account required</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Yes</strong></td>
     </tr>
     <tr style="background: #f9fafb;">
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Lifetime Updates</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;">Only while subscribed</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Yes (with license key)</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Lifetime Updates</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Only while subscribed</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Yes (with license key)</strong></td>
     </tr>
   </tbody>
 </table>
