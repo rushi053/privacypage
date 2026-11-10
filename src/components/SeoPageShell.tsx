@@ -44,6 +44,62 @@ export function SeoPageShell({ children }: { children: React.ReactNode }) {
   )
 }
 
+export function SeoComparisonTable({
+  competitorName,
+  rows,
+}: {
+  competitorName: string
+  rows: { label: string; them: string; us: string }[]
+}) {
+  return (
+    <>
+      <div className="sm:hidden space-y-4">
+        {rows.map((row) => (
+          <div key={row.label} className="border border-gray-200 rounded-xl p-5">
+            <h3 className="font-semibold text-sm text-gray-900 mb-4">{row.label}</h3>
+            <div className="space-y-3">
+              <div>
+                <p className="text-xs font-medium text-gray-500 mb-1">{competitorName}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{row.them}</p>
+              </div>
+              <div className="rounded-lg bg-indigo-50/50 px-3 py-3">
+                <p className="text-xs font-medium text-indigo-700 mb-1">PrivacyPage</p>
+                <p className="text-sm text-gray-700 leading-relaxed">{row.us}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="hidden sm:block border border-gray-200 rounded-xl overflow-hidden">
+        <table className="w-full table-fixed text-sm">
+          <colgroup>
+            <col className="w-[28%]" />
+            <col className="w-[36%]" />
+            <col className="w-[36%]" />
+          </colgroup>
+          <thead>
+            <tr className="bg-gray-50 border-b border-gray-200">
+              <th className="text-left font-semibold text-gray-900 px-4 py-3"></th>
+              <th className="text-left font-semibold text-gray-900 px-4 py-3">{competitorName}</th>
+              <th className="text-left font-semibold text-indigo-700 px-4 py-3 bg-indigo-50/50">PrivacyPage</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, i) => (
+              <tr key={row.label} className={i % 2 === 1 ? 'bg-gray-50/50' : ''}>
+                <td className="px-4 py-3 font-medium text-gray-900 align-top break-words">{row.label}</td>
+                <td className="px-4 py-3 text-gray-600 align-top leading-relaxed break-words">{row.them}</td>
+                <td className="px-4 py-3 text-gray-700 align-top leading-relaxed break-words bg-indigo-50/30">{row.us}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  )
+}
+
 export function SeoCtaCard({
   heading = 'Generate your privacy policy in 60 seconds',
   sub = `Professional, legally compliant documents for your app — free to preview, ${PRICE.single} one-time to unlock.`,

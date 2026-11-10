@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { competitorPages, getCompetitorPage, buildFaqSchema } from '@/lib/seo-pages'
-import { SeoPageShell, SeoCtaCard, SeoFaqSection, SeoRelatedLinks } from '@/components/SeoPageShell'
+import { SeoPageShell, SeoComparisonTable, SeoCtaCard, SeoFaqSection, SeoRelatedLinks } from '@/components/SeoPageShell'
 
 export function generateStaticParams() {
   return competitorPages.map((p) => ({ competitor: p.slug }))
@@ -74,26 +74,7 @@ export default async function CompetitorComparisonPage({ params }: { params: Pro
 
         <section className="mb-4">
           <h2 className="text-2xl font-bold mb-6 text-gray-900">{page.name} vs PrivacyPage at a glance</h2>
-          <div data-fixed-price className="overflow-x-auto border border-gray-200 rounded-xl">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-gray-50 border-b border-gray-200">
-                  <th className="text-left font-semibold text-gray-900 px-4 py-3 w-1/4"></th>
-                  <th className="text-left font-semibold text-gray-900 px-4 py-3">{page.name}</th>
-                  <th className="text-left font-semibold text-indigo-700 px-4 py-3 bg-indigo-50/50">PrivacyPage</th>
-                </tr>
-              </thead>
-              <tbody>
-                {page.comparisonRows.map((row, i) => (
-                  <tr key={row.label} className={i % 2 === 1 ? 'bg-gray-50/50' : ''}>
-                    <td className="px-4 py-3 font-medium text-gray-900 align-top">{row.label}</td>
-                    <td className="px-4 py-3 text-gray-600 align-top leading-relaxed">{row.them}</td>
-                    <td className="px-4 py-3 text-gray-700 align-top leading-relaxed bg-indigo-50/30">{row.us}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <SeoComparisonTable competitorName={page.name} rows={page.comparisonRows} />
           <p data-fixed-price className="mt-3 text-sm text-gray-600">
             Visitors in India pay ₹{PRICING.INR.single.toLocaleString('en-IN')} per document (₹{PRICING.INR.bundle.toLocaleString('en-IN')} bundle) at checkout.
           </p>

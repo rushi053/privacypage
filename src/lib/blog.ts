@@ -1134,49 +1134,39 @@ export const blogPosts: BlogPost[] = [
 
 <p>Termly is a full compliance platform. Here's a side-by-side look at how the two products are sold:</p>
 
-<table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+<table style="width:100%; max-width:100%; border-collapse: collapse; margin: 20px 0; table-layout: fixed;">
+  <colgroup>
+    <col style="width:28%">
+    <col style="width:36%">
+    <col style="width:36%">
+  </colgroup>
   <thead>
     <tr style="background: #f3f4f6;">
-      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Feature</th>
-      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Termly</th>
-      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">PrivacyPage</th>
+      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb; word-break: break-word;">Feature</th>
+      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb; word-break: break-word;">Termly</th>
+      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb; word-break: break-word;">PrivacyPage</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Privacy Policy</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">Recurring monthly or annual subscription</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.single} once</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Price</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;">Recurring subscription</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>${PRICE.single} per doc, or ${PRICE.bundle} for all 5, once</strong></td>
     </tr>
     <tr style="background: #f9fafb;">
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Terms of Service</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">Recurring monthly or annual subscription</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.single} once</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Signup Required</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;">Yes</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>No</strong></td>
     </tr>
     <tr>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>EULA</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">Recurring monthly or annual subscription</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.single} once</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Free Preview</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;">Free basic policy (Termly branding)</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Yes</strong></td>
     </tr>
     <tr style="background: #f9fafb;">
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Bundle (All 5 Docs)</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">Recurring monthly or annual subscription</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.bundle} once</strong></td>
-    </tr>
-    <tr>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Signup Required</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">Yes</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>No</strong></td>
-    </tr>
-    <tr style="background: #f9fafb;">
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Free Preview</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">No</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Yes</strong></td>
-    </tr>
-    <tr>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Lifetime Updates</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">Only while subscribed</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Yes (with license key)</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Lifetime Updates</strong></td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;">Only while subscribed</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb; word-break: break-word;"><strong>Yes (with license key)</strong></td>
     </tr>
   </tbody>
 </table>
