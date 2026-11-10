@@ -29,7 +29,7 @@ const faqItems = [
   },
   {
     q: "What happens when laws change?",
-    a: "Your license key gives you lifetime access. Come back and regenerate an updated document anytime — free, forever.",
+    a: "Your license key gives you lifetime access (subject to our refund policy). Come back and regenerate an updated document anytime — free, forever.",
   },
   {
     q: "What data do you store about me?",

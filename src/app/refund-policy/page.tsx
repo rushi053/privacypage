@@ -40,7 +40,7 @@ export default function RefundPolicyPage() {
           <section>
             <h2 className={h2Class}>Who can ask</h2>
             <p>
-              Anyone who bought anything from PrivacyPage, within 30 days of the payment: any single document (Privacy Policy, Terms of Service, EULA, Cookie Policy or Disclaimer), a Pro — Any Single Document purchase, or the Bundle — All 5 Documents.
+              Anyone who bought anything from PrivacyPage, within 30 days of the payment: a Single document or Bundle — all 5 purchase (shown as 'Pro' on some receipts).
             </p>
           </section>
 
@@ -86,7 +86,7 @@ export default function RefundPolicyPage() {
           <section>
             <h2 className={h2Class}>Who we are</h2>
             <p>
-              PrivacyPage is run by Rushiraj Jadeja (sole proprietor), [address], India. Grievance Officer: Rushiraj Jadeja, Grievance Officer, [email], [phone]. We acknowledge complaints within 48 hours, with a reference number, and resolve them within one month.
+              PrivacyPage is run by Rushiraj Jadeja (sole proprietor), [address], India. Grievance Officer: Rushiraj Jadeja, [email], [phone]. We acknowledge complaints within 48 hours, with a reference number, and resolve them within one month.
             </p>
           </section>
 

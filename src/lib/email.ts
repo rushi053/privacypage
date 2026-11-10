@@ -47,7 +47,7 @@ export async function sendLicenseEmail({ to, licenseKey, docType }: SendLicenseE
           <span style="font-family:ui-monospace,Menlo,monospace;font-size:18px;letter-spacing:2px;color:#4f46e5;font-weight:600;">${licenseKey}</span>
         </div>
         <p style="margin:0 0 16px;font-size:14px;color:#374151;line-height:1.6;">
-          Keep this key safe — it's your lifetime access. To restore your purchase on any device:
+          Keep this key safe — it's your lifetime access, subject to our refund policy (privacypage.io/refund-policy). To restore your purchase on any device:
         </p>
         <ol style="margin:0 0 24px;padding-left:20px;font-size:14px;color:#374151;line-height:1.8;">
           <li>Visit <a href="https://privacypage.io" style="color:#4f46e5;">privacypage.io</a></li>
