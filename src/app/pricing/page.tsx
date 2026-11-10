@@ -29,9 +29,9 @@ export const metadata: Metadata = {
 export default async function PricingPage() {
   const p = getPricingForCountry(countryFromHeaders(await headers()))
   const plans = [
-    { name: 'Free preview', price: 'Free', note: 'No account', points: ['Answer the wizard questions', 'Preview the first part of your document', 'See exactly what you would unlock'], cta: 'Preview free' },
-    { name: 'Single document', price: p.singleDisplay, note: 'One-time', points: ['One full document: Privacy Policy, Terms, EULA, Cookie Policy or Disclaimer', 'Export as HTML, Markdown or plain text', 'Regenerate when your app changes'], cta: 'Generate a document' },
-    { name: 'Bundle — all 5', price: p.bundleDisplay, note: 'One-time', points: ['Privacy Policy, Terms of Service, EULA, Cookie Policy and Disclaimer', 'Export as HTML, Markdown or plain text', 'Regenerate when your app changes'], cta: 'Get the bundle' },
+    { name: 'Free preview', price: 'Free', note: 'No account', points: ['Answer the wizard questions', 'Preview the first part of your document', 'See exactly what you would unlock'], cta: 'Preview free', refundNote: false },
+    { name: 'Single document', price: p.singleDisplay, note: 'One-time', points: ['One full document: Privacy Policy, Terms, EULA, Cookie Policy or Disclaimer', 'Export as HTML, Markdown or plain text', 'Regenerate when your app changes'], cta: 'Generate a document', refundNote: true },
+    { name: 'Bundle — all 5', price: p.bundleDisplay, note: 'One-time', points: ['Privacy Policy, Terms of Service, EULA, Cookie Policy and Disclaimer', 'Export as HTML, Markdown or plain text', 'Regenerate when your app changes'], cta: 'Get the bundle', refundNote: true },
   ]
   return (
     <ClauseShell>
@@ -49,6 +49,11 @@ export default async function PricingPage() {
                 {pl.points.map((x) => <li key={x}>— {x}</li>)}
               </ul>
               <Link href="/#generate" className="flex items-center justify-center h-12 rounded-[8px] bg-[#0F5C63] text-white text-[16px] font-medium hover:bg-[#0B4A50]">{pl.cta}</Link>
+              {pl.refundNote && (
+                <p className="mt-5 text-[14px] leading-[1.5] text-[#16181D]/60 text-center">
+                  <Link href="/refund-policy" className="underline underline-offset-4 decoration-[#16181D]/25 hover:text-[#16181D] hover:decoration-[#16181D]/50">30-day full refund, no reason needed</Link>
+                </p>
+              )}
             </section>
           ))}
         </div>

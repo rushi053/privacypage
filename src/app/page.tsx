@@ -29,7 +29,7 @@ const faqItems = [
   },
   {
     q: "What happens when laws change?",
-    a: "Your license key gives you lifetime access. Come back and regenerate an updated document anytime — free, forever.",
+    a: "Your license key gives you lifetime access (subject to our refund policy). Come back and regenerate an updated document anytime — free, forever.",
   },
   {
     q: "What data do you store about me?",
@@ -508,7 +508,7 @@ export default function Home() {
                 { h: "Product", l: [["#generate", "Generate"], ["/pricing", "Pricing"], ["/blog", "Guides"]] },
                 { h: "Platforms", l: [["/for", "All platforms"], ["/for/ios-app", "iOS apps"], ["/for/android-app", "Android apps"], ["/for/flutter-app", "Flutter apps"], ["/for/react-native-app", "React Native apps"], ["/for/chrome-extension", "Chrome extensions"], ["/for/discord-bot", "Discord bots"]] },
                 { h: "Compare", l: [["/vs/termly", "vs Termly"], ["/compliance/gdpr", "GDPR guide"], ["/compliance/dpdp", "DPDP Act (India)"]] },
-                { h: "Support", l: [["mailto:rushirajjadeja@gmail.com?subject=PrivacyPage%20Support", "Email"], ["#faq", "FAQ"]] },
+                { h: "Support", l: [["mailto:rushirajjadeja@gmail.com?subject=PrivacyPage%20Support", "Email"], ["#faq", "FAQ"], ["/refund-policy", "Refund policy"]] },
                 { h: "More", l: [["https://rushiraj.me", "Portfolio"], ["https://apps.apple.com/us/app/cashlens-personal-finance/id6743153951", "CashLens"], ["https://x.com/cashLensApp", "X / Twitter"]] },
               ].map((col) => (
                 <div key={col.h}>

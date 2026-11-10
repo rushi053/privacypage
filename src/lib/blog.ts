@@ -1319,7 +1319,7 @@ export const blogPosts: BlogPost[] = [
 <p>Yes. Both generate documents following the same legal standards (GDPR, CCPA, CalOPPA, COPPA). PrivacyPage's documents are written by legal professionals and reviewed regularly.</p>
 
 <h3>What if laws change? Do I need to repurchase?</h3>
-<p>No. Your license key gives you lifetime access. When laws change, we update our templates, and you can regenerate your policy at no extra cost.</p>
+<p>No. Your license key gives you lifetime access, subject to our refund policy. When laws change, we update our templates, and you can regenerate your policy at no extra cost.</p>
 
 <h3>Can I use PrivacyPage for client projects?</h3>
 <p>Yes. Each purchase is per project/app/website. If you're building sites for clients, generate a policy for each client (one-time ${PRICE.single} or ${PRICE.bundle} per client).</p>
