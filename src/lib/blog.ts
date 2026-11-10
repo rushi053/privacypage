@@ -1105,7 +1105,7 @@ export const blogPosts: BlogPost[] = [
 <p>Shopify provides a basic template in Settings → Legal, but it's generic and may not cover your specific data practices or all the apps you use. It's a starting point, not a complete solution.</p>
 
 <h3>How much does a privacy policy cost?</h3>
-<p>Legal firms charge $500–$2,000. Services like Termly charge $10–$25/month. <strong>PrivacyPage charges ${PRICE.single} once</strong> — no subscription. You can regenerate updated policies anytime with your license key.</p>
+<p>Legal firms charge $500–$2,000. Subscription generators bill monthly or annually. <strong>PrivacyPage charges ${PRICE.single} once</strong> — no subscription. You can regenerate updated policies anytime with your license key.</p>
 
 <h3>What happens if I don't have a privacy policy?</h3>
 <p>You're violating Shopify's Terms of Service, and you're exposed to legal liability under GDPR, CCPA, and other privacy laws. Regulators can fine you up to €20 million (GDPR) or $7,500 per violation (CCPA).</p>
@@ -1128,11 +1128,11 @@ export const blogPosts: BlogPost[] = [
     readTime: '7 min read',
     keywords: ['termly alternative', 'termly alternative free', 'privacy policy generator no subscription', 'termly vs privacypage', 'termly competitor', 'freeprivacypolicy alternative'],
     content: `
-<p>Termly charges $10–$25 per month for privacy policies. That's $120–$300 per year for a document you write once and update occasionally. There's a better way: <strong>PrivacyPage</strong> — generate privacy policies, terms of service, and legal docs for a one-time payment of ${PRICE.single}. No subscription, no recurring fees.</p>
+<p>Termly uses a recurring monthly or annual subscription for privacy policies — ongoing charges for a document you write once and update occasionally. There's another way: <strong>PrivacyPage</strong> — generate privacy policies, terms of service, and legal docs for a one-time payment of ${PRICE.single}. No subscription, no recurring fees.</p>
 
 <h2>Why Developers Are Switching from Termly to PrivacyPage</h2>
 
-<p>Termly is fine, but it's overpriced for most developers and small businesses. Here's the honest comparison:</p>
+<p>Termly is a full compliance platform. Here's a side-by-side look at how the two products are sold:</p>
 
 <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
   <thead>
@@ -1145,22 +1145,22 @@ export const blogPosts: BlogPost[] = [
   <tbody>
     <tr>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Privacy Policy</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">$10/month ($120/year)</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;">Recurring monthly or annual subscription</td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.single} once</strong></td>
     </tr>
     <tr style="background: #f9fafb;">
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Terms of Service</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">$10/month ($120/year)</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;">Recurring monthly or annual subscription</td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.single} once</strong></td>
     </tr>
     <tr>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>EULA</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">$10/month ($120/year)</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;">Recurring monthly or annual subscription</td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.single} once</strong></td>
     </tr>
     <tr style="background: #f9fafb;">
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Bundle (All 5 Docs)</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">$25/month ($300/year)</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;">Recurring monthly or annual subscription</td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.bundle} once</strong></td>
     </tr>
     <tr>
@@ -1181,11 +1181,11 @@ export const blogPosts: BlogPost[] = [
   </tbody>
 </table>
 
-<p><strong>Bottom line:</strong> For a single privacy policy, PrivacyPage saves you $110+ in the first year alone. For a bundle, you save $275+ per year.</p>
+<p><strong>Bottom line:</strong> PrivacyPage is a one-time payment per document or bundle. Termly bills on a recurring subscription for as long as you use it.</p>
 
 <h2>What You Get with PrivacyPage</h2>
 
-<h3>Same Features, Better Price</h3>
+<h3>The documents you need</h3>
 <p>PrivacyPage generates the same professional legal documents as Termly, with all the compliance sections you need:</p>
 
 <ul>
@@ -1239,19 +1239,19 @@ export const blogPosts: BlogPost[] = [
 <h2>Who Should Use PrivacyPage Instead of Termly</h2>
 
 <h3>Indie Developers</h3>
-<p>Building side projects and don't want to pay $10/month forever? PrivacyPage is built for you. One-time payment, lifetime access.</p>
+<p>Building side projects and don't want a monthly subscription forever? PrivacyPage is built for you. One-time payment, lifetime access.</p>
 
 <h3>Freelancers</h3>
 <p>If you build apps or websites for clients, stop billing them for Termly subscriptions. Generate docs with PrivacyPage and charge a one-time fee.</p>
 
 <h3>Startups</h3>
-<p>Pre-revenue and watching every dollar? Save $300/year by switching from Termly to PrivacyPage.</p>
+<p>Pre-revenue and watching every dollar? A one-time payment means no recurring policy subscription to carry.</p>
 
 <h3>Agencies</h3>
-<p>Managing legal docs for 10+ clients? With Termly, that's $100–$250/month. With PrivacyPage, it's a one-time bundle purchase per client.</p>
+<p>Managing legal docs for 10+ clients? Termly bills a recurring subscription per site. With PrivacyPage, it's a one-time bundle purchase per client.</p>
 
 <h3>App Developers</h3>
-<p>Launching on the App Store or Play Store? You need a privacy policy and terms of service. PrivacyPage generates both for ${PRICE.bundle} total — Termly charges that per month.</p>
+<p>Launching on the App Store or Play Store? You need a privacy policy and terms of service. PrivacyPage generates both for ${PRICE.bundle} total, paid once — Termly bills on a recurring subscription.</p>
 
 <h2>What About Termly's Cookie Scanning?</h2>
 
@@ -1292,15 +1292,15 @@ export const blogPosts: BlogPost[] = [
 
 <h3>GetTerms.io</h3>
 <ul>
-<li><strong>Pros:</strong> One-time payment model, $49 per document</li>
-<li><strong>Cons:</strong> More expensive than PrivacyPage, less polished interface</li>
+<li><strong>Pros:</strong> One-time payment model</li>
+<li><strong>Cons:</strong> Different interface; plan and coverage details vary</li>
 <li><strong>Best for:</strong> Businesses that want human lawyer review</li>
 </ul>
 
 <h3>Iubenda</h3>
 <ul>
 <li><strong>Pros:</strong> Advanced cookie consent tools, multi-language support</li>
-<li><strong>Cons:</strong> Expensive ($27–$99/month), complex interface, overkill for small sites</li>
+<li><strong>Cons:</strong> Subscription pricing, complex interface, may be more than a small site needs</li>
 <li><strong>Best for:</strong> Large e-commerce sites with international traffic</li>
 </ul>
 
