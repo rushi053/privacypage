@@ -1136,9 +1136,9 @@ export const blogPosts: BlogPost[] = [
 
 <table style="width:100%; max-width:100%; border-collapse: collapse; margin: 20px 0; table-layout: fixed; font-size: 13px;">
   <colgroup>
-    <col style="width:22%">
-    <col style="width:39%">
-    <col style="width:39%">
+    <col style="width:32%">
+    <col style="width:34%">
+    <col style="width:34%">
   </colgroup>
   <thead>
     <tr style="background: #f3f4f6;">
