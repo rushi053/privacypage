@@ -23,11 +23,14 @@ export const metadata: Metadata = {
   },
 }
 
+const linkClass = 'text-[#0F5C63] underline underline-offset-4 decoration-[#0F5C63]/30 hover:decoration-[#0F5C63]'
+const h2Class = 'font-[family-name:var(--f-display)] text-[24px] md:text-[28px] leading-[1.25] tracking-[-0.01em] text-[#16181D] mb-3'
+
 export default function RefundPolicyPage() {
   return (
     <ClauseShell>
       <main className="mx-auto max-w-[720px] px-6 md:px-8 pt-16 md:pt-24 pb-24">
-        <p className="font-[family-name:var(--f-mono)] text-[14px] text-[#0F5C63] mb-6">Effective November 2026</p>
+        <p className="font-[family-name:var(--f-mono)] text-[14px] text-[#0F5C63] mb-6">[effective date — set on publish]</p>
         <h1 className="font-[family-name:var(--f-display)] text-[40px] md:text-[56px] leading-[1.1] tracking-[-0.02em] mb-8">Refund policy</h1>
         <div className="font-[family-name:var(--f-doc)] text-[18px] leading-[1.6] text-[#16181D]/85 space-y-10">
           <p>
@@ -35,49 +38,63 @@ export default function RefundPolicyPage() {
           </p>
 
           <section>
-            <h2 className="font-[family-name:var(--f-display)] text-[24px] md:text-[28px] leading-[1.25] tracking-[-0.01em] text-[#16181D] mb-3">Who can ask</h2>
+            <h2 className={h2Class}>Who can ask</h2>
             <p>
-              Anyone who bought a PrivacyPage document or the five-document bundle, within 30 days of the payment.
+              Anyone who bought anything from PrivacyPage, within 30 days of the payment: any single document (Privacy Policy, Terms of Service, EULA, Cookie Policy or Disclaimer), a Pro — Any Single Document purchase, or the Bundle — All 5 Documents.
             </p>
           </section>
 
           <section>
-            <h2 className="font-[family-name:var(--f-display)] text-[24px] md:text-[28px] leading-[1.25] tracking-[-0.01em] text-[#16181D] mb-3">How to ask</h2>
+            <h2 className={h2Class}>How to ask</h2>
             <p>
-              Email{' '}
-              <a href={SUPPORT_MAILTO} className="text-[#0F5C63] underline underline-offset-4 decoration-[#0F5C63]/30 hover:decoration-[#0F5C63]">
+              Email us at{' '}
+              <a href={SUPPORT_MAILTO} className={linkClass}>
                 {SUPPORT_EMAIL}
               </a>{' '}
-              and include your Razorpay order ID or payment ID. No reason is required — if you’re not happy with your generated policy, that’s enough. The email you used at checkout is also helpful so we can find the purchase.
+              from the address you used at checkout, or include your Razorpay order or payment ID. No reason is required — if you’re not happy with your generated policy, that’s enough.
             </p>
           </section>
 
           <section>
-            <h2 className="font-[family-name:var(--f-display)] text-[24px] md:text-[28px] leading-[1.25] tracking-[-0.01em] text-[#16181D] mb-3">How the refund is paid</h2>
+            <h2 className={h2Class}>How the refund is paid</h2>
             <p>
-              The refund is sent back to the original payment method through Razorpay, for the amount you were charged. Banks and Razorpay typically take around 5–7 business days to show the credit. That timing is set by them, not a promise from us.
+              We’ll reply within 48 hours and start your refund within [7] days of your request. After that, Razorpay and your bank typically take 5–7 business days to show the credit on the original payment method, for the amount you were charged. That 5–7 day timing is set by them, not a promise from us.
             </p>
           </section>
 
           <section>
-            <h2 className="font-[family-name:var(--f-display)] text-[24px] md:text-[28px] leading-[1.25] tracking-[-0.01em] text-[#16181D] mb-3">Currency</h2>
+            <h2 className={h2Class}>Currency</h2>
             <p>
               We refund in the currency you were charged. If your bank or card converts currencies, any difference is set by your bank, not by PrivacyPage.
             </p>
           </section>
 
           <section>
-            <h2 className="font-[family-name:var(--f-display)] text-[24px] md:text-[28px] leading-[1.25] tracking-[-0.01em] text-[#16181D] mb-3">Repeat requests</h2>
+            <h2 className={h2Class}>After a refund</h2>
             <p>
-              We may decline obvious repeat abuse.
+              A refund cancels the license key for that purchase, including free regenerations, and your right to use the documents bought with it.
             </p>
           </section>
 
           <section>
-            <h2 className="font-[family-name:var(--f-display)] text-[24px] md:text-[28px] leading-[1.25] tracking-[-0.01em] text-[#16181D] mb-3">Contact</h2>
+            <h2 className={h2Class}>Later purchases</h2>
             <p>
-              Questions about this policy: {' '}
-              <a href={SUPPORT_MAILTO} className="text-[#0F5C63] underline underline-offset-4 decoration-[#0F5C63]/30 hover:decoration-[#0F5C63]">
+              If you’ve already had a refund, we may decline a refund on a later purchase of the same document for the same app or website. This never limits a refund when a document doesn’t work as described, or any right you have under law.
+            </p>
+          </section>
+
+          <section>
+            <h2 className={h2Class}>Who we are</h2>
+            <p>
+              PrivacyPage is run by Rushiraj Jadeja (sole proprietor), [address], India. Grievance Officer: Rushiraj Jadeja, Grievance Officer, [email], [phone]. We acknowledge complaints within 48 hours, with a reference number, and resolve them within one month.
+            </p>
+          </section>
+
+          <section>
+            <h2 className={h2Class}>Contact</h2>
+            <p>
+              Questions about this policy:{' '}
+              <a href={SUPPORT_MAILTO} className={linkClass}>
                 {SUPPORT_EMAIL}
               </a>
               .
