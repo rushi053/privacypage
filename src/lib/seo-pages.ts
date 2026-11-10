@@ -775,13 +775,13 @@ export const competitorPages: CompetitorPage[] = [
     tagline:
       'Both offer free policies and one-time payments. The difference is what the free version leaves out — and how the paid version is priced.',
     intro: [
-      `FreePrivacyPolicy.com is one of the oldest and best-known policy generators, and to its credit it shares PrivacyPage's core belief: legal documents should be a one-time purchase, not a subscription. Its free tier produces a genuinely free but basic policy. The paid model is <strong>à-la-carte</strong>: premium clauses are individual one-time fees — for example, clauses for payment processors, analytics tools like Google Analytics or Firebase, remarketing, and GDPR/CCPA coverage are each added during its wizard (per third-party reviews). A comprehensive premium policy is a sum of those clause fees, which varies with the clauses selected.`,
+      `FreePrivacyPolicy.com is one of the oldest and best-known policy generators, and to its credit it shares PrivacyPage's core belief: legal documents should be a one-time purchase, not a subscription. Its free tier produces a genuinely free but basic policy. The paid model is <strong>à-la-carte</strong>: premium clauses are individual one-time fees — for example, clauses for payment processors, analytics tools like Google Analytics, remarketing, and GDPR/CCPA coverage are each added during its wizard (per third-party reviews). A comprehensive premium policy is a sum of those clause fees, which varies with the clauses selected.`,
       `PrivacyPage flattens all of that: <strong>${PRICE.single} once</strong> buys the complete document — GDPR and CCPA sections, all your third-party services, everything — with the entire document previewable free before you pay. No clause menu, no surprise line items at checkout.`,
     ],
     pricingSourceNote:
       'FreePrivacyPolicy.com doesn\'t publish a price list; premium clauses are added for one-time fees during its wizard, per third-party reviews. Totals vary by selection.',
     comparisonRows: [
-      { label: 'Pricing model', them: 'Free basic policy; premium clauses priced individually (one-time)', us: `Flat ${PRICE.single} once per document, ${PRICE.bundle} for all 5` },
+      { label: 'Pricing model', them: 'Free basic policy; premium clauses for one-time fees (per third-party reviews)', us: `Flat ${PRICE.single} once per document, ${PRICE.bundle} for all 5` },
       { label: 'Typical paid total', them: 'Varies with the clauses you add', us: `${PRICE.single}, fixed and known upfront` },
       { label: 'GDPR / CCPA sections', them: 'Optional add-on wording (paid premium clauses, per third-party reviews)', us: 'Included' },
       { label: 'Third-party service clauses', them: 'Paid premium clauses (e.g. analytics, payments, ads)', us: 'Included — the wizard asks what you use' },

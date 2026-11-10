@@ -128,7 +128,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'gdpr-privacy-policy-template-2026',
     title: 'GDPR Privacy Policy Template — Free Generator (2026)',
-    description: 'Everything you need to know about GDPR privacy policy requirements in 2026. Get a free, compliant privacy policy template generated in seconds.',
+    description: 'Everything you need to know about GDPR privacy policy requirements in 2026. Preview a GDPR-ready privacy policy free, generated in seconds.',
     date: '2026-01-25',
     readTime: '7 min read',
     keywords: ['GDPR privacy policy template', 'GDPR compliant privacy policy', 'privacy policy generator GDPR', 'GDPR privacy policy example', 'GDPR requirements 2026'],
@@ -228,9 +228,9 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Contact & Complaints</strong> — How to reach you and supervisory authorities</li>
 </ol>
 
-<h2>Generate a GDPR-Compliant Privacy Policy for Free</h2>
+<h2>Generate a GDPR-Ready Privacy Policy (Free Preview)</h2>
 
-<p>Creating a GDPR-compliant privacy policy from scratch requires deep knowledge of EU privacy law. PrivacyPage simplifies this — answer a few questions about your app or website, and we generate a comprehensive, GDPR-compliant privacy policy in seconds.</p>
+<p>Creating a GDPR-compliant privacy policy from scratch requires deep knowledge of EU privacy law. PrivacyPage simplifies this — answer a few questions about your app or website, and we generate a privacy policy built around GDPR's disclosure requirements in seconds.</p>
 
 <p>Our generator covers all required GDPR sections, including legal basis for processing, user rights, data retention, and international transfers. No legal jargon to decipher, no templates to customize — just a professional document ready to use.</p>
 
@@ -271,7 +271,7 @@ export const blogPosts: BlogPost[] = [
 <li>Data retention and deletion practices</li>
 </ul>
 
-<p>The fastest way to create one is with <a href="https://privacypage.io">PrivacyPage</a> — answer a few questions and get a professional, compliant privacy policy in 60 seconds.</p>
+<p>The fastest way to create one is with <a href="https://privacypage.io">PrivacyPage</a> — answer a few questions and get a privacy policy covering the key disclosures in 60 seconds.</p>
 
 <h2>Step 2: Host Your Privacy Policy</h2>
 
@@ -393,7 +393,7 @@ export const blogPosts: BlogPost[] = [
     content: `
 <p>If you've ever launched a website or app, you've hit this moment: you need a privacy policy, you don't have a lawyer, and you definitely don't want to pay thousands for one.</p>
 
-<p>Good news — a <strong>free privacy policy generator</strong> can get you a legally sound document in minutes. But not all generators are equal, and copy-pasting a random privacy policy template off the internet can actually get you in trouble.</p>
+<p>Good news — a <strong>free privacy policy generator</strong> can get you a solid starting document in minutes. But not all generators are equal, and copy-pasting a random privacy policy template off the internet can actually get you in trouble.</p>
 
 <p>This guide covers everything you need to know: why privacy policies matter, what yours must include, how generators work, and how to pick one that won't leave you exposed.</p>
 
@@ -479,7 +479,7 @@ export const blogPosts: BlogPost[] = [
 
 <ol>
 <li><strong>You answer questions</strong> about your website or app — what data you collect, what services you use, where you operate</li>
-<li><strong>The generator builds a document</strong> based on your answers, using legally reviewed templates</li>
+<li><strong>The generator builds a document</strong> based on your answers (PrivacyPage uses AI to draft from your answers; it is not lawyer-reviewed)</li>
 <li><strong>You get a privacy policy</strong> customized to your situation</li>
 </ol>
 
@@ -916,7 +916,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'privacy-policy-generator-shopify',
     title: 'Privacy Policy Generator for Shopify (Free, No Signup Required)',
-    description: 'Complete guide to creating a privacy policy for your Shopify store. Free generator, GDPR & CCPA compliant, copy-paste ready in 60 seconds.',
+    description: 'Complete guide to creating a privacy policy for your Shopify store. Free preview, covers GDPR & CCPA disclosures, copy-paste ready in 60 seconds.',
     date: '2026-02-15',
     readTime: '8 min read',
     keywords: ['privacy policy generator for shopify', 'shopify privacy policy', 'shopify privacy policy generator', 'ecommerce privacy policy', 'shopify GDPR', 'shopify store privacy policy'],
@@ -1575,7 +1575,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Generate Your Privacy Policy in 60 Seconds</h2>
 
-<p>Stop putting it off. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a DPDP Act-compliant privacy policy for your Indian app — free preview, no signup, one-time payment.</p>
+<p>Stop putting it off. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a privacy policy built around the DPDP Act's notice requirements for your Indian app — free preview, no signup, one-time payment.</p>
 
 <p><a href="https://privacypage.io/#generate">Generate your privacy policy →</a></p>
 `
@@ -1670,7 +1670,7 @@ export const blogPosts: BlogPost[] = [
 <h3>6. Vague Language</h3>
 <p>Don't say "we may collect data." Say exactly what you collect: "We collect your email address, device ID, and in-app purchase history."</p>
 
-<h2>How to Generate a Compliant Privacy Policy (Fast)</h2>
+<h2>How to Generate a Privacy Policy That Covers What Stores Require (Fast)</h2>
 
 <p>If you got rejected, you need a fix <em>today</em>. Here's the fastest path:</p>
 
@@ -1802,7 +1802,7 @@ export const blogPosts: BlogPost[] = [
 
 <p>Platform guides with SDK data tables: <a href="/for/ios-app">iOS / App Store</a> · <a href="/for/android-app">Android / Google Play</a>. A generated policy is a starting point, not a guarantee that review will pass, and not legal advice.</p>
 
-<h2>Generate Your Compliant Privacy Policy Now</h2>
+<h2>Generate Your Privacy Policy Now</h2>
 
 <p>Don't let a privacy policy delay your launch. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates privacy policies written for App Store and Google Play requirements in about 60 seconds — free preview, one-time payment, no subscription.</p>
 
@@ -2361,7 +2361,7 @@ export const blogPosts: BlogPost[] = [
 <h3>Do I need a lawyer to write my privacy policy?</h3>
 <p>Not necessarily. Most small developers use generated policies (like <a href="https://privacypage.io">PrivacyPage</a>) that cover GDPR and CCPA. If you handle sensitive data (health, finance, children), or if you're raising funding / facing legal issues, get a lawyer to review it.</p>
 
-<h2>Generate Your GDPR + CCPA Compliant Privacy Policy</h2>
+<h2>Generate Your GDPR + CCPA Privacy Policy</h2>
 
 <p>Stop stressing about compliance. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a unified privacy policy that covers GDPR, CCPA, and other regulations — free preview, no signup, one-time payment of ${PRICE.single}.</p>
 
