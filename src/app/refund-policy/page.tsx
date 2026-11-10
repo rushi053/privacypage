@@ -40,7 +40,7 @@ export default function RefundPolicyPage() {
           <section>
             <h2 className={h2Class}>Who can ask</h2>
             <p>
-              Anyone who bought anything from PrivacyPage, within 30 days of the payment: a Single document or Bundle — all 5 purchase (shown as 'Pro' on some receipts).
+              Anyone who bought anything from PrivacyPage, within 30 days of the payment: a Single document (shown as 'Pro' on some receipts) or Bundle — all 5 purchase.
             </p>
           </section>
 
