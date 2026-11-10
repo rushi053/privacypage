@@ -97,6 +97,7 @@ export default function BlogPage() {
       </section>
 
       <footer className="border-t border-gray-200 py-8 px-6 text-center text-gray-500 text-sm bg-gray-50">
+        <p className="mb-3"><Link href="/refund-policy" className="hover:text-gray-900">Refund policy</Link></p>
         © {new Date().getFullYear()} PrivacyPage. All rights reserved.
       </footer>
     </div>
