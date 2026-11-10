@@ -431,7 +431,7 @@ export const competitorPages: CompetitorPage[] = [
       'Both generate compliant privacy policies. One bills you every month for it.',
     intro: [
       `Termly is one of the most popular compliance platforms on the web, and deservedly so — it pairs policy generators with a full consent management platform. The catch is the pricing model: meaningful use requires a per-website subscription. As of August 2026, Termly's Pro+ plan is <strong>$15/month billed annually ($180/year), or $20/month billed monthly</strong>, per website (<a href="https://termly.io/pricing/" target="_blank" rel="noopener noreferrer nofollow">termly.io/pricing</a>). The Starter tier is $10/month billed annually, and the free plan covers a single basic policy with Termly branding.`,
-      `PrivacyPage takes the opposite approach: you generate the document, preview the opening sections free, and pay <strong>${PRICE.single} once</strong> to unlock it (or ${PRICE.bundle} for all five document types). You own the file, host it anywhere, and regenerate updates free for life. Over three years that's ${PRICE.single} versus $540 for Termly Pro+ — for a developer who needs a policy, not a compliance department.`,
+      `PrivacyPage takes the opposite approach: you generate the document, preview the opening sections free, and pay <strong>${PRICE.single} once</strong> to unlock it (or ${PRICE.bundle} for all five document types). You own the file, host it anywhere, and regenerate updates free for life. One payment instead of a recurring subscription — for a developer who needs a policy, not a compliance department.`,
     ],
     pricingSourceNote:
       'Competitor pricing checked August 2026 from termly.io/pricing. Verify current prices before purchasing — plans and promotions change.',
@@ -489,7 +489,7 @@ export const competitorPages: CompetitorPage[] = [
     faqs: [
       {
         q: 'Is Termly free plan enough for my app?',
-        a: 'Termly\'s free plan covers one basic policy with Termly branding and limited edits. For a simple site it may suffice; anything needing multiple documents, edits, or no third-party branding pushes you to Starter ($10/mo annual) or Pro+ ($15/mo annual). PrivacyPage lets you preview the opening sections before any payment.',
+        a: 'Termly\'s free plan covers one basic policy with Termly branding and limited edits. For a simple site it may suffice; anything needing multiple documents, edits, or no third-party branding pushes you to one of its paid subscription plans. PrivacyPage lets you preview the opening sections before any payment.',
       },
       {
         q: 'What happens to my Termly policy if I cancel?',
@@ -515,12 +515,12 @@ export const competitorPages: CompetitorPage[] = [
     h1: `PrivacyPage vs iubenda: ${PRICE.single} Once vs Per-Site Subscriptions`,
     metaTitle: 'PrivacyPage vs iubenda (2026): Pricing & Comparison',
     metaDescription:
-      `iubenda Advanced costs ~$300/year per site; Terms need the $24.99/mo tier. PrivacyPage: ${PRICE.single} once. Honest 2026 comparison for app developers.`,
+      `iubenda is a per-site subscription, and Terms need a higher paid tier. PrivacyPage: ${PRICE.single} once. Honest 2026 comparison for app developers.`,
     keyword: 'iubenda alternative',
     tagline:
       'A 15-year-old compliance suite versus a 60-second generator. Different tools — very different bills.',
     intro: [
-      `iubenda is one of the longest-running players in the compliance space, with a lawyer-crafted clause library and genuinely deep multi-language support. Its pricing is per site and subscription-based. As of August 2026 (<a href="https://www.iubenda.com/en/pricing/" target="_blank" rel="noopener noreferrer nofollow">iubenda.com/en/pricing</a>): <strong>Essentials at $5.99/month billed annually (~$72/year)</strong> covers a privacy and cookie policy in one language; <strong>Advanced at $24.99/month billed annually (~$300/year)</strong> is the first tier that includes Terms &amp; Conditions; <strong>Ultimate runs $99.99/month (~$1,200/year)</strong>. Plans include monthly pageview quotas with overage fees beyond them.`,
+      `iubenda is one of the longest-running players in the compliance space, with a lawyer-crafted clause library and genuinely deep multi-language support. Its pricing is per site and subscription-based. As of August 2026 (<a href="https://www.iubenda.com/en/pricing/" target="_blank" rel="noopener noreferrer nofollow">iubenda.com/en/pricing</a>): the entry tier covers a privacy and cookie policy, and Terms &amp; Conditions sit in a higher paid tier. Plans include monthly pageview quotas with overage fees beyond them.`,
       `PrivacyPage charges <strong>${PRICE.single} once</strong> per document or <strong>${PRICE.bundle} once</strong> for all five — privacy policy, terms of service, EULA, cookie policy, and disclaimer. That bundle costs less, once, than a single month of the iubenda tier you'd need to get Terms &amp; Conditions at all.`,
     ],
     pricingSourceNote:
@@ -574,7 +574,7 @@ export const competitorPages: CompetitorPage[] = [
     faqs: [
       {
         q: 'Why is iubenda so much more expensive for Terms & Conditions?',
-        a: `iubenda gates Terms & Conditions behind its Advanced tier (~$24.99/month billed annually) because that tier targets businesses. PrivacyPage includes Terms of Service in the ${PRICE.bundle} one-time bundle alongside the privacy policy, EULA, cookie policy, and disclaimer.`,
+        a: `iubenda gates Terms & Conditions behind its Advanced tier because that tier targets businesses. PrivacyPage includes Terms of Service in the ${PRICE.bundle} one-time bundle alongside the privacy policy, EULA, cookie policy, and disclaimer.`,
       },
       {
         q: 'Does PrivacyPage have the same legal clause depth?',

@@ -1251,7 +1251,7 @@ export const blogPosts: BlogPost[] = [
 <p>Managing legal docs for 10+ clients? With Termly, that's $100–$250/month. With PrivacyPage, it's a one-time bundle purchase per client.</p>
 
 <h3>App Developers</h3>
-<p>Launching on the App Store or Play Store? You need a privacy policy and terms of service. PrivacyPage generates both for ${PRICE.bundle} total — Termly charges $24.99 per month.</p>
+<p>Launching on the App Store or Play Store? You need a privacy policy and terms of service. PrivacyPage generates both for ${PRICE.bundle} total, paid once — not another monthly subscription.</p>
 
 <h2>What About Termly's Cookie Scanning?</h2>
 
