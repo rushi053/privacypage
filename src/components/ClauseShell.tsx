@@ -48,7 +48,9 @@ export function ClauseFooter() {
 // Important utilities win over focus:not-sr-only, which resets position to static and padding to 0.
 const skipLinkClass = [
   'sr-only focus:not-sr-only',
-  'focus:fixed! focus:top-4 focus:left-4 focus:z-50 focus:m-0!',
+  // Sits just below the 64px header (+1px border) with an 8px gap, aligned to the
+  // logo's gutter: 24px on mobile, the 1040px container's 32px padding from md up.
+  'focus:fixed! focus:top-[73px] focus:left-6 md:focus:left-[max(2rem,calc((100vw_-_1040px)/2_+_2rem))] focus:z-50 focus:m-0!',
   'focus:inline-flex focus:h-auto! focus:w-auto! focus:min-h-10 focus:items-center',
   'focus:overflow-visible! focus:px-4! focus:whitespace-nowrap focus:[clip-path:none]!',
   'focus:rounded-[8px] focus:bg-[#0F5C63] focus:text-[14px] focus:font-medium focus:text-white focus:no-underline',
