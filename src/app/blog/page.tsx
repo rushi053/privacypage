@@ -87,6 +87,8 @@ export default function BlogPage() {
           )
         })}
       </ul>
+
+      <p className="mt-12 font-[family-name:var(--f-ui)] text-[14px] leading-[1.5] text-[#16181D]/60">PrivacyPage is not a law firm and does not provide legal advice. Documents are AI-generated from your answers.</p>
     </main>
   )
 }

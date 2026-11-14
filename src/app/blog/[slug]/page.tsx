@@ -129,7 +129,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       <div className="mt-16 rounded-[8px] border border-[#16181D]/10 bg-white p-6 md:p-8 text-center">
         <h2 className="font-[family-name:var(--f-display)] text-[28px] leading-[1.2] mb-3">Generate your privacy policy in 60 seconds</h2>
-        <p className="font-[family-name:var(--f-doc)] text-[18px] leading-[1.6] text-[#16181D]/80 mb-6">Professional, legally compliant documents for your app — free to preview.</p>
+        <p className="font-[family-name:var(--f-doc)] text-[18px] leading-[1.6] text-[#16181D]/80 mb-6">Privacy policies and legal docs built around GDPR, CCPA, CalOPPA and COPPA disclosure rules — free to preview.</p>
         <Link href="/#generate" className="inline-flex items-center justify-center h-12 px-6 rounded-[8px] bg-[#0F5C63] text-white text-[16px] font-medium hover:bg-[#0B4A50]">
           Generate Now →
         </Link>
@@ -150,6 +150,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </ul>
         </div>
       )}
+
+      <p className="mt-12 font-[family-name:var(--f-ui)] text-[14px] leading-[1.5] text-[#16181D]/60">PrivacyPage is not a law firm and does not provide legal advice. Documents are AI-generated from your answers.</p>
     </article>
   )
 }
