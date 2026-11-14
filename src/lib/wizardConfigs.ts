@@ -21,7 +21,7 @@ export const wizardConfigs: Record<string, WizardConfig> = {
   privacy: {
     type: "privacy",
     displayName: "Privacy Policy",
-    description: "GDPR & CCPA compliant privacy policy for your app or website",
+    description: "Privacy policy for your app or website, covering GDPR & CCPA disclosures",
     steps: [
       {
         id: "appName",

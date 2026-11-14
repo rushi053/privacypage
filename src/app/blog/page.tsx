@@ -97,6 +97,7 @@ export default function BlogPage() {
       </section>
 
       <footer className="border-t border-gray-200 py-8 px-6 text-center text-gray-500 text-sm bg-gray-50">
+        <p className="mb-3 max-w-2xl mx-auto leading-relaxed">PrivacyPage is not a law firm and does not provide legal advice. Documents are AI-generated from your answers.</p>
         © {new Date().getFullYear()} PrivacyPage. All rights reserved.
       </footer>
     </div>
