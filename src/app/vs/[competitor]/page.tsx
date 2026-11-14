@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { competitorPages, getCompetitorPage, buildFaqSchema } from '@/lib/seo-pages'
-import { SeoPageShell, SeoCtaCard, SeoFaqSection, SeoRelatedLinks } from '@/components/SeoPageShell'
+import { SeoPageShell, SeoComparisonTable, SeoCtaCard, SeoFaqSection, SeoRelatedLinks } from '@/components/SeoPageShell'
 
 export function generateStaticParams() {
   return competitorPages.map((p) => ({ competitor: p.slug }))
@@ -74,45 +74,9 @@ export default async function CompetitorComparisonPage({ params }: { params: Pro
 
         <section className="mb-4">
           <h2 className="font-display text-[24px] md:text-[32px] leading-[1.25] tracking-[-0.01em] mb-8">{page.name} vs PrivacyPage at a glance</h2>
-          <div data-fixed-price>
-            <div className="md:hidden space-y-4">
-              {page.comparisonRows.map((row) => (
-                <div key={row.label} className="rounded-[8px] border border-ink/10 bg-white overflow-hidden">
-                  <p className="px-4 pt-4 font-medium text-ink">{row.label}</p>
-                  <p className="px-4 py-3 text-[14px] leading-[1.5] text-ink/70">
-                    <span className="block text-[12px] uppercase tracking-[0.08em] text-ink/50 mb-1">{page.name}</span>
-                    {row.them}
-                  </p>
-                  <p className="px-4 py-3 text-[14px] leading-[1.5] text-ink bg-seal-tint/60">
-                    <span className="block text-[12px] uppercase tracking-[0.08em] text-seal mb-1">PrivacyPage</span>
-                    {row.us}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <div className="hidden md:block overflow-x-auto rounded-[8px] border border-ink/10 bg-white">
-              <table className="w-full text-left font-ui text-[14px] leading-[1.5]">
-                <thead>
-                  <tr className="border-b border-ink/10">
-                    <th className="p-4 font-medium text-ink/60 w-[28%]"></th>
-                    <th className="p-4 font-medium text-ink/60">{page.name}</th>
-                    <th className="p-4 font-medium text-seal bg-seal-tint">PrivacyPage</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {page.comparisonRows.map((row) => (
-                    <tr key={row.label} className="border-t border-ink/10 align-top">
-                      <td className="p-4 font-medium text-ink">{row.label}</td>
-                      <td className="p-4 text-ink/70">{row.them}</td>
-                      <td className="p-4 text-ink bg-seal-tint/50">{row.us}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <SeoComparisonTable competitorName={page.name} rows={page.comparisonRows} />
           <p data-fixed-price className="mt-4 text-[14px] leading-[1.5] text-ink/70">
-            Visitors in India pay ₹{PRICING.INR.single.toLocaleString('en-IN')} per document (₹{PRICING.INR.bundle.toLocaleString('en-IN')} bundle) at checkout.
+            Prices are shown in your local currency: ₹{PRICING.INR.single.toLocaleString('en-IN')} / ₹{PRICING.INR.bundle.toLocaleString('en-IN')} in India, {PRICE.single} / {PRICE.bundle} elsewhere, charged in that currency at checkout.
           </p>
         </section>
         <p className="mt-4 mb-16 text-[12px] leading-[1.5] text-ink/50">{page.pricingSourceNote}</p>

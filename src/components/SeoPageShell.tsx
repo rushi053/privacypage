@@ -51,6 +51,7 @@ export function SeoPageShell({ children }: { children: React.ReactNode }) {
               </Link>
             ))}
           </nav>
+          <p className="max-w-2xl text-[14px] leading-[1.5] text-ink/60 mb-4">PrivacyPage is not a law firm and does not provide legal advice. Documents are AI-generated from your answers.</p>
           <p className="text-[14px] text-ink/50">© {new Date().getFullYear()} PrivacyPage. All rights reserved.</p>
         </div>
       </footer>
@@ -58,9 +59,63 @@ export function SeoPageShell({ children }: { children: React.ReactNode }) {
   )
 }
 
+export function SeoComparisonTable({
+  competitorName,
+  rows,
+}: {
+  competitorName: string
+  rows: { label: string; them: string; us: string }[]
+}) {
+  return (
+    <>
+      <div className="sm:hidden space-y-4">
+        {rows.map((row) => (
+          <div key={row.label} className="rounded-[8px] border border-ink/10 bg-white overflow-hidden">
+            <h3 className="px-4 pt-4 font-medium text-ink">{row.label}</h3>
+            <div className="px-4 py-3 text-[14px] leading-[1.5] text-ink/70">
+              <p className="text-[12px] uppercase tracking-[0.08em] text-ink/50 mb-1">{competitorName}</p>
+              <p>{row.them}</p>
+            </div>
+            <div className="px-4 py-3 text-[14px] leading-[1.5] text-ink bg-seal-tint/60">
+              <p className="text-[12px] uppercase tracking-[0.08em] text-seal mb-1">PrivacyPage</p>
+              <p>{row.us}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="hidden sm:block rounded-[8px] border border-ink/10 bg-white overflow-hidden">
+        <table className="w-full table-fixed text-left font-ui text-[14px] leading-[1.5]">
+          <colgroup>
+            <col className="w-[28%]" />
+            <col className="w-[36%]" />
+            <col className="w-[36%]" />
+          </colgroup>
+          <thead>
+            <tr className="border-b border-ink/10">
+              <th className="p-4 font-medium text-ink/60"></th>
+              <th className="p-4 font-medium text-ink/60">{competitorName}</th>
+              <th className="p-4 font-medium text-seal bg-seal-tint">PrivacyPage</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.label} className="border-t border-ink/10 align-top">
+                <td className="p-4 font-medium text-ink break-words">{row.label}</td>
+                <td className="p-4 text-ink/70 break-words">{row.them}</td>
+                <td className="p-4 text-ink bg-seal-tint/50 break-words">{row.us}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  )
+}
+
 export function SeoCtaCard({
   heading = 'Generate your privacy policy in 60 seconds',
-  sub = `Professional, legally compliant documents for your app — free to preview, ${PRICE.single} one-time to unlock.`,
+  sub = `Privacy policies and legal docs built around GDPR, CCPA, CalOPPA and COPPA disclosure rules — free to preview, ${PRICE.single} one-time to unlock.`,
 }: {
   heading?: string
   sub?: string
