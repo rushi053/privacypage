@@ -83,7 +83,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>How to Generate a Free Privacy Policy with PrivacyPage</h2>
 
-<p>Writing a privacy policy from scratch is time-consuming and error-prone. That's where PrivacyPage comes in. Here's how to generate a professional, legally compliant privacy policy in under 60 seconds:</p>
+<p>Writing a privacy policy from scratch is time-consuming and error-prone. That's where PrivacyPage comes in. Here's how to generate a privacy policy covering the key GDPR, CCPA and app-store disclosures in under 60 seconds:</p>
 
 <h3>Step 1: Visit PrivacyPage</h3>
 <p>Go to <a href="https://privacypage.io">privacypage.io</a> and click "Generate Your Docs — Free".</p>
@@ -122,13 +122,13 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Generate Your Privacy Policy Now</h2>
 
-<p>Don't let a missing privacy policy delay your app launch. PrivacyPage generates professional, legally compliant privacy policies tailored to your iOS app — completely free to preview.</p>
+<p>Don't let a missing privacy policy delay your app launch. PrivacyPage generates privacy policies tailored to your iOS app, built around App Store, GDPR and CCPA disclosure requirements — completely free to preview.</p>
 `
   },
   {
     slug: 'gdpr-privacy-policy-template-2026',
     title: 'GDPR Privacy Policy Template — Free Generator (2026)',
-    description: 'Everything you need to know about GDPR privacy policy requirements in 2026. Get a free, compliant privacy policy template generated in seconds.',
+    description: 'Everything you need to know about GDPR privacy policy requirements in 2026. Preview a GDPR-ready privacy policy free, generated in seconds.',
     date: '2026-01-25',
     readTime: '7 min read',
     keywords: ['GDPR privacy policy template', 'GDPR compliant privacy policy', 'privacy policy generator GDPR', 'GDPR privacy policy example', 'GDPR requirements 2026'],
@@ -228,9 +228,9 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Contact & Complaints</strong> — How to reach you and supervisory authorities</li>
 </ol>
 
-<h2>Generate a GDPR-Compliant Privacy Policy for Free</h2>
+<h2>Generate a GDPR-Ready Privacy Policy (Free Preview)</h2>
 
-<p>Creating a GDPR-compliant privacy policy from scratch requires deep knowledge of EU privacy law. PrivacyPage simplifies this — answer a few questions about your app or website, and we generate a comprehensive, GDPR-compliant privacy policy in seconds.</p>
+<p>Creating a GDPR-compliant privacy policy from scratch requires deep knowledge of EU privacy law. PrivacyPage simplifies this — answer a few questions about your app or website, and we generate a privacy policy built around GDPR's disclosure requirements in seconds.</p>
 
 <p>Our generator covers all required GDPR sections, including legal basis for processing, user rights, data retention, and international transfers. No legal jargon to decipher, no templates to customize — just a professional document ready to use.</p>
 
@@ -271,7 +271,7 @@ export const blogPosts: BlogPost[] = [
 <li>Data retention and deletion practices</li>
 </ul>
 
-<p>The fastest way to create one is with <a href="https://privacypage.io">PrivacyPage</a> — answer a few questions and get a professional, compliant privacy policy in 60 seconds.</p>
+<p>The fastest way to create one is with <a href="https://privacypage.io">PrivacyPage</a> — answer a few questions and get a privacy policy covering the key disclosures in 60 seconds.</p>
 
 <h2>Step 2: Host Your Privacy Policy</h2>
 
@@ -393,7 +393,7 @@ export const blogPosts: BlogPost[] = [
     content: `
 <p>If you've ever launched a website or app, you've hit this moment: you need a privacy policy, you don't have a lawyer, and you definitely don't want to pay thousands for one.</p>
 
-<p>Good news — a <strong>free privacy policy generator</strong> can get you a legally sound document in minutes. But not all generators are equal, and copy-pasting a random privacy policy template off the internet can actually get you in trouble.</p>
+<p>Good news — a <strong>free privacy policy generator</strong> can get you a solid starting document in minutes. But not all generators are equal, and copy-pasting a random privacy policy template off the internet can actually get you in trouble.</p>
 
 <p>This guide covers everything you need to know: why privacy policies matter, what yours must include, how generators work, and how to pick one that won't leave you exposed.</p>
 
@@ -418,7 +418,7 @@ export const blogPosts: BlogPost[] = [
 
 <ul>
 <li><strong>GDPR fines</strong> can reach €20 million or 4% of global revenue</li>
-<li><strong>CCPA penalties</strong> run $2,500–$7,500 per violation</li>
+<li><strong>CCPA penalties</strong> run $2,663–$7,988 per violation</li>
 <li><strong>App store rejection</strong> — both Apple and Google require a privacy policy for listed apps</li>
 <li><strong>Lost user trust</strong> — savvy users check for policies before sharing data</li>
 </ul>
@@ -479,7 +479,7 @@ export const blogPosts: BlogPost[] = [
 
 <ol>
 <li><strong>You answer questions</strong> about your website or app — what data you collect, what services you use, where you operate</li>
-<li><strong>The generator builds a document</strong> based on your answers, using legally reviewed templates</li>
+<li><strong>The generator builds a document</strong> based on your answers (PrivacyPage uses AI to draft from your answers; it is not lawyer-reviewed)</li>
 <li><strong>You get a privacy policy</strong> customized to your situation</li>
 </ol>
 
@@ -916,7 +916,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'privacy-policy-generator-shopify',
     title: 'Privacy Policy Generator for Shopify (Free, No Signup Required)',
-    description: 'Complete guide to creating a privacy policy for your Shopify store. Free generator, GDPR & CCPA compliant, copy-paste ready in 60 seconds.',
+    description: 'Complete guide to creating a privacy policy for your Shopify store. Free preview, covers GDPR & CCPA disclosures, copy-paste ready in 60 seconds.',
     date: '2026-02-15',
     readTime: '8 min read',
     keywords: ['privacy policy generator for shopify', 'shopify privacy policy', 'shopify privacy policy generator', 'ecommerce privacy policy', 'shopify GDPR', 'shopify store privacy policy'],
@@ -1105,17 +1105,17 @@ export const blogPosts: BlogPost[] = [
 <p>Shopify provides a basic template in Settings → Legal, but it's generic and may not cover your specific data practices or all the apps you use. It's a starting point, not a complete solution.</p>
 
 <h3>How much does a privacy policy cost?</h3>
-<p>Legal firms charge $500–$2,000. Services like Termly charge $10–$25/month. <strong>PrivacyPage charges ${PRICE.single} once</strong> — no subscription. You can regenerate updated policies anytime with your license key.</p>
+<p>A lawyer-drafted policy usually costs far more. Subscription generators bill monthly or yearly. <strong>PrivacyPage charges ${PRICE.single} once</strong> — no subscription. You can regenerate updated policies anytime with your license key.</p>
 
 <h3>What happens if I don't have a privacy policy?</h3>
-<p>You're violating Shopify's Terms of Service, and you're exposed to legal liability under GDPR, CCPA, and other privacy laws. Regulators can fine you up to €20 million (GDPR) or $7,500 per violation (CCPA).</p>
+<p>You're violating Shopify's Terms of Service, and you're exposed to legal liability under GDPR, CCPA, and other privacy laws. Regulators can fine you up to €20 million (GDPR) or $7,988 per violation (CCPA).</p>
 
 <h3>Do I need a separate cookie policy?</h3>
 <p>It's not required, but recommended. You can include cookie information in your privacy policy (which is what most Shopify stores do) or create a separate cookie policy linked in your footer.</p>
 
 <h2>Generate Your Shopify Privacy Policy in 60 Seconds</h2>
 
-<p>Stop procrastinating on legal docs. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a professional, legally compliant privacy policy for your Shopify store — free preview, no signup, one-time payment.</p>
+<p>Stop procrastinating on legal docs. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a privacy policy for your Shopify store built around GDPR and CCPA disclosure requirements — free preview, no signup, one-time payment.</p>
 
 <p><a href="https://privacypage.io/#generate">Generate your Shopify privacy policy →</a></p>
 `
@@ -1123,73 +1123,63 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'termly-alternative-free',
     title: 'Termly Alternative — Free Privacy Policy Generator (No Subscription)',
-    description: 'Looking for a Termly alternative? Generate privacy policies for free with PrivacyPage. One-time payment, no subscription. GDPR & CCPA compliant.',
+    description: 'Looking for a Termly alternative? Preview privacy policies free with PrivacyPage. One-time payment, no subscription. Covers GDPR & CCPA disclosures.',
     date: '2026-02-22',
     readTime: '7 min read',
     keywords: ['termly alternative', 'termly alternative free', 'privacy policy generator no subscription', 'termly vs privacypage', 'termly competitor', 'freeprivacypolicy alternative'],
     content: `
-<p>Termly charges $10–$25 per month for privacy policies. That's $120–$300 per year for a document you write once and update occasionally. There's a better way: <strong>PrivacyPage</strong> — generate privacy policies, terms of service, and legal docs for a one-time payment of ${PRICE.single}. No subscription, no recurring fees.</p>
+<p>Termly uses a recurring monthly or annual subscription for privacy policies — ongoing charges for a document you write once and update occasionally. There's another way: <strong>PrivacyPage</strong> — generate privacy policies, terms of service, and legal docs for a one-time payment of ${PRICE.single}. No subscription, no recurring fees.</p>
 
 <h2>Why Developers Are Switching from Termly to PrivacyPage</h2>
 
-<p>Termly is fine, but it's overpriced for most developers and small businesses. Here's the honest comparison:</p>
+<p>Termly is a full compliance platform. Here's a side-by-side look at how the two products are sold:</p>
 
-<table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+<table style="width:100%; max-width:100%; border-collapse: collapse; margin: 20px 0; table-layout: fixed; font-size: 13px;">
+  <colgroup>
+    <col style="width:32%">
+    <col style="width:34%">
+    <col style="width:34%">
+  </colgroup>
   <thead>
     <tr style="background: #f3f4f6;">
-      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Feature</th>
-      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Termly</th>
-      <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">PrivacyPage</th>
+      <th style="padding: 8px; text-align: left; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Feature</th>
+      <th style="padding: 8px; text-align: left; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Termly</th>
+      <th style="padding: 8px; text-align: left; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">PrivacyPage</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Privacy Policy</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">$10/month ($120/year)</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.single} once</strong></td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Price</strong></td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Recurring subscription</td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>${PRICE.single} per doc, or ${PRICE.bundle} for all 5, once</strong></td>
     </tr>
     <tr style="background: #f9fafb;">
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Terms of Service</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">$10/month ($120/year)</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.single} once</strong></td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Signup Required</strong></td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Yes</td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>No</strong></td>
     </tr>
     <tr>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>EULA</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">$10/month ($120/year)</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.single} once</strong></td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Free option</strong></td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Free plan (1 basic policy), account required</td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Yes</strong></td>
     </tr>
     <tr style="background: #f9fafb;">
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Bundle (All 5 Docs)</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">$25/month ($300/year)</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.bundle} once</strong></td>
-    </tr>
-    <tr>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Signup Required</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">Yes</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>No</strong></td>
-    </tr>
-    <tr style="background: #f9fafb;">
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Free Preview</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">No</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Yes</strong></td>
-    </tr>
-    <tr>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Lifetime Updates</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">Only while subscribed</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Yes (with license key)</strong></td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Lifetime Updates</strong></td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;">Only while subscribed</td>
+      <td style="padding: 8px; border: 1px solid #e5e7eb; overflow-wrap: break-word; word-break: normal;"><strong>Yes (with license key)</strong></td>
     </tr>
   </tbody>
 </table>
 
-<p><strong>Bottom line:</strong> For a single privacy policy, PrivacyPage saves you $110+ in the first year alone. For a bundle, you save $275+ per year.</p>
+<p><strong>Bottom line:</strong> PrivacyPage is a one-time payment per document or bundle. Termly bills on a recurring subscription for as long as you use it.</p>
 
 <h2>What You Get with PrivacyPage</h2>
 
-<h3>Same Features, Better Price</h3>
-<p>PrivacyPage generates the same professional legal documents as Termly, with all the compliance sections you need:</p>
+<h3>The documents you need</h3>
+<p>PrivacyPage generates the core documents most apps need:</p>
 
 <ul>
-<li><strong>Privacy Policy</strong> — GDPR, CCPA, CalOPPA, COPPA compliant</li>
+<li><strong>Privacy Policy</strong> — covers the disclosures GDPR, CCPA, CalOPPA and COPPA require</li>
 <li><strong>Terms of Service</strong> — User agreements, liability disclaimers, dispute resolution</li>
 <li><strong>EULA</strong> — End User License Agreements for software and apps</li>
 <li><strong>Cookie Policy</strong> — Cookie disclosures and consent requirements</li>
@@ -1197,7 +1187,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h3>No Subscription Lock-In</h3>
-<p>With Termly, you pay every month forever. With PrivacyPage:</p>
+<p>With Termly, on a paid plan you pay for as long as you subscribe. With PrivacyPage:</p>
 <ul>
 <li>Pay once, own forever</li>
 <li>Your license key lets you regenerate updated policies anytime</li>
@@ -1206,7 +1196,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h3>Free Preview Before You Buy</h3>
-<p>Unlike Termly (which requires signup and payment upfront), PrivacyPage lets you:</p>
+<p>Unlike Termly (which requires an account even on its free plan), PrivacyPage lets you:</p>
 <ul>
 <li>Generate a full preview for free</li>
 <li>See exactly what you're getting</li>
@@ -1239,19 +1229,19 @@ export const blogPosts: BlogPost[] = [
 <h2>Who Should Use PrivacyPage Instead of Termly</h2>
 
 <h3>Indie Developers</h3>
-<p>Building side projects and don't want to pay $10/month forever? PrivacyPage is built for you. One-time payment, lifetime access.</p>
+<p>Building side projects and don't want a monthly subscription forever? PrivacyPage is built for you. One-time payment, lifetime access.</p>
 
 <h3>Freelancers</h3>
 <p>If you build apps or websites for clients, stop billing them for Termly subscriptions. Generate docs with PrivacyPage and charge a one-time fee.</p>
 
 <h3>Startups</h3>
-<p>Pre-revenue and watching every dollar? Save $300/year by switching from Termly to PrivacyPage.</p>
+<p>Pre-revenue and watching every dollar? A one-time payment means no recurring policy subscription to carry.</p>
 
 <h3>Agencies</h3>
-<p>Managing legal docs for 10+ clients? With Termly, that's $100–$250/month. With PrivacyPage, it's a one-time bundle purchase per client.</p>
+<p>Managing legal docs for 10+ clients? Termly bills a recurring subscription per site. With PrivacyPage, it's a one-time bundle purchase per client.</p>
 
 <h3>App Developers</h3>
-<p>Launching on the App Store or Play Store? You need a privacy policy and terms of service. PrivacyPage generates both for ${PRICE.bundle} total — Termly charges that per month.</p>
+<p>Launching on the App Store or Play Store? You need a privacy policy and terms of service. PrivacyPage generates both for ${PRICE.bundle} total, paid once — Termly bills on a recurring subscription.</p>
 
 <h2>What About Termly's Cookie Scanning?</h2>
 
@@ -1286,21 +1276,21 @@ export const blogPosts: BlogPost[] = [
 <h3>FreePrivacyPolicy.com</h3>
 <ul>
 <li><strong>Pros:</strong> Completely free, no payment required</li>
-<li><strong>Cons:</strong> Generic templates, no customization, often outdated, no CCPA/GDPR detail</li>
+<li><strong>Cons:</strong> Free version is basic; GDPR, CCPA/CPRA and service clauses are optional add-ons; separate generator for each document type.</li>
 <li><strong>Best for:</strong> Personal blogs with no monetization</li>
 </ul>
 
 <h3>GetTerms.io</h3>
 <ul>
-<li><strong>Pros:</strong> One-time payment model, $49 per document</li>
-<li><strong>Cons:</strong> More expensive than PrivacyPage, less polished interface</li>
-<li><strong>Best for:</strong> Businesses that want human lawyer review</li>
+<li><strong>Pros:</strong> One-time payment model</li>
+<li><strong>Cons:</strong> Different interface; plan and coverage details vary</li>
+<li><strong>Best for:</strong> Businesses that want lawyer-reviewed templates, a cookie banner and a lifetime-licence option.</li>
 </ul>
 
 <h3>Iubenda</h3>
 <ul>
 <li><strong>Pros:</strong> Advanced cookie consent tools, multi-language support</li>
-<li><strong>Cons:</strong> Expensive ($27–$99/month), complex interface, overkill for small sites</li>
+<li><strong>Cons:</strong> Subscription pricing, complex interface, may be more than a small site needs</li>
 <li><strong>Best for:</strong> Large e-commerce sites with international traffic</li>
 </ul>
 
@@ -1311,12 +1301,12 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Best for:</strong> Lawyers who enjoy writing legal docs in their spare time</li>
 </ul>
 
-<p><strong>Our take:</strong> For 95% of developers and small businesses, PrivacyPage is the best balance of quality, compliance, and cost.</p>
+<p><strong>Our take:</strong> For most indie developers and small apps, PrivacyPage is the best balance of quality, compliance, and cost.</p>
 
 <h2>FAQ</h2>
 
-<h3>Is PrivacyPage as legally compliant as Termly?</h3>
-<p>Yes. Both generate documents following the same legal standards (GDPR, CCPA, CalOPPA, COPPA). PrivacyPage's documents are written by legal professionals and reviewed regularly.</p>
+<h3>Does PrivacyPage cover the same laws as Termly?</h3>
+<p>It covers the disclosures GDPR, CCPA, CalOPPA and COPPA require, based on your answers. Termly covers more laws and adds a cookie-consent platform. PrivacyPage documents are AI-generated from your answers, are not written or reviewed by a lawyer, and are not legal advice. For health, finance or children's apps, have a lawyer review the result.</p>
 
 <h3>What if laws change? Do I need to repurchase?</h3>
 <p>No. Your license key gives you lifetime access. When laws change, we update our templates, and you can regenerate your policy at no extra cost.</p>
@@ -1553,7 +1543,7 @@ export const blogPosts: BlogPost[] = [
 <p>It depends:</p>
 
 <ul>
-<li><strong>For personal projects or small apps:</strong> A generated policy from PrivacyPage is sufficient. It's written by legal professionals and covers DPDP Act, GDPR, and CCPA.</li>
+<li><strong>For personal projects or small apps:</strong> A generated policy from PrivacyPage is usually enough. It's AI-generated from your answers and covers the DPDP Act, GDPR and CCPA.</li>
 <li><strong>For apps handling sensitive data (health, finance, children):</strong> Consider having a lawyer review it.</li>
 <li><strong>For apps with millions of users or significant revenue:</strong> Legal review is recommended, but start with a generated policy and customize it.</li>
 </ul>
@@ -1585,7 +1575,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Generate Your Privacy Policy in 60 Seconds</h2>
 
-<p>Stop putting it off. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a DPDP Act-compliant privacy policy for your Indian app — free preview, no signup, one-time payment.</p>
+<p>Stop putting it off. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a privacy policy built around the DPDP Act's notice requirements for your Indian app — free preview, no signup, one-time payment.</p>
 
 <p><a href="https://privacypage.io/#generate">Generate your privacy policy →</a></p>
 `
@@ -1680,7 +1670,7 @@ export const blogPosts: BlogPost[] = [
 <h3>6. Vague Language</h3>
 <p>Don't say "we may collect data." Say exactly what you collect: "We collect your email address, device ID, and in-app purchase history."</p>
 
-<h2>How to Generate a Compliant Privacy Policy (Fast)</h2>
+<h2>How to Generate a Privacy Policy That Covers What Stores Require (Fast)</h2>
 
 <p>If you got rejected, you need a fix <em>today</em>. Here's the fastest path:</p>
 
@@ -1812,7 +1802,7 @@ export const blogPosts: BlogPost[] = [
 
 <p>Platform guides with SDK data tables: <a href="/for/ios-app">iOS / App Store</a> · <a href="/for/android-app">Android / Google Play</a>. A generated policy is a starting point, not a guarantee that review will pass, and not legal advice.</p>
 
-<h2>Generate Your Compliant Privacy Policy Now</h2>
+<h2>Generate Your Privacy Policy Now</h2>
 
 <p>Don't let a privacy policy delay your launch. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates privacy policies written for App Store and Google Play requirements in about 60 seconds — free preview, one-time payment, no subscription.</p>
 
@@ -2135,7 +2125,7 @@ export const blogPosts: BlogPost[] = [
     <tr>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Who it applies to</strong></td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;">Any company processing EU residents' data</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">California businesses meeting thresholds ($25M revenue, 100K+ users, or 50%+ revenue from data sales)</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;">California businesses meeting thresholds ($26,625,000 revenue, 100K+ users, or 50%+ revenue from data sales)</td>
     </tr>
     <tr style="background: #f9fafb;">
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Scope</strong></td>
@@ -2170,7 +2160,7 @@ export const blogPosts: BlogPost[] = [
     <tr style="background: #f9fafb;">
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Penalties</strong></td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;">Up to €20M or 4% of global revenue</td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">$2,500 per unintentional violation, $7,500 per intentional violation</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;">$2,663 per violation; $7,988 per intentional violation or one involving consumers known to be under 16</td>
     </tr>
     <tr>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Enforcement</strong></td>
@@ -2208,7 +2198,7 @@ export const blogPosts: BlogPost[] = [
 <p>The <strong>California Consumer Privacy Act (CCPA)</strong>, effective January 1, 2020, is California's data privacy law. It applies to <strong>for-profit businesses</strong> that:</p>
 
 <ul>
-<li>Have <strong>annual gross revenue of $25M+</strong>, OR</li>
+<li>Have <strong>annual gross revenue of $26,625,000+</strong>, OR</li>
 <li>Buy, sell, or share personal information of <strong>100,000+ California consumers or households</strong> per year, OR</li>
 <li>Derive <strong>50%+ of annual revenue from selling consumers' personal information</strong></li>
 </ul>
@@ -2230,7 +2220,7 @@ export const blogPosts: BlogPost[] = [
 <h3>1. Who Is Covered?</h3>
 <p><strong>GDPR:</strong> Applies to <em>everyone</em> processing EU residents' data. No revenue or size threshold. Even a one-person blog needs to comply if it uses cookies and has EU visitors.</p>
 
-<p><strong>CCPA:</strong> Only applies to businesses meeting the $25M revenue / 100K+ users / 50%+ data-sales-revenue thresholds. Small apps and side projects usually don't qualify.</p>
+<p><strong>CCPA:</strong> Only applies to businesses meeting the $26,625,000 revenue / 100K+ users / 50%+ data-sales-revenue thresholds. Small apps and side projects usually don't qualify.</p>
 
 <h3>2. Consent: Opt-In vs Opt-Out</h3>
 <p><strong>GDPR:</strong> Opt-in model. You need <strong>affirmative consent</strong> before processing personal data (especially for cookies, marketing, profiling). Pre-ticked boxes and "by continuing, you agree" are <em>not</em> valid consent.</p>
@@ -2292,10 +2282,9 @@ export const blogPosts: BlogPost[] = [
 
 <p><strong>CCPA:</strong></p>
 <ul>
-<li><strong>$2,500 per unintentional violation</strong></li>
-<li><strong>$7,500 per intentional violation</strong></li>
+<li><strong>$2,663 per violation; $7,988 per intentional violation or one involving consumers known to be under 16</strong></li>
 <li>Enforced by California Attorney General and California Privacy Protection Agency</li>
-<li>Penalties can add up quickly (e.g., if you fail to honor 10,000 deletion requests, that's $25M in fines)</li>
+<li>In theory, exposure adds up fast: if each of 10,000 ignored deletion requests counted as a separate violation, the statutory maximum would be about $26.6 million (10,000 × $2,663). Actual penalties are set case by case and have been far lower.</li>
 </ul>
 
 <p><strong>Reality check:</strong> Most small developers won't face fines unless they egregiously ignore user requests or suffer a data breach. But non-compliance is risky if you grow.</p>
@@ -2367,12 +2356,12 @@ export const blogPosts: BlogPost[] = [
 <p>Technically, yes — if you geofence your app/website and explicitly block EU IP addresses. But this is impractical for most apps (you're cutting off 450M+ potential users). It's easier to comply.</p>
 
 <h3>What if I'm not sure if I meet CCPA thresholds?</h3>
-<p>If you're under $25M revenue, under 100K California users/households per year, and don't derive 50%+ revenue from data sales, CCPA likely doesn't apply. But you should still have a privacy policy (required by app stores and good practice). If you grow, you'll need to comply.</p>
+<p>If you're under $26,625,000 revenue, under 100K California users/households per year, and don't derive 50%+ revenue from data sales, CCPA likely doesn't apply. But you should still have a privacy policy (required by app stores and good practice). If you grow, you'll need to comply.</p>
 
 <h3>Do I need a lawyer to write my privacy policy?</h3>
 <p>Not necessarily. Most small developers use generated policies (like <a href="https://privacypage.io">PrivacyPage</a>) that cover GDPR and CCPA. If you handle sensitive data (health, finance, children), or if you're raising funding / facing legal issues, get a lawyer to review it.</p>
 
-<h2>Generate Your GDPR + CCPA Compliant Privacy Policy</h2>
+<h2>Generate Your GDPR + CCPA Privacy Policy</h2>
 
 <p>Stop stressing about compliance. <a href="https://privacypage.io/#generate">PrivacyPage</a> generates a unified privacy policy that covers GDPR, CCPA, and other regulations — free preview, no signup, one-time payment of ${PRICE.single}.</p>
 
