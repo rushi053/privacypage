@@ -3,43 +3,57 @@ import { PriceLocalizer } from '@/components/PriceLocalizer'
 import Link from 'next/link'
 import { Logo } from '@/components/Logo'
 
-// Shared shell (nav + CTA banner + footer) for the /for, /vs, and /compliance
-// landing pages. Server-safe — mirrors the blog page chrome.
+// Clause chrome for /vs, /compliance, and the legacy /for builder pages.
+// Platform guides use ClauseShell. These links are the ones this shell already had.
+const FOOTER_LINKS: [string, string][] = [
+  ['/for', 'All platforms'],
+  ['/for/ios-app', 'iOS'],
+  ['/for/android-app', 'Android'],
+  ['/for/chrome-extension', 'Chrome'],
+  ['/pricing', 'Pricing'],
+]
+
 export function SeoPageShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-white">
-      {/* CTA Banner */}
-      <div className="fixed top-16 left-0 right-0 z-40 bg-indigo-50 border-b border-indigo-100 py-3 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-sm text-gray-700">
-            <span className="font-medium">Need a privacy policy?</span> Generate one for free in 60 seconds →
-          </p>
-          <Link href="/#generate" className="text-sm bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
-            Generate Free
+    <div className="min-h-screen bg-paper text-ink font-ui">
+      <header className="border-b border-ink/10">
+        <div className="mx-auto max-w-[1040px] px-4 sm:px-6 md:px-8 min-h-16 py-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <Link href="/" className="flex items-center gap-2 min-h-11">
+            <Logo className="w-8 h-8 shrink-0" />
+            <span className="font-display text-[20px] tracking-[-0.01em]">PrivacyPage</span>
           </Link>
+          <nav className="ml-auto flex items-center gap-2 sm:gap-4">
+            <Link href="/blog" className="inline-flex items-center h-11 px-3 text-[14px] text-ink/70 hover:text-ink">
+              Blog
+            </Link>
+            <Link
+              href="/#generate"
+              className="inline-flex items-center justify-center h-11 px-4 rounded-[8px] bg-seal text-white text-[14px] font-medium hover:bg-seal-dark"
+            >
+              Generate free
+            </Link>
+          </nav>
         </div>
-      </div>
+      </header>
 
-      {/* Nav */}
-      <nav className="fixed top-0 w-full z-50 border-b border-gray-200 bg-white/80 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Logo className="w-8 h-8" />
-            <span className="font-semibold text-lg text-gray-900">PrivacyPage</span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/blog" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">Blog</Link>
-            <Link href="/#generate" className="text-sm bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition-colors">Generate Free</Link>
-          </div>
+      <main className="mx-auto max-w-[1040px] px-6 md:px-8 pt-16 md:pt-24 pb-16">
+        <PriceLocalizer />
+        {children}
+      </main>
+
+      <footer className="border-t border-ink/10 py-16">
+        <div className="mx-auto max-w-[1040px] px-6 md:px-8">
+          <p className="font-display text-[18px] mb-4">PrivacyPage</p>
+          <nav className="flex flex-wrap gap-x-6 gap-y-1 mb-6 text-[14px]">
+            {FOOTER_LINKS.map(([href, label]) => (
+              <Link key={href} href={href} className="inline-flex items-center min-h-11 text-ink/70 hover:text-ink">
+                {label}
+              </Link>
+            ))}
+          </nav>
+          <p className="max-w-2xl text-[14px] leading-[1.5] text-ink/60 mb-4">PrivacyPage is not a law firm and does not provide legal advice. Documents are AI-generated from your answers.</p>
+          <p className="text-[14px] text-ink/50">© {new Date().getFullYear()} PrivacyPage. All rights reserved.</p>
         </div>
-      </nav>
-
-      <main className="pt-40 pb-20 px-6"><PriceLocalizer />{children}</main>
-
-      <footer className="border-t border-gray-200 py-8 px-6 text-center text-gray-500 text-sm bg-gray-50">
-        <p className="mb-3 space-x-4"><Link href="/for" className="hover:text-gray-900">All platforms</Link><Link href="/for/ios-app" className="hover:text-gray-900">iOS</Link><Link href="/for/android-app" className="hover:text-gray-900">Android</Link><Link href="/for/chrome-extension" className="hover:text-gray-900">Chrome</Link><Link href="/pricing" className="hover:text-gray-900">Pricing</Link></p>
-        <p className="mb-3 max-w-2xl mx-auto leading-relaxed">PrivacyPage is not a law firm and does not provide legal advice. Documents are AI-generated from your answers.</p>
-        © {new Date().getFullYear()} PrivacyPage. All rights reserved.
       </footer>
     </div>
   )
@@ -56,42 +70,40 @@ export function SeoComparisonTable({
     <>
       <div className="sm:hidden space-y-4">
         {rows.map((row) => (
-          <div key={row.label} className="border border-gray-200 rounded-xl p-5">
-            <h3 className="font-semibold text-sm text-gray-900 mb-4">{row.label}</h3>
-            <div className="space-y-3">
-              <div>
-                <p className="text-xs font-medium text-gray-500 mb-1">{competitorName}</p>
-                <p className="text-sm text-gray-600 leading-relaxed">{row.them}</p>
-              </div>
-              <div className="rounded-lg bg-indigo-50/50 px-3 py-3">
-                <p className="text-xs font-medium text-indigo-700 mb-1">PrivacyPage</p>
-                <p className="text-sm text-gray-700 leading-relaxed">{row.us}</p>
-              </div>
+          <div key={row.label} className="rounded-[8px] border border-ink/10 bg-white overflow-hidden">
+            <h3 className="px-4 pt-4 font-medium text-ink">{row.label}</h3>
+            <div className="px-4 py-3 text-[14px] leading-[1.5] text-ink/70">
+              <p className="text-[12px] uppercase tracking-[0.08em] text-ink/50 mb-1">{competitorName}</p>
+              <p>{row.them}</p>
+            </div>
+            <div className="px-4 py-3 text-[14px] leading-[1.5] text-ink bg-seal-tint/60">
+              <p className="text-[12px] uppercase tracking-[0.08em] text-seal mb-1">PrivacyPage</p>
+              <p>{row.us}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="hidden sm:block border border-gray-200 rounded-xl overflow-hidden">
-        <table className="w-full table-fixed text-sm">
+      <div className="hidden sm:block rounded-[8px] border border-ink/10 bg-white overflow-hidden">
+        <table className="w-full table-fixed text-left font-ui text-[14px] leading-[1.5]">
           <colgroup>
             <col className="w-[28%]" />
             <col className="w-[36%]" />
             <col className="w-[36%]" />
           </colgroup>
           <thead>
-            <tr className="bg-gray-50 border-b border-gray-200">
-              <th className="text-left font-semibold text-gray-900 px-4 py-3"></th>
-              <th className="text-left font-semibold text-gray-900 px-4 py-3">{competitorName}</th>
-              <th className="text-left font-semibold text-indigo-700 px-4 py-3 bg-indigo-50/50">PrivacyPage</th>
+            <tr className="border-b border-ink/10">
+              <th className="p-4 font-medium text-ink/60"></th>
+              <th className="p-4 font-medium text-ink/60">{competitorName}</th>
+              <th className="p-4 font-medium text-seal bg-seal-tint">PrivacyPage</th>
             </tr>
           </thead>
           <tbody>
-            {rows.map((row, i) => (
-              <tr key={row.label} className={i % 2 === 1 ? 'bg-gray-50/50' : ''}>
-                <td className="px-4 py-3 font-medium text-gray-900 align-top break-words">{row.label}</td>
-                <td className="px-4 py-3 text-gray-600 align-top leading-relaxed break-words">{row.them}</td>
-                <td className="px-4 py-3 text-gray-700 align-top leading-relaxed break-words bg-indigo-50/30">{row.us}</td>
+            {rows.map((row) => (
+              <tr key={row.label} className="border-t border-ink/10 align-top">
+                <td className="p-4 font-medium text-ink break-words">{row.label}</td>
+                <td className="p-4 text-ink/70 break-words">{row.them}</td>
+                <td className="p-4 text-ink bg-seal-tint/50 break-words">{row.us}</td>
               </tr>
             ))}
           </tbody>
@@ -109,11 +121,17 @@ export function SeoCtaCard({
   sub?: string
 }) {
   return (
-    <div className="mt-16 glass-card rounded-2xl p-8 text-center border-indigo-600">
-      <h2 className="text-2xl font-bold mb-3 text-gray-900">{heading}</h2>
-      <p className="text-gray-600 mb-6">{sub}</p>
-      <Link href="/#generate" className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all hover:scale-105">
-        Generate Now →
+    <div className="mt-16 rounded-[8px] border border-ink/10 bg-white p-6 md:p-8">
+      <h2 className="font-display text-[28px] md:text-[32px] leading-[1.2] tracking-[-0.01em] mb-4">{heading}</h2>
+      <p className="font-doc text-[18px] leading-[1.6] text-ink/80 mb-6">{sub}</p>
+      <Link
+        href="/#generate"
+        className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-[8px] bg-seal text-white text-[16px] font-medium hover:bg-seal-dark"
+      >
+        Generate now
+        <svg aria-hidden width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
       </Link>
     </div>
   )
@@ -121,16 +139,16 @@ export function SeoCtaCard({
 
 export function SeoFaqSection({ faqs }: { faqs: { q: string; a: string }[] }) {
   return (
-    <section className="mt-16">
-      <h2 className="text-2xl font-bold mb-6 text-gray-900">FAQ</h2>
-      <div className="space-y-3">
+    <section className="mt-16 border-t border-ink/10 pt-16">
+      <h2 className="font-display text-[24px] md:text-[32px] leading-[1.25] tracking-[-0.01em] mb-8">FAQ</h2>
+      <dl className="space-y-8">
         {faqs.map((f) => (
-          <div key={f.q} className="border border-gray-100 rounded-xl p-5 bg-white">
-            <h3 className="font-semibold text-sm text-gray-900 mb-2">{f.q}</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">{f.a}</p>
+          <div key={f.q}>
+            <dt className="font-display text-[20px] leading-[1.3] mb-2">{f.q}</dt>
+            <dd className="font-doc text-[18px] leading-[1.6] text-ink/85">{f.a}</dd>
           </div>
         ))}
-      </div>
+      </dl>
     </section>
   )
 }
@@ -143,15 +161,20 @@ export function SeoRelatedLinks({
   links: { href: string; label: string }[]
 }) {
   return (
-    <div className="mt-12">
-      <h2 className="text-xl font-bold mb-5 text-gray-900">{heading}</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <nav className="mt-16 border-t border-ink/10 pt-16" aria-label={heading}>
+      <h2 className="font-display text-[24px] leading-[1.3] mb-6">{heading}</h2>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {links.map((l) => (
-          <Link key={l.href} href={l.href} className="glass-card rounded-xl p-5 hover:border-indigo-600 transition-all group">
-            <h3 className="font-semibold text-sm text-gray-900 group-hover:text-indigo-600 transition-colors">{l.label}</h3>
-          </Link>
+          <li key={l.href}>
+            <Link
+              href={l.href}
+              className="flex items-center min-h-12 px-4 py-4 rounded-[8px] border border-ink/10 bg-white hover:border-seal/40"
+            >
+              <h3 className="font-display text-[18px] leading-[1.35]">{l.label}</h3>
+            </Link>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </nav>
   )
 }

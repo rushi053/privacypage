@@ -60,66 +60,66 @@ export default async function BuilderLandingPage({ params }: { params: Promise<{
     <SeoPageShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <article className="max-w-[760px] mx-auto">
-        <header className="mb-10">
-          <p className="text-sm font-medium text-indigo-600 mb-3">For {page.name} builders</p>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-gray-900">{page.h1}</h1>
-          <p className="text-lg text-gray-500 leading-relaxed">{page.tagline}</p>
+      <article className="max-w-[760px] mx-auto break-words">
+        <header className="mb-16">
+          <p className="font-mono text-[14px] text-seal mb-6">For {page.name} builders</p>
+          <h1 className="font-display text-[40px] md:text-[48px] leading-[1.1] tracking-[-0.02em] mb-6 break-words">{page.h1}</h1>
+          <p className="font-doc text-[20px] leading-[1.6] text-ink/80">{page.tagline}</p>
         </header>
 
-        <div className="space-y-4 mb-12">
+        <div className="space-y-6 mb-16">
           {page.intro.map((para, i) => (
             <p
               key={i}
-              className="text-gray-700 leading-relaxed [&_a]:text-indigo-600 [&_a]:underline [&_a:hover]:text-indigo-700 [&_strong]:text-gray-900"
+              className="font-doc text-[18px] leading-[1.6] text-ink/90 [&_a]:text-seal [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-seal/40 [&_strong]:font-medium [&_strong]:text-ink"
               dangerouslySetInnerHTML={{ __html: para }}
             />
           ))}
         </div>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 text-gray-900">{page.dataHeading}</h2>
-          <div className="space-y-3">
+        <section className="mb-16">
+          <h2 className="font-display text-[24px] md:text-[32px] leading-[1.25] tracking-[-0.01em] mb-8">{page.dataHeading}</h2>
+          <div className="space-y-4">
             {page.dataPoints.map((d) => (
-              <div key={d.title} className="border border-gray-100 rounded-xl p-5 bg-white hover:border-gray-200 transition-colors">
-                <h3 className="font-semibold text-sm text-gray-900 mb-1.5">{d.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{d.desc}</p>
+              <div key={d.title} className="rounded-[8px] border border-ink/10 bg-white p-6">
+                <h3 className="font-display text-[18px] leading-[1.3] mb-2">{d.title}</h3>
+                <p className="text-[14px] leading-[1.5] text-ink/70">{d.desc}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-5 text-gray-900">{page.requirementsHeading}</h2>
-          <div className="space-y-4">
+        <section className="mb-16">
+          <h2 className="font-display text-[24px] md:text-[32px] leading-[1.25] tracking-[-0.01em] mb-6">{page.requirementsHeading}</h2>
+          <div className="space-y-6">
             {page.requirements.map((para, i) => (
               <p
                 key={i}
-                className="text-gray-700 leading-relaxed [&_a]:text-indigo-600 [&_a]:underline [&_a:hover]:text-indigo-700 [&_strong]:text-gray-900"
+                className="font-doc text-[18px] leading-[1.6] text-ink/90 [&_a]:text-seal [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-seal/40 [&_strong]:font-medium [&_strong]:text-ink"
                 dangerouslySetInnerHTML={{ __html: para }}
               />
             ))}
           </div>
         </section>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-5 text-gray-900">How the 60-second generator works</h2>
-          <ol className="space-y-3 mb-6">
+        <section className="mb-4">
+          <h2 className="font-display text-[24px] md:text-[32px] leading-[1.25] tracking-[-0.01em] mb-8">How the 60-second generator works</h2>
+          <ol className="space-y-4 mb-8">
             {[
               'Pick a document type — privacy policy, terms of service, EULA, cookie policy, or disclaimer.',
               `Answer about ten plain-English questions: your app's name, what data it collects, and which third-party services it uses.`,
               'Preview the complete generated document — free, no account, nothing blurred that matters for judging it.',
               `Pay ${PRICE.single} once to unlock and export as HTML, Markdown, or plain text. Regenerate free, forever, when your app changes.`,
             ].map((step, i) => (
-              <li key={i} className="flex items-start gap-3 text-gray-700 leading-relaxed">
-                <span className="w-6 h-6 rounded-full bg-indigo-50 text-indigo-600 text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">{i + 1}</span>
+              <li key={i} className="flex items-start gap-4 font-doc text-[18px] leading-[1.6] text-ink/90">
+                <span className="w-8 h-8 rounded-full bg-seal-tint text-seal font-mono text-[13px] flex items-center justify-center shrink-0">{i + 1}</span>
                 <span>{step}</span>
               </li>
             ))}
           </ol>
-          <div className="bg-indigo-50/50 border border-indigo-100 rounded-xl p-5">
-            <p className="text-sm text-gray-700 leading-relaxed">
-              <span className="font-semibold text-indigo-700">Hosting tip for {page.name}: </span>
+          <div className="rounded-[8px] border border-ink/10 bg-seal-tint/50 p-6">
+            <p className="font-doc text-[16px] leading-[1.6] text-ink/85">
+              <span className="font-ui font-medium text-seal">Hosting tip for {page.name}: </span>
               {page.hostingTip}
             </p>
           </div>
@@ -138,14 +138,14 @@ export default async function BuilderLandingPage({ params }: { params: Promise<{
           ]}
         />
 
-        <div className="mt-12">
-          <h2 className="text-xl font-bold mb-4 text-gray-900">Building with a different tool?</h2>
+        <div className="mt-16 border-t border-ink/10 pt-16">
+          <h2 className="font-display text-[24px] leading-[1.3] mb-6">Building with a different tool?</h2>
           <div className="flex flex-wrap gap-2">
             {otherBuilders.map((b) => (
               <Link
                 key={b.slug}
                 href={`/for/${b.slug}`}
-                className="text-sm border border-gray-200 hover:border-indigo-500 hover:text-indigo-600 text-gray-600 px-4 py-2 rounded-full transition-colors"
+                className="inline-flex items-center min-h-11 max-w-full px-4 rounded-full border border-ink/10 bg-white text-[14px] text-ink/70 hover:border-seal/40 hover:text-ink"
               >
                 {b.name} apps →
               </Link>
