@@ -1,9 +1,9 @@
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
 import { PriceLocalizer } from '@/components/PriceLocalizer'
+import { ArrowLeftIcon } from '@/components/ClauseIcons'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { Logo } from '@/components/Logo'
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }))
@@ -34,6 +34,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
+const articleBodyClass = [
+  'font-[family-name:var(--f-doc)] text-[17px] md:text-[18px] leading-[1.6] text-[#16181D]/90',
+  '[&_h2]:font-[family-name:var(--f-display)] [&_h2]:text-[28px] [&_h2]:leading-[1.2] [&_h2]:tracking-[-0.01em] [&_h2]:text-[#16181D] [&_h2]:font-medium [&_h2]:mt-12 [&_h2]:mb-4',
+  '[&_h3]:font-[family-name:var(--f-display)] [&_h3]:text-[22px] [&_h3]:leading-[1.3] [&_h3]:text-[#16181D] [&_h3]:font-medium [&_h3]:mt-8 [&_h3]:mb-3',
+  '[&_p]:mb-4 [&_p]:leading-[1.6]',
+  '[&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-6 [&_ul]:space-y-2',
+  '[&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-6 [&_ol]:space-y-2',
+  '[&_li]:leading-[1.6]',
+  '[&_strong]:text-[#16181D] [&_strong]:font-semibold',
+  '[&_a]:text-[#0F5C63] [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-[#0F5C63]/40 hover:[&_a]:decoration-[#0F5C63]',
+  '[&_code]:font-[family-name:var(--f-mono)] [&_code]:text-[0.85em] [&_code]:bg-[#E6F0F0] [&_code]:text-[#0F5C63] [&_code]:px-2 [&_code]:rounded-[4px]',
+  '[&_em]:italic',
+  '[&_table]:my-8 [&_table]:w-full [&_table]:font-[family-name:var(--f-ui)] [&_table]:text-[15px] [&_table]:leading-[1.5]',
+].join(' ')
+
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = getPostBySlug(slug)
@@ -54,7 +69,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   // Parse FAQ sections from post content for FAQPage schema
   const faqSchema = (() => {
     const faqEntries: { question: string; answer: string }[] = []
-    const h3Regex = /<h3>(.*?)<\/h3>\s*([\s\S]*?)(?=<h[23]|<h2|$)/gi
     const content = post.content
     // Find the FAQ section
     const faqSectionMatch = content.match(/<h2>FAQ<\/h2>([\s\S]*?)(?=<h2|$)/i)
@@ -83,96 +97,61 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   })()
 
   return (
-    <div className="min-h-screen bg-white">
+    <article className="mx-auto max-w-[820px] px-6 md:px-8 pt-16 md:pt-24 pb-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+      <PriceLocalizer />
 
-      {/* CTA Banner */}
-      <div className="fixed top-16 left-0 right-0 z-40 bg-indigo-50 border-b border-indigo-100 py-3 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-sm text-gray-700">
-            <span className="font-medium">Need a privacy policy?</span> Generate one for free in 60 seconds →
-          </p>
-          <Link href="/#generate" className="text-sm bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
-            Generate Free
-          </Link>
-        </div>
+      <div className="mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-[8px] border border-[#16181D]/10 bg-white p-6">
+        <p className="text-[16px] leading-[1.5]">
+          <span className="font-medium">Need a privacy policy?</span> Generate one for free in 60 seconds.
+        </p>
+        <Link href="/#generate" className="inline-flex items-center justify-center h-12 px-6 rounded-[8px] bg-[#0F5C63] text-white text-[16px] font-medium hover:bg-[#0B4A50] shrink-0">
+          Generate Free
+        </Link>
       </div>
 
-      {/* Nav */}
-      <nav className="fixed top-0 w-full z-50 border-b border-gray-200 bg-white/80 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Logo className="w-8 h-8" />
-            <span className="font-semibold text-lg text-gray-900">PrivacyPage</span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/blog" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">Blog</Link>
-            <Link href="/#generate" className="text-sm bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition-colors">Generate Free</Link>
-          </div>
+      <Link href="/blog" className="inline-flex items-center gap-2 min-h-11 text-[14px] text-[#16181D]/70 hover:text-[#16181D] mb-8">
+        <ArrowLeftIcon />
+        Back to Blog
+      </Link>
+
+      <header className="mb-12">
+        <h1 className="font-[family-name:var(--f-display)] text-[36px] sm:text-[44px] leading-[1.1] tracking-[-0.02em] mb-6">{post.title}</h1>
+        <p className="font-[family-name:var(--f-mono)] text-[13px] text-[#16181D]/55">
+          <time>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time>
+          <span> · </span>
+          <span>{post.readTime}</span>
+        </p>
+      </header>
+
+      <div className={articleBodyClass} dangerouslySetInnerHTML={{ __html: post.content }} />
+
+      <div className="mt-16 rounded-[8px] border border-[#16181D]/10 bg-white p-6 md:p-8 text-center">
+        <h2 className="font-[family-name:var(--f-display)] text-[28px] leading-[1.2] mb-3">Generate your privacy policy in 60 seconds</h2>
+        <p className="font-[family-name:var(--f-doc)] text-[18px] leading-[1.6] text-[#16181D]/80 mb-6">Privacy policies and legal docs built around GDPR, CCPA, CalOPPA and COPPA disclosure rules — free to preview.</p>
+        <Link href="/#generate" className="inline-flex items-center justify-center h-12 px-6 rounded-[8px] bg-[#0F5C63] text-white text-[16px] font-medium hover:bg-[#0B4A50]">
+          Generate Now →
+        </Link>
+      </div>
+
+      {allPosts.length > 0 && (
+        <div className="mt-16">
+          <h2 className="font-[family-name:var(--f-display)] text-[24px] leading-[1.3] mb-6">Related Articles</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {allPosts.map((p) => (
+              <li key={p.slug}>
+                <Link href={`/blog/${p.slug}`} className="group block h-full rounded-[8px] border border-[#16181D]/10 bg-white p-6 hover:border-[#0F5C63]/40">
+                  <p className="font-[family-name:var(--f-mono)] text-[12px] text-[#16181D]/55 mb-2">{p.readTime}</p>
+                  <h3 className="font-[family-name:var(--f-display)] text-[18px] leading-[1.3] group-hover:text-[#0F5C63]">{p.title}</h3>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-      </nav>
+      )}
 
-      <article className="pt-40 pb-20 px-6"><PriceLocalizer />
-        <div className="max-w-[720px] mx-auto">
-          <Link href="/blog" className="text-sm text-gray-600 hover:text-gray-900 transition-colors mb-8 inline-flex items-center gap-2">
-            ← Back to Blog
-          </Link>
-
-          <header className="mb-12">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-gray-900">{post.title}</h1>
-            <div className="flex items-center gap-3 text-sm text-gray-500">
-              <time>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time>
-              <span>·</span>
-              <span>{post.readTime}</span>
-            </div>
-          </header>
-
-          <div
-            className="prose prose-gray max-w-none
-              [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-gray-900
-              [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:text-gray-900
-              [&_p]:text-gray-700 [&_p]:leading-relaxed [&_p]:mb-4
-              [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul]:space-y-2
-              [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_ol]:space-y-2
-              [&_li]:text-gray-700
-              [&_strong]:text-gray-900
-              [&_a]:text-indigo-600 [&_a]:hover:text-indigo-700 [&_a]:underline
-              [&_code]:bg-gray-100 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm [&_code]:text-indigo-600
-              [&_em]:text-gray-600"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
-
-          {/* CTA */}
-          <div className="mt-16 glass-card rounded-2xl p-8 text-center border-indigo-600">
-            <h3 className="text-2xl font-bold mb-3 text-gray-900">Generate your privacy policy in 60 seconds</h3>
-            <p className="text-gray-600 mb-6">Privacy policies and legal docs built around GDPR, CCPA, CalOPPA and COPPA disclosure rules — free to preview.</p>
-            <Link href="/#generate" className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all hover:scale-105">
-              Generate Now →
-            </Link>
-          </div>
-
-          {/* Related Posts */}
-          {allPosts.length > 0 && (
-            <div className="mt-16">
-              <h3 className="text-xl font-bold mb-6 text-gray-900">Related Articles</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {allPosts.map((p) => (
-                  <Link key={p.slug} href={`/blog/${p.slug}`} className="glass-card rounded-xl p-5 hover:border-indigo-600 transition-all group">
-                    <div className="text-xs text-gray-500 mb-2">{p.readTime}</div>
-                    <h4 className="font-semibold text-sm text-gray-900 group-hover:text-indigo-600 transition-colors">{p.title}</h4>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </article>
-
-      <footer className="border-t border-gray-200 py-8 px-6 text-center text-gray-500 text-sm bg-gray-50">
-        <p className="mb-3 max-w-2xl mx-auto leading-relaxed">PrivacyPage is not a law firm and does not provide legal advice. Documents are AI-generated from your answers.</p>
-        © {new Date().getFullYear()} PrivacyPage. All rights reserved.
-      </footer>
-    </div>
+      <p className="mt-12 font-[family-name:var(--f-ui)] text-[14px] leading-[1.5] text-[#16181D]/60">PrivacyPage is not a law firm and does not provide legal advice. Documents are AI-generated from your answers.</p>
+    </article>
   )
 }
