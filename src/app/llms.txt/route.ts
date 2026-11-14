@@ -33,9 +33,9 @@ Guides covering what data apps built with each platform typically collect, and h
 How PrivacyPage's one-time pricing compares to subscription-based policy generators.
 
 - [PrivacyPage vs Termly](https://privacypage.io/vs/termly): One-time ${PRICE.single}–${PRICE.bundle} versus Termly's recurring subscription; you own the document outright.
-- [PrivacyPage vs iubenda](https://privacypage.io/vs/iubenda): A fraction of iubenda's cost, with no pageview meter and no ongoing license.
-- [PrivacyPage vs GetTerms](https://privacypage.io/vs/getterms): A true lifetime option — 8–25x cheaper per document, terms of service included without upgrading.
-- [PrivacyPage vs Termageddon](https://privacypage.io/vs/termageddon): ${PRICE.bundle} once versus $119/year forever; you hold the files.
+- [PrivacyPage vs iubenda](https://privacypage.io/vs/iubenda): A one-time payment, with no pageview meter and no ongoing license.
+- [PrivacyPage vs GetTerms](https://privacypage.io/vs/getterms): A one-time payment for the documents, with terms of service included in the bundle — no plan upgrade required.
+- [PrivacyPage vs Termageddon](https://privacypage.io/vs/termageddon): ${PRICE.bundle} once versus a recurring annual subscription; you hold the files.
 - [PrivacyPage vs FreePrivacyPolicy](https://privacypage.io/vs/freeprivacypolicy): What the "free" generators charge for once you need real coverage, and how PrivacyPage differs.
 
 ## Compliance Guides
