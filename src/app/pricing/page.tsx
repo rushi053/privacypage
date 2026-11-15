@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { headers } from 'next/headers'
 import { countryFromHeaders, getPricingForCountry } from '@/lib/currency'
 import { ClauseShell } from '@/components/ClauseShell'
+import { rootOgImages } from '@/lib/og-image'
 
 // Prices come only from the server price list (PRICING), with the currency picked from the
 // visitor's country header — the same source /api/geo and create-order use.
@@ -18,11 +19,13 @@ export const metadata: Metadata = {
     url: 'https://privacypage.io/pricing',
     siteName: 'PrivacyPage',
     type: 'website',
+    images: rootOgImages,
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Pricing — One-Time Payment, No Subscription | PrivacyPage',
     description: 'Preview any document free with no account. Pay once to unlock a single document or the bundle of all five. No auto-renewals.',
+    images: rootOgImages,
   },
 }
 

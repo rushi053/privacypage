@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { ClauseShell } from '@/components/ClauseShell'
+import { rootOgImages } from '@/lib/og-image'
 
 const URL = 'https://privacypage.io/guides/app-rejected-privacy-policy'
 const VERIFIED = '2026-10-30'
@@ -15,11 +16,13 @@ export const metadata: Metadata = {
     url: URL,
     siteName: 'PrivacyPage',
     type: 'article',
+    images: rootOgImages,
   },
   twitter: {
     card: 'summary_large_image',
     title: 'App Rejected for Privacy Policy? Fixes for App Store, Google Play, Chrome & Meta | PrivacyPage',
     description: 'Why apps and extensions get rejected over the privacy policy — Apple 5.1.1(i), Google Play User Data, Chrome Web Store, Meta Platform Terms — and how to fix each one, with links to the official rules.',
+    images: rootOgImages,
   },
 }
 

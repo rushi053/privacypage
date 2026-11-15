@@ -6,6 +6,7 @@ import { builderPages, getBuilderPage, buildFaqSchema } from '@/lib/seo-pages'
 import { platformPages, getPlatformPage } from '@/lib/platforms'
 import { PlatformPageView } from '@/components/PlatformPageView'
 import { SeoPageShell, SeoCtaCard, SeoFaqSection, SeoRelatedLinks } from '@/components/SeoPageShell'
+import { rootOgImages } from '@/lib/og-image'
 
 export function generateStaticParams() {
   return [...builderPages, ...platformPages].map((p) => ({ builder: p.slug }))
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ builder: 
       title: platform.metaTitle,
       description: platform.metaDescription,
       alternates: { canonical: url },
-      openGraph: { title: platform.metaTitle, description: platform.metaDescription, url, siteName: 'PrivacyPage', type: 'article' },
+      openGraph: { title: platform.metaTitle, description: platform.metaDescription, url, siteName: 'PrivacyPage', type: 'article', images: rootOgImages },
     }
   }
   const page = getBuilderPage(builder)
@@ -37,11 +38,13 @@ export async function generateMetadata({ params }: { params: Promise<{ builder: 
       url,
       siteName: 'PrivacyPage',
       type: 'website',
+      images: rootOgImages,
     },
     twitter: {
       card: 'summary_large_image',
       title: page.metaTitle,
       description: page.metaDescription,
+      images: rootOgImages,
     },
   }
 }
