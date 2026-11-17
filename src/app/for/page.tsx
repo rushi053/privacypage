@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   title: 'Privacy Policy by Platform — App Stores, Extensions, Bots & SDKs | PrivacyPage',
   description: 'What each platform requires from your privacy policy — App Store, Google Play, Chrome Web Store, Discord, SDKs like AdMob — with links to the official rules.',
   alternates: { canonical: 'https://privacypage.io/for' },
+  openGraph: {
+    title: 'Privacy Policy by Platform — App Stores, Extensions, Bots & SDKs | PrivacyPage',
+    description: 'What each platform requires from your privacy policy — App Store, Google Play, Chrome Web Store, Discord, SDKs like AdMob — with links to the official rules.',
+    url: 'https://privacypage.io/for',
+    siteName: 'PrivacyPage',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy by Platform — App Stores, Extensions, Bots & SDKs | PrivacyPage',
+    description: 'What each platform requires from your privacy policy — App Store, Google Play, Chrome Web Store, Discord, SDKs like AdMob — with links to the official rules.',
+  },
 }
 
 export default function PlatformHub() {

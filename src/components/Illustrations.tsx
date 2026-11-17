@@ -2,15 +2,15 @@ export function HeroIllustration({ className = "" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 360 320" fill="none" xmlns="http://www.w3.org/2000/svg">
       {/* Background circle glow */}
-      <circle cx="180" cy="160" r="130" fill="#EEF2FF" opacity="0.8" />
+      <circle cx="180" cy="160" r="130" fill="#EEF5F5" opacity="0.8" />
       
       {/* Main document */}
-      <rect x="80" y="50" width="160" height="210" rx="12" fill="white" stroke="#E0E7FF" strokeWidth="2" />
+      <rect x="80" y="50" width="160" height="210" rx="12" fill="white" stroke="#D9E8E9" strokeWidth="2" />
       <rect x="80" y="50" width="160" height="210" rx="12" fill="white" />
-      <rect x="80" y="50" width="160" height="40" rx="12" fill="#4F46E5" />
-      <rect x="80" y="70" width="160" height="20" fill="#4F46E5" />
+      <rect x="80" y="50" width="160" height="40" rx="12" fill="#0F5C63" />
+      <rect x="80" y="70" width="160" height="20" fill="#0F5C63" />
 
-      {/* Header text lines in the indigo bar */}
+      {/* Header text lines in the seal bar */}
       <rect x="100" y="62" width="80" height="7" rx="3.5" fill="white" opacity="0.9" />
       <rect x="100" y="74" width="55" height="5" rx="2.5" fill="white" opacity="0.5" />
 
@@ -24,14 +24,14 @@ export function HeroIllustration({ className = "" }: { className?: string }) {
       <rect x="100" y="172" width="120" height="1" fill="#E5E7EB" />
 
       {/* Second section lines */}
-      <rect x="100" y="185" width="75" height="6" rx="3" fill="#C7D2FE" />
+      <rect x="100" y="185" width="75" height="6" rx="3" fill="#B3D1D3" />
       <rect x="100" y="198" width="115" height="6" rx="3" fill="#CBD5E1" />
       <rect x="100" y="211" width="95" height="6" rx="3" fill="#CBD5E1" />
       <rect x="100" y="224" width="105" height="6" rx="3" fill="#CBD5E1" />
 
       {/* Shield badge — top right */}
-      <circle cx="280" cy="90" r="36" fill="white" stroke="#E0E7FF" strokeWidth="2" />
-      <path d="M280 68 L296 75 L296 100 C296 110 288 118 280 120 C272 118 264 110 264 100 L264 75 L280 68Z" fill="#4F46E5" />
+      <circle cx="280" cy="90" r="36" fill="white" stroke="#D9E8E9" strokeWidth="2" />
+      <path d="M280 68 L296 75 L296 100 C296 110 288 118 280 120 C272 118 264 110 264 100 L264 75 L280 68Z" fill="#0F5C63" />
       <path d="M273 97 L278 103 L288 89" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
 
       {/* Checkmark badge — bottom right */}
@@ -39,8 +39,8 @@ export function HeroIllustration({ className = "" }: { className?: string }) {
       <path d="M259 240 L266 247 L281 230" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
 
       {/* Small floating dot accents */}
-      <circle cx="65" cy="130" r="5" fill="#4F46E5" opacity="0.3" />
-      <circle cx="55" cy="200" r="3" fill="#4F46E5" opacity="0.2" />
+      <circle cx="65" cy="130" r="5" fill="#0F5C63" opacity="0.3" />
+      <circle cx="55" cy="200" r="3" fill="#0F5C63" opacity="0.2" />
       <circle cx="305" cy="170" r="4" fill="#10B981" opacity="0.3" />
     </svg>
   );
@@ -50,13 +50,13 @@ export function SecurityIllustration({ className = "" }: { className?: string })
   return (
     <svg className={className} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       {/* Shield outline */}
-      <path d="M100 30 L150 50 L150 100 C150 130 125 155 100 160 C75 155 50 130 50 100 L50 50 L100 30Z" fill="#E0E7FF" />
-      <path d="M100 40 L140 55 L140 100 C140 125 118 145 100 150 C82 145 60 125 60 100 L60 55 L100 40Z" fill="#4F46E5" />
+      <path d="M100 30 L150 50 L150 100 C150 130 125 155 100 160 C75 155 50 130 50 100 L50 50 L100 30Z" fill="#D9E8E9" />
+      <path d="M100 40 L140 55 L140 100 C140 125 118 145 100 150 C82 145 60 125 60 100 L60 55 L100 40Z" fill="#0F5C63" />
       
       {/* Lock */}
       <rect x="85" y="90" width="30" height="35" rx="4" fill="white" />
       <path d="M90 90 L90 75 C90 67 94 62 100 62 C106 62 110 67 110 75 L110 90" stroke="white" strokeWidth="4" strokeLinecap="round" fill="none" />
-      <circle cx="100" cy="107" r="4" fill="#4F46E5" />
+      <circle cx="100" cy="107" r="4" fill="#0F5C63" />
     </svg>
   );
 }
@@ -65,7 +65,7 @@ export function DocumentIllustration({ className = "" }: { className?: string })
   return (
     <svg className={className} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       {/* Document */}
-      <rect x="40" y="30" width="120" height="140" rx="8" fill="white" stroke="#4F46E5" strokeWidth="3" />
+      <rect x="40" y="30" width="120" height="140" rx="8" fill="white" stroke="#0F5C63" strokeWidth="3" />
       
       {/* Lines */}
       <line x1="60" y1="60" x2="140" y2="60" stroke="#CBD5E1" strokeWidth="3" strokeLinecap="round" />
@@ -75,7 +75,7 @@ export function DocumentIllustration({ className = "" }: { className?: string })
       <line x1="60" y1="140" x2="140" y2="140" stroke="#CBD5E1" strokeWidth="3" strokeLinecap="round" />
       
       {/* Checkmark circle */}
-      <circle cx="150" cy="150" r="30" fill="#4F46E5" />
+      <circle cx="150" cy="150" r="30" fill="#0F5C63" />
       <path d="M135 150 L145 160 L165 140" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
     </svg>
   );
@@ -85,18 +85,18 @@ export function SuccessIllustration({ className = "" }: { className?: string }) 
   return (
     <svg className={className} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       {/* Person */}
-      <circle cx="100" cy="70" r="25" fill="#4F46E5" opacity="0.2" />
-      <path d="M65 150 Q65 110 100 110 Q135 110 135 150 L65 150 Z" fill="#4F46E5" opacity="0.2" />
+      <circle cx="100" cy="70" r="25" fill="#0F5C63" opacity="0.2" />
+      <path d="M65 150 Q65 110 100 110 Q135 110 135 150 L65 150 Z" fill="#0F5C63" opacity="0.2" />
       
       {/* Stars/celebration */}
-      <path d="M50 50 L53 58 L61 60 L53 63 L50 71 L47 63 L39 60 L47 58 Z" fill="#4F46E5" />
-      <path d="M150 40 L152 46 L158 48 L152 50 L150 56 L148 50 L142 48 L148 46 Z" fill="#4F46E5" opacity="0.6" />
-      <path d="M160 80 L161 84 L165 85 L161 86 L160 90 L159 86 L155 85 L159 84 Z" fill="#4F46E5" opacity="0.8" />
+      <path d="M50 50 L53 58 L61 60 L53 63 L50 71 L47 63 L39 60 L47 58 Z" fill="#0F5C63" />
+      <path d="M150 40 L152 46 L158 48 L152 50 L150 56 L148 50 L142 48 L148 46 Z" fill="#0F5C63" opacity="0.6" />
+      <path d="M160 80 L161 84 L165 85 L161 86 L160 90 L159 86 L155 85 L159 84 Z" fill="#0F5C63" opacity="0.8" />
       
       {/* Thumbs up */}
-      <circle cx="120" cy="90" r="20" fill="#4F46E5" opacity="0.1" />
-      <path d="M115 100 L115 115 L130 115 L130 100 L128 95 L128 85 L122 85 L120 95 L118 95 L115 100 Z" fill="#4F46E5" />
-      <rect x="105" y="100" width="10" height="15" rx="2" fill="#4F46E5" />
+      <circle cx="120" cy="90" r="20" fill="#0F5C63" opacity="0.1" />
+      <path d="M115 100 L115 115 L130 115 L130 100 L128 95 L128 85 L122 85 L120 95 L118 95 L115 100 Z" fill="#0F5C63" />
+      <rect x="105" y="100" width="10" height="15" rx="2" fill="#0F5C63" />
     </svg>
   );
 }

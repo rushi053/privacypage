@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { Fraunces, Newsreader, Geist, Geist_Mono } from "next/font/google";
@@ -50,6 +50,14 @@ export const metadata: Metadata = {
     description:
       "Generate privacy policies, ToS, EULA, and more in 60 seconds. One-time payment, not subscription.",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F7F7F5" },
+    { media: "(prefers-color-scheme: dark)", color: "#F7F7F5" },
+  ],
+  colorScheme: "light",
 };
 
 export default function RootLayout({

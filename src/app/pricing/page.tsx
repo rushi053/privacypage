@@ -12,6 +12,18 @@ export const metadata: Metadata = {
   title: 'Pricing — One-Time Payment, No Subscription | PrivacyPage',
   description: 'Preview any document free with no account. Pay once to unlock a single document or the bundle of all five. No auto-renewals.',
   alternates: { canonical: 'https://privacypage.io/pricing' },
+  openGraph: {
+    title: 'Pricing — One-Time Payment, No Subscription | PrivacyPage',
+    description: 'Preview any document free with no account. Pay once to unlock a single document or the bundle of all five. No auto-renewals.',
+    url: 'https://privacypage.io/pricing',
+    siteName: 'PrivacyPage',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pricing — One-Time Payment, No Subscription | PrivacyPage',
+    description: 'Preview any document free with no account. Pay once to unlock a single document or the bundle of all five. No auto-renewals.',
+  },
 }
 
 export default async function PricingPage() {

@@ -43,9 +43,26 @@ export function ClauseFooter() {
   )
 }
 
+// Child routes already render their own <main> (pricing, /for, platform guides, rejection guide).
+// The skip target is a div so those landmarks stay the only <main> on the page.
+// Important utilities win over focus:not-sr-only, which resets position to static and padding to 0.
+const skipLinkClass = [
+  'sr-only focus:not-sr-only',
+  // Sits just below the 64px header (+1px border) with an 8px gap, aligned to the
+  // logo's gutter: 24px on mobile, the 1040px container's 32px padding from md up.
+  'focus:fixed! focus:top-[73px] focus:left-6 md:focus:left-[max(2rem,calc((100vw_-_1040px)/2_+_2rem))] focus:z-50 focus:m-0!',
+  'focus:inline-flex focus:h-auto! focus:w-auto! focus:min-h-10 focus:items-center',
+  'focus:overflow-visible! focus:px-4! focus:whitespace-nowrap focus:[clip-path:none]!',
+  'focus:rounded-[8px] focus:bg-[#0F5C63] focus:text-[14px] focus:font-medium focus:text-white focus:no-underline',
+  'focus-visible:outline-2! focus-visible:outline-solid! focus-visible:outline-offset-2! focus-visible:outline-[#16181D]!',
+].join(' ')
+
 export function ClauseShell({ children }: { children: React.ReactNode }) {
   return (
     <div className={`${fraunces.variable} ${newsreader.variable} ${geist.variable} ${geistMono.variable} min-h-screen bg-[#F7F7F5] text-[#16181D] font-[family-name:var(--f-ui)]`}>
+      <a href="#main" className={skipLinkClass}>
+        Skip to content
+      </a>
       <header className="border-b border-[#16181D]/10">
         <div className="mx-auto max-w-[1040px] px-6 md:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="font-[family-name:var(--f-display)] text-[20px] tracking-[-0.01em]">PrivacyPage</Link>
@@ -56,7 +73,9 @@ export function ClauseShell({ children }: { children: React.ReactNode }) {
           </nav>
         </div>
       </header>
-      {children}
+      <div id="main" tabIndex={-1} className="focus:outline-none">
+        {children}
+      </div>
       <ClauseFooter />
     </div>
   )
