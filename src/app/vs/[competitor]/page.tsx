@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { competitorPages, getCompetitorPage, buildFaqSchema } from '@/lib/seo-pages'
 import { SeoPageShell, SeoComparisonTable, SeoCtaCard, SeoFaqSection, SeoRelatedLinks } from '@/components/SeoPageShell'
+import { rootOgImages } from '@/lib/og-image'
 
 export function generateStaticParams() {
   return competitorPages.map((p) => ({ competitor: p.slug }))
@@ -25,11 +26,13 @@ export async function generateMetadata({ params }: { params: Promise<{ competito
       url,
       siteName: 'PrivacyPage',
       type: 'website',
+      images: rootOgImages,
     },
     twitter: {
       card: 'summary_large_image',
       title: page.metaTitle,
       description: page.metaDescription,
+      images: rootOgImages,
     },
   }
 }

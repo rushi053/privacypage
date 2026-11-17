@@ -2,6 +2,7 @@ import { getAllPosts } from '@/lib/blog'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { ArrowRightIcon } from '@/components/ClauseIcons'
+import { rootOgImages } from '@/lib/og-image'
 
 export const metadata: Metadata = {
   title: 'Blog — PrivacyPage | Privacy Policy Tips & Guides',
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     url: 'https://privacypage.io/blog',
     siteName: 'PrivacyPage',
     type: 'website',
+    images: rootOgImages,
   },
 }
 

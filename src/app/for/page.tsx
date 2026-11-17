@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { platformPages } from '@/lib/platforms'
 import { builderPages } from '@/lib/seo-pages'
 import { ClauseShell } from '@/components/ClauseShell'
+import { rootOgImages } from '@/lib/og-image'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy by Platform — App Stores, Extensions, Bots & SDKs | PrivacyPage',
@@ -14,11 +15,13 @@ export const metadata: Metadata = {
     url: 'https://privacypage.io/for',
     siteName: 'PrivacyPage',
     type: 'website',
+    images: rootOgImages,
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Privacy Policy by Platform — App Stores, Extensions, Bots & SDKs | PrivacyPage',
     description: 'What each platform requires from your privacy policy — App Store, Google Play, Chrome Web Store, Discord, SDKs like AdMob — with links to the official rules.',
+    images: rootOgImages,
   },
 }
 
