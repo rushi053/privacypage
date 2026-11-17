@@ -1105,7 +1105,7 @@ export const blogPosts: BlogPost[] = [
 <p>Shopify provides a basic template in Settings → Legal, but it's generic and may not cover your specific data practices or all the apps you use. It's a starting point, not a complete solution.</p>
 
 <h3>How much does a privacy policy cost?</h3>
-<p>Legal firms charge $500–$2,000. Services like Termly charge $10–$25/month. <strong>PrivacyPage charges ${PRICE.single} once</strong> — no subscription. You can regenerate updated policies anytime with your license key.</p>
+<p>Legal firms charge $500–$2,000. Services like Termly charge $10–$15/month (billed annually). <strong>PrivacyPage charges ${PRICE.single} once</strong> — no subscription. You can regenerate updated policies anytime with your license key.</p>
 
 <h3>What happens if I don't have a privacy policy?</h3>
 <p>You're violating Shopify's Terms of Service, and you're exposed to legal liability under GDPR, CCPA, and other privacy laws. Regulators can fine you up to €20 million (GDPR) or $7,500 per violation (CCPA).</p>
@@ -1128,7 +1128,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '7 min read',
     keywords: ['termly alternative', 'termly alternative free', 'privacy policy generator no subscription', 'termly vs privacypage', 'termly competitor', 'freeprivacypolicy alternative'],
     content: `
-<p>Termly charges $10–$25 per month for privacy policies. That's $120–$300 per year for a document you write once and update occasionally. There's a better way: <strong>PrivacyPage</strong> — generate privacy policies, terms of service, and legal docs for a one-time payment of ${PRICE.single}. No subscription, no recurring fees.</p>
+<p>Termly charges $10–$15 per month (billed annually) for privacy policies. That's $120–$180 per year for a document you write once and update occasionally. There's a better way: <strong>PrivacyPage</strong> — generate privacy policies, terms of service, and legal docs for a one-time payment of ${PRICE.single}. No subscription, no recurring fees.</p>
 
 <h2>Why Developers Are Switching from Termly to PrivacyPage</h2>
 
@@ -1160,7 +1160,7 @@ export const blogPosts: BlogPost[] = [
     </tr>
     <tr style="background: #f9fafb;">
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Bundle (All 5 Docs)</strong></td>
-      <td style="padding: 12px; border: 1px solid #e5e7eb;">$25/month ($300/year)</td>
+      <td style="padding: 12px; border: 1px solid #e5e7eb;">$15/month ($180/year)</td>
       <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>${PRICE.bundle} once</strong></td>
     </tr>
     <tr>
@@ -1181,7 +1181,7 @@ export const blogPosts: BlogPost[] = [
   </tbody>
 </table>
 
-<p><strong>Bottom line:</strong> For a single privacy policy, PrivacyPage saves you $110+ in the first year alone. For a bundle, you save $275+ per year.</p>
+<p><strong>Bottom line:</strong> For a single privacy policy, PrivacyPage saves you $110+ in the first year alone. For a bundle, you save $155+ per year.</p>
 
 <h2>What You Get with PrivacyPage</h2>
 
@@ -1245,10 +1245,10 @@ export const blogPosts: BlogPost[] = [
 <p>If you build apps or websites for clients, stop billing them for Termly subscriptions. Generate docs with PrivacyPage and charge a one-time fee.</p>
 
 <h3>Startups</h3>
-<p>Pre-revenue and watching every dollar? Save $300/year by switching from Termly to PrivacyPage.</p>
+<p>Pre-revenue and watching every dollar? Save up to $180/year by switching from Termly to PrivacyPage.</p>
 
 <h3>Agencies</h3>
-<p>Managing legal docs for 10+ clients? With Termly, that's $100–$250/month. With PrivacyPage, it's a one-time bundle purchase per client.</p>
+<p>Managing legal docs for 10+ clients? With Termly, that's $100–$150/month. With PrivacyPage, it's a one-time bundle purchase per client.</p>
 
 <h3>App Developers</h3>
 <p>Launching on the App Store or Play Store? You need a privacy policy and terms of service. PrivacyPage generates both for ${PRICE.bundle} total, paid once — not another monthly subscription.</p>
