@@ -1,4 +1,5 @@
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
+import { BLOG_FEED_TITLE, BLOG_FEED_URL } from '@/lib/feed'
 import { PriceLocalizer } from '@/components/PriceLocalizer'
 import { ArrowLeftIcon } from '@/components/ClauseIcons'
 import Link from 'next/link'
@@ -17,7 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${post.title} — PrivacyPage Blog`,
     description: post.description,
     keywords: post.keywords,
-    alternates: { canonical: `https://privacypage.io/blog/${post.slug}` },
+    alternates: {
+      canonical: `https://privacypage.io/blog/${post.slug}`,
+      types: {
+        'application/rss+xml': [{ url: BLOG_FEED_URL, title: BLOG_FEED_TITLE }],
+      },
+    },
     openGraph: {
       title: post.title,
       description: post.description,

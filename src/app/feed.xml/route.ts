@@ -1,6 +1,5 @@
 import { blogPosts } from '@/lib/blog'
-
-const SITE_URL = 'https://privacypage.io'
+import { BLOG_FEED_URL, SITE_URL } from '@/lib/feed'
 
 export const dynamic = 'force-static'
 
@@ -39,10 +38,11 @@ export function GET() {
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    '<rss version="2.0">',
+    '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
     '  <channel>',
     '    <title>PrivacyPage</title>',
     `    <link>${SITE_URL}</link>`,
+    `    <atom:link href="${escapeXml(BLOG_FEED_URL)}" rel="self" type="application/rss+xml" />`,
     '    <description>Guides on privacy policies and legal docs for apps.</description>',
     '    <language>en</language>',
     `    <lastBuildDate>${lastBuildDate}</lastBuildDate>`,
