@@ -5,6 +5,7 @@ import { useRazorpay, isDocUnlocked } from "@/hooks/useRazorpay";
 import { fetchGeoPricing, toSmallestUnit, type LocalPricing } from "@/lib/currency";
 import EmailCaptureModal from "@/components/EmailCaptureModal";
 import { CheckIcon, CopyIcon, DownloadIcon, LockIcon, RefreshIcon, KeyIcon } from "@/components/ClauseIcons";
+import { inlineMarkdownToHtml, renderInlineMarkdown } from "@/lib/inline-markdown";
 
 interface PolicyPreviewProps {
   /** Preview text (new flow) or the full document (legacyFull fallback). */
@@ -184,12 +185,12 @@ export default function PolicyPreview({ policy, formData, onReset, docType = "pr
 </head>
 <body>
 ${content.split("\n").map((l) => {
-        if (l.startsWith("# ")) return `<h1>${l.slice(2)}</h1>`;
-        if (l.startsWith("## ")) return `<h2>${l.slice(3)}</h2>`;
-        if (l.startsWith("### ")) return `<h3>${l.slice(4)}</h3>`;
-        if (l.startsWith("- ")) return `<li>${l.slice(2)}</li>`;
+        if (l.startsWith("# ")) return `<h1>${inlineMarkdownToHtml(l.slice(2))}</h1>`;
+        if (l.startsWith("## ")) return `<h2>${inlineMarkdownToHtml(l.slice(3))}</h2>`;
+        if (l.startsWith("### ")) return `<h3>${inlineMarkdownToHtml(l.slice(4))}</h3>`;
+        if (l.startsWith("- ")) return `<li>${inlineMarkdownToHtml(l.slice(2))}</li>`;
         if (l.trim() === "") return "";
-        return `<p>${l}</p>`;
+        return `<p>${inlineMarkdownToHtml(l)}</p>`;
       }).join("\n")}
 </body>
 </html>`;
@@ -315,23 +316,23 @@ ${content.split("\n").map((l) => {
 
 function PolicyLine({ line, n }: { line: string; n?: number | null }) {
   if (line.startsWith("# "))
-    return <h1 className="font-display text-[28px] md:text-[32px] leading-[1.2] tracking-[-0.01em] mt-0 mb-6 text-ink">{line.slice(2)}</h1>;
+    return <h1 className="font-display text-[28px] md:text-[32px] leading-[1.2] tracking-[-0.01em] mt-0 mb-6 text-ink">{renderInlineMarkdown(line.slice(2))}</h1>;
   if (line.startsWith("## "))
     return (
       <h2 className="font-display text-[20px] md:text-[22px] leading-[1.3] mt-8 mb-2 text-ink grid grid-cols-[48px_1fr]">
         <span className="font-mono text-[14px] leading-[2] text-seal">§ {n ?? ""}</span>
-        <span>{line.slice(3)}</span>
+        <span>{renderInlineMarkdown(line.slice(3))}</span>
       </h2>
     );
   if (line.startsWith("### "))
-    return <h3 className="font-display text-[18px] mt-6 mb-2 text-ink md:pl-12">{line.slice(4)}</h3>;
+    return <h3 className="font-display text-[18px] mt-6 mb-2 text-ink md:pl-12">{renderInlineMarkdown(line.slice(4))}</h3>;
   if (line.startsWith("- "))
     return (
       <div className="grid grid-cols-[16px_1fr] gap-2 md:pl-12 my-1">
         <span className="text-seal">–</span>
-        <span>{line.slice(2)}</span>
+        <span>{renderInlineMarkdown(line.slice(2))}</span>
       </div>
     );
   if (line.trim() === "") return <div className="h-4" />;
-  return <p className="my-2 md:pl-12">{line}</p>;
+  return <p className="my-2 md:pl-12">{renderInlineMarkdown(line)}</p>;
 }

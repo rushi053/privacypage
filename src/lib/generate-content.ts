@@ -11,7 +11,39 @@ const SYSTEM_PROMPTS: Record<string, string> = {
   disclaimer: "You are a legal document generator specializing in Disclaimers for websites, apps, and digital content.",
 };
 
+
+/**
+ * The privacy wizard collects a single "Company name & contact email" field
+ * as `companyInfo`. Prompts and the template fallback look for `companyName`
+ * and `contactEmail`, so a provided email would otherwise be dropped. Parse
+ * the combined field when the split keys are missing. Idempotent.
+ */
+export function normalizeDocInputs(
+  docType: string,
+  data: Record<string, string>
+): Record<string, string> {
+  const out = { ...data };
+  if (docType === "privacy") {
+    const raw = (out.companyInfo || "").trim();
+    if (raw) {
+      const emailMatch = raw.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+      if (emailMatch && !out.contactEmail?.trim()) {
+        out.contactEmail = emailMatch[0];
+      }
+      const name = raw
+        .replace(emailMatch?.[0] ?? "", "")
+        .replace(/[,;]+/g, " ")
+        .trim();
+      if (name && !out.companyName?.trim()) {
+        out.companyName = name;
+      }
+    }
+  }
+  return out;
+}
+
 export function buildDocPrompt(docType: string, data: Record<string, string>): string {
+  data = normalizeDocInputs(docType, data);
   const today = new Date().toISOString().split("T")[0];
 
   switch (docType) {
@@ -134,7 +166,7 @@ Requirements:
 App Details:
 - App Name: ${data.appName || "App"}
 - Platform: ${data.platform || "Mobile"}
-- Company/Developer: ${data.companyName || "Developer"}
+- Company/Developer: ${data.companyName || data.companyInfo || "Developer"}
 - Website: ${data.websiteUrl || "N/A"}
 - Contact Email: ${data.contactEmail || "N/A"}
 - Data Collected: ${data.dataCollected || "General usage data"}
@@ -172,6 +204,7 @@ export async function generateDocumentContent(
   docType: string,
   data: Record<string, string>
 ): Promise<string> {
+  data = normalizeDocInputs(docType, data);
   const prompt = buildDocPrompt(docType, data);
   const systemPrompt = SYSTEM_PROMPTS[docType] || SYSTEM_PROMPTS.privacy;
 

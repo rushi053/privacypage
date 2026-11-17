@@ -18,6 +18,19 @@ function getSavingsDisplay(pricing: LocalPricing | null): string {
   return `save ${pricing.symbol}${fmt}`;
 }
 
+/** Skeleton shown until /api/geo resolves, so the homepage never flashes a
+ *  blank or placeholder amount (e.g. "Unlocking one costs …, once."). */
+function PendingPrice({ value, wide = false }: { value?: string; wide?: boolean }) {
+  if (value) return <>{value}</>;
+  return (
+    <span
+      className={`inline-block align-baseline rounded-sm bg-ink/10 animate-pulse ${wide ? "h-[0.7em] w-[7rem]" : "h-[1em] w-[3.5rem]"}`}
+      aria-busy="true"
+      aria-label="Loading price"
+    />
+  );
+}
+
 const faqItems = [
   {
     q: "Are these documents legally valid?",
@@ -321,7 +334,7 @@ export default function Home() {
                   <p className="font-mono text-[12px] text-seal mb-2">Step 1</p>
                   <h2 className="font-display text-[32px] md:text-[40px] leading-[1.15] tracking-[-0.01em]">Pick a document</h2>
                 </div>
-                <p className="text-[14px] text-ink/60 max-w-[360px]">All five are free to preview. Unlocking one costs {pricing?.singleDisplay ?? "…"}, once.</p>
+                <p className="text-[14px] text-ink/60 max-w-[360px]">All five are free to preview. Unlocking one costs <PendingPrice value={pricing?.singleDisplay} />, once.</p>
               </div>
               <ul className="rounded-[8px] border border-ink/10 bg-white divide-y divide-ink/10">
                 {Object.entries(wizardConfigs).map(([key, config], i) => (
@@ -379,13 +392,13 @@ export default function Home() {
             <h2 className="font-display text-[32px] md:text-[40px] leading-[1.15] tracking-[-0.01em]">Terms of this service, in plain words</h2>
           </div>
           <ol className="divide-y divide-ink/10 border-y border-ink/10">
-            {[
+            {([
               { t: "You answer, we draft.", d: "About ten questions on what your app collects: accounts, payments, analytics, crash reports, AI calls. The draft is written from those answers, not a generic template." },
               { t: "Read it before you pay.", d: "The first part of every document is free to read in full. Nothing is hidden behind an account." },
-              { t: "Pay once, keep it.", d: `${pricing?.singleDisplay ?? "…"} unlocks one document; ${pricing?.bundleDisplay ?? "…"} unlocks all five. No subscription, no renewal.` },
+              { t: "Pay once, keep it.", d: <><PendingPrice value={pricing?.singleDisplay} /> unlocks one document; <PendingPrice value={pricing?.bundleDisplay} /> unlocks all five. No subscription, no renewal.</> },
               { t: "Export anywhere.", d: "Copy as text, or download HTML or Markdown. Host it on your site, GitHub, or Notion and paste the URL into App Store Connect or Play Console." },
               { t: "Regenerate when things change.", d: "Your license key lets you regenerate an updated document later at no extra cost." },
-            ].map((c, i) => (
+            ] as { t: string; d: React.ReactNode }[]).map((c, i) => (
               <li key={c.t} className="grid grid-cols-[48px_1fr] md:grid-cols-[64px_1fr] gap-4 py-6 md:py-8">
                 <span className="font-mono text-[14px] leading-[2] text-seal">§ {i + 1}</span>
                 <div>
@@ -430,7 +443,7 @@ export default function Home() {
             ].map((plan) => (
               <div key={plan.key} className="rounded-[8px] border border-ink/10 bg-white p-6 md:p-8 flex flex-col">
                 <p className="text-[12px] uppercase tracking-[0.08em] text-ink/60 mb-4">{plan.name}</p>
-                <p className="font-display text-[48px] leading-none tracking-[-0.02em] mb-2" data-testid={`price-${plan.key}`}>{plan.price ?? "…"}</p>
+                <p className="font-display text-[48px] leading-none tracking-[-0.02em] mb-2" data-testid={`price-${plan.key}`}><PendingPrice value={plan.price} wide /></p>
                 <p className="text-[14px] text-ink/60 mb-6">{plan.sub}</p>
                 <ul className="space-y-2 mb-8 text-[15px] text-ink/80">
                   {plan.items.map((f) => (
