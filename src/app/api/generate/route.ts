@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { respondWithGeneratedDocument } from "@/lib/generate-response";
-import { generateDocumentContent } from "@/lib/generate-content";
+import { generateDocumentContent, normalizeDocInputs } from "@/lib/generate-content";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
@@ -23,6 +23,7 @@ export async function POST(req: NextRequest) {
 }
 
 function generateTemplate(data: Record<string, string>): string {
+  data = normalizeDocInputs("privacy", data);
   const date = new Date().toISOString().split("T")[0];
   return `# Privacy Policy for ${data.appName || "App"}
 
