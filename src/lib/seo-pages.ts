@@ -86,7 +86,7 @@ export const builderPages: BuilderPage[] = [
       'You shipped an app with Lovable. Now get the legal doc it needs — in 60 seconds, free to preview.',
     intro: [
       `You prompted your way to a working product in Lovable — auth, database, payments, maybe an AI feature. But the moment real users can sign up, your app is collecting personal data, and that comes with legal obligations whether you have 3 users or 3,000. A privacy policy is not a nice-to-have: Google OAuth verification asks for one, the App Store requires one, and privacy laws like GDPR assume you already have one.`,
-      `The good news: for a typical Lovable app the policy is very predictable, because the Lovable stack is predictable. PrivacyPage asks you a handful of plain-English questions about what your app actually does and generates a complete, customized privacy policy you can paste straight into your project. The full document is free to preview — you pay <strong>${PRICE.single} once</strong> only if you want to unlock and download it. No subscription.`,
+      `The good news: for a typical Lovable app the policy is very predictable, because the Lovable stack is predictable. PrivacyPage asks you a handful of plain-English questions about what your app actually does and generates a complete, customized privacy policy you can paste straight into your project. You get a free preview of the opening sections — you pay <strong>${PRICE.single} once</strong> only if you want to unlock and download the rest. No subscription.`,
     ],
     dataHeading: 'What your Lovable app is probably collecting',
     dataPoints: [
@@ -134,7 +134,7 @@ export const builderPages: BuilderPage[] = [
       },
       {
         q: 'Is PrivacyPage really free?',
-        a: `Generating and previewing the full document is free with no account. Unlocking the download (HTML, Markdown, plain text) is a one-time ${PRICE.single} payment — or ${PRICE.bundle} for all five document types. There is no subscription.`,
+        a: `Previewing the opening sections is free, with no account. Unlocking the download (HTML, Markdown, plain text) is a one-time ${PRICE.single} payment — or ${PRICE.bundle} for all five document types. There is no subscription.`,
       },
     ],
     relatedBlog: [
@@ -154,7 +154,7 @@ export const builderPages: BuilderPage[] = [
       'From prompt to production on Bolt.new — don\'t let a missing legal page be the thing that blocks your launch.',
     intro: [
       `Bolt.new gets you from idea to deployed full-stack app astonishingly fast — and with Expo support, even to a native iOS or Android app. That speed cuts both ways: it is now completely normal to reach "submit to the App Store" within a week of starting, long before anyone has thought about legal documents. Both Apple and Google will stop you right there, because a privacy policy URL is a hard requirement for submission.`,
-      `PrivacyPage exists for exactly this moment. Answer a short wizard about what your Bolt app collects — accounts, payments, analytics, AI calls — and get a complete privacy policy in about 60 seconds. Preview the whole document for free; pay <strong>${PRICE.single} once</strong> to unlock it. No subscription, no account.`,
+      `PrivacyPage exists for exactly this moment. Answer a short wizard about what your Bolt app collects — accounts, payments, analytics, AI calls — and get a complete privacy policy in about 60 seconds. Preview the opening sections free; pay <strong>${PRICE.single} once</strong> to unlock the rest. No subscription, no account.`,
     ],
     dataHeading: 'What a typical Bolt.new app collects',
     dataPoints: [
@@ -202,7 +202,7 @@ export const builderPages: BuilderPage[] = [
       },
       {
         q: 'How long does this actually take?',
-        a: 'The wizard is roughly ten questions about your app name, data collected, and third-party services. Most people finish in about a minute and preview the full document immediately, free.',
+        a: 'The wizard is roughly ten questions about your app name, data collected, and third-party services. Most people finish in about a minute and preview the opening sections immediately, free.',
       },
     ],
     relatedBlog: [
@@ -222,7 +222,7 @@ export const builderPages: BuilderPage[] = [
       'v0 writes the Next.js code. This writes the legal page — customized to your stack in 60 seconds.',
     intro: [
       `v0 by Vercel turns prompts into production-grade Next.js apps, and one-click deploys put them live on a vercel.app URL minutes later. What v0 will not generate for you is the privacy policy — and the moment your app has a sign-up form, a waitlist, analytics, or a contact form, you are collecting personal data and legally need one.`,
-      `PrivacyPage is built for developers shipping fast: a ~10-question wizard, a complete customized privacy policy in about 60 seconds, and the whole document free to preview. Unlocking the export costs <strong>${PRICE.single} one time</strong> — deliberately the opposite of the subscription pricing most policy tools charge for what is, for you, a one-time need.`,
+      `PrivacyPage is built for developers shipping fast: a ~10-question wizard, a complete customized privacy policy in about 60 seconds, and a free preview of the opening sections. Unlocking the export costs <strong>${PRICE.single} one time</strong> — deliberately the opposite of the subscription pricing most policy tools charge for what is, for you, a one-time need.`,
     ],
     dataHeading: 'What a typical v0 app collects',
     dataPoints: [
@@ -290,7 +290,7 @@ export const builderPages: BuilderPage[] = [
       'Cursor helped you write the code. The one file it can\'t write from scratch is your privacy policy — this can.',
     intro: [
       `Cursor has collapsed the time between idea and shipped product. Solo developers are now taking full apps — Next.js SaaS, React Native apps, Swift apps — from empty repo to store submission in days. The legal paperwork hasn't gotten faster to match: a privacy policy is still a hard requirement for the App Store, Google Play, Google OAuth verification, and privacy laws like GDPR and CCPA, and an AI editor can't reliably know your legal obligations or your actual data flows.`,
-      `That's the gap PrivacyPage fills. Instead of asking an LLM to hallucinate a policy (risky — it will happily invent practices you don't have), you answer ~10 concrete questions about what your app really collects, and get a complete, accurate policy in about 60 seconds. Free to preview in full; <strong>${PRICE.single} once</strong> to unlock. No subscription.`,
+      `That's the gap PrivacyPage fills. Instead of asking an LLM to hallucinate a policy (risky — it will happily invent practices you don't have), you answer ~10 concrete questions about what your app really collects, and get a complete, accurate policy in about 60 seconds. Preview the opening sections free; <strong>${PRICE.single} once</strong> to unlock. No subscription.`,
     ],
     dataHeading: 'What Cursor-built apps typically collect',
     dataPoints: [
@@ -358,7 +358,7 @@ export const builderPages: BuilderPage[] = [
       'Replit Agent built and deployed your app. Give it the privacy policy it needs before you share the link.',
     intro: [
       `Replit Agent takes you from a prompt to a deployed app on a live replit.app URL — often with Replit Auth logins and a database wired in automatically. That "it just works" magic has a quiet consequence: the moment someone logs in, your app is collecting personal data, and you are the one legally responsible for it. Not Replit — you.`,
-      `A privacy policy is the baseline requirement, and it is genuinely easy to get right for a Replit app because the stack is so standard. PrivacyPage generates a policy customized to your app in about 60 seconds: answer a short wizard, preview the entire document free, and pay <strong>${PRICE.single} once</strong> only when you want to unlock the export. No subscription — which matters, because your app might be a weekend experiment, not a business with a software budget.`,
+      `A privacy policy is the baseline requirement, and it is genuinely easy to get right for a Replit app because the stack is so standard. PrivacyPage generates a policy customized to your app in about 60 seconds: answer a short wizard, preview the opening sections free, and pay <strong>${PRICE.single} once</strong> only when you want to unlock the export. No subscription — which matters, because your app might be a weekend experiment, not a business with a software budget.`,
     ],
     dataHeading: 'What your Replit app is probably collecting',
     dataPoints: [
@@ -406,7 +406,7 @@ export const builderPages: BuilderPage[] = [
       },
       {
         q: 'What does the free preview include?',
-        a: `The complete generated document, viewable in full before you pay. The one-time ${PRICE.single} payment unlocks download and export in HTML, Markdown, and plain text.`,
+        a: `A free preview of the opening sections, before you pay. The one-time ${PRICE.single} payment unlocks the rest of the document, plus download and export in HTML, Markdown, and plain text.`,
       },
     ],
     relatedBlog: [
@@ -431,14 +431,14 @@ export const competitorPages: CompetitorPage[] = [
       'Both generate privacy policies. One bills you every month for it.',
     intro: [
       `Termly is one of the most popular compliance platforms on the web, and deservedly so — it pairs policy generators with a full consent management platform. The catch is the pricing model: meaningful use requires a per-website subscription, billed monthly or annually (<a href="https://termly.io/pricing/" target="_blank" rel="noopener noreferrer nofollow">termly.io/pricing</a>). Paid plans are tiered (Starter, Pro+), and the free plan covers a single basic policy with Termly branding.`,
-      `PrivacyPage takes the opposite approach: you generate the document free, preview all of it, and pay <strong>${PRICE.single} once</strong> to unlock it (or ${PRICE.bundle} for all five document types). You own the file, host it anywhere, and regenerate updates free for life. One payment, not a recurring subscription — for a developer who needs a policy, not a compliance department.`,
+      `PrivacyPage takes the opposite approach: you generate the document, preview the opening sections free, and pay <strong>${PRICE.single} once</strong> to unlock it (or ${PRICE.bundle} for all five document types). You own the file, host it anywhere, and regenerate updates free for life. One payment, not a recurring subscription — for a developer who needs a policy, not a compliance department.`,
     ],
     pricingSourceNote:
       'For current Termly plans and pricing, see termly.io/pricing. Plans and promotions change.',
     comparisonRows: [
       { label: 'Price', them: 'Subscription pricing, billed monthly or annually, per website', us: `${PRICE.single} once per document, or ${PRICE.bundle} once for all 5` },
       { label: 'Payment over time', them: 'Recurring subscription for as long as the site stays live', us: `${PRICE.single}–${PRICE.bundle}, one time, total` },
-      { label: 'Free tier', them: '1 basic policy, Termly branding, 10k banner views', us: 'Full free preview of every document, no account' },
+      { label: 'Free tier', them: '1 basic policy, Termly branding, 10k banner views', us: 'Free preview, no account' },
       { label: 'Document ownership', them: 'Hosted policies or HTML embed, managed in your Termly account', us: 'You export HTML/Markdown/text and host anywhere' },
       { label: 'Cookie consent banner', them: 'Yes — full CMP with consent logs, Google Consent Mode v2, IAB TCF', us: 'No — documents only' },
       { label: 'Auto-updating policies', them: 'Yes, on Pro+', us: 'No — free manual regeneration anytime, forever' },
@@ -470,7 +470,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         title: 'Faster, no account',
-        desc: 'No signup, ~10 questions, full free preview in about 60 seconds. Termly\'s wizard is more involved and gates features behind the account and plan tiers.',
+        desc: 'No signup, ~10 questions, and a free preview of the opening sections in about 60 seconds. Termly\'s wizard is more involved and gates features behind the account and plan tiers.',
       },
       {
         title: 'Fair pricing for indie devs worldwide',
@@ -489,7 +489,7 @@ export const competitorPages: CompetitorPage[] = [
     faqs: [
       {
         q: 'Is Termly free plan enough for my app?',
-        a: 'Termly\'s free plan covers one basic policy with Termly branding and limited edits. For a simple site it may suffice; anything needing multiple documents, edits, or no third-party branding pushes you to a paid subscription plan (Starter or Pro+). PrivacyPage\'s free preview shows your complete document before any payment.',
+        a: 'Termly\'s free plan covers one basic policy with Termly branding and limited edits. For a simple site it may suffice; anything needing multiple documents, edits, or no third-party branding pushes you to a paid subscription plan (Starter or Pro+). PrivacyPage lets you preview the opening sections before any payment.',
       },
       {
         q: 'What happens to my Termly policy if I cancel?',
@@ -560,7 +560,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         title: 'Built for shipping fast',
-        desc: 'No account, ~10 questions, full free preview. You can go from nothing to a hosted policy inside the same hour you submit to the App Store.',
+        desc: 'No account, ~10 questions, and a free preview of the opening sections. You can go from nothing to a hosted policy inside the same hour you submit to the App Store.',
       },
       {
         title: 'Own it forever',
@@ -582,7 +582,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         q: 'What about iubenda\'s free plan?',
-        a: 'iubenda\'s free plan is limited; see iubenda.com/en/pricing. PrivacyPage\'s free preview is the full document for any app; you pay only to export it.',
+        a: 'iubenda\'s free plan is limited; see iubenda.com/en/pricing. PrivacyPage\'s free preview shows the opening sections for any app; you pay to unlock and export the full document.',
       },
       {
         q: 'Can I use PrivacyPage for a client project?',
@@ -606,7 +606,7 @@ export const competitorPages: CompetitorPage[] = [
       'GetTerms offers subscription and lifetime plans for a hosted platform. PrivacyPage is a one-time payment for the documents.',
     intro: [
       `GetTerms deserves credit as one of the few compliance tools that offers a lifetime option alongside a subscription. As of November 2026 (<a href="https://getterms.io/pricing" target="_blank" rel="noopener noreferrer nofollow">getterms.io/pricing</a>): the <strong>Starter plan</strong> is a per-site subscription that covers a privacy policy and cookie banner, but notably <em>not</em> Terms &amp; Conditions. The <strong>Business plan</strong> adds all policies and removes branding. Lifetime licenses are also available on both tiers, per site.`,
-      `PrivacyPage's whole model is a one-time payment, priced for indie developers: <strong>${PRICE.single} once</strong> for a document, <strong>${PRICE.bundle} once</strong> for all five document types, full free preview first, no account. If what you need is the legal documents — not a hosted consent platform — the two products are built for different jobs.`,
+      `PrivacyPage's whole model is a one-time payment, priced for indie developers: <strong>${PRICE.single} once</strong> for a document, <strong>${PRICE.bundle} once</strong> for all five document types, a free preview of the opening sections first, no account. If what you need is the legal documents — not a hosted consent platform — the two products are built for different jobs.`,
     ],
     pricingSourceNote:
       'For current GetTerms plans and pricing, see getterms.io/pricing. Promotional lifetime deals appear periodically. Plans and promotions change.',
@@ -645,7 +645,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         title: 'No account, instant preview',
-        desc: 'Preview the complete document before paying anything, with no signup. GetTerms\'s free tier produces a branded basic policy and requires an account.',
+        desc: 'Preview the opening sections before paying anything, with no signup. GetTerms\'s free tier produces a branded basic policy and requires an account.',
       },
       {
         title: 'Own the file',
@@ -702,7 +702,7 @@ export const competitorPages: CompetitorPage[] = [
       { label: 'Auto-updates on law changes', them: 'Yes — embedded policies update automatically', us: 'No — free manual regeneration anytime' },
       { label: 'Cookie consent tool', them: 'Included', us: 'No — documents only' },
       { label: 'Document ownership', them: 'Embedded via Termageddon; requires active license', us: 'Full export — HTML, Markdown, plain text' },
-      { label: 'Free tier / preview', them: 'No free tier', us: 'Full document preview free, no account' },
+      { label: 'Free tier / preview', them: 'No free tier', us: 'Free preview, no account' },
       { label: 'One-time purchase option', them: 'No', us: 'That\'s the whole model' },
     ],
     prosThem: [
@@ -730,7 +730,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         title: 'Try before paying anything',
-        desc: 'Termageddon has no free tier. PrivacyPage shows you the complete generated document before you decide.',
+        desc: 'Termageddon has no free tier. PrivacyPage lets you preview the opening sections before you decide.',
       },
       {
         title: 'Priced for indie developers',
@@ -773,10 +773,10 @@ export const competitorPages: CompetitorPage[] = [
       `FreePrivacyPolicy's free tier is basic; premium clauses are à-la-carte one-time fees that add up. PrivacyPage: full doc, ${PRICE.single} flat. 2026 comparison.`,
     keyword: 'freeprivacypolicy alternative',
     tagline:
-      'Both offer free policies and one-time payments. The difference is what the free version leaves out — and how the paid version is priced.',
+      'Both let you start free, then pay once. The difference is what the free version leaves out — and how the paid version is priced.',
     intro: [
       `FreePrivacyPolicy.com is one of the oldest and best-known policy generators, and to its credit it shares PrivacyPage's core belief: legal documents should be a one-time purchase, not a subscription. Its free tier produces a genuinely free but basic policy. The paid model is <strong>à-la-carte</strong>: premium clauses are individual one-time fees — for example, clauses for payment processors, analytics tools like Google Analytics, remarketing, and GDPR/CCPA coverage are each added during its wizard (per third-party reviews). A comprehensive premium policy is a sum of those clause fees, which varies with the clauses selected.`,
-      `PrivacyPage flattens all of that: <strong>${PRICE.single} once</strong> buys the complete document — GDPR and CCPA sections, all your third-party services, everything — with the entire document previewable free before you pay. No clause menu, no surprise line items at checkout.`,
+      `PrivacyPage flattens all of that: <strong>${PRICE.single} once</strong> buys the complete document — GDPR and CCPA sections, all your third-party services, everything — with a free preview of the opening sections before you pay. No clause menu, no surprise line items at checkout.`,
     ],
     pricingSourceNote:
       'FreePrivacyPolicy.com doesn\'t publish a price list; premium clauses are added for one-time fees during its wizard, per third-party reviews. Totals vary by selection.',
@@ -785,7 +785,7 @@ export const competitorPages: CompetitorPage[] = [
       { label: 'Typical paid total', them: 'Varies with the clauses you add', us: `${PRICE.single}, fixed and known upfront` },
       { label: 'GDPR / CCPA sections', them: 'Optional add-on wording (paid premium clauses, per third-party reviews)', us: 'Included' },
       { label: 'Third-party service clauses', them: 'Paid premium clauses (e.g. analytics, payments, ads)', us: 'Included — the wizard asks what you use' },
-      { label: 'Free tier', them: 'Yes — basic policy; GDPR, CCPA/CPRA and service clauses are optional add-ons', us: 'Full document preview, free, no account' },
+      { label: 'Free tier', them: 'Yes — basic policy; GDPR, CCPA/CPRA and service clauses are optional add-ons', us: 'Free preview, no account' },
       { label: 'Other document types', them: 'Separate generators, separately priced', us: `All 5 in the ${PRICE.bundle} bundle` },
       { label: 'Subscription', them: 'None — one-time fees', us: 'None — one-time' },
       { label: 'Auto-updates', them: 'Hosted policy revisions applied to hosted version', us: 'Free manual regeneration, lifetime' },
@@ -810,8 +810,8 @@ export const competitorPages: CompetitorPage[] = [
         desc: `FreePrivacyPolicy adds premium clauses — such as analytics, payment processor, remarketing and GDPR/CCPA wording — for one-time fees, so the total depends on what you add. PrivacyPage is ${PRICE.single}, period, and you knew that before you started.`,
       },
       {
-        title: 'Free means the full document',
-        desc: 'Our free preview is the complete document including GDPR/CCPA sections — you pay only to export it.',
+        title: 'Preview before you pay',
+        desc: 'You can preview the opening sections free, with no account, then pay to export the full document.',
       },
       {
         title: 'Built for apps, not just websites',
@@ -819,7 +819,7 @@ export const competitorPages: CompetitorPage[] = [
       },
       {
         title: 'Modern, 60-second flow',
-        desc: 'No account, about ten questions, full preview before you pay.',
+        desc: 'No account, about ten questions, a free preview of the opening sections before you pay.',
       },
     ],
     verdict: [
@@ -836,8 +836,8 @@ export const competitorPages: CompetitorPage[] = [
         a: `Pricing structure. FreePrivacyPolicy charges one-time fees for premium clauses (for example analytics tools, payment processors, or GDPR/CCPA wording), so the total depends on what you select. PrivacyPage charges one flat ${PRICE.single} for the complete customized document regardless of how many services you use.`,
       },
       {
-        q: 'Can I see exactly what I\'m getting before paying?',
-        a: 'With PrivacyPage, yes — the full generated document is previewable free, no account. That is the safest way to judge any generator: read the actual output before paying.',
+        q: 'Can I read the document before paying?',
+        a: 'With PrivacyPage you can preview the opening sections free, no account, and read that output before you pay. The purchase unlocks the rest of the document.',
       },
       {
         q: 'What if I need terms of service and a cookie policy too?',
