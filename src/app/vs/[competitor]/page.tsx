@@ -123,7 +123,7 @@ export default async function CompetitorComparisonPage({ params }: { params: Pro
 
         <SeoCtaCard
           heading={`Skip the subscription. Pay ${PRICE.single} once.`}
-          sub="Generate your document free right now — see the full preview before paying a cent."
+          sub="Generate your document right now — see a free preview of the opening sections before you pay."
         />
 
         <SeoFaqSection faqs={page.faqs} />
