@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Fraunces, Newsreader, Geist, Geist_Mono } from "next/font/google";
 
@@ -148,7 +149,10 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="antialiased bg-paper text-ink">{children}</body>
+      <body className="antialiased bg-paper text-ink">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
