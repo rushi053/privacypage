@@ -60,6 +60,61 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PrivacyPage",
+  "url": "https://privacypage.io",
+  "logo": "https://privacypage.io/icon.svg",
+  "description": "Generate privacy policies and legal documents for apps. Free preview, one-time payment.",
+  "founder": {
+    "@type": "Person",
+    "name": "Rushiraj Jadeja",
+    "url": "https://rushiraj.me"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "rushirajjadeja@gmail.com",
+    "contactType": "customer support"
+  }
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PrivacyPage",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://privacypage.io",
+  "description": "Generate professional privacy policies, terms of service, EULAs, and more in 60 seconds. GDPR & CCPA compliant. Free preview, one-time payment.",
+  "offers": [
+    {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free preview - see how it works",
+      "availability": "https://schema.org/InStock"
+    },
+    ...(["USD", "INR"] as const).flatMap((c) => [
+      {
+        "@type": "Offer",
+        "price": String(PRICING[c].single),
+        "priceCurrency": c,
+        "description": "Pro - Single Document (one-time payment)" + (c === "INR" ? " - India" : ""),
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "price": String(PRICING[c].bundle),
+        "priceCurrency": c,
+        "description": "Bundle - All 5 Documents (one-time payment)" + (c === "INR" ? " - India" : ""),
+        "availability": "https://schema.org/InStock"
+      }
+    ])
+  ],
+  "featureList": ["Privacy Policy Generator", "Terms of Service Generator", "EULA Generator", "Cookie Policy Generator", "Disclaimer Generator", "GDPR Compliant", "CCPA Compliant"]
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -68,66 +123,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fDisplay.variable} ${fDoc.variable} ${fUi.variable} ${fMono.variable}`}>
       <head>
-        {/* Organization Schema */}
-        <Script id="schema-organization" type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "PrivacyPage",
-            "url": "https://privacypage.io",
-            "logo": "https://privacypage.io/icon.svg",
-            "description": "Generate privacy policies and legal documents for apps. Free preview, one-time payment.",
-            "founder": {
-              "@type": "Person",
-              "name": "Rushiraj Jadeja",
-              "url": "https://rushiraj.me"
-            },
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "email": "rushirajjadeja@gmail.com",
-              "contactType": "customer support"
-            }
-          })}
-        </Script>
-
-        {/* SoftwareApplication Schema */}
-        <Script id="schema-software" type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "PrivacyPage",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Web",
-            "url": "https://privacypage.io",
-            "description": "Generate professional privacy policies, terms of service, EULAs, and more in 60 seconds. GDPR & CCPA compliant. Free preview, one-time payment.",
-            "offers": [
-              {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD",
-                "description": "Free preview - see how it works",
-                "availability": "https://schema.org/InStock"
-              },
-              ...(["USD", "INR"] as const).flatMap((c) => [
-                {
-                  "@type": "Offer",
-                  "price": String(PRICING[c].single),
-                  "priceCurrency": c,
-                  "description": "Pro - Single Document (one-time payment)" + (c === "INR" ? " - India" : ""),
-                  "availability": "https://schema.org/InStock"
-                },
-                {
-                  "@type": "Offer",
-                  "price": String(PRICING[c].bundle),
-                  "priceCurrency": c,
-                  "description": "Bundle - All 5 Documents (one-time payment)" + (c === "INR" ? " - India" : ""),
-                  "availability": "https://schema.org/InStock"
-                }
-              ])
-            ],
-            "featureList": ["Privacy Policy Generator", "Terms of Service Generator", "EULA Generator", "Cookie Policy Generator", "Disclaimer Generator", "GDPR Compliant", "CCPA Compliant"]
-          })}
-        </Script>
+        {/* Organization and SoftwareApplication schema: plain <script> so
+            the JSON-LD is in the initial HTML for crawlers. Do not use
+            next/script here — it can omit these from the first response. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+        />
 
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-DLKEQ0N44H"

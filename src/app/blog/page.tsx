@@ -33,9 +33,20 @@ function keywordTag(keyword: string): string | null {
 
 export default function BlogPage() {
   const posts = getAllPosts()
+  const list = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: posts.map((post, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `https://privacypage.io/blog/${post.slug}`,
+      name: post.title,
+    })),
+  }
 
   return (
     <main className="mx-auto max-w-[1040px] px-6 md:px-8 pt-16 md:pt-24 pb-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(list) }} />
       <p className="font-[family-name:var(--f-mono)] text-[14px] text-[#0F5C63] mb-6">Blog</p>
       <h1 className="font-[family-name:var(--f-display)] text-[40px] md:text-[56px] leading-[1.1] tracking-[-0.02em] mb-8">Blog</h1>
       <p className="font-[family-name:var(--f-doc)] text-[20px] leading-[1.6] text-[#16181D]/85 max-w-[640px] mb-8">

@@ -20,6 +20,24 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Host-only 308s: www and the old privacy.rushiraj.me alias go to the apex,
+  // preserving the path. The apex host is not listed, so it cannot loop.
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.privacypage.io" }],
+        destination: "https://privacypage.io/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "privacy.rushiraj.me" }],
+        destination: "https://privacypage.io/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

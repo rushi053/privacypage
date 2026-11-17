@@ -36,8 +36,20 @@ export default async function PricingPage() {
     { name: 'Single document', price: p.singleDisplay, note: 'One-time', points: ['One full document: Privacy Policy, Terms, EULA, Cookie Policy or Disclaimer', 'Export as HTML, Markdown or plain text', 'Regenerate when your app changes'], cta: 'Generate a document' },
     { name: 'Bundle — all 5', price: p.bundleDisplay, note: 'One-time', points: ['Privacy Policy, Terms of Service, EULA, Cookie Policy and Disclaimer', 'Export as HTML, Markdown or plain text', 'Regenerate when your app changes'], cta: 'Get the bundle' },
   ]
+  // WebPage only — no Offer/price nodes. Root layout already publishes the
+  // SoftwareApplication offers; this copies the existing page metadata.
+  const pageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Pricing — One-Time Payment, No Subscription | PrivacyPage',
+    description: 'Preview any document free with no account. Pay once to unlock a single document or the bundle of all five. No auto-renewals.',
+    url: 'https://privacypage.io/pricing',
+    isPartOf: { '@type': 'WebSite', name: 'PrivacyPage', url: 'https://privacypage.io' },
+  }
+
   return (
     <ClauseShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
       <main className="mx-auto max-w-[1040px] px-6 md:px-8 pt-16 md:pt-24 pb-16">
         <p className="font-[family-name:var(--f-mono)] text-[14px] text-[#0F5C63] mb-6">Pricing · prices in {p.currency}</p>
         <h1 className="font-[family-name:var(--f-display)] text-[40px] md:text-[56px] leading-[1.1] tracking-[-0.02em] mb-8">Pay once. No subscription.</h1>
