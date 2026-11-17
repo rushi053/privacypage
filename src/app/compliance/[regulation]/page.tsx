@@ -101,7 +101,7 @@ export default async function RegulationGuidePage({ params }: { params: Promise<
 
         <SeoCtaCard
           heading={`Generate a ${page.name}-ready privacy policy`}
-          sub={`Answer ~10 questions about your app. Preview the full document free — pay ${PRICE.single} once only to unlock it.`}
+          sub={`Answer ~10 questions about your app. Preview the opening sections free — pay ${PRICE.single} once only to unlock it.`}
         />
 
         <SeoFaqSection faqs={page.faqs} />
