@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { sbSelect, sbUpdate } from "@/lib/supabase-server";
 import { checkLicenseEntitlement } from "@/lib/entitlements";
 import { generateDocumentContent } from "@/lib/generate-content";
+import { readDocRequest } from "@/lib/parse-doc-request";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 // POST /api/document/[id]/regenerate  body: { licenseKey }
@@ -23,13 +24,14 @@ export async function POST(
     );
   }
 
-  let licenseKey: string | undefined;
-  try {
-    const body = await req.json();
-    licenseKey = typeof body?.licenseKey === "string" ? body.licenseKey : undefined;
-  } catch {
-    // no/invalid JSON body -> handled below
+  // Body is { licenseKey } only. Stored document inputs, not this body, are
+  // what get regenerated. Malformed JSON, non-objects, and oversized payloads
+  // are rejected here; a missing key is still 401.
+  const parsed = await readDocRequest(req);
+  if (!parsed.ok) {
+    return NextResponse.json(parsed.body, { status: parsed.status });
   }
+  const licenseKey = parsed.data.licenseKey;
   if (!licenseKey) {
     return NextResponse.json({ error: "licenseKey required" }, { status: 401 });
   }
