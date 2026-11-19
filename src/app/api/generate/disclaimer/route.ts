@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { respondWithGeneratedDocument } from "@/lib/generate-response";
 import { generateDocumentContent } from "@/lib/generate-content";
+import { readDocRequest } from "@/lib/parse-doc-request";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
@@ -11,7 +12,11 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const data = await req.json();
+  const parsed = await readDocRequest(req);
+  if (!parsed.ok) {
+    return NextResponse.json(parsed.body, { status: parsed.status });
+  }
+  const data = parsed.data;
 
   let docText = await generateDocumentContent("disclaimer", data);
   if (!docText) {
