@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Fraunces, Newsreader, Geist, Geist_Mono } from "next/font/google";
+import { BLOG_FEED_TITLE, BLOG_FEED_URL } from "@/lib/feed";
 
 const fDisplay = Fraunces({ subsets: ["latin"], variable: "--f-display", display: "swap" });
 const fDoc = Newsreader({ subsets: ["latin"], variable: "--f-doc", display: "swap" });
@@ -36,7 +37,15 @@ export const metadata: Metadata = {
   ],
   icons: { icon: "/icon.svg" },
   metadataBase: new URL("https://privacypage.io"),
-  alternates: { canonical: "https://privacypage.io" },
+  alternates: {
+    canonical: "https://privacypage.io",
+    // Next replaces `alternates` when a child segment exports it, so this
+    // feed link does not override per-page canonicals. Blog routes set
+    // `types` again beside their own canonical.
+    types: {
+      "application/rss+xml": [{ url: BLOG_FEED_URL, title: BLOG_FEED_TITLE }],
+    },
+  },
     openGraph: {
     title: "PrivacyPage — Privacy Policy Generator for Apps (Free, No Signup)",
     description:
