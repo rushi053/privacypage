@@ -2,12 +2,18 @@ import { getAllPosts } from '@/lib/blog'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { ArrowRightIcon } from '@/components/ClauseIcons'
+import { BLOG_FEED_TITLE, BLOG_FEED_URL } from '@/lib/feed'
 import { rootOgImages } from '@/lib/og-image'
 
 export const metadata: Metadata = {
   title: 'Blog — PrivacyPage | Privacy Policy Tips & Guides',
   description: 'Learn about privacy policies, GDPR compliance, app store requirements, and more. Practical guides for developers and startups.',
-  alternates: { canonical: 'https://privacypage.io/blog' },
+  alternates: {
+    canonical: 'https://privacypage.io/blog',
+    types: {
+      'application/rss+xml': [{ url: BLOG_FEED_URL, title: BLOG_FEED_TITLE }],
+    },
+  },
   openGraph: {
     title: 'Blog — PrivacyPage',
     description: 'Privacy policy guides, GDPR tips, and app store compliance articles for developers.',
