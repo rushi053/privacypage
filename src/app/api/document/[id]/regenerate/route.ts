@@ -4,6 +4,7 @@ import { checkLicenseEntitlement } from "@/lib/entitlements";
 import { generateDocumentContent } from "@/lib/generate-content";
 import { readDocRequest } from "@/lib/parse-doc-request";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
+import { isDocumentId, licenseKeyExceedsLimit } from "@/lib/document-id";
 
 // POST /api/document/[id]/regenerate  body: { licenseKey }
 // Re-runs the LLM over the document's stored inputs and replaces its content -
@@ -16,6 +17,9 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
+  if (!isDocumentId(id)) {
+    return NextResponse.json({ error: "not_found" }, { status: 404 });
+  }
 
   if (!(await checkRateLimit(getClientIp(req)))) {
     return NextResponse.json(
@@ -50,6 +54,12 @@ export async function POST(
 
   if (!doc) {
     return NextResponse.json({ error: "not_found" }, { status: 404 });
+  }
+
+  // Same cap as the GET license query param. An oversized key is not entitled
+  // and is not sent to the entitlement query.
+  if (licenseKeyExceedsLimit(licenseKey)) {
+    return NextResponse.json({ error: "locked" }, { status: 404 });
   }
 
   try {

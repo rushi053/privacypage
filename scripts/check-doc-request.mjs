@@ -6,6 +6,7 @@ import path from 'node:path'
 import { test } from 'node:test'
 import { Buffer } from 'node:buffer'
 import { buildDocPrompt } from '../src/lib/generate-content.ts'
+import { isDocumentId, LICENSE_KEY_MAX_CHARS, licenseKeyExceedsLimit } from '../src/lib/document-id.ts'
 import {
   DOC_REQUEST_MAX_BYTES,
   DOC_REQUEST_MAX_FIELD_CHARS,
@@ -13,6 +14,8 @@ import {
   readDocRequest,
 } from '../src/lib/parse-doc-request.ts'
 import { wizardConfigs } from '../src/lib/wizardConfigs.ts'
+
+const VALID_DOCUMENT_ID = 'f0ad1155-34b1-4e26-b382-94c5ed113031'
 
 const root = path.join(import.meta.dirname, '..')
 
@@ -214,6 +217,65 @@ test('surrounding whitespace is trimmed and the prompt matches the trimmed value
   assert.deepEqual(data, trimmed)
   assert.equal(buildDocPrompt('privacy', data), buildDocPrompt('privacy', trimmed))
   assert.notEqual(buildDocPrompt('privacy', data), buildDocPrompt('privacy', padded))
+})
+
+test('isDocumentId accepts only canonical 36-character UUIDs', () => {
+  assert.equal(isDocumentId(VALID_DOCUMENT_ID), true)
+  assert.equal(isDocumentId(VALID_DOCUMENT_ID.toUpperCase()), true)
+  assert.equal(isDocumentId('F0AD1155-34b1-4E26-B382-94c5ed113031'), true)
+
+  assert.equal(isDocumentId('abc'), false)
+  assert.equal(isDocumentId(''), false)
+  assert.equal(isDocumentId('a'.repeat(36)), false)
+  assert.equal(isDocumentId(`${VALID_DOCUMENT_ID}0`), false)
+  assert.equal(isDocumentId('x'.repeat(10_000)), false)
+  assert.equal(isDocumentId('x&select=*'), false)
+  assert.equal(isDocumentId('eq.1'), false)
+  assert.equal(isDocumentId(`${VALID_DOCUMENT_ID}&select=*`), false)
+  assert.equal(isDocumentId(`id=eq.${VALID_DOCUMENT_ID}`), false)
+  assert.equal(isDocumentId(VALID_DOCUMENT_ID.slice(0, 35)), false)
+  assert.equal(isDocumentId(` ${VALID_DOCUMENT_ID}`), false)
+  assert.equal(isDocumentId(`${VALID_DOCUMENT_ID} `), false)
+  assert.equal(isDocumentId(VALID_DOCUMENT_ID.replaceAll('-', '')), false)
+  assert.equal(isDocumentId(`{${VALID_DOCUMENT_ID}}`), false)
+  assert.equal(isDocumentId(`urn:uuid:${VALID_DOCUMENT_ID}`), false)
+})
+
+test('license keys longer than 64 characters are over the limit; issued keys are not', () => {
+  assert.equal(LICENSE_KEY_MAX_CHARS, 64)
+  assert.equal(licenseKeyExceedsLimit('PP-A1B2C3D4'), false)
+  assert.equal(licenseKeyExceedsLimit('x'.repeat(64)), false)
+  assert.equal(licenseKeyExceedsLimit('x'.repeat(65)), true)
+  assert.equal(licenseKeyExceedsLimit('x'.repeat(10_000)), true)
+})
+
+test('document routes validate the id before any lookup or generation', () => {
+  const get = fs.readFileSync(path.join(root, 'src/app/api/document/[id]/route.ts'), 'utf8')
+  const regen = fs.readFileSync(path.join(root, 'src/app/api/document/[id]/regenerate/route.ts'), 'utf8')
+
+  for (const [rel, src] of [
+    ['GET', get],
+    ['regenerate', regen],
+  ]) {
+    const idCheck = src.indexOf('if (!isDocumentId(')
+    const notFound = src.indexOf('not_found', idCheck)
+    const select = src.indexOf('await sbSelect')
+    const entitlement = src.indexOf('await checkLicenseEntitlement(')
+    const cap = src.indexOf('licenseKeyExceedsLimit(')
+    assert.ok(idCheck !== -1 && notFound !== -1 && select !== -1, rel)
+    assert.ok(idCheck < notFound && notFound < select, rel)
+    assert.ok(cap !== -1 && entitlement !== -1 && select < cap && cap < entitlement, rel)
+  }
+
+  const missingLicense = get.indexOf('license query param required')
+  assert.ok(get.indexOf('if (!isDocumentId(') < missingLicense)
+  assert.ok(missingLicense < get.indexOf('await sbSelect'))
+
+  const regenId = regen.indexOf('if (!isDocumentId(')
+  const regenRate = regen.indexOf('await checkRateLimit(')
+  const regenParse = regen.indexOf('await readDocRequest(')
+  const regenGenerate = regen.indexOf('generateDocumentContent(')
+  assert.ok(regenId !== -1 && regenId < regenRate && regenRate < regenParse && regenParse < regenGenerate)
 })
 
 test('generate routes parse after the rate limit and before generation', () => {
