@@ -12,7 +12,8 @@
     "validate:sitemap": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/validate-sitemap.mjs",
     "validate:links": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/validate-links.mjs",
     "validate:urls": "node scripts/validate-platforms.mjs --check-urls",
-    "check:doc-request": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test scripts/check-doc-request.mjs"
+    "check:doc-request": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test scripts/check-doc-request.mjs",
+    "check:currency": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test scripts/check-currency.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
