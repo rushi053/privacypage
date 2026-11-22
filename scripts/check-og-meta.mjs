@@ -3,11 +3,9 @@
 // Fails if any page is missing og:image, twitter:image, or
 // twitter:card=summary_large_image. Zero dependencies.
 //
-// Not wired into package.json or CI. Draft PR #23 edits both.
-// This reads `.next/server/app` produced by `next build`, so it has to run
-// after the build, not in `prebuild`. After #23 merges, add a CI step:
-//   - name: Check social images
-//     run: node scripts/check-og-meta.mjs
+// Reads `.next/server/app` produced by `next build`, so it runs after the
+// build, not in `prebuild`. Run with `npm run check:og-meta`, or both
+// post-build checks via `npm run check:postbuild`.
 
 import fs from 'node:fs'
 import path from 'node:path'
