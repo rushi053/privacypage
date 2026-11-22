@@ -4,8 +4,9 @@
 //      without dropping their canonical.
 //   2. The feed route's item links match blog slugs, and the channel <link>
 //      plus <atom:link rel="self"> are absolute https://privacypage.io URLs.
-// Not wired into package.json or CI. Run after `npm run build`:
-//   node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-feed.mjs
+// Reads `.next/server/app` produced by `next build`, so it runs after the
+// build, not in `prebuild`. Run with `npm run check:feed`, or both post-build
+// checks via `npm run check:postbuild`.
 
 import fs from 'node:fs'
 import path from 'node:path'

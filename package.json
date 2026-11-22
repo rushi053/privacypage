@@ -13,7 +13,10 @@
     "validate:links": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/validate-links.mjs",
     "validate:urls": "node scripts/validate-platforms.mjs --check-urls",
     "check:doc-request": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test scripts/check-doc-request.mjs",
-    "check:currency": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test scripts/check-currency.mjs"
+    "check:currency": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test scripts/check-currency.mjs",
+    "check:feed": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-feed.mjs",
+    "check:og-meta": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-og-meta.mjs",
+    "check:postbuild": "npm run check:feed && npm run check:og-meta"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
