@@ -36,12 +36,12 @@ function displayFor(currency, amount) {
   return `${symbol}${match[1]}.${(match[2] ?? '').padEnd(2, '0')}`
 }
 
-test('currencyForCountry: India and localhost are INR, other countries are USD', () => {
+// The fallback for a missing or empty country is deliberately not asserted here.
+// QA flagged geo-fail -> INR for non-Indian visitors as a bug, so this check must
+// not lock it in. Only explicit country codes are covered.
+test('currencyForCountry: India is INR, other countries are USD', () => {
   assert.equal(currencyForCountry('IN'), 'INR')
   assert.equal(currencyForCountry('in'), 'INR')
-  assert.equal(currencyForCountry(null), 'INR')
-  assert.equal(currencyForCountry(undefined), 'INR')
-  assert.equal(currencyForCountry(''), 'INR')
   for (const country of ['US', 'GB', 'DE']) {
     assert.equal(currencyForCountry(country), 'USD', country)
   }
@@ -49,13 +49,10 @@ test('currencyForCountry: India and localhost are INR, other countries are USD',
 
 test('getPricingForCountry matches PRICING and formats INR without decimals, USD with 2', () => {
   assert.deepEqual(getPricingForCountry('in'), getPricingForCountry('IN'))
-  assert.deepEqual(getPricingForCountry(null), getPricingForCountry('IN'))
-  assert.deepEqual(getPricingForCountry(undefined), getPricingForCountry('IN'))
-  assert.deepEqual(getPricingForCountry(''), getPricingForCountry('IN'))
   assert.deepEqual(getPricingForCountry('GB'), getPricingForCountry('US'))
   assert.deepEqual(getPricingForCountry('DE'), getPricingForCountry('US'))
 
-  for (const country of ['IN', 'in', null, undefined, '', 'US', 'GB', 'DE']) {
+  for (const country of ['IN', 'in', 'US', 'GB', 'DE']) {
     const pricing = getPricingForCountry(country)
     const currency = currencyForCountry(country)
     const table = PRICING[currency]
@@ -102,7 +99,6 @@ test('getChargeForRequest charges the displayed major price for the request coun
   const cases = [
     ['IN', 'IN'],
     ['US', 'US'],
-    [null, null],
   ]
   const singleDocTypes = ['privacy', 'tos', 'cookie', 'disclaimer', 'eula']
 
@@ -134,16 +130,6 @@ test('getChargeForRequest charges the displayed major price for the request coun
       }
     }
   }
-
-  // No geo header (localhost) charges the same INR amount as an IN header.
-  assert.deepEqual(
-    getChargeForRequest(new Headers(), 'privacy'),
-    getChargeForRequest(headersFor('IN'), 'privacy'),
-  )
-  assert.deepEqual(
-    getChargeForRequest(new Headers(), 'bundle'),
-    getChargeForRequest(headersFor('IN'), 'bundle'),
-  )
 })
 
 test('countryFromHeaders returns null when the header is absent', () => {
