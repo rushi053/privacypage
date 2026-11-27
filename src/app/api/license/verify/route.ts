@@ -1,21 +1,29 @@
 import { NextRequest, NextResponse } from "next/server";
+import { readLicenseRequest } from "@/lib/license-request";
+import { checkLicenseVerifyRateLimit, getClientIp } from "@/lib/rate-limit";
 import { sbSelect } from "@/lib/supabase-server";
 
 export async function POST(req: NextRequest) {
+  if (!(await checkLicenseVerifyRateLimit(getClientIp(req)))) {
+    return NextResponse.json(
+      { error: "rate_limited", message: "Too many license lookups. Please try again in a minute." },
+      { status: 429 }
+    );
+  }
+
+  const parsed = await readLicenseRequest(req);
+  if (!parsed.ok) {
+    return NextResponse.json(parsed.body, { status: parsed.status });
+  }
+
   try {
-    const { licenseKey, email } = await req.json();
-
-    if (!licenseKey && !email) {
-      return NextResponse.json({ error: "License key or email required" }, { status: 400 });
-    }
-
     // purchases is RLS-locked with no policies, so this must go through the
     // service-role helpers - the anon key would silently return zero rows.
     let query = "select=doc_type,license_key,created_at";
-    if (licenseKey) {
-      query += `&license_key=eq.${encodeURIComponent(licenseKey)}`;
+    if (parsed.lookup.by === "licenseKey") {
+      query += `&license_key=eq.${encodeURIComponent(parsed.lookup.licenseKey)}`;
     } else {
-      query += `&email=eq.${encodeURIComponent(email)}&order=created_at.desc`;
+      query += `&email=eq.${encodeURIComponent(parsed.lookup.email)}&order=created_at.desc`;
     }
 
     const purchases = await sbSelect<{ doc_type: string; license_key: string; created_at: string }>(

@@ -43,3 +43,33 @@ export async function checkRateLimit(ip: string): Promise<boolean> {
     return true;
   }
 }
+
+/** License lookups are a separate, tighter window than document generation. */
+export const LICENSE_VERIFY_MAX_PER_MINUTE = 10;
+const LICENSE_VERIFY_WINDOW_MS = 60 * 1000;
+
+/**
+ * Sliding-window limit for POST /api/license/verify: 10 requests per IP per
+ * minute. Rows go in generation_requests under a `license-verify:` prefix so
+ * a lookup does not consume the 10-generations-per-hour quota. Same fail-open
+ * rule as checkRateLimit: a Supabase hiccup must not block a paying user
+ * from restoring a license.
+ */
+export async function checkLicenseVerifyRateLimit(ip: string): Promise<boolean> {
+  try {
+    const since = new Date(Date.now() - LICENSE_VERIFY_WINDOW_MS).toISOString();
+    const bucket = `license-verify:${ip}`;
+    const rows = await sbSelect<{ id: string }>(
+      "generation_requests",
+      `ip=eq.${encodeURIComponent(bucket)}&created_at=gte.${encodeURIComponent(since)}&select=id`
+    );
+    if (rows.length >= LICENSE_VERIFY_MAX_PER_MINUTE) {
+      return false;
+    }
+    await sbInsert("generation_requests", { ip: bucket });
+    return true;
+  } catch (e) {
+    console.error("[rate-limit] license verify check failed - failing open:", e);
+    return true;
+  }
+}
